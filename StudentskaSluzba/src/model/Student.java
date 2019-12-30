@@ -18,9 +18,13 @@ public class Student {
 		B(0), //Budzet
 		S(1); //Samofinansiranje
 		
-		int status;
+		private Status(int status) {this.status = status;}
 		
-		private Status(int i) {this.status = i;}
+		private final int status;
+		
+		public int getStatus() {
+			return status;
+		}
 	}
 	
 	private Status st;
@@ -52,8 +56,6 @@ public class Student {
 	
 	public Student() {
 	}
-	
-	
 	
 	public String getIme() {
 		return ime;

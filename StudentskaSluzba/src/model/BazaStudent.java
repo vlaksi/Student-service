@@ -27,13 +27,14 @@ public class BazaStudent {
 		this.kolone.add("Ime");
 		this.kolone.add("Prezime");
 		this.kolone.add("Godina studija");
-		this.kolone.add("Godina studija");
+		this.kolone.add("Status");
+		this.kolone.add("Prosek");
 	}
 	
 	private void initStudent() {
-		this.igraci = new ArrayList<Igrac>();
-		igraci.add(new Igrac(generateId(), "Mika", "Mikic", "Crvena Zvezda"));
-		igraci.add(new Igrac(generateId(), "Zika", "Zikic", "FMP"));
-		igraci.add(new Igrac(generateId(), "Pera", "Peric", "OKK Sabac"));
+		this.studenti = new ArrayList<Student>();
+		studenti.add(new Student(brIndexa, ime, prezime, godinaStudija, st, prosecnaOcena));
+		studenti.add(new Student(brIndexa, ime, prezime, godinaStudija, st, prosecnaOcena));
+		studenti.add(new Student(brIndexa, ime, prezime, godinaStudija, st, prosecnaOcena));
 	}
 }
