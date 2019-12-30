@@ -2,9 +2,11 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+
 
 /**
  * Klasa koja nam sluzi kao podloga za nas GUI.
@@ -38,6 +40,16 @@ public class GlavniProzor extends JFrame {
 
 		MojToolbar toolbar = new MojToolbar();
 		add(toolbar, BorderLayout.NORTH);
+		validate(); // osvezavanje dodanog na frejm
+		
+		// Postavljena ikonice aplikacije
+		Image img = kit.getImage("img/ikonica.png");
+		setIconImage(img);
+		
+		// kreiranje naslednika klase JMenuBar i njeno postavljanje u glavni prozor
+		// aplikacije
+		MojMenyBar meny = new MojMenyBar();
+		this.setJMenuBar(meny);
 		validate(); // osvezavanje dodanog na frejm
 	}
 
