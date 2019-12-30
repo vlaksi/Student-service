@@ -36,9 +36,11 @@ public class BazaPredmeta {
 	}
 
 	private void initPredmeta() {
-		this.predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1));
-		this.predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2));
-		this.predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1));
+		this.predmeti = new ArrayList<Predmet>();
+		
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1",1, 1));
+		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2));
+		predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1));
 	}
 
 	public List<Predmet> getPredmeti() {
@@ -83,10 +85,10 @@ public class BazaPredmeta {
 		case 1:
 			return predmet.getNazivPredmeta();
 		case 2:
-			return predmet.getSemestar().toString();
+			return (predmet.getSemestar()).toString();
 
 		case 3:
-			return predmet.getGodinaStudija().toString();
+			return (predmet.getGodinaStudija()).toString();
 
 		default:
 			return null;
