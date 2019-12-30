@@ -1,6 +1,5 @@
 package model;
 
-
 /**
  * Model Predmeta
  * 
@@ -14,9 +13,10 @@ public class Predmet {
 	Integer semestar;
 	Integer godinaStudija;
 	Profesor predmetniProfesor;
-	
-	public Predmet() {}
-	
+
+	public Predmet() {
+	}
+
 	public Predmet(String sifraPredmeta, String nazivPredmeta, Integer semestar, Integer godinaStudija,
 			Profesor predmetniProfesor) {
 		super();
@@ -26,37 +26,53 @@ public class Predmet {
 		this.godinaStudija = godinaStudija;
 		this.predmetniProfesor = predmetniProfesor;
 	}
+
+	public Predmet(String sifraPredmeta, String nazivPredmeta, Integer semestar, Integer godinaStudija) {
+		super();
+		this.sifraPredmeta = sifraPredmeta;
+		this.nazivPredmeta = nazivPredmeta;
+		this.semestar = semestar;
+		this.godinaStudija = godinaStudija;
+	}
+
 	public String getSifraPredmeta() {
 		return sifraPredmeta;
 	}
+
 	public void setSifraPredmeta(String sifraPredmeta) {
 		this.sifraPredmeta = sifraPredmeta;
 	}
+
 	public String getNazivPredmeta() {
 		return nazivPredmeta;
 	}
+
 	public void setNazivPredmeta(String nazivPredmeta) {
 		this.nazivPredmeta = nazivPredmeta;
 	}
+
 	public Integer getSemestar() {
 		return semestar;
 	}
+
 	public void setSemestar(Integer semestar) {
 		this.semestar = semestar;
 	}
+
 	public Integer getGodinaStudija() {
 		return godinaStudija;
 	}
+
 	public void setGodinaStudija(Integer godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
+
 	public Profesor getPredmetniProfesor() {
 		return predmetniProfesor;
 	}
+
 	public void setPredmetniProfesor(Profesor predmetniProfesor) {
 		this.predmetniProfesor = predmetniProfesor;
 	}
 
-	
-	
 }
