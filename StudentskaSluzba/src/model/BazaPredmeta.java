@@ -36,9 +36,11 @@ public class BazaPredmeta {
 	}
 
 	private void initPredmeta() {
-		this.predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1));
-		this.predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2));
-		this.predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1));
+		this.predmeti = new ArrayList<Predmet>();
+		
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1));
+		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2));
+		predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1));
 	}
 
 	public List<Predmet> getPredmeti() {
