@@ -16,15 +16,24 @@ public class Profesor {
 	private String telefon;
 	private String email;
 	private String adresaKancelarije;
-	private long brojLicneKarte;
+	private String brojLicneKarte;
 	private String titula;
 	private String zvanje;
 
 	public Profesor() {
 	}
 
+	public Profesor(String ime, String prezime,String email, String adresaKancelarije, String brojLicneKarte) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.email = email;
+		this.adresaKancelarije = adresaKancelarije;
+		this.brojLicneKarte = brojLicneKarte;
+	}
+	
 	public Profesor(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String telefon,
-			String email, String adresaKancelarije, long brojLicneKarte, String titula, String zvanje) {
+			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -94,11 +103,11 @@ public class Profesor {
 		this.adresaKancelarije = adresaKancelarije;
 	}
 
-	public long getBrojLicneKarte() {
+	public String getBrojLicneKarte() {
 		return brojLicneKarte;
 	}
 
-	public void setBrojLicneKarte(long brojLicneKarte) {
+	public void setBrojLicneKarte(String brojLicneKarte) {
 		this.brojLicneKarte = brojLicneKarte;
 	}
 
