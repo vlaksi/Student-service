@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -25,15 +26,19 @@ public class GlavniProzor extends JFrame {
 
 	public GlavniProzor() {
 		setTitle("Studentska slu\u017Eba");
-		
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		Dimension dimenzijeEkrana = kit.getScreenSize();									// uzimamo dimenzije ekrana kako bi namestili velicinu aplikacije
 
-		setSize((dimenzijeEkrana.width * 3) / 4, (dimenzijeEkrana.height * 3) / 4); 		// podesavanje na 3/4 ekrana
-		setLocationRelativeTo(null); 														// u odnosu na centar ekrana postavljamo
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		Dimension dimenzijeEkrana = kit.getScreenSize(); // uzimamo dimenzije ekrana kako bi namestili velicinu
+															// aplikacije
+
+		setSize((dimenzijeEkrana.width * 3) / 4, (dimenzijeEkrana.height * 3) / 4); // podesavanje na 3/4 ekrana
+		setLocationRelativeTo(null); // u odnosu na centar ekrana postavljamo
 		setVisible(true);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE); 										// gasenje aplikacije na x
-	
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE); // gasenje aplikacije na x
+
+		MojToolbar toolbar = new MojToolbar();
+		add(toolbar, BorderLayout.NORTH);
+		validate(); // osvezavanje dodanog na frejm
 	}
 
 }

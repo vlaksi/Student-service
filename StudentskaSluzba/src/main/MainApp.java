@@ -5,10 +5,9 @@ import model.BazaProfesor;
 import view.GlavniProzor;
 import model.BazaStudent;
 
-
-
 /**
  * Glavna klasa iz koje se vrsi inicijalno pokretanje aplikacije.
+ * 
  * @author Pufke i Vaxi
  *
  */
