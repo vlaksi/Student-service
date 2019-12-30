@@ -17,6 +17,24 @@ public class Student {
 		S //Samofinansiranje
 	}
 	
+	public Student(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String telefon,
+			String email, String brIndexa, Date datumUpisa, String godinaStudija, double prosecnaOcena) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.datumRodjenja = datumRodjenja;
+		this.adresaStanovanja = adresaStanovanja;
+		this.telefon = telefon;
+		this.email = email;
+		this.brIndexa = brIndexa;
+		this.datumUpisa = datumUpisa;
+		this.godinaStudija = godinaStudija;
+		this.prosecnaOcena = prosecnaOcena;
+	}
+	
+	public Student() {
+	}
+	
 	private double prosecnaOcena;
 	public String getIme() {
 		return ime;
@@ -78,7 +96,5 @@ public class Student {
 	public void setProsecnaOcena(double prosecnaOcena) {
 		this.prosecnaOcena = prosecnaOcena;
 	}
-	
-	//TODO Dodati Listu predmeta koje student slusa kad Vladislav otkuca Klasu predmet
 
 }
