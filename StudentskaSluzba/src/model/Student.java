@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 public class Student {
+//TODO	proveriti enumeraciju imao sam problema oko toga
 	private String ime;
 	private String prezime;
 	private Date datumRodjenja;
@@ -12,13 +13,16 @@ public class Student {
 	private String brIndexa;
 	private Date datumUpisa;
 	private String godinaStudija;
-	private enum status {
-		B, //Budzet
-		S //Samofinansiranje
+	private Double prosecnaOcena;
+	private Status statusStudenta;
+	
+	public enum Status {
+		B,S;
 	}
+
 	
 	public Student(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String telefon,
-			String email, String brIndexa, Date datumUpisa, String godinaStudija, double prosecnaOcena) {
+			String email, String brIndexa, Date datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -30,19 +34,28 @@ public class Student {
 		this.datumUpisa = datumUpisa;
 		this.godinaStudija = godinaStudija;
 		this.prosecnaOcena = prosecnaOcena;
+		this.setStatusStudenta(statusStudenta);
+	}
+	
+	public Student(String brIndexa,String ime, String prezime, String godinaStudija, Status statusStudenta, Double prosecnaOcena) {
+		this.brIndexa = brIndexa;
+		this.ime = ime;
+		this.prezime = prezime;
+		this.godinaStudija = godinaStudija;
+		this.prosecnaOcena = prosecnaOcena;
+		this.setStatusStudenta(statusStudenta);
 	}
 	
 	public Student() {
 	}
 	
-	private double prosecnaOcena;
 	public String getIme() {
 		return ime;
 	}
 	public void setIme(String ime) {
 		this.ime = ime;
 	}
-	public String getPrezime() {
+	public String profesor() {
 		return prezime;
 	}
 	public void setPrezime(String prezime) {
@@ -63,6 +76,10 @@ public class Student {
 	public String getTelefon() {
 		return telefon;
 	}
+	public String getPrezime() {
+		return prezime;
+	}
+
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
@@ -90,11 +107,20 @@ public class Student {
 	public void setGodinaStudija(String godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
-	public double getProsecnaOcena() {
+	public Double getProsecnaOcena() {
 		return prosecnaOcena;
 	}
-	public void setProsecnaOcena(double prosecnaOcena) {
+	public void setProsecnaOcena(Double prosecnaOcena) {
 		this.prosecnaOcena = prosecnaOcena;
 	}
+
+	public Status getStatusStudenta() {
+		return statusStudenta;
+	}
+
+	public void setStatusStudenta(Status statusStudenta) {
+		this.statusStudenta = statusStudenta;
+	}
+
 
 }

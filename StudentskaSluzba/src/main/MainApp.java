@@ -3,6 +3,8 @@ package main;
 import model.BazaPredmeta;
 import model.BazaProfesor;
 import view.GlavniProzor;
+import model.BazaStudent;
+
 
 
 /**
@@ -16,7 +18,11 @@ public class MainApp {
 		System.out.println("Inicijalno ispisivanje");
 		BazaProfesor.getInstance();
 		BazaPredmeta.getInstance();
+
 		GlavniProzor.getInstance();
+
+		BazaStudent.getInstance();
+
 	}
 
 }
