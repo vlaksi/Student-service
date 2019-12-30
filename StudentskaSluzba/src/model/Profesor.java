@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Model Predmeta
@@ -20,11 +19,12 @@ public class Profesor {
 	private long brojLicneKarte;
 	private String titula;
 	private String zvanje;
-	private List<Predmet> spisakPredmeta; // spisak predmeta na kojima je profesor
+
+	public Profesor() {
+	}
 
 	public Profesor(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String telefon,
-			String email, String adresaKancelarije, long brojLicneKarte, String titula, String zvanje,
-			List<Predmet> spisakPredmeta) {
+			String email, String adresaKancelarije, long brojLicneKarte, String titula, String zvanje) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -36,7 +36,6 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		this.spisakPredmeta = spisakPredmeta;
 	}
 
 	public String getIme() {
@@ -117,14 +116,6 @@ public class Profesor {
 
 	public void setZvanje(String zvanje) {
 		this.zvanje = zvanje;
-	}
-
-	public List<Predmet> getSpisakPredmeta() {
-		return spisakPredmeta;
-	}
-
-	public void setSpisakPredmeta(List<Predmet> spisakPredmeta) {
-		this.spisakPredmeta = spisakPredmeta;
 	}
 
 }
