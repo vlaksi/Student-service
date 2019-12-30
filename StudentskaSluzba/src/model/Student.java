@@ -12,13 +12,21 @@ public class Student {
 	private String brIndexa;
 	private Date datumUpisa;
 	private String godinaStudija;
-	private enum status {
-		B, //Budzet
-		S //Samofinansiranje
+	private double prosecnaOcena;
+	
+	private enum Status {
+		B(0), //Budzet
+		S(1); //Samofinansiranje
+		
+		int status;
+		
+		private Status(int i) {this.status = i;}
 	}
 	
+	private Status st;
+	
 	public Student(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String telefon,
-			String email, String brIndexa, Date datumUpisa, String godinaStudija, double prosecnaOcena) {
+			String email, String brIndexa, Date datumUpisa, String godinaStudija, double prosecnaOcena, Status st) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -30,12 +38,23 @@ public class Student {
 		this.datumUpisa = datumUpisa;
 		this.godinaStudija = godinaStudija;
 		this.prosecnaOcena = prosecnaOcena;
+		this.st = st;
+	}
+	
+	public Student(String brIndexa,String ime, String prezime, String godinaStudija, Status st, double prosecnaOcena) {
+		this.brIndexa = brIndexa;
+		this.ime = ime;
+		this.prezime = prezime;
+		this.godinaStudija = godinaStudija;
+		this.prosecnaOcena = prosecnaOcena;
+		this.st = st;
 	}
 	
 	public Student() {
 	}
 	
-	private double prosecnaOcena;
+	
+	
 	public String getIme() {
 		return ime;
 	}
@@ -95,6 +114,12 @@ public class Student {
 	}
 	public void setProsecnaOcena(double prosecnaOcena) {
 		this.prosecnaOcena = prosecnaOcena;
+	}
+	public Status getSt() {
+		return st;
+	}
+	public void setSt(Status st) {
+		this.st = st;
 	}
 
 }
