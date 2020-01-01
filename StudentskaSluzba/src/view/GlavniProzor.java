@@ -57,6 +57,8 @@ public class GlavniProzor extends JFrame {
 		validate(); // osvezavanje dodanog na frejm
 
 		prikaziStatusBar();
+		add((Tabovi.getInstance()).getScrollPane(),BorderLayout.CENTER);//prikaz tabova
+		validate();
 	}
 
 	private void prikaziStatusBar() {
