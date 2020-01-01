@@ -15,7 +15,6 @@ import model.BazaStudent;
 public class MainApp {
 
 	public static void main(String[] args) {
-		System.out.println("Inicijalno ispisivanje");
 		BazaProfesor.getInstance();
 		BazaPredmeta.getInstance();
 		BazaStudent.getInstance();
