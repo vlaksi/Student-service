@@ -20,8 +20,6 @@ public class MainApp {
 		BazaStudent.getInstance();
 		GlavniController.getInstance();
 		GlavniProzor.getInstance();
-		
-
 
 	}
 
