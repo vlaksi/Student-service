@@ -55,13 +55,10 @@ public class GlavniProzor extends JFrame {
 		MojMenyBar meny = new MojMenyBar();
 		this.setJMenuBar(meny);
 		validate(); // osvezavanje dodanog na frejm
-		
+
 		prikaziStatusBar();
 	}
 
-	
-	
-	
 	private void prikaziStatusBar() {
 
 		// create the status bar panel and shove it down the bottom of the frame
@@ -87,4 +84,5 @@ public class GlavniProzor extends JFrame {
 		statusPanel.add(vreme, BorderLayout.EAST);
 		setVisible(true);
 	}
+
 }
