@@ -13,7 +13,9 @@ public class BazaProfesor {
 //TODO Dodati spisak predmeta za svakog profesora
 //TODO Resiti sta cemo sa ostalim podacima koji se ne popune [podaci koji nisu na prikazu]
 	private static BazaProfesor instance = null;
-
+	private List<Profesor> profesori;
+	private List<String> kolone;
+	
 	public static BazaProfesor getInstance() {
 		if (instance == null) {
 			instance = new BazaProfesor();
@@ -21,18 +23,23 @@ public class BazaProfesor {
 		return instance;
 	}
 
-	private List<Profesor> profesori;
-	private List<String> kolone;
+	public List<String> getKolone() {
+		return kolone;
+	}
+
+	public void setKolone(List<String> kolone) {
+		this.kolone = kolone;
+	}
 
 	private BazaProfesor() {
 		initProfesore();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("IME");
-		this.kolone.add("PREZIME");
-		this.kolone.add("EMAIL");
-		this.kolone.add("ADRESA KACELARIJE");
-		this.kolone.add("BROJ LICNE KARTE");
+		this.kolone.add("Ime");
+		this.kolone.add("Prezime");
+		this.kolone.add("Email");
+		this.kolone.add("Adresa kancelarije");
+		this.kolone.add("Broj licne karte");
 
 	}
 

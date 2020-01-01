@@ -62,6 +62,14 @@ public class BazaStudent {
 		return this.studenti.get(indexReda);
 	}
 
+	public List<String> getKolone() {
+		return kolone;
+	}
+
+	public void setKolone(List<String> kolone) {
+		this.kolone = kolone;
+	}
+
 	/**
 	 * 
 	 * @param red

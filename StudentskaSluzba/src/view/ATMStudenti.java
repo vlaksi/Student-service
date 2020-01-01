@@ -8,13 +8,15 @@ import model.BazaStudent;
  * Klasa AbstractTableModelStudenti je klasa koja nasledjuje AbstractTableModel
  * i sluzi nam za prikaz tabele studenata.
  * 
- * @author Vaxi
+ * @author Vaxi i Pufke
  *
  */
 public class ATMStudenti extends AbstractTableModel {
 
 	private static final long serialVersionUID = -3033571354019443426L;
 
+	public static String kolonaListaStudenata = "Spisak predmeta";
+	
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		// TODO izmeniti ovo false autogenerisano, i uvesti logiku za proveru da li je
@@ -43,6 +45,14 @@ public class ATMStudenti extends AbstractTableModel {
 			
 		}
 		return null;
+	}
+	
+	@Override
+	public String getColumnName(int column) {
+		if (column == BazaStudent.getInstance().getKolone().size()) {
+			return kolonaListaStudenata;
+		}
+		return BazaStudent.getInstance().getImeKolone(column);
 	}
 
 }

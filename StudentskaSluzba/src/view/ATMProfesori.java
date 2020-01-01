@@ -8,13 +8,13 @@ import model.BazaProfesor;
  * Klasa AbstractTableModelProfesori je klasa koja nam sluzi za prikaz tabele
  * profesora.
  * 
- * @author Vaxi
+ * @author Vaxi i Pufke
  *
  */
 public class ATMProfesori extends AbstractTableModel {
 
 	private static final long serialVersionUID = -4422057131202788042L;
-
+	public static String spisakPredmeta = "Spisak predmeta";
 	@Override
 	public int getRowCount() {
 		return BazaProfesor.getInstance().getProfesori().size();
@@ -35,6 +35,14 @@ public class ATMProfesori extends AbstractTableModel {
 			//TODO implementirati da vrati listu predmeta za tog profesora
 		}
 		return null;
+	}
+	
+	@Override
+	public String getColumnName(int column) {
+		if (column == BazaProfesor.getInstance().getKolone().size()) {
+			return spisakPredmeta;
+		}
+		return BazaProfesor.getInstance().getImeKolone(column);
 	}
 
 }

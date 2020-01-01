@@ -13,7 +13,9 @@ public class BazaPredmeta {
 //TODO Ishendlovati kako cemo za predmet dodavati predmetnog profesora
 //TODO Ishendlovati kako cemo na predmet dodavati studente
 	private static BazaPredmeta instance = null;
-
+	private List<Predmet> predmeti;
+	private List<String> kolone;
+	
 	public static BazaPredmeta getInstance() {
 		if (instance == null) {
 			instance = new BazaPredmeta();
@@ -21,17 +23,14 @@ public class BazaPredmeta {
 		return instance;
 	}
 
-	private List<Predmet> predmeti;
-	private List<String> kolone;
-
 	private BazaPredmeta() {
 		initPredmeta();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("SIFRA PREDMETA");
-		this.kolone.add("NAZIV PREDMETA");
-		this.kolone.add("SEMESTAR");
-		this.kolone.add("GODINA STUDIJA");
+		this.kolone.add("Sifra predmeta");
+		this.kolone.add("Naziv predmeta");
+		this.kolone.add("Semestar");
+		this.kolone.add("Godina studija");
 
 	}
 
@@ -42,6 +41,14 @@ public class BazaPredmeta {
 		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1));
 		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2));
 		predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1));
+	}
+
+	public List<String> getKolone() {
+		return kolone;
+	}
+
+	public void setKolone(List<String> kolone) {
+		this.kolone = kolone;
 	}
 
 	public List<Predmet> getPredmeti() {
