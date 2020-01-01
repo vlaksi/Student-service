@@ -1,5 +1,6 @@
 package main;
 
+import controller.GlavniController;
 import model.BazaPredmeta;
 import model.BazaProfesor;
 import view.GlavniProzor;
@@ -17,10 +18,11 @@ public class MainApp {
 		System.out.println("Inicijalno ispisivanje");
 		BazaProfesor.getInstance();
 		BazaPredmeta.getInstance();
-
-		GlavniProzor.getInstance();
-
 		BazaStudent.getInstance();
+		GlavniController.getInstance();
+		GlavniProzor.getInstance();
+		
+
 
 	}
 
