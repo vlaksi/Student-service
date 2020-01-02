@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import view.listeners.MyWindowListener;
 
 /**
  * Klasa koja nam sluzi kao podloga za nas GUI.
@@ -35,10 +38,10 @@ public class GlavniProzor extends JFrame {
 		setLocationRelativeTo(null); // u odnosu na centar ekrana postavljamo
 		setVisible(true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE); // gasenje aplikacije na x
+		addWindowListener(new MyWindowListener()); // lisener za window
 
 		MojToolbar toolbar = new MojToolbar();
 		add(toolbar, BorderLayout.NORTH);
-		validate(); // osvezavanje dodanog na frejm
 
 		// Postavljena ikonice aplikacije
 		Image img = kit.getImage("img/ikonica.png");
@@ -53,13 +56,28 @@ public class GlavniProzor extends JFrame {
 		// Podesavanje status bara na donji deo aplikacije.
 		add(MojStatusBar.getInstance().getStatusPanel(), BorderLayout.SOUTH);
 		MojStatusBar.getInstance().prikaziStatusBar(MojStatusBar.getInstance().getStatusPanel());
-		//setVisible(true);
+		// setVisible(true);
 
 		Tabovi tabovi = new Tabovi();
 		add(tabovi.getScrollPane(), BorderLayout.CENTER);// prikaz tabova
-		//TODO zasnati kako trenutno znam u kom sam tabu, kako bih pozvao odredjene metode iz toolbara
-		// i tako iskljucio, odonosno ukljucio odredjene dugmice u toolbaru
-		
+		tabovi.getTabbedPane().addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				// System.out.println("Tab " + (tabovi.getTabbedPane().getSelectedIndex()) + "
+				// is selected");
+				if (tabovi.getTabbedPane().getSelectedIndex() == 0) {
+					toolbar.postaviVidljivost(false, toolbar.getDodajProfesora());
+					toolbar.postaviVidljivost(false, toolbar.getDodajStudenta());
+				}
+
+				if (tabovi.getTabbedPane().getSelectedIndex() == 1 || tabovi.getTabbedPane().getSelectedIndex() == 2) {
+					toolbar.postaviVidljivost(true, toolbar.getDodajProfesora());
+					toolbar.postaviVidljivost(true, toolbar.getDodajStudenta());
+				}
+
+			}
+		});
 		validate();
 
 	}
