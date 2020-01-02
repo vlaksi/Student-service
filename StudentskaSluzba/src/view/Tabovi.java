@@ -18,6 +18,8 @@ import javax.swing.JTabbedPane;
  */
 public class Tabovi {
 
+	private JScrollPane scrollPane = null;
+	private JTabbedPane tabbedPane = null;
 	public static Tabovi instance = null;
 
 	public static Tabovi getInstance() {
@@ -27,15 +29,15 @@ public class Tabovi {
 		return instance;
 	}
 
-	JScrollPane scrollPane = null;
 
 	public Tabovi() {
-		JTabbedPane tabbedPane = new JTabbedPane();
+		super();
+		tabbedPane = new JTabbedPane();
 
 		JComponent panel1 = napraviTab("Panel 1", true, 0);
 		tabbedPane.addTab("Studenti", null, panel1, "Studenti");
 		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-
+		
 		JComponent panel2 = napraviTab("Panel 2", false, 1);
 		tabbedPane.addTab("Profesori", null, panel2, "Profesori");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
@@ -43,11 +45,13 @@ public class Tabovi {
 		JComponent panel3 = napraviTab("Panel 3", true, 2);
 		tabbedPane.addTab("Predmeti", null, panel3, "Predmeti");
 		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
-
+		
 		this.scrollPane = new JScrollPane(tabbedPane);
 
 	}
-
+	
+	
+	
 	public JScrollPane getScrollPane() {
 		return scrollPane;
 	}
@@ -91,7 +95,7 @@ public class Tabovi {
 		// KRAJ DODAVANJA "BORDERA" OKO TABELE STUDENATA
 
 		switch (indikatorTaba) {
-		case 0:
+		case 0: 
 			StudentiJTable tabelaStudenata = new StudentiJTable();
 			JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
 			panel.add(scrollPane, BorderLayout.CENTER);
