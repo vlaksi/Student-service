@@ -10,6 +10,8 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import view.listeners.MojMausListener;
+
 /**
  * Klasa koja sluzi za implementaciju toolbara-a u glavnom prozoru.
  * 
@@ -37,6 +39,7 @@ public class MojToolbar extends JToolBar {
 		addSeparator();
 		this.novoDugme = new JButton();
 		this.novoDugme.setToolTipText("Dodaj");
+		this.novoDugme.addMouseListener(new MojMausListener());
 		ImageIcon iconNew = new ImageIcon("./img/add.png");
 		this.novoDugme.setIcon(iconNew);
 		add(this.novoDugme);
