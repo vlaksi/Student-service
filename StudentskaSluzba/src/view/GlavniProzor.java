@@ -51,12 +51,15 @@ public class GlavniProzor extends JFrame {
 		validate(); // osvezavanje dodanog na frejm
 
 		// Podesavanje status bara na donji deo aplikacije.
-
 		add(MojStatusBar.getInstance().getStatusPanel(), BorderLayout.SOUTH);
 		MojStatusBar.getInstance().prikaziStatusBar(MojStatusBar.getInstance().getStatusPanel());
-		setVisible(true);
+		//setVisible(true);
 
-		add((Tabovi.getInstance()).getScrollPane(), BorderLayout.CENTER);// prikaz tabova
+		Tabovi tabovi = new Tabovi();
+		add(tabovi.getScrollPane(), BorderLayout.CENTER);// prikaz tabova
+		//TODO zasnati kako trenutno znam u kom sam tabu, kako bih pozvao odredjene metode iz toolbara
+		// i tako iskljucio, odonosno ukljucio odredjene dugmice u toolbaru
+		
 		validate();
 
 	}
