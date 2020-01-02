@@ -59,7 +59,7 @@ public class GlavniProzor extends JFrame {
 		add(tabovi.getScrollPane(), BorderLayout.CENTER);// prikaz tabova
 		//TODO zasnati kako trenutno znam u kom sam tabu, kako bih pozvao odredjene metode iz toolbara
 		// i tako iskljucio, odonosno ukljucio odredjene dugmice u toolbaru
-		
+
 		validate();
 
 	}

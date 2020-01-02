@@ -17,7 +17,13 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import controller.GlavniController;
+import model.BazaStudent;
+import model.Student.Status;
+import view.ATMStudenti;
+import view.GlavniProzor;
 import view.StudentiJTable;
+import view.Tabovi;
 /**
  *  Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu studenta
  * @author Pufke
@@ -89,6 +95,7 @@ public class DodajStudentaDialog extends JDialog {
 		txtBrojIndexa.setPreferredSize(dim);
 		panBrojIndexa.add(lblBrojIndexa);
 		panBrojIndexa.add(txtBrojIndexa);
+		
 
 		JPanel panGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblGodinaStudija = new JLabel("Trenutna godina studija*");
@@ -98,6 +105,14 @@ public class DodajStudentaDialog extends JDialog {
 		godineComboBox.setPreferredSize(dim);
 		panGodinaStudija.add(lblGodinaStudija);
 		panGodinaStudija.add(godineComboBox);
+		
+		JPanel panProsecnaOcena = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lblpanProsecnaOcena = new JLabel("Prosecna ocena* ");
+		lblpanProsecnaOcena.setPreferredSize(dim);
+		JTextField txtProsecnaOcena = new JTextField();
+		txtProsecnaOcena.setPreferredSize(dim);
+		panProsecnaOcena.add(lblpanProsecnaOcena);
+		panProsecnaOcena.add(txtProsecnaOcena);
 
 		JPanel panBudzetButton = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JRadioButton budzetButton = new JRadioButton("Budzet");
@@ -119,6 +134,7 @@ public class DodajStudentaDialog extends JDialog {
 		panCenter.add(panAdresaStanovanja);
 		panCenter.add(panBrojTelefona);
 		panCenter.add(panBrojIndexa);
+		panCenter.add(panProsecnaOcena);
 		panCenter.add(panGodinaStudija);
 		panCenter.add(panBudzetButton);
 		panCenter.add(panSamofinansiranjeButton);
@@ -154,6 +170,7 @@ public class DodajStudentaDialog extends JDialog {
 			      String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
 			      String brojIndexaFieldValue = txtBrojIndexa.getText();
 			      String godinaStudijaValue = godineComboBox.getSelectedItem().toString();
+			      Double prosecnaOcenaValue = Double.parseDouble(txtProsecnaOcena.getText());
 			      
 			      budzetButton.setActionCommand(budzetButton.getText());//Ove metode su nam potrebne da bi radio button prikupio informacije
 			      samofinansiranjeButton.setActionCommand(samofinansiranjeButton.getText());
@@ -161,8 +178,26 @@ public class DodajStudentaDialog extends JDialog {
 			      //Ako je budzet button pritisnut vratice string Budzet ako nije vratice string null
 			      String budzetRadioButtonValue = budzetButton.isSelected()? "Budzet" : "null";
 			      String samofinansiranjeRadioButtonValue = samofinansiranjeButton.isSelected()? "Samofinansiranje" : "null";
+			      
+			      Status budzetIliSamofinansiranje = null ;
+			      
+			      if(budzetRadioButtonValue.equals("Budzet")) {
+			    	  budzetIliSamofinansiranje = Status.B;
+			      }else if (samofinansiranjeRadioButtonValue.equals("Samofinansiranje")) {
+			    	  budzetIliSamofinansiranje = Status.S;
+			      }
 			    
+			      BazaStudent.getInstance().dodajStudenta(brojIndexaFieldValue, imeFieldValue, prezimeFieldValue,
+			    		  godinaStudijaValue, budzetIliSamofinansiranje, prosecnaOcenaValue);	
+			     
+		
+			      Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
+			      Integer height  = (int) GlavniProzor.getInstance().getSize().getHeight();
+			      
+			    GlavniProzor.getInstance().setSize(width,height+1);
 			
+
+			   
 			   }
 		});
 	}
