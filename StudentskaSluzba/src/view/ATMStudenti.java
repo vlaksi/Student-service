@@ -14,7 +14,7 @@ import model.BazaStudent;
 public class ATMStudenti extends AbstractTableModel {
 
 	private static final long serialVersionUID = -3033571354019443426L;
-	
+
 	public static int selectedRowIndex = 0;
 	public static String kolonaListaStudenata = "Spisak predmeta";
 
@@ -40,7 +40,7 @@ public class ATMStudenti extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
-		this.selectedRowIndex = rowIndex;
+		setSelectedRowIndex(rowIndex);
 
 		if (columnIndex <= BazaStudent.getInstance().getColumnCount()) {
 			return BazaStudent.getInstance().getVrednost(rowIndex, columnIndex);
@@ -49,11 +49,15 @@ public class ATMStudenti extends AbstractTableModel {
 
 		}
 		return null;
-		
+
 	}
 
 	public static int getSelectedRowIndex() {
 		return selectedRowIndex;
+	}
+
+	public static void setSelectedRowIndex(int selectedRowIndex) {
+		ATMStudenti.selectedRowIndex = selectedRowIndex;
 	}
 
 	@Override

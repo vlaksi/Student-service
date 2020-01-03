@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import model.BazaProfesor;
 import model.BazaStudent;
 import view.listeners.MojMausListener;
 
@@ -50,7 +51,7 @@ public class MojToolbar extends JToolBar {
 		this.novoDugme = new JButton();
 		this.novoDugme.setToolTipText("Dodaj");
 		this.novoDugme.addMouseListener(new MojMausListener());
-		
+
 		ImageIcon iconNew = new ImageIcon("./img/add.png");
 		novoDugme.setIcon(iconNew);
 		add(novoDugme);
@@ -68,14 +69,23 @@ public class MojToolbar extends JToolBar {
 		izbrisiDugme = new JButton();
 		izbrisiDugme.setToolTipText("Izbrisi");
 		izbrisiDugme.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int i = ATMStudenti.getSelectedRowIndex();
-				System.out.println(i);
-				BazaStudent.getInstance().getStudenti().remove(i);
-				Tabovi.getModelStudenti().fireTableDataChanged();
-				
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
+					int i = ATMStudenti.getSelectedRowIndex();
+					System.out.println(i);
+					BazaStudent.getInstance().getStudenti().remove(i);//TODO uraditi preko kontrolera
+					Tabovi.getModelStudenti().fireTableDataChanged();
+				}
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
+					int x = ATMProfesori.getSelectedRowIndex();
+					System.out.println(x);
+					BazaProfesor.getInstance().getProfesori().remove(x);//TODO uraditi preko kontrolera
+					Tabovi.getModelProfesori().fireTableDataChanged();
+					
+				}
+
 			}
 		});
 		ImageIcon iconNew3 = new ImageIcon("./img/delete.png");
@@ -83,7 +93,7 @@ public class MojToolbar extends JToolBar {
 		add(izbrisiDugme);
 		postaviVidljivost(true, izbrisiDugme);
 		addSeparator();
-		
+
 		dodajStudenta = new JButton();
 		dodajStudenta.setToolTipText("Dodaj studenta");
 		ImageIcon iconNew4 = new ImageIcon("./img/student.png");

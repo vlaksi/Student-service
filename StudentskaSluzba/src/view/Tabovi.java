@@ -22,6 +22,10 @@ public class Tabovi {
 
 	private StudentiJTable tabelaStudenata = null; //Treba nam za brisanje studenata
 	private static ATMStudenti modelStudenti = null; //Treba nam za brisanje studenata
+	
+	private ProfesoriJTable tabelaProfesora = null; // za brisanje profesora
+	private static ATMProfesori modelProfesori = null; // za brisanje profesora
+	
 	private JScrollPane scrollPane = null;
 	private JTabbedPane tabbedPane = null;
 	private JComponent panel1;
@@ -118,11 +122,11 @@ public class Tabovi {
 			modelStudenti.fireTableDataChanged(); // osvezavanje promena
 			break;
 		case 1:
-			ProfesoriJTable tabelaProfesora = new ProfesoriJTable();
+			tabelaProfesora = new ProfesoriJTable();
 			JScrollPane scrollPane3 = new JScrollPane(tabelaProfesora);
 			panel.add(scrollPane3, BorderLayout.CENTER);
-			ATMProfesori model3 = (ATMProfesori) tabelaProfesora.getModel();
-			model3.fireTableDataChanged();
+			modelProfesori = (ATMProfesori) tabelaProfesora.getModel();
+			modelProfesori.fireTableDataChanged();
 			break;
 		case 2:
 			PredmetiJTable tabelaPredmeta = new PredmetiJTable();
@@ -145,5 +149,15 @@ public class Tabovi {
 	public static ATMStudenti getModelStudenti() {
 		return modelStudenti;
 	}
+
+	public ProfesoriJTable getTabelaProfesora() {
+		return this.tabelaProfesora;
+	}
+
+	public static ATMProfesori getModelProfesori() {
+		return modelProfesori;
+	}
+	
+	
 
 }
