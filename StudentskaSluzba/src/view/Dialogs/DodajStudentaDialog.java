@@ -158,8 +158,8 @@ public class DodajStudentaDialog extends JDialog {
 		} catch (ParseException e1) {
 			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu upisa" , "Greska" , JOptionPane.ERROR_MESSAGE);
 		}
-		maskDatumRodj.setPlaceholderCharacter('_'); 
-		maskDatumRodj.setValidCharacters("0123456789"); 
+		maskDatumUpisa.setPlaceholderCharacter('_'); 
+		maskDatumUpisa.setValidCharacters("0123456789"); 
 		JFormattedTextField txtPanDatumUpiusa = new JFormattedTextField(maskDatumUpisa);
 		txtPanDatumUpiusa.setPreferredSize(dim);
 		panDatumUpiusa.add(lblpanDatumUpiusa);

@@ -110,58 +110,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		panBrojTelefona.add(lblBrojTelefona);
 		panBrojTelefona.add(txtBrojTelefona);
 
-		JPanel panBrojIndexa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lblBrojIndexa = new JLabel("Broj indexa* ");
-		lblBrojIndexa.setPreferredSize(dim);
-		//JTextField txtBrojIndexa = new JTextField();
-		MaskFormatter maskBrojIndexa = null;
-		try {
-			maskBrojIndexa = new MaskFormatter("UU###-####");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu Indexa" , "Greska" , JOptionPane.ERROR_MESSAGE);
-		}
-		maskBrojTelefona.setPlaceholderCharacter('_'); 
-		maskBrojTelefona.setValidCharacters("0123456789"); 
-		JFormattedTextField txtBrojIndexa = new JFormattedTextField(maskBrojIndexa);
-		txtBrojIndexa.setPreferredSize(dim);
-		panBrojIndexa.add(lblBrojIndexa);
-		panBrojIndexa.add(txtBrojIndexa);
-		
 
-		JPanel panGodinaStudija = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lblGodinaStudija = new JLabel("Trenutna godina studija*");
-		lblGodinaStudija.setPreferredSize(dim);
-		String[] godineStudija = { "1", "2", "3", "4" };
-		JComboBox<String> godineComboBox = new JComboBox<String>(godineStudija);
-		godineComboBox.setPreferredSize(dim);
-		panGodinaStudija.add(lblGodinaStudija);
-		panGodinaStudija.add(godineComboBox);
-		
-		JPanel panProsecnaOcena = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lblpanProsecnaOcena = new JLabel("Prosecna ocena* ");
-		lblpanProsecnaOcena.setPreferredSize(dim);
-		JTextField txtProsecnaOcena = new JTextField();
-		txtProsecnaOcena.setPreferredSize(dim);
-		panProsecnaOcena.add(lblpanProsecnaOcena);
-		panProsecnaOcena.add(txtProsecnaOcena);
-		
-		JPanel panDatumUpiusa = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lblpanDatumUpiusa = new JLabel("Datum upisa* ");
-		lblpanDatumUpiusa.setPreferredSize(dim);
-		//JTextField txtPanDatumUpiusa = new JTextField();
-		MaskFormatter maskDatumUpisa = null;
-		try {
-			maskDatumUpisa = new MaskFormatter("##.##.####");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu upisa" , "Greska" , JOptionPane.ERROR_MESSAGE);
-		}
-		maskDatumRodj.setPlaceholderCharacter('_'); 
-		maskDatumRodj.setValidCharacters("0123456789"); 
-		JFormattedTextField txtPanDatumUpiusa = new JFormattedTextField(maskDatumUpisa);
-		txtPanDatumUpiusa.setPreferredSize(dim);
-		panDatumUpiusa.add(lblpanDatumUpiusa);
-		panDatumUpiusa.add(txtPanDatumUpiusa);
-		
 		JPanel panEmail = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblpanEmail = new JLabel("Email* ");
 		lblpanEmail.setPreferredSize(dim);
@@ -177,33 +126,49 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		txtPanEmail.setPreferredSize(dim);
 		panEmail.add(lblpanEmail);
 		panEmail.add(txtPanEmail);
+		
+		JPanel panAdresaKancelarije = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*");
+		lblAdresaKancelarije.setPreferredSize(dim);
+		JTextField txtlblAdresaKancelarije = new JTextField();
+		txtlblAdresaKancelarije.setPreferredSize(dim);
+		panAdresaKancelarije.add(lblAdresaKancelarije);
+		panAdresaKancelarije.add(txtlblAdresaKancelarije);
 
-		JPanel panBudzetButton = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JRadioButton budzetButton = new JRadioButton("Budzet");
-		panBudzetButton.add(budzetButton);
-		budzetButton.setSelected(true);
+		JPanel panBrojLicneKarte = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lblBrojLicneKarte = new JLabel("Broj licne*");
+		lblBrojLicneKarte.setPreferredSize(dim);
+		JTextField txtBrojLicneKarte = new JTextField();
+		txtBrojLicneKarte.setPreferredSize(dim);
+		panBrojLicneKarte.add(lblBrojLicneKarte);
+		panBrojLicneKarte.add(txtBrojLicneKarte);
 
-		JPanel panSamofinansiranjeButton = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JRadioButton samofinansiranjeButton = new JRadioButton("Samofinansiranje");
-		panSamofinansiranjeButton.add(samofinansiranjeButton);
-
-		//radio batne moramo da dodamo u grupu da bi imali funkcionalnost da je samo jedan radio button selektovan, tj da se medjusobno iskljucuju
-		ButtonGroup group = new ButtonGroup();
-		group.add(budzetButton);
-		group.add(samofinansiranjeButton);
+		JPanel panTitula = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lblTitula = new JLabel("Titula*");
+		lblTitula.setPreferredSize(dim);
+		JTextField txtTitula = new JTextField();
+		txtTitula.setPreferredSize(dim);
+		panTitula.add(lblTitula);
+		panTitula.add(txtTitula);
+		
+		JPanel panZvanje = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JLabel lblZvanje = new JLabel("Zvanje*");
+		lblZvanje.setPreferredSize(dim);
+		JTextField txtZvanje = new JTextField();
+		txtZvanje.setPreferredSize(dim);
+		panZvanje.add(lblZvanje);
+		panZvanje.add(txtZvanje);
 		
 		panCenter.add(panPrezime);
 		panCenter.add(panIme);
 		panCenter.add(panDatumRodj);
 		panCenter.add(panAdresaStanovanja);
 		panCenter.add(panBrojTelefona);
-		panCenter.add(panBrojIndexa);
-		panCenter.add(panProsecnaOcena);
-		panCenter.add(panGodinaStudija);
-		panCenter.add(panDatumUpiusa);
 		panCenter.add(panEmail);
-		panCenter.add(panBudzetButton);
-		panCenter.add(panSamofinansiranjeButton);
+		panCenter.add(panAdresaKancelarije);
+		panCenter.add(panBrojLicneKarte);
+		panCenter.add(panTitula);
+		panCenter.add(panZvanje);
 
 		panCenter.add(Box.createVerticalStrut(25));
 		add(panCenter, BorderLayout.CENTER);
@@ -243,62 +208,39 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 			      String prezimeFieldValue = txtPrezime.getText();
 			      String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
 			      String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
-			      String brojIndexaFieldValue = txtBrojIndexa.getText();
 			      String brojtelefonaFieldValue = txtBrojTelefona.getText();
-			      String godinaStudijaValue = godineComboBox.getSelectedItem().toString();
-			      Double prosecnaOcenaValue = null;
+			    
+			 
 			 
 				
-				  if(!txtProsecnaOcena.getText().equals("")) {
-					  try {
-						  prosecnaOcenaValue = Double.parseDouble(txtProsecnaOcena.getText()); 
-						  
-						  if(prosecnaOcenaValue < 6 || prosecnaOcenaValue > 10) {
-							  JOptionPane.showMessageDialog(null, "ERROR: Uneli ste pogresnu vrednost za prosecnu ocenu(prosecna ocena je u intervalu od 6 do 10)" , "Greska" , JOptionPane.ERROR_MESSAGE); 
-						  }
-						}
-						catch (NumberFormatException e) {
-							JOptionPane.showMessageDialog(null, "ERROR: Uneli ste slovo u polje za prosecnu ocenu" , "Greska" , JOptionPane.ERROR_MESSAGE);
-							return;
-						}
-				  }else {
-					  JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja" , "Greska" , JOptionPane.ERROR_MESSAGE);
-					  return;
-				  }
-				
-			      String datumUpisaValue = txtPanDatumUpiusa.getText();
+		
+	
 			      String emailValue = txtPanEmail.getText();
+			   
 			      
-			      budzetButton.setActionCommand(budzetButton.getText());//Ove metode su nam potrebne da bi radio button prikupio informacije
-			      samofinansiranjeButton.setActionCommand(samofinansiranjeButton.getText());
+			  
 			      
-			      //Ako je budzet button pritisnut vratice string Budzet ako nije vratice string null
-			      String budzetRadioButtonValue = budzetButton.isSelected()? "Budzet" : "null";
-			      String samofinansiranjeRadioButtonValue = samofinansiranjeButton.isSelected()? "Samofinansiranje" : "null";
-			      
-			      Status budzetIliSamofinansiranje = null ;
-			      
-			      if(budzetRadioButtonValue.equals("Budzet")) {
-			    	  budzetIliSamofinansiranje = Status.B;
-			      }else if (samofinansiranjeRadioButtonValue.equals("Samofinansiranje")) {
-			    	  budzetIliSamofinansiranje = Status.S;
-			      }
+			     
 			    	
-			      if(imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank() || adresaStanovanjaFieldValue.isBlank() ||
-			    		  brojIndexaFieldValue.isBlank() || brojIndexaFieldValue.trim().equals("-")|| brojtelefonaFieldValue.isBlank() || godinaStudijaValue.isBlank() ||
-			    		  prosecnaOcenaValue.isNaN() ||datumUpisaValue.trim().equals(".  .") || emailValue.trim().equals("_____@______") ) {
-			    	  JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja" , "Greska" , JOptionPane.ERROR_MESSAGE);
-			    	  return;
-			      }else {
-			    	  BazaStudent.getInstance().dodajStudentaString(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue, adresaStanovanjaFieldValue, 
-			    			  brojtelefonaFieldValue, emailValue, brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue, budzetIliSamofinansiranje);
-			      }
-			      
-			      Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
-			      Integer height  = (int) GlavniProzor.getInstance().getSize().getHeight();
-			      
-			      GlavniProzor.getInstance().setSize(width,height+1);
-			      dispose();
+				/*
+				 * if(imeFieldValue.isBlank() || prezimeFieldValue.isBlank() ||
+				 * datumRodjenjaFieldValue.isBlank() || adresaStanovanjaFieldValue.isBlank() ||
+				 * brojIndexaFieldValue.isBlank() || brojIndexaFieldValue.trim().equals("-")||
+				 * brojtelefonaFieldValue.isBlank() || godinaStudijaValue.isBlank() ||
+				 * prosecnaOcenaValue.isNaN() ||datumUpisaValue.trim().equals(".  .") ||
+				 * emailValue.trim().equals("_____@______") ) {
+				 * JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja" , "Greska"
+				 * , JOptionPane.ERROR_MESSAGE); return; }else {
+				 * BazaStudent.getInstance().dodajStudentaString(imeFieldValue,
+				 * prezimeFieldValue, datumRodjenjaFieldValue, adresaStanovanjaFieldValue,
+				 * brojtelefonaFieldValue, emailValue, brojIndexaFieldValue, datumUpisaValue,
+				 * godinaStudijaValue, prosecnaOcenaValue, budzetIliSamofinansiranje); }
+				 * 
+				 * Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
+				 * Integer height = (int) GlavniProzor.getInstance().getSize().getHeight();
+				 * 
+				 * GlavniProzor.getInstance().setSize(width,height+1); dispose();
+				 */
 
 			   
 			   }
