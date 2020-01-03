@@ -41,11 +41,11 @@ public class BazaPredmeta {
 		Profesor profa = listaProfesora.get(0);
 		Profesor profa1 = listaProfesora.get(1);
 		Profesor profa2 = listaProfesora.get(2);
-		
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1, profa));
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1, profa));
-		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2, profa1));
-		predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1, profa2));
+
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa));
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa));
+		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1));
+		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2));
 	}
 
 	public List<String> getKolone() {
@@ -98,10 +98,10 @@ public class BazaPredmeta {
 		case 1:
 			return predmet.getNazivPredmeta();
 		case 2:
-			return (predmet.getSemestar()).toString();
+			return predmet.getSemestar();
 
 		case 3:
-			return (predmet.getGodinaStudija()).toString();
+			return predmet.getGodinaStudija();
 		case 4:
 			String stringCelije = predmet.getPredmetniProfesor().getPrezime() + " "
 					+ predmet.getPredmetniProfesor().getBrojLicneKarte();
@@ -111,8 +111,9 @@ public class BazaPredmeta {
 		}
 	}
 
-	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, Integer semestar, Integer godinaStudija) {
-		this.predmeti.add(new Predmet(sifraPredmeta, nazivPredmeta, semestar, godinaStudija));
+	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
+			Profesor profa) {
+		this.predmeti.add(new Predmet(sifraPredmeta, nazivPredmeta, semestar, godinaStudija, profa));
 	}
 
 	/**
@@ -137,7 +138,7 @@ public class BazaPredmeta {
 	 * @param semestar
 	 * @param godinaStudija
 	 */
-	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, Integer semestar, Integer godinaStudija) {
+	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija) {
 		for (Predmet predmet : predmeti) {
 			if (predmet.getSifraPredmeta().equals(sifraPredmeta)) {
 				predmet.setNazivPredmeta(nazivPredmeta);

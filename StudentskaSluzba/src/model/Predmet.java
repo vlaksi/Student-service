@@ -10,14 +10,14 @@ public class Predmet {
 
 	String sifraPredmeta;
 	String nazivPredmeta;
-	Integer semestar;
-	Integer godinaStudija;
+	String semestar;
+	String godinaStudija;
 	Profesor predmetniProfesor;
 
 	public Predmet() {
 	}
 
-	public Predmet(String sifraPredmeta, String nazivPredmeta, Integer semestar, Integer godinaStudija,
+	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
 			Profesor predmetniProfesor) {
 		super();
 		this.sifraPredmeta = sifraPredmeta;
@@ -27,7 +27,7 @@ public class Predmet {
 		this.predmetniProfesor = predmetniProfesor;
 	}
 
-	public Predmet(String sifraPredmeta, String nazivPredmeta, Integer semestar, Integer godinaStudija) {
+	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija) {
 		super();
 		this.sifraPredmeta = sifraPredmeta;
 		this.nazivPredmeta = nazivPredmeta;
@@ -51,19 +51,19 @@ public class Predmet {
 		this.nazivPredmeta = nazivPredmeta;
 	}
 
-	public Integer getSemestar() {
+	public String getSemestar() {
 		return semestar;
 	}
 
-	public void setSemestar(Integer semestar) {
+	public void setSemestar(String semestar) {
 		this.semestar = semestar;
 	}
 
-	public Integer getGodinaStudija() {
+	public String getGodinaStudija() {
 		return godinaStudija;
 	}
 
-	public void setGodinaStudija(Integer godinaStudija) {
+	public void setGodinaStudija(String godinaStudija) {
 		this.godinaStudija = godinaStudija;
 	}
 

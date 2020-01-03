@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import model.BazaPredmeta;
 import model.BazaProfesor;
 import model.BazaStudent;
+import view.Dialogs.DodajPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.DodavanjeProfesoraDIalog;
 import view.Dialogs.IzmenaProfesoraDialog;
@@ -65,6 +66,11 @@ public class MojToolbar extends JToolBar {
 				
 				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 1) {
 					DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog(new ProfesoriJTable(), "Dodavanje profesora", true);
+					dialog.setVisible(true);
+				}
+				
+				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 2) {
+					DodajPredmetDialog dialog = new DodajPredmetDialog(new PredmetiJTable(), "Dodavanje predmeta", true);
 					dialog.setVisible(true);
 				}
 			}
