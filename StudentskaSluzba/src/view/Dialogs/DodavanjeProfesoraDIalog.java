@@ -12,7 +12,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -22,29 +21,27 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-
 import model.BazaStudent;
 import model.Student.Status;
-
 import view.GlavniProzor;
-import view.StudentiJTable;
+import view.ProfesoriJTable;
 
 /**
- *  Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu studenta
+ *  Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu profesora
  * @author Pufke
  *
  */
-public class DodajStudentaDialog extends JDialog {
+public class DodavanjeProfesoraDIalog extends JDialog {
 
-	private static final long serialVersionUID = -3924920391540440967L;
+	private static final long serialVersionUID = 1173816528517766648L;
 
-	public DodajStudentaDialog(StudentiJTable studentiJTable, String title, boolean modal) {
+	public DodavanjeProfesoraDIalog(ProfesoriJTable profesoriJTable, String title, boolean modal) {
 		super();
 
 		setTitle("Dodavanje studenta");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(studentiJTable);
+		setLocationRelativeTo(profesoriJTable);
 
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);

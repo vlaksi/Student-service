@@ -15,7 +15,6 @@ import javax.swing.SwingConstants;
 import model.BazaPredmeta;
 import model.BazaProfesor;
 import model.BazaStudent;
-import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.IzmenaStudentaDialog;
 import view.listeners.MojMausListener;
 

@@ -9,7 +9,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
 /**
- * Klasa koja sluzi za reprezentativni nacin prikaza tabele profesora i sortiranje profesora.
+ * Klasa koja sluzi za reprezentativni nacin prikaza tabele profesora i
+ * sortiranje profesora.
  * 
  * @author Vaxi i Pufke
  *
@@ -19,7 +20,7 @@ public class ProfesoriJTable extends JTable {
 	private static final long serialVersionUID = -3442801886235942895L;
 
 	private TableRowSorter<ATMProfesori> sortiranje;
-	
+
 	public ProfesoriJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
@@ -27,9 +28,12 @@ public class ProfesoriJTable extends JTable {
 		this.setModel(new ATMProfesori());
 		ATMProfesori model = new ATMProfesori();
 		this.setModel(model);
-		
+
 		sortiranje = new TableRowSorter<ATMProfesori>(model);
-		sortiranje.setSortable(10, false);
+
+		for (int i = 3; i <= 10; i++) {
+			sortiranje.setSortable(i, false);
+		}
 		this.setRowSorter(sortiranje);
 	}
 
