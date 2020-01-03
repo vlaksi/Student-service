@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Student.Status;
-import view.ATMStudenti;
-import view.Tabovi;
 
 public class BazaStudent {
 //TODO proveriti jos jednom sve metode umoran sam kucao...
@@ -120,7 +118,6 @@ public class BazaStudent {
 
 		}
 	}
-
 	/**
 	 * Metoda koja za prosledjene parametre dodaje novog studenta u bazu profesora.
 	 * 
@@ -131,9 +128,10 @@ public class BazaStudent {
 	 * @param status   studenta
 	 * @param prosecna ocena
 	 */
-	public void dodajStudenta(String brIndexa, String ime, String prezime, String godinaStudija, Status statusStudenta,
-			Double prosecnaOcena) {
-		this.studenti.add(new Student(brIndexa, ime, prezime, godinaStudija, statusStudenta, prosecnaOcena));
+	public void dodajStudentaString (String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,String email, String brIndexa, String datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta) {
+		this.studenti.add(new Student(ime, prezime, datumRodjenja,
+				adresaStanovanja, telefon, email, brIndexa,datumUpisa,
+				godinaStudija, prosecnaOcena, statusStudenta));
 	
 	}
 

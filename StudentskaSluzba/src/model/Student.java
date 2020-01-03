@@ -18,7 +18,6 @@ public class Student {
 		B,S;
 	}
 
-	
 	public Student(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
 			String email, String brIndexa, String datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta) {
 		super();
@@ -30,15 +29,6 @@ public class Student {
 		this.email = email;
 		this.brIndexa = brIndexa;
 		this.datumUpisa = datumUpisa;
-		this.godinaStudija = godinaStudija;
-		this.prosecnaOcena = prosecnaOcena;
-		this.setStatusStudenta(statusStudenta);
-	}
-	
-	public Student(String brIndexa,String ime, String prezime, String godinaStudija, Status statusStudenta, Double prosecnaOcena) {
-		this.brIndexa = brIndexa;
-		this.ime = ime;
-		this.prezime = prezime;
 		this.godinaStudija = godinaStudija;
 		this.prosecnaOcena = prosecnaOcena;
 		this.setStatusStudenta(statusStudenta);
