@@ -114,7 +114,7 @@ public class MojToolbar extends JToolBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/*
-				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrisi
+				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrise odredjeni red
 				 */
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 					int i = ATMStudenti.getSelectedRowIndex();

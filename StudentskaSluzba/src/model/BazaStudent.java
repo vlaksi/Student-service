@@ -40,11 +40,11 @@ public class BazaStudent {
 	private void initStudent() {
 		this.studenti = new ArrayList<Student>();
 		studenti.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
-				"RA1-2017", "02.07.2017", "3", 9.50, Status.B));
+				"RA1-2017", "2017.02.07", "3", 9.50, Status.B));
 		studenti.add(new Student("Nikola", "Nikolic", "1998.11.09", "Topolosk 18", "06130012", "dzonisetac@gmail.com",
-				"RA2-2017", "02.07.2017", "3", 9.61, Status.B));
+				"RA2-2017", "2017.02.07", "3", 9.61, Status.B));
 		studenti.add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com", "RA3-2017",
-				"02.07.2017", "3", 8.50, Status.B));
+				"2017.02.07", "3", 8.50, Status.B));
 
 	}
 

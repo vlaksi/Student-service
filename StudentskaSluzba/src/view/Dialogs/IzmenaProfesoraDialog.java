@@ -9,29 +9,21 @@ import java.text.ParseException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import controller.ProfesoriController;
-import controller.StudentiController;
 import model.BazaProfesor;
-import model.BazaStudent;
 import model.Profesor;
-import model.Student.Status;
 import view.ATMProfesori;
-import view.ATMStudenti;
 import view.GlavniProzor;
 import view.ProfesoriJTable;
-import view.StudentiJTable;
 import view.Tabovi;
 
 /**

@@ -63,28 +63,27 @@ public class GlavniProzor extends JFrame {
 		tabovi = new Tabovi();
 		add(tabovi.getScrollPane(), BorderLayout.CENTER);// prikaz tabova
 
+		/* Lisener koji za odredjeni tab prikazuje odredjenu dugmad u toolbaru */
 		tabovi.getTabbedPane().addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				// System.out.println("Tab " + (tabovi.getTabbedPane().getSelectedIndex()) + "
-				// is selected");
 				if (tabovi.getTabbedPane().getSelectedIndex() == 0) {
 					toolbar.postaviVidljivost(false, toolbar.getDodajProfesora());
 					toolbar.postaviVidljivost(false, toolbar.getDodajStudenta());
 				}
+				if (tabovi.getTabbedPane().getSelectedIndex() == 1) {
+					toolbar.postaviVidljivost(false, toolbar.getDodajProfesora());
+					toolbar.postaviVidljivost(false, toolbar.getDodajStudenta());
+				}
 
-				if (tabovi.getTabbedPane().getSelectedIndex() == 1 || tabovi.getTabbedPane().getSelectedIndex() == 2) {
+				if (tabovi.getTabbedPane().getSelectedIndex() == 2) {
 					toolbar.postaviVidljivost(true, toolbar.getDodajProfesora());
 					toolbar.postaviVidljivost(true, toolbar.getDodajStudenta());
 				}
 
 			}
 		});
-
-		// TODO zasnati kako trenutno znam u kom sam tabu, kako bih pozvao odredjene
-		// metode iz toolbara
-		// i tako iskljucio, odonosno ukljucio odredjene dugmice u toolbaru
 
 		validate();
 
@@ -93,7 +92,5 @@ public class GlavniProzor extends JFrame {
 	public Tabovi getTabovi() {
 		return tabovi;
 	}
-	
-	
 
 }
