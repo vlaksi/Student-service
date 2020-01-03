@@ -12,7 +12,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -20,29 +19,30 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.plaf.OptionPaneUI;
 import javax.swing.text.MaskFormatter;
 
-import controller.GlavniController;
+import controller.StudentiController;
 import model.BazaStudent;
 import model.Student.Status;
 import view.ATMStudenti;
 import view.GlavniProzor;
 import view.StudentiJTable;
 import view.Tabovi;
+
 /**
- *  Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu studenta
+ * Klasa koja predstavalja dijalog za Izmenu studenta
  * @author Pufke
  *
  */
-public class DodajStudentaDialog extends JDialog {
-
+public class IzmenaStudentaDialog  extends JDialog {
+//TODO Dodati masku tj neki vid provere za index studenta
 	private static final long serialVersionUID = -3924920391540440967L;
-
-	public DodajStudentaDialog(StudentiJTable studentiJTable, String title, boolean modal) {
+	private static JTextField txtPrezime = null;
+	
+	public IzmenaStudentaDialog(StudentiJTable studentiJTable, String title, boolean modal) {
 		super();
 
-		setTitle("Dodavanje studenta");
+		setTitle("Izmena studenta");
 		setSize(500, 500);
 		// setBackground();
 		setLocationRelativeTo(studentiJTable);
@@ -58,6 +58,7 @@ public class DodajStudentaDialog extends JDialog {
 		JLabel lblPrezime = new JLabel("Prezime*");
 		lblPrezime.setPreferredSize(dim);
 		JTextField txtPrezime = new JTextField();
+		txtPrezime.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getPrezime()); 
 		txtPrezime.setPreferredSize(dim);
 		panPrezime.add(lblPrezime);
 		panPrezime.add(txtPrezime);
@@ -66,6 +67,7 @@ public class DodajStudentaDialog extends JDialog {
 		JLabel lblIme = new JLabel("Ime*");
 		lblIme.setPreferredSize(dim);
 		JTextField txtIme = new JTextField();
+		txtIme.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getIme());
 		txtIme.setPreferredSize(dim);
 		panIme.add(lblIme);
 		panIme.add(txtIme);
@@ -83,6 +85,7 @@ public class DodajStudentaDialog extends JDialog {
 		maskDatumRodj.setPlaceholderCharacter('_'); 
 		maskDatumRodj.setValidCharacters("0123456789"); 
 		JFormattedTextField txtDatumRodjenja = new JFormattedTextField(maskDatumRodj);
+		txtDatumRodjenja.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getDatumRodjenja());
 		txtDatumRodjenja.setPreferredSize(dim);
 		panDatumRodj.add(lblDAtumRodj);
 		panDatumRodj.add(txtDatumRodjenja);
@@ -93,6 +96,7 @@ public class DodajStudentaDialog extends JDialog {
 		JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*");
 		lblAdresaStanovanja.setPreferredSize(dim);
 		JTextField txtAdresaStanovanja = new JTextField();
+		txtAdresaStanovanja.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getAdresaStanovanja());
 		txtAdresaStanovanja.setPreferredSize(dim);
 		panAdresaStanovanja.add(lblAdresaStanovanja);
 		panAdresaStanovanja.add(txtAdresaStanovanja);
@@ -110,6 +114,7 @@ public class DodajStudentaDialog extends JDialog {
 		maskBrojTelefona.setPlaceholderCharacter('_'); 
 		maskBrojTelefona.setValidCharacters("0123456789"); 
 		JFormattedTextField txtBrojTelefona = new JFormattedTextField(maskBrojTelefona);
+		txtBrojTelefona.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getTelefon());
 		txtBrojTelefona.setPreferredSize(dim);
 		panBrojTelefona.add(lblBrojTelefona);
 		panBrojTelefona.add(txtBrojTelefona);
@@ -117,16 +122,19 @@ public class DodajStudentaDialog extends JDialog {
 		JPanel panBrojIndexa = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblBrojIndexa = new JLabel("Broj indexa* ");
 		lblBrojIndexa.setPreferredSize(dim);
-		//JTextField txtBrojIndexa = new JTextField();
-		MaskFormatter maskBrojIndexa = null;
-		try {
-			maskBrojIndexa = new MaskFormatter("UU###-####");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu Indexa" , "Greska" , JOptionPane.ERROR_MESSAGE);
-		}
-		maskBrojTelefona.setPlaceholderCharacter('_'); 
-		maskBrojTelefona.setValidCharacters("0123456789"); 
-		JFormattedTextField txtBrojIndexa = new JFormattedTextField(maskBrojIndexa);
+		JTextField txtBrojIndexa = new JTextField();
+		/*
+		 * MaskFormatter maskBrojIndexa = null; try { maskBrojIndexa = new
+		 * MaskFormatter("UU###-####"); } catch (ParseException e1) {
+		 * JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu Indexa" , "Greska"
+		 * , JOptionPane.ERROR_MESSAGE); }
+		 */
+		/*
+		 * maskBrojTelefona.setPlaceholderCharacter('_');
+		 * maskBrojTelefona.setValidCharacters("0123456789");
+		 */
+		 /*FormattedTextField txtBrojIndexa = new JFormattedTextField(maskBrojIndexa);*/
+		txtBrojIndexa.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getBrIndexa());
 		txtBrojIndexa.setPreferredSize(dim);
 		panBrojIndexa.add(lblBrojIndexa);
 		panBrojIndexa.add(txtBrojIndexa);
@@ -145,6 +153,7 @@ public class DodajStudentaDialog extends JDialog {
 		JLabel lblpanProsecnaOcena = new JLabel("Prosecna ocena* ");
 		lblpanProsecnaOcena.setPreferredSize(dim);
 		JTextField txtProsecnaOcena = new JTextField();
+		txtProsecnaOcena.setText((StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getProsecnaOcena()).toString());
 		txtProsecnaOcena.setPreferredSize(dim);
 		panProsecnaOcena.add(lblpanProsecnaOcena);
 		panProsecnaOcena.add(txtProsecnaOcena);
@@ -162,6 +171,7 @@ public class DodajStudentaDialog extends JDialog {
 		maskDatumRodj.setPlaceholderCharacter('_'); 
 		maskDatumRodj.setValidCharacters("0123456789"); 
 		JFormattedTextField txtPanDatumUpiusa = new JFormattedTextField(maskDatumUpisa);
+		txtPanDatumUpiusa.setText((StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getDatumUpisa()));
 		txtPanDatumUpiusa.setPreferredSize(dim);
 		panDatumUpiusa.add(lblpanDatumUpiusa);
 		panDatumUpiusa.add(txtPanDatumUpiusa);
@@ -178,6 +188,7 @@ public class DodajStudentaDialog extends JDialog {
 		}
 		maskEmail.setPlaceholderCharacter('_'); 
 		JFormattedTextField txtPanEmail = new JFormattedTextField(maskEmail);
+		txtPanEmail.setText((StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getEmail()));
 		txtPanEmail.setPreferredSize(dim);
 		panEmail.add(lblpanEmail);
 		panEmail.add(txtPanEmail);
@@ -240,6 +251,7 @@ public class DodajStudentaDialog extends JDialog {
 			
 		});
 		
+		
 		//Listeneri koji skupljaju text iz polja
 		btnOk.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent ae){
@@ -251,7 +263,7 @@ public class DodajStudentaDialog extends JDialog {
 			      String brojtelefonaFieldValue = txtBrojTelefona.getText();
 			      String godinaStudijaValue = godineComboBox.getSelectedItem().toString();
 			      Double prosecnaOcenaValue = null;
-			 
+			
 				
 				  if(!txtProsecnaOcena.getText().equals("")) {
 					  try {
@@ -302,11 +314,25 @@ public class DodajStudentaDialog extends JDialog {
 			      Integer height  = (int) GlavniProzor.getInstance().getSize().getHeight();
 			      
 			      GlavniProzor.getInstance().setSize(width,height+1);
-			      dispose();
-
+			
+			    //Ako su prosle sve izmene onda izbrisemo
+			      int i = ATMStudenti.getSelectedRowIndex();
+			      System.out.println(i);
+			      BazaStudent.getInstance().getStudenti().remove(i);
+			      Tabovi.getModelStudenti().fireTableDataChanged();
+			      
 			   
 			   }
 		});
 	}
+	
+	public static JTextField getTxtPrezime() {
+		return txtPrezime;
+	}
+
+	public static void setTxtPrezime(JTextField txtPrezime) {
+		IzmenaStudentaDialog.txtPrezime = txtPrezime;
+	}
+
 
 }

@@ -13,6 +13,8 @@ import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 import model.BazaStudent;
+import view.Dialogs.DodajStudentaDialog;
+import view.Dialogs.IzmenaStudentaDialog;
 import view.listeners.MojMausListener;
 
 /**
@@ -59,6 +61,18 @@ public class MojToolbar extends JToolBar {
 
 		izmeniDugme = new JButton();
 		izmeniDugme.setToolTipText("Izmeni");
+		izmeniDugme.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 0) {
+					IzmenaStudentaDialog dialog = new IzmenaStudentaDialog(new StudentiJTable(), "Izmena studenta", true);
+					dialog.setVisible(true);
+				}
+			}
+		
+		});
+		
 		ImageIcon iconNew2 = new ImageIcon("./img/edit.png");
 		izmeniDugme.setIcon(iconNew2);
 		add(izmeniDugme);
