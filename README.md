@@ -1,7 +1,6 @@
 ﻿# Taskovi koje treba resiti
 
 ## Prvi student treba da implementira stavke sa sledećim oznakama:
-###### 2. #izmena_studenta 
 ###### 4. #pretraga_studenata  
 ###### 6. #dodavanje_profesora 
 ###### 7. #izmena_profesora  
