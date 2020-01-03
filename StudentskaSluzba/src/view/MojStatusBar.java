@@ -41,7 +41,7 @@ public class MojStatusBar {
 	public void prikaziStatusBar(JPanel statusPANEL) {
 		statusPanel.setLayout(new BorderLayout());
 		
-		JLabel statusLabel = new JLabel("Studentska sluzba");
+		JLabel statusLabel = new JLabel("Studentska slu\u017Eba");
 		String timeStamp = new SimpleDateFormat("HH:mm     dd.MM.yyyy").format(Calendar.getInstance().getTime());
 		JLabel vreme = new JLabel(timeStamp);
 

@@ -248,7 +248,7 @@ public class IzmenaProfesoraDialog  extends JDialog {
 						 
 						//Ako su prosle sve izmene onda izbrisemo
 					      int i = ATMProfesori.getSelectedRowIndex();
-					      BazaProfesor.getInstance().getProfesori().remove(i);
+					      BazaProfesor.getInstance().getProfesori().remove(i);//TODO prebaciti u kontroler
 					      Tabovi.getModelProfesori().fireTableDataChanged();
 
 					}

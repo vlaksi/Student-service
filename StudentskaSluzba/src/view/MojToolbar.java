@@ -18,6 +18,7 @@ import model.BazaStudent;
 import view.Dialogs.DodajPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.DodavanjeProfesoraDIalog;
+import view.Dialogs.IzmenaPredmetaDialog;
 import view.Dialogs.IzmenaProfesoraDialog;
 import view.Dialogs.IzmenaStudentaDialog;
 
@@ -59,22 +60,25 @@ public class MojToolbar extends JToolBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 0) {
-					DodajStudentaDialog dialog = new DodajStudentaDialog(new StudentiJTable(), "Dodavanje studenta", true);
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
+					DodajStudentaDialog dialog = new DodajStudentaDialog(new StudentiJTable(), "Dodavanje studenta",
+							true);
 					dialog.setVisible(true);
 				}
-				
-				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 1) {
-					DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog(new ProfesoriJTable(), "Dodavanje profesora", true);
+
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
+					DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog(new ProfesoriJTable(),
+							"Dodavanje profesora", true);
 					dialog.setVisible(true);
 				}
-				
-				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 2) {
-					DodajPredmetDialog dialog = new DodajPredmetDialog(new PredmetiJTable(), "Dodavanje predmeta", true);
+
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+					DodajPredmetDialog dialog = new DodajPredmetDialog(new PredmetiJTable(), "Dodavanje predmeta",
+							true);
 					dialog.setVisible(true);
 				}
 			}
-		
+
 		});
 
 		ImageIcon iconNew = new ImageIcon("./img/add.png");
@@ -86,21 +90,32 @@ public class MojToolbar extends JToolBar {
 		izmeniDugme = new JButton();
 		izmeniDugme.setToolTipText("Izmeni");
 		izmeniDugme.addActionListener(new ActionListener() {
-
+			/*
+			 * Lisener koji u zavisnosti u kom smo tabu i kliknemo izmeni da vrsi
+			 * odgovarajucu izmenu selektovanog reda
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 0) {
-					IzmenaStudentaDialog dialog = new IzmenaStudentaDialog(new StudentiJTable(), "Izmena studenta", true);
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
+					IzmenaStudentaDialog dialog = new IzmenaStudentaDialog(new StudentiJTable(), "Izmena studenta",
+							true);
 					dialog.setVisible(true);
 				}
-				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 1) {
-					IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog(new ProfesoriJTable(), "Izmena profesora", true);
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
+					IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog(new ProfesoriJTable(), "Izmena profesora",
+							true);
+					dialog.setVisible(true);
+				}
+
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+					IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog(new PredmetiJTable(), "Izmena predmeta",
+							true);
 					dialog.setVisible(true);
 				}
 			}
-		
+
 		});
-		
+
 		ImageIcon iconNew2 = new ImageIcon("./img/edit.png");
 		izmeniDugme.setIcon(iconNew2);
 		add(izmeniDugme);
@@ -114,25 +129,26 @@ public class MojToolbar extends JToolBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				/*
-				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrise odredjeni red
+				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrise
+				 * odredjeni red
 				 */
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 					int i = ATMStudenti.getSelectedRowIndex();
-					//System.out.println(i);
-					BazaStudent.getInstance().getStudenti().remove(i);//TODO uraditi preko kontrolera
+					// System.out.println(i);
+					BazaStudent.getInstance().getStudenti().remove(i);// TODO uraditi preko kontrolera
 					Tabovi.getModelStudenti().fireTableDataChanged();
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
 					int i = ATMProfesori.getSelectedRowIndex();
-					//System.out.println(i);
-					BazaProfesor.getInstance().getProfesori().remove(i);//TODO uraditi preko kontrolera
+					// System.out.println(i);
+					BazaProfesor.getInstance().getProfesori().remove(i);// TODO uraditi preko kontrolera
 					Tabovi.getModelProfesori().fireTableDataChanged();
-					
+
 				}
-				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
 					int i = ATMPredmeti.getSelectedRowIndex();
-					//System.out.println(i);
-					BazaPredmeta.getInstance().getPredmeti().remove(i);//TODO uraditi preko kontrolera
+					// System.out.println(i);
+					BazaPredmeta.getInstance().getPredmeti().remove(i);// TODO uraditi preko kontrolera
 					Tabovi.getModelPredmeti().fireTableDataChanged();
 				}
 
