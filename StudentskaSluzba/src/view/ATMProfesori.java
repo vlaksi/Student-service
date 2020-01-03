@@ -15,7 +15,7 @@ public class ATMProfesori extends AbstractTableModel {
 
 	private static final long serialVersionUID = -4422057131202788042L;
 
-	public static int selectedRowIndex = 0;
+	public static int selectedRowIndex = 0;	//polje koje nam sluzi da u svakom trenutku znamo koji je selektovan red
 	public static String spisakPredmeta = "Spisak predmeta";
 
 	@Override
@@ -32,7 +32,7 @@ public class ATMProfesori extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		setSelectedRowIndex(rowIndex);
+		setSelectedRowIndex(rowIndex);		
 		if (columnIndex <= BazaProfesor.getInstance().getBrojKolona()) {
 			return BazaProfesor.getInstance().getVrednost(rowIndex, columnIndex);
 		} else if (columnIndex == BazaProfesor.getInstance().getBrojKolona() + 1) {

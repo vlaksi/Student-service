@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import model.BazaPredmeta;
 import model.BazaProfesor;
 import model.BazaStudent;
 import view.listeners.MojMausListener;
@@ -72,18 +73,27 @@ public class MojToolbar extends JToolBar {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				/*
+				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrisi
+				 */
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 					int i = ATMStudenti.getSelectedRowIndex();
-					System.out.println(i);
+					//System.out.println(i);
 					BazaStudent.getInstance().getStudenti().remove(i);//TODO uraditi preko kontrolera
 					Tabovi.getModelStudenti().fireTableDataChanged();
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
-					int x = ATMProfesori.getSelectedRowIndex();
-					System.out.println(x);
-					BazaProfesor.getInstance().getProfesori().remove(x);//TODO uraditi preko kontrolera
+					int i = ATMProfesori.getSelectedRowIndex();
+					//System.out.println(i);
+					BazaProfesor.getInstance().getProfesori().remove(i);//TODO uraditi preko kontrolera
 					Tabovi.getModelProfesori().fireTableDataChanged();
 					
+				}
+				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+					int i = ATMPredmeti.getSelectedRowIndex();
+					//System.out.println(i);
+					BazaPredmeta.getInstance().getPredmeti().remove(i);//TODO uraditi preko kontrolera
+					Tabovi.getModelPredmeti().fireTableDataChanged();
 				}
 
 			}

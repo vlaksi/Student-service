@@ -14,7 +14,10 @@ import model.BazaPredmeta;
 public class ATMPredmeti extends AbstractTableModel {
 
 	private static final long serialVersionUID = -1833610915091754649L;
+	
+	public static int selectedRowIndex = 0;//polje koje nam sluzi da u svakom trenutku znamo koji je selektovan red
 	public static String listaStudenata = "Spisak studenata";
+	
 	@Override
 	public int getRowCount() {
 		return BazaPredmeta.getInstance().getPredmeti().size();
@@ -28,12 +31,21 @@ public class ATMPredmeti extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+		setSelectedRowIndex(rowIndex);	
 		if (columnIndex <= BazaPredmeta.getInstance().getBrojaKolona()) {
 			return BazaPredmeta.getInstance().getVrednost(rowIndex, columnIndex);
 		} else if (columnIndex == BazaPredmeta.getInstance().getBrojaKolona() + 1) {
 
 		}
 		return null;
+	}
+	
+	public static int getSelectedRowIndex() {
+		return selectedRowIndex;
+	}
+
+	public static void setSelectedRowIndex(int selectedRowIndex) {
+		ATMPredmeti.selectedRowIndex = selectedRowIndex;
 	}
 	
 	@Override

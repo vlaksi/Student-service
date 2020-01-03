@@ -26,6 +26,9 @@ public class Tabovi {
 	private ProfesoriJTable tabelaProfesora = null; // za brisanje profesora
 	private static ATMProfesori modelProfesori = null; // za brisanje profesora
 	
+	private PredmetiJTable tabelaPredmeta = null;
+	private static ATMPredmeti modelPredmeti = null;
+	
 	private JScrollPane scrollPane = null;
 	private JTabbedPane tabbedPane = null;
 	private JComponent panel1;
@@ -43,15 +46,12 @@ public class Tabovi {
 	public Tabovi() {
 		super();
 		tabbedPane = new JTabbedPane();
+		
 		panel1 = napraviTab("Panel 1", true, 0);
-
 		tabbedPane.addTab("Studenti", null, panel1, "Studenti");
 		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
 
 		panel2 = napraviTab("Panel 2", false, 1);
-
-		JComponent panel2 = napraviTab("Panel 2", false, 1);
-
 		tabbedPane.addTab("Profesori", null, panel2, "Profesori");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 
@@ -129,11 +129,11 @@ public class Tabovi {
 			modelProfesori.fireTableDataChanged();
 			break;
 		case 2:
-			PredmetiJTable tabelaPredmeta = new PredmetiJTable();
+			tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(tabelaPredmeta);
 			panel.add(scrollPane2, BorderLayout.CENTER);
-			ATMPredmeti model2 = (ATMPredmeti) tabelaPredmeta.getModel();
-			model2.fireTableDataChanged();
+			modelPredmeti = (ATMPredmeti) tabelaPredmeta.getModel();
+			modelPredmeti.fireTableDataChanged();
 			break;
 		default:
 			System.out.println("Das ist ein Problem mein Freund!");
@@ -157,6 +157,16 @@ public class Tabovi {
 	public static ATMProfesori getModelProfesori() {
 		return modelProfesori;
 	}
+
+	public PredmetiJTable getTabelaPredmeta() {
+		return this.tabelaPredmeta;
+	}
+
+	public static ATMPredmeti getModelPredmeti() {
+		return modelPredmeti;
+	}
+	
+	
 	
 	
 
