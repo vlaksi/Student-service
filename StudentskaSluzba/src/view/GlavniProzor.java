@@ -20,6 +20,8 @@ public class GlavniProzor extends JFrame {
 	private static final long serialVersionUID = -4307414094787209222L;
 	private static GlavniProzor instance = null;
 
+	private Tabovi tabovi;
+
 	public static GlavniProzor getInstance() {
 		if (instance == null) {
 			instance = new GlavniProzor();
@@ -58,7 +60,7 @@ public class GlavniProzor extends JFrame {
 		MojStatusBar.getInstance().prikaziStatusBar(MojStatusBar.getInstance().getStatusPanel());
 		// setVisible(true);
 
-		Tabovi tabovi = new Tabovi();
+		tabovi = new Tabovi();
 		add(tabovi.getScrollPane(), BorderLayout.CENTER);// prikaz tabova
 
 		tabovi.getTabbedPane().addChangeListener(new ChangeListener() {
@@ -80,12 +82,18 @@ public class GlavniProzor extends JFrame {
 			}
 		});
 
-		//TODO zasnati kako trenutno znam u kom sam tabu, kako bih pozvao odredjene metode iz toolbara
+		// TODO zasnati kako trenutno znam u kom sam tabu, kako bih pozvao odredjene
+		// metode iz toolbara
 		// i tako iskljucio, odonosno ukljucio odredjene dugmice u toolbaru
-
 
 		validate();
 
 	}
+
+	public Tabovi getTabovi() {
+		return tabovi;
+	}
+	
+	
 
 }

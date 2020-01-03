@@ -3,7 +3,7 @@ package view.listeners;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-
+import view.GlavniProzor;
 import view.StudentiJTable;
 import view.Dialogs.DodajStudentaDialog;
 
@@ -17,8 +17,11 @@ public class MojMausListener  implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 0) {
 			DodajStudentaDialog dialog = new DodajStudentaDialog(new StudentiJTable(), "Dodavanje studenta", true);
 			dialog.setVisible(true);
+		}
+			
 	
 	}
 
