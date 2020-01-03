@@ -33,6 +33,7 @@ public class StudentiJTable extends JTable {
 		this.setRowSorter(sortiranje);
 	}
 
+
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		/*

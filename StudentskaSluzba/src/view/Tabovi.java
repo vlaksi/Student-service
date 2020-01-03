@@ -20,6 +20,8 @@ import javax.swing.JTabbedPane;
 
 public class Tabovi {
 
+	private StudentiJTable tabelaStudenata = null; //Treba nam za brisanje studenata
+	private static ATMStudenti modelStudenti = null; //Treba nam za brisanje studenata
 	private JScrollPane scrollPane = null;
 	private JTabbedPane tabbedPane = null;
 	private JComponent panel1;
@@ -109,11 +111,11 @@ public class Tabovi {
 
 		switch (indikatorTaba) {
 		case 0:
-			StudentiJTable tabelaStudenata = new StudentiJTable();
+		    tabelaStudenata = new StudentiJTable();
 			JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
 			panel.add(scrollPane, BorderLayout.CENTER);
-			ATMStudenti model = (ATMStudenti) tabelaStudenata.getModel();
-			model.fireTableDataChanged(); // osvezavanje promena
+			modelStudenti = (ATMStudenti) tabelaStudenata.getModel();
+			modelStudenti.fireTableDataChanged(); // osvezavanje promena
 			break;
 		case 1:
 			ProfesoriJTable tabelaProfesora = new ProfesoriJTable();
@@ -134,6 +136,14 @@ public class Tabovi {
 		}
 
 		return panel;
+	}
+
+	public StudentiJTable getTabelaStudenata() {
+		return this.tabelaStudenata;
+	}
+	
+	public static ATMStudenti getModelStudenti() {
+		return modelStudenti;
 	}
 
 }

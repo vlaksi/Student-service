@@ -2,6 +2,9 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -9,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import model.BazaStudent;
 import view.listeners.MojMausListener;
 
 /**
@@ -63,6 +67,17 @@ public class MojToolbar extends JToolBar {
 
 		izbrisiDugme = new JButton();
 		izbrisiDugme.setToolTipText("Izbrisi");
+		izbrisiDugme.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int i = ATMStudenti.getSelectedRowIndex();
+				System.out.println(i);
+				BazaStudent.getInstance().getStudenti().remove(i);
+				Tabovi.getModelStudenti().fireTableDataChanged();
+				
+			}
+		});
 		ImageIcon iconNew3 = new ImageIcon("./img/delete.png");
 		izbrisiDugme.setIcon(iconNew3);
 		add(izbrisiDugme);

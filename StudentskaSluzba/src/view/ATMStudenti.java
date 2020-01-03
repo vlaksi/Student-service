@@ -14,9 +14,10 @@ import model.BazaStudent;
 public class ATMStudenti extends AbstractTableModel {
 
 	private static final long serialVersionUID = -3033571354019443426L;
-
-	public static String kolonaListaStudenata = "Spisak predmeta";
 	
+	public static int selectedRowIndex = 0;
+	public static String kolonaListaStudenata = "Spisak predmeta";
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		// TODO izmeniti ovo false autogenerisano, i uvesti logiku za proveru da li je
@@ -38,15 +39,23 @@ public class ATMStudenti extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+
+		this.selectedRowIndex = rowIndex;
+
 		if (columnIndex <= BazaStudent.getInstance().getColumnCount()) {
 			return BazaStudent.getInstance().getVrednost(rowIndex, columnIndex);
 		} else if (columnIndex == BazaStudent.getInstance().getColumnCount() + 1) {
 			// TODO treba da vrati listu predmeta za tog studenta
-			
+
 		}
 		return null;
+		
 	}
-	
+
+	public static int getSelectedRowIndex() {
+		return selectedRowIndex;
+	}
+
 	@Override
 	public String getColumnName(int column) {
 		if (column == BazaStudent.getInstance().getKolone().size()) {

@@ -21,6 +21,7 @@ public class MojMausListener  implements MouseListener {
 			DodajStudentaDialog dialog = new DodajStudentaDialog(new StudentiJTable(), "Dodavanje studenta", true);
 			dialog.setVisible(true);
 		}
+		
 			
 	
 	}
