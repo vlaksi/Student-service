@@ -17,6 +17,7 @@ import model.BazaProfesor;
 import model.BazaStudent;
 import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.DodavanjeProfesoraDIalog;
+import view.Dialogs.IzmenaProfesoraDialog;
 import view.Dialogs.IzmenaStudentaDialog;
 
 /**
@@ -84,6 +85,10 @@ public class MojToolbar extends JToolBar {
 			public void actionPerformed(ActionEvent e) {
 				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 0) {
 					IzmenaStudentaDialog dialog = new IzmenaStudentaDialog(new StudentiJTable(), "Izmena studenta", true);
+					dialog.setVisible(true);
+				}
+				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 1) {
+					IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog(new ProfesoriJTable(), "Izmena profesora", true);
 					dialog.setVisible(true);
 				}
 			}

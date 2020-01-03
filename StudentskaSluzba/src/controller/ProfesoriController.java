@@ -29,4 +29,8 @@ public class ProfesoriController {
 				profesor.getDatumRodjenja(), profesor.getAdresaStanovanja(), profesor.getTelefon(), profesor.getEmail(),
 				profesor.getAdresaKancelarije(), profesor.getBrojLicneKarte(), profesor.getTitula(), profesor.getZvanje());
 	}
+
+	public Profesor getListaProfesora(int selectedRowIndex) {
+		return BazaProfesor.getInstance().getProfesori().get(selectedRowIndex);
+	}
 }

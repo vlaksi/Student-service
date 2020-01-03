@@ -9,35 +9,45 @@ import java.text.ParseException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import controller.ProfesoriController;
+import controller.StudentiController;
+import model.BazaProfesor;
+import model.BazaStudent;
 import model.Profesor;
+import model.Student.Status;
+import view.ATMProfesori;
+import view.ATMStudenti;
 import view.GlavniProzor;
 import view.ProfesoriJTable;
+import view.StudentiJTable;
+import view.Tabovi;
 
 /**
- * Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu
- * profesora
- * 
+ * Klasa koja predstavalja dijalog za Izmenu profesora
  * @author Pufke
  *
  */
-public class DodavanjeProfesoraDIalog extends JDialog {
+public class IzmenaProfesoraDialog  extends JDialog {
 
-	private static final long serialVersionUID = 1173816528517766648L;
 
-	public DodavanjeProfesoraDIalog(ProfesoriJTable profesoriJTable, String title, boolean modal) {
+	private static final long serialVersionUID = 8059853659082843286L;
+	
+	public IzmenaProfesoraDialog(ProfesoriJTable profesoriJTable, String title, boolean modal) {
 		super();
 
-		setTitle("Dodavanje profesora");
+		setTitle("Izmena profesora");
 		setSize(500, 500);
 		// setBackground();
 		setLocationRelativeTo(profesoriJTable);
@@ -53,6 +63,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JLabel lblPrezime = new JLabel("Prezime*");
 		lblPrezime.setPreferredSize(dim);
 		JTextField txtPrezime = new JTextField();
+		txtPrezime.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getPrezime());
 		txtPrezime.setPreferredSize(dim);
 		panPrezime.add(lblPrezime);
 		panPrezime.add(txtPrezime);
@@ -61,6 +72,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JLabel lblIme = new JLabel("Ime*");
 		lblIme.setPreferredSize(dim);
 		JTextField txtIme = new JTextField();
+		txtIme.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getIme());
 		txtIme.setPreferredSize(dim);
 		panIme.add(lblIme);
 		panIme.add(txtIme);
@@ -78,6 +90,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		maskDatumRodj.setPlaceholderCharacter('_');
 		maskDatumRodj.setValidCharacters("0123456789");
 		JFormattedTextField txtDatumRodjenja = new JFormattedTextField(maskDatumRodj);
+		txtDatumRodjenja.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getDatumRodjenja());
 		txtDatumRodjenja.setPreferredSize(dim);
 		panDatumRodj.add(lblDAtumRodj);
 		panDatumRodj.add(txtDatumRodjenja);
@@ -86,6 +99,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*");
 		lblAdresaStanovanja.setPreferredSize(dim);
 		JTextField txtAdresaStanovanja = new JTextField();
+		txtAdresaStanovanja.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getAdresaStanovanja());
 		txtAdresaStanovanja.setPreferredSize(dim);
 		panAdresaStanovanja.add(lblAdresaStanovanja);
 		panAdresaStanovanja.add(txtAdresaStanovanja);
@@ -104,6 +118,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		maskBrojTelefona.setPlaceholderCharacter('_');
 		maskBrojTelefona.setValidCharacters("0123456789");
 		JFormattedTextField txtBrojTelefona = new JFormattedTextField(maskBrojTelefona);
+		txtBrojTelefona.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getTelefon());
 		txtBrojTelefona.setPreferredSize(dim);
 		panBrojTelefona.add(lblBrojTelefona);
 		panBrojTelefona.add(txtBrojTelefona);
@@ -120,6 +135,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		}
 		maskEmail.setPlaceholderCharacter('_');
 		JFormattedTextField txtPanEmail = new JFormattedTextField(maskEmail);
+		txtPanEmail.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getEmail());
 		txtPanEmail.setPreferredSize(dim);
 		panEmail.add(lblpanEmail);
 		panEmail.add(txtPanEmail);
@@ -128,6 +144,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*");
 		lblAdresaKancelarije.setPreferredSize(dim);
 		JTextField txtAdresaKancelarije = new JTextField();
+		txtAdresaKancelarije.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getAdresaKancelarije());
 		txtAdresaKancelarije.setPreferredSize(dim);
 		panAdresaKancelarije.add(lblAdresaKancelarije);
 		panAdresaKancelarije.add(txtAdresaKancelarije);
@@ -136,6 +153,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JLabel lblBrojLicneKarte = new JLabel("Broj licne*");
 		lblBrojLicneKarte.setPreferredSize(dim);
 		JTextField txtBrojLicneKarte = new JTextField();
+		txtBrojLicneKarte.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getBrojLicneKarte());
 		txtBrojLicneKarte.setPreferredSize(dim);
 		panBrojLicneKarte.add(lblBrojLicneKarte);
 		panBrojLicneKarte.add(txtBrojLicneKarte);
@@ -144,6 +162,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JLabel lblTitula = new JLabel("Titula*");
 		lblTitula.setPreferredSize(dim);
 		JTextField txtTitula = new JTextField();
+		txtTitula.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getTitula());
 		txtTitula.setPreferredSize(dim);
 		panTitula.add(lblTitula);
 		panTitula.add(txtTitula);
@@ -152,6 +171,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JLabel lblZvanje = new JLabel("Zvanje*");
 		lblZvanje.setPreferredSize(dim);
 		JTextField txtZvanje = new JTextField();
+		txtZvanje.setText(ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex()).getZvanje());
 		txtZvanje.setPreferredSize(dim);
 		panZvanje.add(lblZvanje);
 		panZvanje.add(txtZvanje);
@@ -187,52 +207,61 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
-
-		btnCancel.addActionListener(new ActionListener() {
+		
+		btnCancel.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				
 			}
+			
 		});
-
+		
+		
+		//Listeneri koji skupljaju text iz polja
 		// Listeneri koji skupljaju text iz polja
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				String imeFieldValue = txtIme.getText();
-				String prezimeFieldValue = txtPrezime.getText();
-				String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
-				String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
-				String brojtelefonaFieldValue = txtBrojTelefona.getText();
-				String emailValue = txtPanEmail.getText();
-				String adresaKancelarijeFieldValue = txtAdresaKancelarije.getText();
-				String brojLicneKarteFieldValue = txtBrojLicneKarte.getText();
-				String titulaFieldValue = txtTitula.getText();
-				String zvanjeFiledValue = txtTitula.getText();
+				btnOk.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ae) {
+						String imeFieldValue = txtIme.getText();
+						String prezimeFieldValue = txtPrezime.getText();
+						String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
+						String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
+						String brojtelefonaFieldValue = txtBrojTelefona.getText();
+						String emailValue = txtPanEmail.getText();
+						String adresaKancelarijeFieldValue = txtAdresaKancelarije.getText();
+						String brojLicneKarteFieldValue = txtBrojLicneKarte.getText();
+						String titulaFieldValue = txtTitula.getText();
+						String zvanjeFiledValue = txtTitula.getText();
 
-				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
-					|| adresaStanovanjaFieldValue.isBlank() || datumRodjenjaFieldValue.trim().equals(".  .")
-					|| brojtelefonaFieldValue.trim().equals("__________")
-					|| emailValue.trim().equals("_____@______") 
-					|| adresaKancelarijeFieldValue.isBlank() || brojLicneKarteFieldValue.isBlank() || titulaFieldValue.isBlank()
-					|| zvanjeFiledValue.isBlank()) {
-						JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska", JOptionPane.ERROR_MESSAGE);
-					return;
-				} else {
-					Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue,
-							datumRodjenjaFieldValue, adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
-							adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
-					ProfesoriController.getInstance().dodavanjeProfesora(profesor);
-				}
+						if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
+							|| adresaStanovanjaFieldValue.isBlank() || datumRodjenjaFieldValue.trim().equals(".  .")
+							|| brojtelefonaFieldValue.trim().equals("__________")
+							|| emailValue.trim().equals("_____@______") 
+							|| adresaKancelarijeFieldValue.isBlank() || brojLicneKarteFieldValue.isBlank() || titulaFieldValue.isBlank()
+							|| zvanjeFiledValue.isBlank()) {
+								JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska", JOptionPane.ERROR_MESSAGE);
+							return;
+						} else {
+							Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue,
+									datumRodjenjaFieldValue, adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
+									adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
+							ProfesoriController.getInstance().dodavanjeProfesora(profesor);
+						}
 
-				Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
-				Integer height = (int) GlavniProzor.getInstance().getSize().getHeight();
+						Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
+						Integer height = (int) GlavniProzor.getInstance().getSize().getHeight();
 
-				GlavniProzor.getInstance().setSize(width, height + 1);
-				dispose();
+						GlavniProzor.getInstance().setSize(width, height + 1);
+						 
+						//Ako su prosle sve izmene onda izbrisemo
+					      int i = ATMProfesori.getSelectedRowIndex();
+					      BazaProfesor.getInstance().getProfesori().remove(i);
+					      Tabovi.getModelProfesori().fireTableDataChanged();
 
+					}
+				});
 			}
-		});
-	}
+
 
 }
