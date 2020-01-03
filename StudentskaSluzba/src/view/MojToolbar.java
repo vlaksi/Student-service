@@ -15,8 +15,9 @@ import javax.swing.SwingConstants;
 import model.BazaPredmeta;
 import model.BazaProfesor;
 import model.BazaStudent;
+import view.Dialogs.DodajStudentaDialog;
+import view.Dialogs.DodavanjeProfesoraDIalog;
 import view.Dialogs.IzmenaStudentaDialog;
-import view.listeners.MojMausListener;
 
 /**
  * Klasa koja sluzi za implementaciju toolbara-a u glavnom prozoru.
@@ -52,7 +53,22 @@ public class MojToolbar extends JToolBar {
 
 		this.novoDugme = new JButton();
 		this.novoDugme.setToolTipText("Dodaj");
-		this.novoDugme.addMouseListener(new MojMausListener());
+		this.novoDugme.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 0) {
+					DodajStudentaDialog dialog = new DodajStudentaDialog(new StudentiJTable(), "Dodavanje studenta", true);
+					dialog.setVisible(true);
+				}
+				
+				if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex()== 1) {
+					DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog(new ProfesoriJTable(), "Dodavanje profesora", true);
+					dialog.setVisible(true);
+				}
+			}
+		
+		});
 
 		ImageIcon iconNew = new ImageIcon("./img/add.png");
 		novoDugme.setIcon(iconNew);

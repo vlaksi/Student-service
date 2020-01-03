@@ -38,7 +38,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 	public DodavanjeProfesoraDIalog(ProfesoriJTable profesoriJTable, String title, boolean modal) {
 		super();
 
-		setTitle("Dodavanje studenta");
+		setTitle("Dodavanje profesora");
 		setSize(500, 500);
 		// setBackground();
 		setLocationRelativeTo(profesoriJTable);
