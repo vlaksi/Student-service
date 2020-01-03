@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import view.listeners.MojMausListener;
+
 /**
  * Klasa koja sluzi za implementaciju toolbara-a u glavnom prozoru.
  * 
@@ -37,8 +39,14 @@ public class MojToolbar extends JToolBar {
 		super(SwingConstants.HORIZONTAL); // podesavanje orijentacije toolbar-a
 
 		addSeparator();
+
 		novoDugme = new JButton();
 		novoDugme.setToolTipText("Dodaj");
+
+		this.novoDugme = new JButton();
+		this.novoDugme.setToolTipText("Dodaj");
+		this.novoDugme.addMouseListener(new MojMausListener());
+		
 		ImageIcon iconNew = new ImageIcon("./img/add.png");
 		novoDugme.setIcon(iconNew);
 		add(novoDugme);

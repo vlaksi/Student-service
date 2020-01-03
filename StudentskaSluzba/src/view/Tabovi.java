@@ -14,9 +14,10 @@ import javax.swing.JTabbedPane;
 /**
  * Klasa koja predstavlja tabove,i u kojoj se kreiraju tabovi.
  * 
- * @author Vaxi
+ * @author Vaxi i Pufke
  *
  */
+
 public class Tabovi {
 
 	private JScrollPane scrollPane = null;
@@ -42,6 +43,9 @@ public class Tabovi {
 		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
 
 		panel2 = napraviTab("Panel 2", false, 1);
+
+		JComponent panel2 = napraviTab("Panel 2", false, 1);
+
 		tabbedPane.addTab("Profesori", null, panel2, "Profesori");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 
@@ -50,18 +54,6 @@ public class Tabovi {
 		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
 
 		this.scrollPane = new JScrollPane(tabbedPane);
-	}
-
-	public JComponent getPanel1() {
-		return this.panel1;
-	}
-
-	public JComponent getPanel2() {
-		return this.panel2;
-	}
-
-	public JComponent getPanel3() {
-		return this.panel3;
 	}
 
 	public JTabbedPane getTabbedPane() {

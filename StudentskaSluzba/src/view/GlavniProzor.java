@@ -60,6 +60,7 @@ public class GlavniProzor extends JFrame {
 
 		Tabovi tabovi = new Tabovi();
 		add(tabovi.getScrollPane(), BorderLayout.CENTER);// prikaz tabova
+
 		tabovi.getTabbedPane().addChangeListener(new ChangeListener() {
 
 			@Override
@@ -78,6 +79,11 @@ public class GlavniProzor extends JFrame {
 
 			}
 		});
+
+		//TODO zasnati kako trenutno znam u kom sam tabu, kako bih pozvao odredjene metode iz toolbara
+		// i tako iskljucio, odonosno ukljucio odredjene dugmice u toolbaru
+
+
 		validate();
 
 	}

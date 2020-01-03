@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Student.Status;
+import view.ATMStudenti;
+import view.Tabovi;
 
 public class BazaStudent {
 //TODO proveriti jos jednom sve metode umoran sam kucao...
@@ -132,6 +134,7 @@ public class BazaStudent {
 	public void dodajStudenta(String brIndexa, String ime, String prezime, String godinaStudija, Status statusStudenta,
 			Double prosecnaOcena) {
 		this.studenti.add(new Student(brIndexa, ime, prezime, godinaStudija, statusStudenta, prosecnaOcena));
+	
 	}
 
 	/**
