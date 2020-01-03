@@ -37,9 +37,14 @@ public class BazaProfesor {
 		this.kolone = new ArrayList<String>();
 		this.kolone.add("Ime");
 		this.kolone.add("Prezime");
+		this.kolone.add("Datum rodjenja");
+		this.kolone.add("Adresa stanovanja");
+		this.kolone.add("Telefon");
 		this.kolone.add("Email");
 		this.kolone.add("Adresa kancelarije");
-		this.kolone.add("Broj licne karte");
+		this.kolone.add("Broj licne");
+		this.kolone.add("Titula");
+		this.kolone.add("Zvanje");
 
 	}
 
@@ -48,9 +53,9 @@ public class BazaProfesor {
 	 */
 	private void initProfesore() {
 		this.profesori = new ArrayList<Profesor>();
-		profesori.add(new Profesor("Valentin", "Djimic", "valedimi@gmail.com", "Gogoljeva 3", "030889880221"));
-		profesori.add(new Profesor("Goja", "Malinovski", "gojafudbal@gmail.com", "Pupinova 21", "210888880291"));
-		profesori.add(new Profesor("Ivana", "Kolutoski", "ikans@gmail.com", "Jovina 5", "010898880292"));
+		profesori.add(new Profesor("Valentin", "Djimic","1975.03.09","Pupinova 10","06625222","valedimi@gmail.com", "Gogoljeva 3", "395189","Dr.","Dipl.ing.el"));
+		profesori.add(new Profesor("Goja", "Malinovski","1970.12.09","Pupinova 13","06135222", "gojafudbal@gmail.com", "Pupinova 21", "042289","Dr.","Dipl.ing.el"));
+		profesori.add(new Profesor("Ivana", "Kolutoski","1990.11.04","Pupinova 1","06435200", "ikans@gmail.com", "Jovina 5", "015389","Dr.","Dipl.ing.el"));
 
 	}
 
@@ -92,11 +97,21 @@ public class BazaProfesor {
 		case 1:
 			return profesor.getPrezime();
 		case 2:
-			return profesor.getEmail();
+			return profesor.getDatumRodjenja();
 		case 3:
-			return profesor.getAdresaKancelarije();
+			return profesor.getAdresaStanovanja();
 		case 4:
+			return profesor.getTelefon();
+		case 5:
+			return profesor.getEmail();
+		case 6:
+			return profesor.getAdresaKancelarije();
+		case 7:
 			return profesor.getBrojLicneKarte();
+		case 8:
+			return profesor.getTitula();
+		case 9:
+			return profesor.getZvanje();
 		default:
 			return null;
 

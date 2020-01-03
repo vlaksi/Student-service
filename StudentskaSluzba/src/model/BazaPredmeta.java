@@ -15,7 +15,7 @@ public class BazaPredmeta {
 	private static BazaPredmeta instance = null;
 	private List<Predmet> predmeti;
 	private List<String> kolone;
-	
+
 	public static BazaPredmeta getInstance() {
 		if (instance == null) {
 			instance = new BazaPredmeta();
@@ -27,20 +27,25 @@ public class BazaPredmeta {
 		initPredmeta();
 
 		this.kolone = new ArrayList<String>();
-		this.kolone.add("Sifra predmeta");
-		this.kolone.add("Naziv predmeta");
+		this.kolone.add("Sifra");
+		this.kolone.add("Naziv");
 		this.kolone.add("Semestar");
 		this.kolone.add("Godina studija");
+		this.kolone.add("Profesor");
 
 	}
 
 	private void initPredmeta() {
 		this.predmeti = new ArrayList<Predmet>();
+		List<Profesor> listaProfesora = BazaProfesor.getInstance().getProfesori();
+		Profesor profa = listaProfesora.get(0);
+		Profesor profa1 = listaProfesora.get(1);
+		Profesor profa2 = listaProfesora.get(2);
 		
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1",1, 1));
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1));
-		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2));
-		predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1));
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1, profa));
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", 1, 1, profa));
+		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", 3, 2, profa1));
+		predmeti.add(new Predmet("ALGB-17", "Algebra", 1, 1, profa2));
 	}
 
 	public List<String> getKolone() {
@@ -97,7 +102,10 @@ public class BazaPredmeta {
 
 		case 3:
 			return (predmet.getGodinaStudija()).toString();
-
+		case 4:
+			String stringCelije = predmet.getPredmetniProfesor().getPrezime() + " "
+					+ predmet.getPredmetniProfesor().getBrojLicneKarte();
+			return stringCelije;
 		default:
 			return null;
 		}

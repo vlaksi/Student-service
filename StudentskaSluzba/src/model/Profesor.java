@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Date;
 
 /**
  * Model Predmeta
@@ -11,7 +10,7 @@ import java.util.Date;
 public class Profesor {
 	private String ime;
 	private String prezime;
-	private Date datumRodjenja;
+	private String datumRodjenja;//TODO Uraditi preko Date ako bude trebalo
 	private String adresaStanovanja;
 	private String telefon;
 	private String email;
@@ -19,7 +18,7 @@ public class Profesor {
 	private String brojLicneKarte;
 	private String titula;
 	private String zvanje;
-
+	//TODO Dodati listuPredmeta ako bude trebalo ovde
 	public Profesor() {
 	}
 
@@ -32,7 +31,7 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 	}
 	
-	public Profesor(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String telefon,
+	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
 			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
 		super();
 		this.ime = ime;
@@ -63,11 +62,11 @@ public class Profesor {
 		this.prezime = prezime;
 	}
 
-	public Date getDatumRodjenja() {
+	public String getDatumRodjenja() {
 		return datumRodjenja;
 	}
 
-	public void setDatumRodjenja(Date datumRodjenja) {
+	public void setDatumRodjenja(String datumRodjenja) {
 		this.datumRodjenja = datumRodjenja;
 	}
 

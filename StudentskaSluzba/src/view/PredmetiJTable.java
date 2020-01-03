@@ -28,7 +28,8 @@ public class PredmetiJTable extends JTable {
 		this.setModel(model);
 		
 		sortiranje = new TableRowSorter<ATMPredmeti>(model);
-		sortiranje.setSortable(4, false); // iskljucujem kolonu za spisak studenata
+		sortiranje.setSortable(4, false); // iskljucujem poslednje 2 kolone za mogucnost sortiranja
+		sortiranje.setSortable(5, false);
 		this.setRowSorter(sortiranje);
 	}
 	

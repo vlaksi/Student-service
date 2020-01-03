@@ -1,17 +1,15 @@
 package model;
 
-import java.util.Date;
-
 public class Student {
 //TODO	proveriti enumeraciju imao sam problema oko toga
 	private String ime;
 	private String prezime;
-	private Date datumRodjenja;
+	private String datumRodjenja; //TODO prebaciti u date kasnije i to ishendlovati
 	private String adresaStanovanja;
 	private String telefon;
 	private String email;
 	private String brIndexa;
-	private Date datumUpisa;
+	private String datumUpisa;//TODO prebaciti u date kasnije i to ishendlovati
 	private String godinaStudija;
 	private Double prosecnaOcena;
 	private Status statusStudenta;
@@ -21,8 +19,8 @@ public class Student {
 	}
 
 	
-	public Student(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String telefon,
-			String email, String brIndexa, Date datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta) {
+	public Student(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
+			String email, String brIndexa, String datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -61,10 +59,10 @@ public class Student {
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
-	public Date getDatumRodjenja() {
+	public String getDatumRodjenja() {
 		return datumRodjenja;
 	}
-	public void setDatumRodjenja(Date datumRodjenja) {
+	public void setDatumRodjenja(String datumRodjenja) {
 		this.datumRodjenja = datumRodjenja;
 	}
 	public String getAdresaStanovanja() {
@@ -95,10 +93,10 @@ public class Student {
 	public void setBrIndexa(String brIndexa) {
 		this.brIndexa = brIndexa;
 	}
-	public Date getDatumUpisa() {
+	public String getDatumUpisa() {
 		return datumUpisa;
 	}
-	public void setDatumUpisa(Date datumUpisa) {
+	public void setDatumUpisa(String datumUpisa) {
 		this.datumUpisa = datumUpisa;
 	}
 	public String getGodinaStudija() {
