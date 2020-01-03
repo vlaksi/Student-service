@@ -1,9 +1,12 @@
 package controller;
 
+import model.BazaStudent;
+import model.Student;
+
 /**
  * Klasa koja rukuje reakcijama na dogadjaje entiteta/modela: Student.
  * 
- * @author Vaxi
+ * @author Vaxi i Pufke
  *
  */
 public class StudentiController {
@@ -17,6 +20,11 @@ public class StudentiController {
 	}
 
 	private StudentiController() {
-
+			
+	}
+	
+	//Metoda koja vraca studenta za prosledjeni index reda
+	public Student getListaStudenata(int i) {
+		return BazaStudent.getInstance().getStudenti().get(i);
 	}
 }
