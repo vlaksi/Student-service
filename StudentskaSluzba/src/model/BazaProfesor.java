@@ -126,10 +126,16 @@ public class BazaProfesor {
 	 * @param email
 	 * @param adresaKancelarije
 	 * @param brojLicneKarte
+	 * @param zvanjeFiledValue 
+	 * @param titulaFieldValue 
+	 * @param brojLicneKarteFieldValue 
+	 * @param adresaKancelarijeFieldValue 
+	 * @param emailValue 
 	 */
 	public void dodajProfesora(String ime, String prezime, String email, String adresaKancelarije,
-			String brojLicneKarte) {
-		this.profesori.add(new Profesor(ime, prezime, email, adresaKancelarije, brojLicneKarte));
+			String brojLicneKarte, String emailValue, String adresaKancelarijeFieldValue, String brojLicneKarteFieldValue, String titulaFieldValue, String zvanjeFiledValue) {
+		this.profesori.add(new Profesor(ime, prezime, email, adresaKancelarije, brojLicneKarte, emailValue, 
+										adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue));
 	}
 
 	/**

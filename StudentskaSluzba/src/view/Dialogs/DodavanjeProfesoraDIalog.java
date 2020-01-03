@@ -21,13 +21,18 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import controller.ProfesoriController;
+import model.BazaProfesor;
 import model.BazaStudent;
+import model.Profesor;
 import model.Student.Status;
 import view.GlavniProzor;
 import view.ProfesoriJTable;
 
 /**
- *  Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu profesora
+ * Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu
+ * profesora
+ * 
  * @author Pufke
  *
  */
@@ -69,21 +74,19 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JPanel panDatumRodj = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblDAtumRodj = new JLabel("Datum rodjenja*");
 		lblDAtumRodj.setPreferredSize(dim);
-		//JTextField txtDatumRodjenja = new JTextField();
+		// JTextField txtDatumRodjenja = new JTextField();
 		MaskFormatter maskDatumRodj = null;
 		try {
-			maskDatumRodj = new MaskFormatter("##.##.####");
+			maskDatumRodj = new MaskFormatter("####.##.##");
 		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu rodjenja" , "Greska" , JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu rodjenja", "Greska", JOptionPane.ERROR_MESSAGE);
 		}
-		maskDatumRodj.setPlaceholderCharacter('_'); 
-		maskDatumRodj.setValidCharacters("0123456789"); 
+		maskDatumRodj.setPlaceholderCharacter('_');
+		maskDatumRodj.setValidCharacters("0123456789");
 		JFormattedTextField txtDatumRodjenja = new JFormattedTextField(maskDatumRodj);
 		txtDatumRodjenja.setPreferredSize(dim);
 		panDatumRodj.add(lblDAtumRodj);
 		panDatumRodj.add(txtDatumRodjenja);
-		
-		
 
 		JPanel panAdresaStanovanja = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblAdresaStanovanja = new JLabel("Adresa stanovanja*");
@@ -96,44 +99,44 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		JPanel panBrojTelefona = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblBrojTelefona = new JLabel("Broj telefona*");
 		lblBrojTelefona.setPreferredSize(dim);
-		//JTextField txtBrojTelefona = new JTextField();
+		// JTextField txtBrojTelefona = new JTextField();
 		MaskFormatter maskBrojTelefona = null;
 		try {
 			maskBrojTelefona = new MaskFormatter("##########");
 		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu broja telefona" , "Greska" , JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu broja telefona", "Greska",
+					JOptionPane.ERROR_MESSAGE);
 		}
-		maskBrojTelefona.setPlaceholderCharacter('_'); 
-		maskBrojTelefona.setValidCharacters("0123456789"); 
+		maskBrojTelefona.setPlaceholderCharacter('_');
+		maskBrojTelefona.setValidCharacters("0123456789");
 		JFormattedTextField txtBrojTelefona = new JFormattedTextField(maskBrojTelefona);
 		txtBrojTelefona.setPreferredSize(dim);
 		panBrojTelefona.add(lblBrojTelefona);
 		panBrojTelefona.add(txtBrojTelefona);
 
-
 		JPanel panEmail = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblpanEmail = new JLabel("Email* ");
 		lblpanEmail.setPreferredSize(dim);
-		//JTextField txtPanEmail = new JTextField();
+		// JTextField txtPanEmail = new JTextField();
 		MaskFormatter maskEmail = null;
 		try {
 			maskEmail = new MaskFormatter("*****@******");
 		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u mailu" , "Greska" , JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERROR: Greska u mailu", "Greska", JOptionPane.ERROR_MESSAGE);
 		}
-		maskEmail.setPlaceholderCharacter('_'); 
+		maskEmail.setPlaceholderCharacter('_');
 		JFormattedTextField txtPanEmail = new JFormattedTextField(maskEmail);
 		txtPanEmail.setPreferredSize(dim);
 		panEmail.add(lblpanEmail);
 		panEmail.add(txtPanEmail);
-		
+
 		JPanel panAdresaKancelarije = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblAdresaKancelarije = new JLabel("Adresa kancelarije*");
 		lblAdresaKancelarije.setPreferredSize(dim);
-		JTextField txtlblAdresaKancelarije = new JTextField();
-		txtlblAdresaKancelarije.setPreferredSize(dim);
+		JTextField txtAdresaKancelarije = new JTextField();
+		txtAdresaKancelarije.setPreferredSize(dim);
 		panAdresaKancelarije.add(lblAdresaKancelarije);
-		panAdresaKancelarije.add(txtlblAdresaKancelarije);
+		panAdresaKancelarije.add(txtAdresaKancelarije);
 
 		JPanel panBrojLicneKarte = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblBrojLicneKarte = new JLabel("Broj licne*");
@@ -150,7 +153,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		txtTitula.setPreferredSize(dim);
 		panTitula.add(lblTitula);
 		panTitula.add(txtTitula);
-		
+
 		JPanel panZvanje = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblZvanje = new JLabel("Zvanje*");
 		lblZvanje.setPreferredSize(dim);
@@ -158,7 +161,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		txtZvanje.setPreferredSize(dim);
 		panZvanje.add(lblZvanje);
 		panZvanje.add(txtZvanje);
-		
+
 		panCenter.add(panPrezime);
 		panCenter.add(panIme);
 		panCenter.add(panDatumRodj);
@@ -190,60 +193,51 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
-		
-		btnCancel.addActionListener(new ActionListener(){
+
+		btnCancel.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				
 			}
-			
 		});
-		
-		//Listeneri koji skupljaju text iz polja
-		btnOk.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent ae){
-			      String imeFieldValue = txtIme.getText();
-			      String prezimeFieldValue = txtPrezime.getText();
-			      String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
-			      String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
-			      String brojtelefonaFieldValue = txtBrojTelefona.getText();
-			    
-			 
-			 
-				
-		
-	
-			      String emailValue = txtPanEmail.getText();
-			   
-			      
-			  
-			      
-			     
-			    	
-				/*
-				 * if(imeFieldValue.isBlank() || prezimeFieldValue.isBlank() ||
-				 * datumRodjenjaFieldValue.isBlank() || adresaStanovanjaFieldValue.isBlank() ||
-				 * brojIndexaFieldValue.isBlank() || brojIndexaFieldValue.trim().equals("-")||
-				 * brojtelefonaFieldValue.isBlank() || godinaStudijaValue.isBlank() ||
-				 * prosecnaOcenaValue.isNaN() ||datumUpisaValue.trim().equals(".  .") ||
-				 * emailValue.trim().equals("_____@______") ) {
-				 * JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja" , "Greska"
-				 * , JOptionPane.ERROR_MESSAGE); return; }else {
-				 * BazaStudent.getInstance().dodajStudentaString(imeFieldValue,
-				 * prezimeFieldValue, datumRodjenjaFieldValue, adresaStanovanjaFieldValue,
-				 * brojtelefonaFieldValue, emailValue, brojIndexaFieldValue, datumUpisaValue,
-				 * godinaStudijaValue, prosecnaOcenaValue, budzetIliSamofinansiranje); }
-				 * 
-				 * Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
-				 * Integer height = (int) GlavniProzor.getInstance().getSize().getHeight();
-				 * 
-				 * GlavniProzor.getInstance().setSize(width,height+1); dispose();
-				 */
 
-			   
-			   }
+		// Listeneri koji skupljaju text iz polja
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				String imeFieldValue = txtIme.getText();
+				String prezimeFieldValue = txtPrezime.getText();
+				String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
+				String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
+				String brojtelefonaFieldValue = txtBrojTelefona.getText();
+				String emailValue = txtPanEmail.getText();
+				String adresaKancelarijeFieldValue = txtAdresaKancelarije.getText();
+				String brojLicneKarteFieldValue = txtBrojLicneKarte.getText();
+				String titulaFieldValue = txtTitula.getText();
+				String zvanjeFiledValue = txtTitula.getText();
+
+				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
+					|| adresaStanovanjaFieldValue.isBlank() || datumRodjenjaFieldValue.trim().equals(".  .")
+					|| brojtelefonaFieldValue.trim().equals("__________")
+					|| emailValue.trim().equals("_____@______") 
+					|| adresaKancelarijeFieldValue.isBlank() || brojLicneKarteFieldValue.isBlank() || titulaFieldValue.isBlank()
+					|| zvanjeFiledValue.isBlank()) {
+						JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska", JOptionPane.ERROR_MESSAGE);
+					return;
+				} else {
+					Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue,
+							datumRodjenjaFieldValue, adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
+							adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
+					ProfesoriController.getInstance().dodavanjeProfesora(profesor);
+				}
+
+				Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
+				Integer height = (int) GlavniProzor.getInstance().getSize().getHeight();
+
+				GlavniProzor.getInstance().setSize(width, height + 1);
+				dispose();
+
+			}
 		});
 	}
 

@@ -75,7 +75,7 @@ public class DodajStudentaDialog extends JDialog {
 		//JTextField txtDatumRodjenja = new JTextField();
 		MaskFormatter maskDatumRodj = null;
 		try {
-			maskDatumRodj = new MaskFormatter("##.##.####");
+			maskDatumRodj = new MaskFormatter("####.##.##");
 		} catch (ParseException e1) {
 			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu rodjenja" , "Greska" , JOptionPane.ERROR_MESSAGE);
 		}
@@ -154,7 +154,7 @@ public class DodajStudentaDialog extends JDialog {
 		//JTextField txtPanDatumUpiusa = new JTextField();
 		MaskFormatter maskDatumUpisa = null;
 		try {
-			maskDatumUpisa = new MaskFormatter("##.##.####");
+			maskDatumUpisa = new MaskFormatter("####.##.##");
 		} catch (ParseException e1) {
 			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu upisa" , "Greska" , JOptionPane.ERROR_MESSAGE);
 		}
