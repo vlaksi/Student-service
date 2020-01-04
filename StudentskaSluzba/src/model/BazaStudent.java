@@ -42,14 +42,16 @@ public class BazaStudent {
 
 		//List<Predmet> listaPredmeta = BazaPredmeta.getInstance().getPredmeti();
 		List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+		List<Predmet> listaPredmeta1 = new ArrayList<Predmet>();
+		List<Predmet> listaPredmeta2 = new ArrayList<Predmet>();
 		//listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(0));listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(1));
 		
 		studenti.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
 				"RA1-2017", "2017.02.07", "2", 9.50, Status.B, listaPredmeta));
 		studenti.add(new Student("Nikola", "Nikolic", "1998.11.09", "Topolosk 18", "06130012", "dzonisetac@gmail.com",
-				"RA2-2017", "2017.02.07", "1", 9.61, Status.B, listaPredmeta));
+				"RA2-2017", "2017.02.07", "1", 9.61, Status.B, listaPredmeta1));
 		studenti.add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com",
-				"RA3-2017", "2017.02.07", "3", 8.50, Status.B, listaPredmeta));
+				"RA3-2017", "2017.02.07", "3", 8.50, Status.B, listaPredmeta2));
 
 	}
 

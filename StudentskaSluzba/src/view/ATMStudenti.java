@@ -48,8 +48,7 @@ public class ATMStudenti extends AbstractTableModel {
 		if (columnIndex <= BazaStudent.getInstance().getColumnCount()) {
 			return BazaStudent.getInstance().getVrednost(rowIndex, columnIndex);
 		} else if (columnIndex == BazaStudent.getInstance().getColumnCount() + 1) {
-			// TODO treba da vrati listu predmeta za tog studenta
-
+			return BazaStudent.getInstance().getVrednost(rowIndex, columnIndex);
 		}
 		return null;
 
