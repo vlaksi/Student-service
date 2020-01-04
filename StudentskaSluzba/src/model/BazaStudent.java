@@ -122,6 +122,7 @@ public class BazaStudent {
 		case 11:
 			List<Predmet> listaPredmeta = student.getPredmeti();
 			String listaPredmetaString = "";
+			
 			for (Predmet predmet : listaPredmeta) {
 				listaPredmetaString += predmet.nazivPredmeta;
 				listaPredmetaString += "\n";
@@ -138,6 +139,7 @@ public class BazaStudent {
 	 * 
 	 * @param ime
 	 * @param prezime
+	 * @param listaPredmeta 
 	 * @param brindexa
 	 * @param godina   studija
 	 * @param status   studenta
@@ -145,9 +147,9 @@ public class BazaStudent {
 	 */
 	public void dodajStudentaString(String ime, String prezime, String datumRodjenja, String adresaStanovanja,
 			String telefon, String email, String brIndexa, String datumUpisa, String godinaStudija,
-			Double prosecnaOcena, Status statusStudenta) {
+			Double prosecnaOcena, Status statusStudenta, List<Predmet> listaPredmeta) {
 		this.studenti.add(new Student(ime, prezime, datumRodjenja, adresaStanovanja, telefon, email, brIndexa,
-				datumUpisa, godinaStudija, prosecnaOcena, statusStudenta));
+				datumUpisa, godinaStudija, prosecnaOcena, statusStudenta, listaPredmeta));
 
 	}
 

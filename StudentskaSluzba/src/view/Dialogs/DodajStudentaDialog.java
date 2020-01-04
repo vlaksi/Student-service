@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -23,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import model.BazaStudent;
+import model.Predmet;
 import model.Student.Status;
 import view.Tabovi;
 
@@ -308,10 +311,11 @@ public class DodajStudentaDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
+					List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 					BazaStudent.getInstance().dodajStudentaString(imeFieldValue, prezimeFieldValue,
 							datumRodjenjaFieldValue, adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
 							brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue,
-							budzetIliSamofinansiranje);
+							budzetIliSamofinansiranje, listaPredmeta);
 				}
 
 				Tabovi.getModelStudenti().fireTableDataChanged();

@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -23,6 +25,7 @@ import javax.swing.text.MaskFormatter;
 
 import controller.StudentiController;
 import model.BazaStudent;
+import model.Predmet;
 import model.Student.Status;
 import view.ATMStudenti;
 import view.GlavniProzor;
@@ -305,8 +308,9 @@ public class IzmenaStudentaDialog  extends JDialog {
 			    	  JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja" , "Greska" , JOptionPane.ERROR_MESSAGE);
 			    	  return;
 			      }else {
+			    	  List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 			    	  BazaStudent.getInstance().dodajStudentaString(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue, adresaStanovanjaFieldValue, 
-			    			  brojtelefonaFieldValue, emailValue, brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue, budzetIliSamofinansiranje);
+			    			  brojtelefonaFieldValue, emailValue, brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue, budzetIliSamofinansiranje, listaPredmeta);
 			      }
 			      
 			      Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
