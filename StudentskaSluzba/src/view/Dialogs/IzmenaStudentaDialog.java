@@ -26,7 +26,6 @@ import model.BazaStudent;
 import model.Student.Status;
 import view.ATMStudenti;
 import view.GlavniProzor;
-import view.StudentiJTable;
 import view.Tabovi;
 
 /**
@@ -39,13 +38,13 @@ public class IzmenaStudentaDialog  extends JDialog {
 	private static final long serialVersionUID = -3924920391540440967L;
 	private static JTextField txtPrezime = null;
 	
-	public IzmenaStudentaDialog(StudentiJTable studentiJTable, String title, boolean modal) {
+	public IzmenaStudentaDialog() {
 		super();
 
 		setTitle("Izmena studenta");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(studentiJTable);
+		setLocationRelativeTo(null);
 
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);

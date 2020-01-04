@@ -18,7 +18,6 @@ import javax.swing.JTextField;
 
 import model.BazaPredmeta;
 import model.Profesor;
-import view.PredmetiJTable;
 import view.Tabovi;
 
 /**
@@ -31,11 +30,11 @@ public class DodajPredmetDialog extends JDialog {
 
 	private static final long serialVersionUID = -6190105695297581634L;
 
-	public DodajPredmetDialog(PredmetiJTable predmetiJTable, String title, boolean modal) {
+	public DodajPredmetDialog() {
 		super();
 		setTitle("Dodavanje predmeta");
 		setSize(500, 500);
-		setLocationRelativeTo(predmetiJTable);
+		setLocationRelativeTo(null);
 
 		/*
 		 * Koristimo centralni da bi isli od gore prema dole kad dodajemo neke

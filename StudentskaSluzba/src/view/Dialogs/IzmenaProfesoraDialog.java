@@ -23,7 +23,6 @@ import model.BazaProfesor;
 import model.Profesor;
 import view.ATMProfesori;
 import view.GlavniProzor;
-import view.ProfesoriJTable;
 import view.Tabovi;
 
 /**
@@ -36,13 +35,13 @@ public class IzmenaProfesoraDialog  extends JDialog {
 
 	private static final long serialVersionUID = 8059853659082843286L;
 	
-	public IzmenaProfesoraDialog(ProfesoriJTable profesoriJTable, String title, boolean modal) {
+	public IzmenaProfesoraDialog() {
 		super();
 
 		setTitle("Izmena profesora");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(profesoriJTable);
+		setLocationRelativeTo(null);
 
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);

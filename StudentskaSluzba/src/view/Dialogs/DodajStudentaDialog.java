@@ -24,8 +24,6 @@ import javax.swing.text.MaskFormatter;
 
 import model.BazaStudent;
 import model.Student.Status;
-
-import view.StudentiJTable;
 import view.Tabovi;
 
 /**
@@ -39,13 +37,13 @@ public class DodajStudentaDialog extends JDialog {
 
 	private static final long serialVersionUID = -3924920391540440967L;
 
-	public DodajStudentaDialog(StudentiJTable studentiJTable, String title, boolean modal) {
+	public DodajStudentaDialog() {
 		super();
 
 		setTitle("Dodavanje studenta");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(studentiJTable);
+		setLocationRelativeTo(null);
 
 		/*
 		 * Koristimo centralni da bi isli od gore prema dole kad dodajemo neke

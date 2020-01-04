@@ -21,7 +21,6 @@ import javax.swing.text.MaskFormatter;
 import controller.ProfesoriController;
 import model.Profesor;
 import view.GlavniProzor;
-import view.ProfesoriJTable;
 
 /**
  * Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu
@@ -34,13 +33,13 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 
 	private static final long serialVersionUID = 1173816528517766648L;
 
-	public DodavanjeProfesoraDIalog(ProfesoriJTable profesoriJTable, String title, boolean modal) {
+	public DodavanjeProfesoraDIalog() {
 		super();
 
 		setTitle("Dodavanje profesora");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(profesoriJTable);
+		setLocationRelativeTo(null);
 
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);
@@ -211,17 +210,18 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 				String zvanjeFiledValue = txtTitula.getText();
 
 				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
-					|| adresaStanovanjaFieldValue.isBlank() || datumRodjenjaFieldValue.trim().equals(".  .")
-					|| brojtelefonaFieldValue.trim().equals("__________")
-					|| emailValue.trim().equals("_____@______") 
-					|| adresaKancelarijeFieldValue.isBlank() || brojLicneKarteFieldValue.isBlank() || titulaFieldValue.isBlank()
-					|| zvanjeFiledValue.isBlank()) {
-						JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska", JOptionPane.ERROR_MESSAGE);
+						|| adresaStanovanjaFieldValue.isBlank() || datumRodjenjaFieldValue.trim().equals(".  .")
+						|| brojtelefonaFieldValue.trim().equals("__________")
+						|| emailValue.trim().equals("_____@______") || adresaKancelarijeFieldValue.isBlank()
+						|| brojLicneKarteFieldValue.isBlank() || titulaFieldValue.isBlank()
+						|| zvanjeFiledValue.isBlank()) {
+					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
-					Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue,
-							datumRodjenjaFieldValue, adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
-							adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
+					Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
+							adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue, adresaKancelarijeFieldValue,
+							brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
 					ProfesoriController.getInstance().dodavanjeProfesora(profesor);
 				}
 

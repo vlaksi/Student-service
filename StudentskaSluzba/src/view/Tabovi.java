@@ -129,10 +129,10 @@ public class Tabovi {
 			modelProfesori.fireTableDataChanged();
 			break;
 		case 2:
-			tabelaPredmeta = new PredmetiJTable();
-			JScrollPane scrollPane2 = new JScrollPane(tabelaPredmeta);
+			this.tabelaPredmeta = new PredmetiJTable();
+			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
 			panel.add(scrollPane2, BorderLayout.CENTER);
-			modelPredmeti = (ATMPredmeti) tabelaPredmeta.getModel();
+			modelPredmeti = (ATMPredmeti) this.tabelaPredmeta.getModel();
 			modelPredmeti.fireTableDataChanged();
 			break;
 		default:

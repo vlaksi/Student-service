@@ -61,20 +61,17 @@ public class MojToolbar extends JToolBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
-					DodajStudentaDialog dialog = new DodajStudentaDialog(new StudentiJTable(), "Dodavanje studenta",
-							true);
+					DodajStudentaDialog dialog = new DodajStudentaDialog();
 					dialog.setVisible(true);
 				}
 
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
-					DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog(new ProfesoriJTable(),
-							"Dodavanje profesora", true);
+					DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog();
 					dialog.setVisible(true);
 				}
 
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
-					DodajPredmetDialog dialog = new DodajPredmetDialog(new PredmetiJTable(), "Dodavanje predmeta",
-							true);
+					DodajPredmetDialog dialog = new DodajPredmetDialog();
 					dialog.setVisible(true);
 				}
 			}
@@ -97,19 +94,16 @@ public class MojToolbar extends JToolBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
-					IzmenaStudentaDialog dialog = new IzmenaStudentaDialog(new StudentiJTable(), "Izmena studenta",
-							true);
+					IzmenaStudentaDialog dialog = new IzmenaStudentaDialog();
 					dialog.setVisible(true);
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
-					IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog(new ProfesoriJTable(), "Izmena profesora",
-							true);
+					IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog();
 					dialog.setVisible(true);
 				}
 
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
-					IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog(new PredmetiJTable(), "Izmena predmeta",
-							true);
+					IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog();
 					dialog.setVisible(true);
 				}
 			}
@@ -184,6 +178,12 @@ public class MojToolbar extends JToolBar {
 		JButton cancelSearchB = new JButton("Cancel", canselSearch);
 		cancelSearchB.setVisible(false);
 
+		add(Box.createHorizontalGlue()); // Posle ovoga su svi elementi zalepljeni za desnu stranu
+		add(searchable);
+		add(searchB);
+		add(cancelSearchB);
+		searchable.setMaximumSize(new Dimension(100, 40));
+
 		searchB.addActionListener(new ActionListener() {
 			/*
 			 * Lisener koji na klik dugmica searchB, filtrira po zeljenim parametrima
@@ -196,37 +196,45 @@ public class MojToolbar extends JToolBar {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				searchB.setVisible(false);
-				cancelSearchB.setVisible(true);
+				if (searchable.getText().isBlank()) {
+					System.out.println("prazno");
+				} else {
+					searchB.setVisible(false);
+					cancelSearchB.setVisible(true);
 
-				String[] nizUnetihParova = searchable.getText().split(";");
-				String[] nizLevih = { " ", " ", " ", " ", " " };
-				String[] nizDesnih = new String[5];
-				for (int i = 0; i < nizUnetihParova.length; i++) {
-					String[] pomocni;
-					pomocni = nizUnetihParova[i].split(":");
-					nizLevih[i] = pomocni[0];
-					nizDesnih[i] = pomocni[1];
+					String[] nizUnetihParova = searchable.getText().split(";");
+					String[] nizLevih = { " ", " ", " ", " ", " " };
+					String[] nizDesnih = new String[5];
+					for (int i = 0; i < nizUnetihParova.length; i++) {
+						String[] pomocni;
+						pomocni = nizUnetihParova[i].split(":");
+						nizLevih[i] = pomocni[0];
+						nizDesnih[i] = pomocni[1];
 
-				}
+					}
 
-				for (int i = 0; i < nizLevih.length; i++) {
-					if (nizLevih[i].equals("sifra") || nizLevih[i].equals("Sifra") || nizLevih[i].equals("SIFRA")) {
-						PredmetiJTable.newFilter(nizDesnih[i], 0);
-					}
-					if (nizLevih[i].equals("naziv") || nizLevih[i].equals("Naziv") || nizLevih[i].equals("NAZIV")) {
-						PredmetiJTable.newFilter(nizDesnih[i], 1);
-					}
-					if (nizLevih[i].equals("semestar") || nizLevih[i].equals("Semestar")
-							|| nizLevih[i].equals("SEMESTAR")) {
-						PredmetiJTable.newFilter(nizDesnih[i], 2);
-					}
-					if (nizLevih[i].equals("godina") || nizLevih[i].equals("Godina") || nizLevih[i].equals("GODINA")) {
-						PredmetiJTable.newFilter(nizDesnih[i], 3);
-					}
-					if (nizLevih[i].equals("profesor") || nizLevih[i].equals("Profesor")
-							|| nizLevih[i].equals("Profesor")) {
-						PredmetiJTable.newFilter(nizDesnih[i], 4);
+					for (int i = 0; i < nizLevih.length; i++) {
+						if (nizLevih[i].equals("sifra") || nizLevih[i].equals("Sifra") || nizLevih[i].equals("SIFRA")) {
+							System.out.println("Usao sam jer je sifra korsepodentna");
+							System.out.println(nizDesnih[i]);
+							PredmetiJTable.newFilter(nizDesnih[i], 0);
+						}
+						if (nizLevih[i].equals("naziv") || nizLevih[i].equals("Naziv") || nizLevih[i].equals("NAZIV")) {
+							PredmetiJTable.newFilter(nizDesnih[i], 1);
+						}
+						if (nizLevih[i].equals("semestar") || nizLevih[i].equals("Semestar")
+								|| nizLevih[i].equals("SEMESTAR")) {
+							PredmetiJTable.newFilter(nizDesnih[i], 2);
+						}
+						if (nizLevih[i].equals("godina") || nizLevih[i].equals("Godina") || nizLevih[i].equals("GODINA")
+								|| nizLevih[i].equals("godina studija") || nizLevih[i].equals("Godina studija")
+								|| nizLevih[i].equals("Godina Studija") || nizLevih[i].equals("GODINA STUDIJA")) {
+							PredmetiJTable.newFilter(nizDesnih[i], 3);
+						}
+						if (nizLevih[i].equals("profesor") || nizLevih[i].equals("Profesor")
+								|| nizLevih[i].equals("Profesor")) {
+							PredmetiJTable.newFilter(nizDesnih[i], 4);
+						}
 					}
 				}
 
@@ -240,14 +248,9 @@ public class MojToolbar extends JToolBar {
 				cancelSearchB.setVisible(false);
 				searchB.setVisible(true);
 				PredmetiJTable.newFilter("", 0);
+				searchable.setText(null);
 			}
 		});
-
-		add(Box.createHorizontalGlue()); // Posle ovoga su svi elementi zalepljeni za desnu stranu
-		add(searchable);
-		add(searchB);
-		add(cancelSearchB);
-		searchable.setMaximumSize(new Dimension(100, 40));
 
 		setFloatable(false);// toolbar je pokretljiv, probati i sa staticnim toolbarom
 		setBackground(new Color(255, 255, 254));

@@ -20,7 +20,6 @@ import controller.PredmetiController;
 import model.BazaPredmeta;
 import model.Predmet;
 import view.ATMPredmeti;
-import view.PredmetiJTable;
 import view.Tabovi;
 
 /**
@@ -33,7 +32,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 
 	private static final long serialVersionUID = 3359794769472151342L;
 
-	public IzmenaPredmetaDialog(PredmetiJTable predmetiJTable, String title, boolean modal) {
+	public IzmenaPredmetaDialog() {
 		super();
 		setTitle("Izmena predmeta");
 		setSize(500, 500);
@@ -138,8 +137,8 @@ public class IzmenaPredmetaDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-
+				//dispose();
+				setVisible(false);
 			}
 
 		});
