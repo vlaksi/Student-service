@@ -132,7 +132,7 @@ public class Tabovi {
 		case 0:
 			tabelaStudenata = new StudentiJTable();
 			JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
-			tabelaStudenata.getColumn("Spisak predmeta").setCellRenderer(new ButtonRenderer());
+			//tabelaStudenata.getColumn("Spisak predmeta").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane, BorderLayout.CENTER);
 
 			tabelaStudenata.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,7 +163,7 @@ public class Tabovi {
 		case 2:
 			this.tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
-			tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
+			//tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane2, BorderLayout.CENTER);
 
 			modelPredmeti = (ATMPredmeti) this.tabelaPredmeta.getModel();
@@ -173,34 +173,40 @@ public class Tabovi {
 			tabelaPredmeta.addMouseListener(new java.awt.event.MouseAdapter() {
 				@Override
 				public void mouseClicked(java.awt.event.MouseEvent evt) {
-					int row = tabelaPredmeta.rowAtPoint(evt.getPoint());
-					int col = tabelaPredmeta.columnAtPoint(evt.getPoint());
+					if(GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+						int row = tabelaPredmeta.rowAtPoint(evt.getPoint());
+						int col = tabelaPredmeta.columnAtPoint(evt.getPoint());
 
-					setSelectedColTabelaPredmeta(col);
-					setSelectedRowTabelaPredmeta(row);
+						setSelectedColTabelaPredmeta(col);
+						setSelectedRowTabelaPredmeta(row);
 
-					if (row >= 0 && col == 5) {
-						ATMPredmeti atmPredmeti = modelPredmeti;
+						if (row >= 0 && col == 5) {
+							ATMPredmeti atmPredmeti = modelPredmeti;
 
-						String predmeti = (String) atmPredmeti.getValueAt(row, 5);
-						String[] tokens = predmeti.split("\n");
-						
-						JList<Object> list = new JList<Object>(tokens);
-						ListDialog dialog = new ListDialog("Izaberite studenta kog zelite da obrisete sa predmeta: ",
-								list);
-
-						dialog.setOnOk(e -> {
-							int i = ATMPredmeti.getSelectedRowIndex();
-
-							Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
-							Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
+							String predmeti = (String) atmPredmeti.getValueAt(row, 5);
+							String[] tokens = predmeti.split("\n");
 							
-							PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
-							StudentiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);	
+							JList<Object> list = new JList<Object>(tokens);
+							ListDialog dialog = new ListDialog("Izaberite studenta kog zelite da obrisete sa predmeta: ",
+									list);
 
-						});
-						dialog.show();
+							dialog.setOnOk(e -> {
+								int i = ATMPredmeti.getSelectedRowIndex();
+
+								Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
+								Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
+								
+								PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
+								StudentiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
+								modelPredmeti.fireTableDataChanged();
+
+							});
+							dialog.show();
+						}
+					}else {
+						System.out.println("Nisam u tabu 3");
 					}
+					
 
 				}
 			});
