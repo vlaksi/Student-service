@@ -5,6 +5,7 @@ import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
@@ -19,7 +20,8 @@ public class ProfesoriJTable extends JTable {
 
 	private static final long serialVersionUID = -3442801886235942895L;
 
-	private TableRowSorter<ATMProfesori> sortiranje;
+	private ATMProfesori model;
+	private static TableRowSorter<ATMProfesori> sortiranje;
 
 	public ProfesoriJTable() {
 		this.setRowSelectionAllowed(true);
@@ -27,7 +29,7 @@ public class ProfesoriJTable extends JTable {
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.getTableHeader().setReorderingAllowed(false); // kako bi iskljucili mogucnost pomeranja kolona levo-desno
 		this.setModel(new ATMProfesori());
-		ATMProfesori model = new ATMProfesori();
+		this.model = new ATMProfesori();
 		this.setModel(model);
 
 		sortiranje = new TableRowSorter<ATMProfesori>(model);
@@ -36,6 +38,38 @@ public class ProfesoriJTable extends JTable {
 			sortiranje.setSortable(i, false);
 		}
 		this.setRowSorter(sortiranje);
+	}
+
+	/**
+	 * Metoda koja vraca novi izgled tabele, filtriran po zeljenim parametrima.Npr:
+	 * ako zelimo da za nultu[prvu] kolonu proverimo da li ima neko ko pocinje sa
+	 * 'AN',prosledimo string "AN" kao prvi parametar a kao drugi parametar
+	 * prosledimo 0 [nulta kolona]
+	 * 
+	 * @param trazeno
+	 * @param brojKolone
+	 */
+	public static void newFilter(String trazeno, int brojKolone) {
+		//TODO mozda ovo prebaciti u kontroler kasnije
+		RowFilter<? super ATMProfesori, ? super Integer> rf = null;
+
+		try {
+			rf = RowFilter.regexFilter("^" + trazeno, brojKolone);
+		} catch (java.util.regex.PatternSyntaxException e) {
+			return;
+		}
+
+		getSortiranje().setRowFilter(rf);
+	}
+	
+	
+	
+	public ATMProfesori getModel() {
+		return model;
+	}
+
+	public static TableRowSorter<ATMProfesori> getSortiranje() {
+		return sortiranje;
 	}
 
 	@Override

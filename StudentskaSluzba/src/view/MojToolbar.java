@@ -227,39 +227,113 @@ public class MojToolbar extends JToolBar {
 					cancelSearchB.setVisible(true);
 
 					String[] nizUnetihParova = searchable.getText().split(";");
-					String[] nizLevih = { " ", " ", " ", " ", " " };
-					String[] nizDesnih = new String[5];
-					for (int i = 0; i < nizUnetihParova.length; i++) {
-						String[] pomocni;
-						pomocni = nizUnetihParova[i].split(":");
-						nizLevih[i] = pomocni[0];
-						nizDesnih[i] = pomocni[1];
+
+					/* Search pretraga u tabu studenata */
+					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
+						// TODO Dodati pretragu za studenta
 
 					}
 
-					for (int i = 0; i < nizLevih.length; i++) {
-						if (nizLevih[i].equals("sifra") || nizLevih[i].equals("Sifra") || nizLevih[i].equals("SIFRA")) {
-							System.out.println("Usao sam jer je sifra korsepodentna");
-							System.out.println(nizDesnih[i]);
-							PredmetiJTable.newFilter(nizDesnih[i], 0);
+					/* Search pretraga u tabu profesora */
+					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
+
+						String[] nizLevih = { " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " " };
+						String[] nizDesnih = new String[10];
+						for (int i = 0; i < nizUnetihParova.length; i++) {
+							String[] pomocni;
+							pomocni = nizUnetihParova[i].split(":");
+							nizLevih[i] = pomocni[0];
+							nizDesnih[i] = pomocni[1];
+
 						}
-						if (nizLevih[i].equals("naziv") || nizLevih[i].equals("Naziv") || nizLevih[i].equals("NAZIV")) {
-							PredmetiJTable.newFilter(nizDesnih[i], 1);
+						for (int i = 0; i < nizLevih.length; i++) {
+							if (nizLevih[i].equals("ime") || nizLevih[i].equals("Ime") || nizLevih[i].equals("IME")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 0);
+							}
+							if (nizLevih[i].equals("prezime") || nizLevih[i].equals("Prezime")
+									|| nizLevih[i].equals("PREZIME")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 1);
+							}
+							if (nizLevih[i].equals("datum rodjenja") || nizLevih[i].equals("Datum Rodjenja")
+									|| nizLevih[i].equals("Datum rodjenja") || nizLevih[i].equals("DATUM RODJENJA")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 2);
+							}
+							if (nizLevih[i].equals("adresa stanovanja") || nizLevih[i].equals("Adresa Stanovanja")
+									|| nizLevih[i].equals("Adresa stanovanja")
+									|| nizLevih[i].equals("ADRESA STANOVANJA")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 3);
+							}
+							if (nizLevih[i].equals("telefon") || nizLevih[i].equals("Telefon")
+									|| nizLevih[i].equals("TELEFON")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 4);
+							}
+							if (nizLevih[i].equals("email") || nizLevih[i].equals("Email")
+									|| nizLevih[i].equals("EMAIL")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 5);
+							}
+							if (nizLevih[i].equals("adresa kancelarije") || nizLevih[i].equals("Adresa Kancelarije")
+									|| nizLevih[i].equals("Adresa kancelarije")
+									|| nizLevih[i].equals("ADRESA KANCELARIJE")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 6);
+							}
+							if (nizLevih[i].equals("broj licne") || nizLevih[i].equals("Broj Licne")
+									|| nizLevih[i].equals("Broj licne") || nizLevih[i].equals("BROJ LICNE")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 7);
+							}
+							if (nizLevih[i].equals("titula") || nizLevih[i].equals("Titula")
+									|| nizLevih[i].equals("TITULA")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 8);
+							}
+							if (nizLevih[i].equals("zvanje") || nizLevih[i].equals("Zvanje")
+									|| nizLevih[i].equals("ZVANJE")) {
+								ProfesoriJTable.newFilter(nizDesnih[i], 9);
+							}
+
 						}
-						if (nizLevih[i].equals("semestar") || nizLevih[i].equals("Semestar")
-								|| nizLevih[i].equals("SEMESTAR")) {
-							PredmetiJTable.newFilter(nizDesnih[i], 2);
-						}
-						if (nizLevih[i].equals("godina") || nizLevih[i].equals("Godina") || nizLevih[i].equals("GODINA")
-								|| nizLevih[i].equals("godina studija") || nizLevih[i].equals("Godina studija")
-								|| nizLevih[i].equals("Godina Studija") || nizLevih[i].equals("GODINA STUDIJA")) {
-							PredmetiJTable.newFilter(nizDesnih[i], 3);
-						}
-						if (nizLevih[i].equals("profesor") || nizLevih[i].equals("Profesor")
-								|| nizLevih[i].equals("Profesor")) {
-							PredmetiJTable.newFilter(nizDesnih[i], 4);
-						}
+
+						searchable.setText(null);
 					}
+
+					/* Search pretraga u tabu predmeta */
+					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+
+						String[] nizLevih = { " ", " ", " ", " ", " " };
+						String[] nizDesnih = new String[5];
+						for (int i = 0; i < nizUnetihParova.length; i++) {
+							String[] pomocni;
+							pomocni = nizUnetihParova[i].split(":");
+							nizLevih[i] = pomocni[0];
+							nizDesnih[i] = pomocni[1];
+
+						}
+
+						for (int i = 0; i < nizLevih.length; i++) {
+							if (nizLevih[i].equals("sifra") || nizLevih[i].equals("Sifra")
+									|| nizLevih[i].equals("SIFRA")) {
+								PredmetiJTable.newFilter(nizDesnih[i], 0);
+							}
+							if (nizLevih[i].equals("naziv") || nizLevih[i].equals("Naziv")
+									|| nizLevih[i].equals("NAZIV")) {
+								PredmetiJTable.newFilter(nizDesnih[i], 1);
+							}
+							if (nizLevih[i].equals("semestar") || nizLevih[i].equals("Semestar")
+									|| nizLevih[i].equals("SEMESTAR")) {
+								PredmetiJTable.newFilter(nizDesnih[i], 2);
+							}
+							if (nizLevih[i].equals("godina") || nizLevih[i].equals("Godina")
+									|| nizLevih[i].equals("GODINA") || nizLevih[i].equals("godina studija")
+									|| nizLevih[i].equals("Godina studija") || nizLevih[i].equals("Godina Studija")
+									|| nizLevih[i].equals("GODINA STUDIJA")) {
+								PredmetiJTable.newFilter(nizDesnih[i], 3);
+							}
+							if (nizLevih[i].equals("profesor") || nizLevih[i].equals("Profesor")
+									|| nizLevih[i].equals("Profesor")) {
+								PredmetiJTable.newFilter(nizDesnih[i], 4);
+							}
+						}
+						searchable.setText(null);
+					}
+
 				}
 
 			}
@@ -272,7 +346,9 @@ public class MojToolbar extends JToolBar {
 				cancelSearchB.setVisible(false);
 				searchB.setVisible(true);
 				PredmetiJTable.newFilter("", 0);
-				searchable.setText(null);
+				ProfesoriJTable.newFilter("", 0);
+				//TODO dodati za studenta da na cancel dugme vrati na pocetnu tabelu
+
 			}
 		});
 
