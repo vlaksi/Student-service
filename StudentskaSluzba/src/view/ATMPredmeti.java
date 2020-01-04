@@ -35,9 +35,10 @@ public class ATMPredmeti extends AbstractTableModel {
 		if (columnIndex <= BazaPredmeta.getInstance().getBrojaKolona()) {
 			return BazaPredmeta.getInstance().getVrednost(rowIndex, columnIndex);
 		} else if (columnIndex == BazaPredmeta.getInstance().getBrojaKolona() + 1) {
-
+			return BazaPredmeta.getInstance().getVrednost(rowIndex, columnIndex);
 		}
 		return null;
+		
 	}
 	
 	public static int getSelectedRowIndex() {
