@@ -16,6 +16,8 @@ public class ATMStudenti extends AbstractTableModel {
 	private static final long serialVersionUID = -3033571354019443426L;
 
 	public static int selectedRowIndex = 0;
+	public static int selectedCoulumnIndex = 0;
+	
 	public static String kolonaListaStudenata = "Spisak predmeta";
 
 	@Override
@@ -41,6 +43,7 @@ public class ATMStudenti extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
 		setSelectedRowIndex(rowIndex);
+		setSelectedCoulumnIndex(columnIndex);
 
 		if (columnIndex <= BazaStudent.getInstance().getColumnCount()) {
 			return BazaStudent.getInstance().getVrednost(rowIndex, columnIndex);
@@ -58,6 +61,14 @@ public class ATMStudenti extends AbstractTableModel {
 
 	public static void setSelectedRowIndex(int selectedRowIndex) {
 		ATMStudenti.selectedRowIndex = selectedRowIndex;
+	}
+
+	public static int getSelectedCoulumnIndex() {
+		return selectedCoulumnIndex;
+	}
+
+	public static void setSelectedCoulumnIndex(int selectedCoulumnIndex) {
+		ATMStudenti.selectedCoulumnIndex = selectedCoulumnIndex;
 	}
 
 	@Override

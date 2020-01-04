@@ -1,5 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * Model Predmeta
  * 
@@ -13,6 +17,7 @@ public class Predmet {
 	String semestar;
 	String godinaStudija;
 	Profesor predmetniProfesor;
+	List<Student> listaStudenata; //Lista studenata koji slusaju ovaj predmet
 
 	public Predmet() {
 	}
@@ -20,6 +25,7 @@ public class Predmet {
 	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
 			Profesor predmetniProfesor) {
 		super();
+		this.listaStudenata = new ArrayList<Student>();
 		this.sifraPredmeta = sifraPredmeta;
 		this.nazivPredmeta = nazivPredmeta;
 		this.semestar = semestar;
@@ -74,5 +80,15 @@ public class Predmet {
 	public void setPredmetniProfesor(Profesor predmetniProfesor) {
 		this.predmetniProfesor = predmetniProfesor;
 	}
+
+	public List<Student> getListaStudenata() {
+		return listaStudenata;
+	}
+
+	public void setListaStudenata(List<Student> listaStudenata) {
+		this.listaStudenata = listaStudenata;
+	}
+	
+	
 
 }

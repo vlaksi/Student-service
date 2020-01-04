@@ -39,12 +39,15 @@ public class BazaStudent {
 
 	private void initStudent() {
 		this.studenti = new ArrayList<Student>();
+
+		List<Predmet> listaPredmeta = BazaPredmeta.getInstance().getPredmeti();
+
 		studenti.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
-				"RA1-2017", "2017.02.07", "3", 9.50, Status.B));
+				"RA1-2017", "2017.02.07", "2", 9.50, Status.B, listaPredmeta));
 		studenti.add(new Student("Nikola", "Nikolic", "1998.11.09", "Topolosk 18", "06130012", "dzonisetac@gmail.com",
-				"RA2-2017", "2017.02.07", "3", 9.61, Status.B));
-		studenti.add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com", "RA3-2017",
-				"2017.02.07", "3", 8.50, Status.B));
+				"RA2-2017", "2017.02.07", "1", 9.61, Status.B, listaPredmeta));
+		studenti.add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com",
+				"RA3-2017", "2017.02.07", "3", 8.50, Status.B, listaPredmeta));
 
 	}
 
@@ -112,12 +115,20 @@ public class BazaStudent {
 			return (student.getProsecnaOcena()).toString();
 		case 10:
 			return (student.getStatusStudenta()).toString();
-
+		case 11:
+			List<Predmet> listaPredmeta = student.getPredmeti();
+			String listaPredmetaString = "";
+			for (Predmet predmet : listaPredmeta) {
+				listaPredmetaString += predmet.nazivPredmeta;
+				listaPredmetaString += "\n";
+			}
+			return listaPredmetaString;
 		default:
 			return null;
 
 		}
 	}
+
 	/**
 	 * Metoda koja za prosledjene parametre dodaje novog studenta u bazu profesora.
 	 * 
@@ -128,11 +139,12 @@ public class BazaStudent {
 	 * @param status   studenta
 	 * @param prosecna ocena
 	 */
-	public void dodajStudentaString (String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,String email, String brIndexa, String datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta) {
-		this.studenti.add(new Student(ime, prezime, datumRodjenja,
-				adresaStanovanja, telefon, email, brIndexa,datumUpisa,
-				godinaStudija, prosecnaOcena, statusStudenta));
-	
+	public void dodajStudentaString(String ime, String prezime, String datumRodjenja, String adresaStanovanja,
+			String telefon, String email, String brIndexa, String datumUpisa, String godinaStudija,
+			Double prosecnaOcena, Status statusStudenta) {
+		this.studenti.add(new Student(ime, prezime, datumRodjenja, adresaStanovanja, telefon, email, brIndexa,
+				datumUpisa, godinaStudija, prosecnaOcena, statusStudenta));
+
 	}
 
 	/**
