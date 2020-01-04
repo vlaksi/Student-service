@@ -22,7 +22,7 @@ import model.Predmet;
 import model.Student;
 import view.ATMPredmeti;
 import view.StudentiJTable;
-
+import view.Tabovi;
 
 public class DodajStudentaNaPredmetDialog extends JDialog {
 
@@ -89,42 +89,46 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 				List<Student> listaSvihStudenata = StudentiController.getInstance().getListaSvihStudenata();
 				Student studentKogDodajemo = new Student();
 				Predmet predmetNaKojiDodajemo = new Predmet();
-						
-					if (indexFieldValue.isEmpty()) {
-						System.out.println(indexFieldValue);
-						JOptionPane.showMessageDialog(null, "ERROR: Niste uneli index", "Greska",
-								JOptionPane.ERROR_MESSAGE);
-						return;
-					}
+
+				if (indexFieldValue.isEmpty()) {
+					System.out.println(indexFieldValue);
+					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli index", "Greska",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 
 				for (Student student : listaSvihStudenata) {
 
-						if (indexFieldValue.equals(student.getBrIndexa())) {
-						
-							int i = ATMPredmeti.getSelectedRowIndex();
-							//Provera da li su student i selektovani predmet na istoj godini studija
-							if(!student.getGodinaStudija().equals(PredmetiController.getInstance().getPredmetByRowIndex(i).getGodinaStudija())) {
-									JOptionPane.showMessageDialog(null, "ERROR: Predmet koji ste izabrali i student nisu na istoj godini studija", "Greska",
+					if (indexFieldValue.equals(student.getBrIndexa())) {
+
+						int i = ATMPredmeti.getSelectedRowIndex();
+						// Provera da li su student i selektovani predmet na istoj godini studija
+						if (!student.getGodinaStudija()
+								.equals(PredmetiController.getInstance().getPredmetByRowIndex(i).getGodinaStudija())) {
+							JOptionPane.showMessageDialog(null,
+									"ERROR: Predmet koji ste izabrali i student nisu na istoj godini studija", "Greska",
 									JOptionPane.ERROR_MESSAGE);
-									return;
-							}else {
-								studentKogDodajemo = student;
-								predmetNaKojiDodajemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
-								isti = 1;
-							}
+							return;
+						} else {
+							studentKogDodajemo = student;
+							predmetNaKojiDodajemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
+							isti = 1;
 						}
+					}
+				}
+
+				if (isti == -1) {
+					JOptionPane.showMessageDialog(null, "ERROR: Ne postoji student sa tim indexom", "Greska",
+							JOptionPane.ERROR_MESSAGE);
+				} else { // U suprotnom zanci da smo pronasli odgovarajuceg studenta za predmet i treba
+							// ga dodati
+					PredmetiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
+					StudentiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
+					dispose();
+					Tabovi.getModelPredmeti().fireTableDataChanged();
 				}
 				
-					if(isti == -1) {
-						JOptionPane.showMessageDialog(null, "ERROR: Ne postoji student sa tim indexom", "Greska",
-								JOptionPane.ERROR_MESSAGE);
-					}else { //U suprotnom zanci da smo pronasli odgovarajuceg studenta za predmet i treba ga dodati 
-						PredmetiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
-						StudentiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
-					}
-					
 				
-					
 			}
 		});
 	}

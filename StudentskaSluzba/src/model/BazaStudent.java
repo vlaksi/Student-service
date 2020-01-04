@@ -42,7 +42,7 @@ public class BazaStudent {
 
 		//List<Predmet> listaPredmeta = BazaPredmeta.getInstance().getPredmeti();
 		List<Predmet> listaPredmeta = new ArrayList<Predmet>();
-		listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(0));listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(1));
+		//listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(0));listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(1));
 		
 		studenti.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
 				"RA1-2017", "2017.02.07", "2", 9.50, Status.B, listaPredmeta));
@@ -194,14 +194,15 @@ public class BazaStudent {
 
 	 */
 	public void izbrisiPredmetProsledjenomStudentu(Student student, Predmet predmet) {
-		System.out.println("Brisem sa predmeta: " + predmet.getNazivPredmeta());
-		System.out.println("Brisem studenta: " + student.getBrIndexa());
+		System.out.println("\t\tIZBRISI PREDMET PROSLEDJENOM STUDENTU");
+		System.out.println("Studentu: " + student.getBrIndexa());
+		System.out.println("Brisem predmet: " + predmet.getNazivPredmeta());
 		System.out.println("Student je imao predmete: ");
 		for(int i=0;i<student.getPredmeti().size();i++) {
 			System.out.println(student.getPredmeti().get(i).getNazivPredmeta());
 		}
 		student.getPredmeti().remove(predmet);
-		System.out.println("Student ima predmeta: ");
+		System.out.println("Student sada ima predmete: ");
 		for(int i=0;i<student.getPredmeti().size();i++) {
 			System.out.println(student.getPredmeti().get(i).getNazivPredmeta());
 		}

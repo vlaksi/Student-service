@@ -69,4 +69,8 @@ public class StudentiController {
 	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
 		BazaStudent.getInstance().addStudentNaPredmet(student, predmet);
 	}
+
+	public List<Student> getStudenti() {
+		return BazaStudent.getInstance().getStudenti();
+	}
 }

@@ -16,8 +16,6 @@ import javax.swing.JTabbedPane;
 
 import controller.PredmetiController;
 import controller.StudentiController;
-import model.BazaPredmeta;
-import model.BazaStudent;
 import model.Predmet;
 import model.Student;
 import view.Dialogs.ListDialog;
@@ -132,7 +130,7 @@ public class Tabovi {
 		case 0:
 			tabelaStudenata = new StudentiJTable();
 			JScrollPane scrollPane = new JScrollPane(tabelaStudenata);
-			//tabelaStudenata.getColumn("Spisak predmeta").setCellRenderer(new ButtonRenderer());
+			tabelaStudenata.getColumn("Spisak predmeta").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane, BorderLayout.CENTER);
 
 			tabelaStudenata.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,7 +161,7 @@ public class Tabovi {
 		case 2:
 			this.tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
-			//tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
+			tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane2, BorderLayout.CENTER);
 
 			modelPredmeti = (ATMPredmeti) this.tabelaPredmeta.getModel();
@@ -197,8 +195,8 @@ public class Tabovi {
 								Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
 								
 								//PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
-								PredmetiController.getInstance().izbrisiStudentaProsledjenomPredmetu(StudentKogBrisemo, PredmetSaKogBrisemo);
 								StudentiController.getInstance().izbrisiPredmetProsledjenomStudentu(StudentKogBrisemo, PredmetSaKogBrisemo);
+								PredmetiController.getInstance().izbrisiStudentaProsledjenomPredmetu(StudentKogBrisemo, PredmetSaKogBrisemo);
 								modelPredmeti.fireTableDataChanged();
 
 							});

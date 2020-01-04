@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Student.Status;
 
 /**
  * Klasa u kojoj cuvamo podatke o predmetima.
@@ -40,21 +39,30 @@ public class BazaPredmeta {
 	private void initPredmeta() {
 		this.predmeti = new ArrayList<Predmet>();
 		
-		List<Profesor> listaProfesora = BazaProfesor.getInstance().getProfesori();
+		List<Profesor> listaProfesora = BazaProfesor.getInstance().getProfesori();//TODO izmeniti kao i za bazu studenata da lepo uzmemo, a ne DIRKETNO OVE!
 		Profesor profa = listaProfesora.get(0);
 		Profesor profa1 = listaProfesora.get(1);
 		Profesor profa2 = listaProfesora.get(2);
 
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa));
-		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1));
-		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2));
+		List<Student> listaStudenata1 = new ArrayList<Student>();
+		List<Student> listaStudenata2 = new ArrayList<Student>();
+		List<Student> listaStudenata3 = new ArrayList<Student>();
+//		listaStudenata1.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
+//				"RA1-2017", "2017.02.07", "2", 9.50, Status.B));
+//		listaStudenata1.add(BazaStudent.getInstance().getStudenti().get(1));
+//		listaStudenata2.add(BazaStudent.getInstance().getStudenti().get(0));
+//		listaStudenata3.add(BazaStudent.getInstance().getStudenti().get(0));
 		
-		for(Predmet predmet : predmeti) {
-			predmet.getListaStudenata().add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
-					"RA1-2017", "2017.02.07", "2", 9.50, Status.B, predmeti));
-			predmet.getListaStudenata().add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com",
-					"RA3-2017", "2017.02.07", "3", 8.50, Status.B, predmeti));
-		}
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa,listaStudenata1));
+		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1,listaStudenata2));
+		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2,listaStudenata3));
+		
+//		for(Predmet predmet : predmeti) {
+//			predmet.getListaStudenata().add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
+//					"RA1-2017", "2017.02.07", "2", 9.50, Status.B, predmeti));
+//			predmet.getListaStudenata().add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com",
+//					"RA3-2017", "2017.02.07", "3", 8.50, Status.B, predmeti));
+//		}
 	}
 	
 	
@@ -184,8 +192,21 @@ public class BazaPredmeta {
 
 	 */
 	public void izbrisiStudentaProsledjenomPredmetu(Student student, Predmet predmet) {
-		//System.out.println();
+		System.out.println("-----------------------------------------------------------------");
+		System.out.println("\t\tIZBRISI STUDENTA PROSLEDJENOM PREDMETU");
+		System.out.println("Predmetu: " + predmet.getNazivPredmeta());
+		System.out.println("Brisemo studenta: " + student.getBrIndexa());
+		
+		System.out.println("Predmet je imao studente: ");
+		for(int i=0;i<predmet.getListaStudenata().size();i++) {
+			System.out.println(predmet.getListaStudenata().get(i).getBrIndexa());
+		}
 		predmet.getListaStudenata().remove(student);
+		System.out.println("Predmete sada ima studente: ");
+		for(int i=0;i<predmet.getListaStudenata().size();i++) {
+			System.out.println(predmet.getListaStudenata().get(i).getBrIndexa());
+		}
+		//predmet.getListaStudenata().remove(student);
 	}
 	
 	

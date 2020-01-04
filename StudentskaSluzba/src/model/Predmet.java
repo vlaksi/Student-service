@@ -22,6 +22,21 @@ public class Predmet {
 	public Predmet() {
 	}
 
+	
+	
+	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
+			Profesor predmetniProfesor, List<Student> listaStudenata) {
+		super();
+		this.sifraPredmeta = sifraPredmeta;
+		this.nazivPredmeta = nazivPredmeta;
+		this.semestar = semestar;
+		this.godinaStudija = godinaStudija;
+		this.predmetniProfesor = predmetniProfesor;
+		this.listaStudenata = listaStudenata;
+	}
+
+
+
 	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
 			Profesor predmetniProfesor) {
 		super();
@@ -32,6 +47,7 @@ public class Predmet {
 		this.godinaStudija = godinaStudija;
 		this.predmetniProfesor = predmetniProfesor;
 	}
+	
 
 	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija) {
 		super();
