@@ -191,14 +191,18 @@ public class Tabovi {
 							dialog.setOnOk(e -> {
 								int i = ATMPredmeti.getSelectedRowIndex();
 
-								Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
-								Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
+								if(dialog.getSelectedItem() == null) {
+									JOptionPane.showMessageDialog(null, "ERROR: Morate da selektujete studenta, ako nema ni jednog prvo ga dodajte na predmet" , "Greska" , JOptionPane.ERROR_MESSAGE);
+									return;
+								}else {
+									Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
+									Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
 								
-								//PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
-								StudentiController.getInstance().izbrisiPredmetProsledjenomStudentu(StudentKogBrisemo, PredmetSaKogBrisemo);
-								PredmetiController.getInstance().izbrisiStudentaProsledjenomPredmetu(StudentKogBrisemo, PredmetSaKogBrisemo);
-								modelPredmeti.fireTableDataChanged();
-
+									//PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
+									StudentiController.getInstance().izbrisiPredmetProsledjenomStudentu(StudentKogBrisemo, PredmetSaKogBrisemo);
+									PredmetiController.getInstance().izbrisiStudentaProsledjenomPredmetu(StudentKogBrisemo, PredmetSaKogBrisemo);
+									modelPredmeti.fireTableDataChanged();
+								}
 							});
 							dialog.show();
 						}
