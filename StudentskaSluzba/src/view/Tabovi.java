@@ -19,6 +19,7 @@ import controller.StudentiController;
 import model.Predmet;
 import model.Student;
 import view.Dialogs.ListDialog;
+import view.Dialogs.ListDialog2;
 
 /**
  * Klasa koja predstavlja tabove,i u kojoj se kreiraju tabovi.
@@ -138,13 +139,35 @@ public class Tabovi {
 				public void mouseClicked(java.awt.event.MouseEvent evt) {
 					int row = tabelaStudenata.rowAtPoint(evt.getPoint());
 					int col = tabelaStudenata.columnAtPoint(evt.getPoint());
+					
+					
+			//OVO JE RADILO !! 		
+					/*
+					 * if (row >= 0 && col == 11) { ATMStudenti atmStudent = new ATMStudenti();
+					 * 
+					 * System.out.println(atmStudent.getValueAt(row, 11));
+					 * JOptionPane.showMessageDialog(null, atmStudent.getValueAt(row, 11),
+					 * "Lista predmeta selektovanog studenta", JOptionPane.INFORMATION_MESSAGE); }
+					 */
+					
 					if (row >= 0 && col == 11) {
-						ATMStudenti atmStudent = new ATMStudenti();
+						ATMStudenti atmStudent = modelStudenti;
 
-						System.out.println(atmStudent.getValueAt(row, 11));
-						JOptionPane.showMessageDialog(null, atmStudent.getValueAt(row, 11),
-								"Lista predmeta selektovanog studenta", JOptionPane.INFORMATION_MESSAGE);
+						String predmeti = (String) atmStudent.getValueAt(row, 11);
+						String[] tokens = predmeti.split("\n");
+						
+						JList<Object> list = new JList<Object>(tokens);
+						ListDialog2 dialog2 = new ListDialog2("Spisak predmeta izabranog studenta",
+								list);
+
+						
+						dialog2.show();
 					}
+					
+					
+					
+					
+					
 				}
 			});
 
