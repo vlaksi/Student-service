@@ -25,6 +25,7 @@ public class ProfesoriJTable extends JTable {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.getTableHeader().setReorderingAllowed(false); // kako bi iskljucili mogucnost pomeranja kolona levo-desno
 		this.setModel(new ATMProfesori());
 		ATMProfesori model = new ATMProfesori();
 		this.setModel(model);

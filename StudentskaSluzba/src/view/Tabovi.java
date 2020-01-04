@@ -90,7 +90,7 @@ public class Tabovi {
 		panel.setLayout(new BorderLayout());
 		panel.setPreferredSize(new Dimension(200, 100));
 
-		// Dodam labelu gore,dole,levo,desno a u sredinu tabelu studenata
+		// Dodam labelu gore,dole,levo,desno a u sredinu tabelu 
 		JLabel l = new JLabel("");
 		l.setPreferredSize(new Dimension(100, 100));
 		l.setBackground(Color.lightGray);
@@ -111,7 +111,7 @@ public class Tabovi {
 		n.setBackground(Color.lightGray);
 		n.setForeground(Color.WHITE);
 		panel.add(n, BorderLayout.NORTH);
-		// KRAJ DODAVANJA "BORDERA" OKO TABELE STUDENATA
+		// KRAJ DODAVANJA "BORDERA" OKO TABELA
 
 		switch (indikatorTaba) {
 		case 0:

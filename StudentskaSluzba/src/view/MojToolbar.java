@@ -180,9 +180,73 @@ public class MojToolbar extends JToolBar {
 		ImageIcon search = new ImageIcon("./img/search.png");
 		JButton searchB = new JButton("Search", search); // search dugme
 
+		ImageIcon canselSearch = new ImageIcon("./img/canselSearch.png");
+		JButton cancelSearchB = new JButton("Cancel", canselSearch);
+		cancelSearchB.setVisible(false);
+
+		searchB.addActionListener(new ActionListener() {
+			/*
+			 * Lisener koji na klik dugmica searchB, filtrira po zeljenim parametrima
+			 * prosledjenim u searchable text fildu.
+			 * 
+			 * Implementacija: Razbijamo uneti string iz search-a po ';'. A onda njih
+			 * rastavim na levi i desni.I kasnije ako imam neki koji odgovara nazivima
+			 * kolone[ili slicnim].Pozivam metodu newFilter() koja vraca filtrirani izgled
+			 * tabele.
+			 */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				searchB.setVisible(false);
+				cancelSearchB.setVisible(true);
+
+				String[] nizUnetihParova = searchable.getText().split(";");
+				String[] nizLevih = { " ", " ", " ", " ", " " };
+				String[] nizDesnih = new String[5];
+				for (int i = 0; i < nizUnetihParova.length; i++) {
+					String[] pomocni;
+					pomocni = nizUnetihParova[i].split(":");
+					nizLevih[i] = pomocni[0];
+					nizDesnih[i] = pomocni[1];
+
+				}
+
+				for (int i = 0; i < nizLevih.length; i++) {
+					if (nizLevih[i].equals("sifra") || nizLevih[i].equals("Sifra") || nizLevih[i].equals("SIFRA")) {
+						PredmetiJTable.newFilter(nizDesnih[i], 0);
+					}
+					if (nizLevih[i].equals("naziv") || nizLevih[i].equals("Naziv") || nizLevih[i].equals("NAZIV")) {
+						PredmetiJTable.newFilter(nizDesnih[i], 1);
+					}
+					if (nizLevih[i].equals("semestar") || nizLevih[i].equals("Semestar")
+							|| nizLevih[i].equals("SEMESTAR")) {
+						PredmetiJTable.newFilter(nizDesnih[i], 2);
+					}
+					if (nizLevih[i].equals("godina") || nizLevih[i].equals("Godina") || nizLevih[i].equals("GODINA")) {
+						PredmetiJTable.newFilter(nizDesnih[i], 3);
+					}
+					if (nizLevih[i].equals("profesor") || nizLevih[i].equals("Profesor")
+							|| nizLevih[i].equals("Profesor")) {
+						PredmetiJTable.newFilter(nizDesnih[i], 4);
+					}
+				}
+
+			}
+		});
+
+		cancelSearchB.addActionListener(new ActionListener() {
+			/* Lisener koji na pritisak cancel dugmeta,vraca prikaz nefiltrirane tabele */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cancelSearchB.setVisible(false);
+				searchB.setVisible(true);
+				PredmetiJTable.newFilter("", 0);
+			}
+		});
+
 		add(Box.createHorizontalGlue()); // Posle ovoga su svi elementi zalepljeni za desnu stranu
 		add(searchable);
 		add(searchB);
+		add(cancelSearchB);
 		searchable.setMaximumSize(new Dimension(100, 40));
 
 		setFloatable(false);// toolbar je pokretljiv, probati i sa staticnim toolbarom
