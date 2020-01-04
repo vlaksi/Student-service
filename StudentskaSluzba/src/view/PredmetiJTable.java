@@ -47,7 +47,6 @@ public class PredmetiJTable extends JTable {
 	 */
 	public static void newFilter(String trazeno, int brojKolone) {
 		//TODO mozda ovo prebaciti u kontroler kasnije
-		Tabovi.getModelPredmeti().fireTableDataChanged();
 		RowFilter<? super ATMPredmeti, ? super Integer> rf = null;
 
 		try {
