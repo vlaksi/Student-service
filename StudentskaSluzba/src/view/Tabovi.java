@@ -194,14 +194,7 @@ public class Tabovi {
 							Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
 							
 							PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
-							BazaStudent.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
-							/*
-							 * JOptionPane.showMessageDialog(null,
-							 * "ERROR: Predmet koji ste izabrali i student nisu na istoj godini studija",
-							 * "Greska", JOptionPane.ERROR_MESSAGE);
-							 */
-								
-							
+							BazaStudent.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);	
 
 						});
 						dialog.show();

@@ -120,6 +120,7 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 								JOptionPane.ERROR_MESSAGE);
 					}else { //U suprotnom zanci da smo pronasli odgovarajuceg studenta za predmet i treba ga dodati 
 						PredmetiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
+						StudentiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
 					}
 					
 				

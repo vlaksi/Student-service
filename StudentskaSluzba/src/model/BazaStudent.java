@@ -195,4 +195,9 @@ public class BazaStudent {
 		student.getPredmeti().remove(predmet);
 	}
 
+	public void addStudentNaPredmet(Student student, Predmet predmet) {
+		student.getPredmeti().add(predmet);
+		
+	}
+
 }

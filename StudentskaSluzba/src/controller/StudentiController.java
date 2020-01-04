@@ -59,4 +59,14 @@ public class StudentiController {
 	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
 		BazaStudent.getInstance().removeStudentaSaPredmet(student, predmet);
 	}
+	
+	/**
+	 * Metoda koja za prosledjenog studenta dodaje predmet, tj u listi predmeta
+	 * 
+	 * @param entitet studenta i premdet
+
+	 */
+	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
+		BazaStudent.getInstance().addStudentNaPredmet(student, predmet);
+	}
 }
