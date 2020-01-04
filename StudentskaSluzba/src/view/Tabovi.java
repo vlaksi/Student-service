@@ -8,10 +8,19 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+
+import controller.PredmetiController;
+import controller.StudentiController;
+import model.BazaPredmeta;
+import model.BazaStudent;
+import model.Predmet;
+import model.Student;
+import view.Dialogs.ListDialog;
 
 /**
  * Klasa koja predstavlja tabove,i u kojoj se kreiraju tabovi.
@@ -21,14 +30,14 @@ import javax.swing.JTabbedPane;
  */
 
 public class Tabovi {
-	
+
 	public static Tabovi getInstance() {
 		if (instance == null) {
 			instance = new Tabovi();
 		}
 		return instance;
 	}
-	
+
 	private StudentiJTable tabelaStudenata = null; // Treba nam za brisanje studenata
 	private static ATMStudenti modelStudenti = null; // Treba nam za brisanje studenata
 
@@ -38,17 +47,16 @@ public class Tabovi {
 	private PredmetiJTable tabelaPredmeta = null;
 	private static ATMPredmeti modelPredmeti = null;
 
-	private static int selectedRowTabelaPredmeta;//Treba nam za Dodavanje studenata na predmet, tj ispitujemo u klasi MojToolbar da li je ista selektovano, ako je 0 0 znaci nije
-	private static  int selectedColTabelaPredmeta;
-	
+	private static int selectedRowTabelaPredmeta;// Treba nam za Dodavanje studenata na predmet, tj ispitujemo u klasi
+													// MojToolbar da li je ista selektovano, ako je 0 0 znaci nije
+	private static int selectedColTabelaPredmeta;
+
 	private JScrollPane scrollPane = null;
 	private JTabbedPane tabbedPane = null;
 	private JComponent panel1;
 	private JComponent panel2;
 	private JComponent panel3;
 	public static Tabovi instance = null;
-
-
 
 	public Tabovi() {
 		super();
@@ -97,7 +105,7 @@ public class Tabovi {
 		panel.setLayout(new BorderLayout());
 		panel.setPreferredSize(new Dimension(200, 100));
 
-		// Dodam labelu gore,dole,levo,desno a u sredinu tabelu 
+		// Dodam labelu gore,dole,levo,desno a u sredinu tabelu
 		JLabel l = new JLabel("");
 		l.setPreferredSize(new Dimension(100, 100));
 		l.setBackground(Color.lightGray);
@@ -155,6 +163,7 @@ public class Tabovi {
 		case 2:
 			this.tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
+			tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane2, BorderLayout.CENTER);
 
 			modelPredmeti = (ATMPredmeti) this.tabelaPredmeta.getModel();
@@ -164,10 +173,40 @@ public class Tabovi {
 				public void mouseClicked(java.awt.event.MouseEvent evt) {
 					int row = tabelaPredmeta.rowAtPoint(evt.getPoint());
 					int col = tabelaPredmeta.columnAtPoint(evt.getPoint());
-					
+
 					setSelectedColTabelaPredmeta(col);
 					setSelectedRowTabelaPredmeta(row);
-	
+
+					if (row >= 0 && col == 5) {
+						ATMPredmeti atmPredmeti = new ATMPredmeti();
+
+						String predmeti = (String) atmPredmeti.getValueAt(row, 5);
+						String[] tokens = predmeti.split("\n");
+						System.out.println("opet");
+						JList list = new JList(tokens);
+						ListDialog dialog = new ListDialog("Izaberite studenta kog zelite da obrisete sa predmeta: ",
+								list);
+
+						dialog.setOnOk(e -> {
+							int i = ATMPredmeti.getSelectedRowIndex();
+
+							Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
+							Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
+							
+							PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
+							BazaStudent.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
+							/*
+							 * JOptionPane.showMessageDialog(null,
+							 * "ERROR: Predmet koji ste izabrali i student nisu na istoj godini studija",
+							 * "Greska", JOptionPane.ERROR_MESSAGE);
+							 */
+								
+							
+
+						});
+						dialog.show();
+					}
+
 				}
 			});
 			modelPredmeti = (ATMPredmeti) tabelaPredmeta.getModel();
@@ -214,8 +253,7 @@ public class Tabovi {
 	}
 
 	public int getSelectedColTabelaPredmeta() {
-		if(Tabovi.selectedColTabelaPredmeta == 0) {
-			System.out.println("NULAA JE");
+		if (Tabovi.selectedColTabelaPredmeta == 0) {
 		}
 		return Tabovi.selectedColTabelaPredmeta;
 	}

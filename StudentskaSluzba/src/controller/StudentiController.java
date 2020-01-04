@@ -5,6 +5,7 @@ package controller;
 import java.util.List;
 
 import model.BazaStudent;
+import model.Predmet;
 import model.Student;
 
 /**
@@ -47,5 +48,15 @@ public class StudentiController {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Metoda koja za prosledjenog studenta brise sa predmet, tj u listi predmeta
+	 * 
+	 * @param entitet studenta i premdet
+
+	 */
+	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
+		BazaStudent.getInstance().removeStudentaSaPredmet(student, predmet);
 	}
 }

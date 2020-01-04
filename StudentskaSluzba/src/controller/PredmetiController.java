@@ -54,5 +54,10 @@ public class PredmetiController {
 		BazaPredmeta.getInstance().dodajStudentaNaPredmet(student,predmet);
 	}
 	
+	//Metoda koja brise studenta sa predmet
+	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
+		BazaPredmeta.getInstance().removeStudentaSaPredmet(student, predmet);
+	}
+	
 	
 }

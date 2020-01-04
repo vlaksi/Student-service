@@ -184,5 +184,15 @@ public class BazaStudent {
 			}
 		}
 	}
+	
+	/**
+	 * Metoda koja za prosledjenog studenta brise sa predmet, tj u listi predmeta
+	 * 
+	 * @param entitet studenta i premdet
+
+	 */
+	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
+		student.getPredmeti().remove(predmet);
+	}
 
 }

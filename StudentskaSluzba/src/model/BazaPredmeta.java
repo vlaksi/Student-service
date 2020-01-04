@@ -53,7 +53,8 @@ public class BazaPredmeta {
 		for(Predmet predmet : predmeti) {
 			predmet.listaStudenata.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
 					"RA1-2017", "2017.02.07", "2", 9.50, Status.B, predmeti));
-			
+			predmet.listaStudenata.add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com",
+					"RA3-2017", "2017.02.07", "3", 8.50, Status.B, predmeti));
 		}
 	}
 	
@@ -116,6 +117,14 @@ public class BazaPredmeta {
 			String stringCelije = predmet.getPredmetniProfesor().getPrezime() + " "
 					+ predmet.getPredmetniProfesor().getBrojLicneKarte();
 			return stringCelije;
+		case 5: 
+			List<Student> listaStudenataNaPredemtu = predmet.listaStudenata;
+			String listaPredmetaString = "";
+			for (Student student : listaStudenataNaPredemtu) {
+				listaPredmetaString += student.getBrIndexa();
+				listaPredmetaString += "\n";
+			}
+			return listaPredmetaString;
 		default:
 			return null;
 		}
@@ -168,7 +177,16 @@ public class BazaPredmeta {
 		predmet.getListaStudenata().add(student);
 	}
 	
-	
+
+	/**
+	 * Metoda koja prosledjenog studenta brise sa predmeta, tj u listu studenata predmeta
+	 * 
+	 * @param entitet studenta
+
+	 */
+	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
+		predmet.getListaStudenata().remove(student);
+	}
 	
 	
 
