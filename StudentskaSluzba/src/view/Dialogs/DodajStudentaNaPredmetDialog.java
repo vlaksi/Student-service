@@ -79,7 +79,8 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 				dispose();
 			}
 		});
-
+int red = ATMPredmeti.getSelectedRowIndex();
+		
 		btnOk.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent ae) {
@@ -100,17 +101,18 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 
 					if (indexFieldValue.equals(student.getBrIndexa())) {
 
-						int i = ATMPredmeti.getSelectedRowIndex();
+						
 						// Provera da li su student i selektovani predmet na istoj godini studija
 						if (!student.getGodinaStudija()
-								.equals(PredmetiController.getInstance().getPredmetByRowIndex(i).getGodinaStudija())) {
+								.equals(PredmetiController.getInstance().getPredmetByRowIndex(red).getGodinaStudija())) {
 							JOptionPane.showMessageDialog(null,
 									"ERROR: Predmet koji ste izabrali i student nisu na istoj godini studija", "Greska",
 									JOptionPane.ERROR_MESSAGE);
 							return;
 						} else {
+							System.out.println(	ATMPredmeti.getSelectedRowIndex());
 							studentKogDodajemo = student;
-							predmetNaKojiDodajemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
+							predmetNaKojiDodajemo = PredmetiController.getInstance().getPredmetByRowIndex(red);
 							isti = 1;
 						}
 					}

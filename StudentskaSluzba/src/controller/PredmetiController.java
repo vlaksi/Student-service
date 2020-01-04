@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.BazaPredmeta;
 import model.Predmet;
 import model.Student;
@@ -44,9 +47,28 @@ public class PredmetiController {
 		return BazaPredmeta.getInstance().getPredmeti().get(selectedRowIndex);
 	}
 	
-	//Metoda koja vraca studenta za prosledjeni index reda
-	public Predmet getPredmetByRowIndex(int rowIndex) {
-		return BazaPredmeta.getInstance().getPredmeti().get(rowIndex);
+	
+	  //Metoda koja vraca studenta za prosledjeni index reda public Predmet
+	 public Predmet getPredmetByRowIndex(int rowIndex) { 
+		 return BazaPredmeta.getInstance().getPredmeti().get(rowIndex); 
+	}
+	 
+	
+	//Metoda koja vraca studenta za prosledjenu sifru
+	public Predmet getPredmetByID(String sifra) {
+		List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+		listaPredmeta = BazaPredmeta.getInstance().getPredmeti();
+		
+		for(Predmet predmet : listaPredmeta) {
+			if(predmet.getSifraPredmeta().equals(sifra)) {
+				return predmet;
+			}else
+			{
+				System.out.println("Nije isto");
+			}
+		}
+		return null;
+		
 	}
 	
 	//Metoda koja dodaje studenta na predmet

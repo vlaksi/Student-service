@@ -180,7 +180,7 @@ public class Tabovi {
 		case 2:
 			this.tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
-			//tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
+			tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane2, BorderLayout.CENTER);
 
 			
@@ -193,6 +193,7 @@ public class Tabovi {
 
 						setSelectedColTabelaPredmeta(col);
 						setSelectedRowTabelaPredmeta(row);
+						
 
 						if (row >= 0 && col == 5) {
 							//ATMPredmeti atmPredmeti = modelPredmeti;
@@ -205,13 +206,14 @@ public class Tabovi {
 									list);
 
 							dialog.setOnOk(e -> {
-								int i = ATMPredmeti.getSelectedRowIndex();
+								
 
 								if(dialog.getSelectedItem() == null) {
 									JOptionPane.showMessageDialog(null, "ERROR: Morate da selektujete studenta, ako nema ni jednog prvo ga dodajte na predmet" , "Greska" , JOptionPane.ERROR_MESSAGE);
 									return;
 								}else {
-									Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
+									
+									Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getListaPredmeta(row);
 									Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
 								
 									//PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
