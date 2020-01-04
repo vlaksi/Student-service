@@ -21,20 +21,19 @@ import controller.StudentiController;
 import model.Predmet;
 import model.Student;
 import view.ATMPredmeti;
-import view.StudentiJTable;
 import view.Tabovi;
 
 public class DodajStudentaNaPredmetDialog extends JDialog {
 
 	private static final long serialVersionUID = -6472283890478597069L;
 
-	public DodajStudentaNaPredmetDialog(StudentiJTable studentiJTable, String title, boolean modal) {
+	public DodajStudentaNaPredmetDialog() {
 		super();
 
 		setTitle("Predmet - Dodavanje studenta");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(studentiJTable);
+		setLocationRelativeTo(null);
 
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);
@@ -124,11 +123,10 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 							// ga dodati
 					PredmetiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
 					StudentiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
-					dispose();
-					Tabovi.getModelPredmeti().fireTableDataChanged();
+
 				}
-				
-				
+				Tabovi.getModelPredmeti().fireTableDataChanged();
+				dispose();
 			}
 		});
 	}

@@ -164,10 +164,6 @@ public class Tabovi {
 						dialog2.show();
 					}
 					
-					
-					
-					
-					
 				}
 			});
 
@@ -184,12 +180,9 @@ public class Tabovi {
 		case 2:
 			this.tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
-			tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
+			//tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane2, BorderLayout.CENTER);
 
-			modelPredmeti = (ATMPredmeti) this.tabelaPredmeta.getModel();
-			modelPredmeti = (ATMPredmeti) tabelaPredmeta.getModel();
-			modelPredmeti.fireTableDataChanged();
 			
 			tabelaPredmeta.addMouseListener(new java.awt.event.MouseAdapter() {
 				@Override
@@ -202,9 +195,9 @@ public class Tabovi {
 						setSelectedRowTabelaPredmeta(row);
 
 						if (row >= 0 && col == 5) {
-							ATMPredmeti atmPredmeti = modelPredmeti;
+							//ATMPredmeti atmPredmeti = modelPredmeti;
 
-							String predmeti = (String) atmPredmeti.getValueAt(row, 5);
+							String predmeti = (String) Tabovi.modelPredmeti.getValueAt(row, 5);
 							String[] tokens = predmeti.split("\n");
 							
 							JList<Object> list = new JList<Object>(tokens);
@@ -224,7 +217,7 @@ public class Tabovi {
 									//PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
 									StudentiController.getInstance().izbrisiPredmetProsledjenomStudentu(StudentKogBrisemo, PredmetSaKogBrisemo);
 									PredmetiController.getInstance().izbrisiStudentaProsledjenomPredmetu(StudentKogBrisemo, PredmetSaKogBrisemo);
-									modelPredmeti.fireTableDataChanged();
+									Tabovi.modelPredmeti.fireTableDataChanged();
 								}
 							});
 							dialog.show();
@@ -236,7 +229,9 @@ public class Tabovi {
 
 				}
 			});
-
+				modelPredmeti = (ATMPredmeti) this.tabelaPredmeta.getModel();
+			
+			   modelPredmeti.fireTableDataChanged();
 			
 			break;
 		default:
@@ -270,7 +265,7 @@ public class Tabovi {
 		return modelPredmeti;
 	}
 
-	public int getSelectedRowTabelaPredmeta() {
+	public static int getSelectedRowTabelaPredmeta() {
 		return Tabovi.selectedRowTabelaPredmeta;
 	}
 
@@ -278,7 +273,7 @@ public class Tabovi {
 		Tabovi.selectedRowTabelaPredmeta = selectedRowTabelaPredmeta;
 	}
 
-	public int getSelectedColTabelaPredmeta() {
+	public static int getSelectedColTabelaPredmeta() {
 		if (Tabovi.selectedColTabelaPredmeta == 0) {
 		}
 		return Tabovi.selectedColTabelaPredmeta;

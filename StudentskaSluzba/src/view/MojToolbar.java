@@ -165,17 +165,18 @@ public class MojToolbar extends JToolBar {
 			public void actionPerformed(ActionEvent e) {
 				//Listener koji sluzi za priakzivanje dialoga za dodavanje studenta na predmet
 				
-				System.out.println(Tabovi.getInstance().getSelectedColTabelaPredmeta());
-				if((Tabovi.getInstance().getSelectedColTabelaPredmeta() == 0) && (Tabovi.getInstance().getSelectedRowTabelaPredmeta() == 0)) {
+				
+				if((Tabovi.getSelectedColTabelaPredmeta() == 0) && (Tabovi.getSelectedRowTabelaPredmeta() == 0)) {
 					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 							return;
 				}else {
-					DodajStudentaNaPredmetDialog dialog = new DodajStudentaNaPredmetDialog(new StudentiJTable(), "Predmet - Dodavanje studenta",
-							true);
+					DodajStudentaNaPredmetDialog dialog = new DodajStudentaNaPredmetDialog();
 					dialog.setVisible(true);
 				}
-					
+				
+				Tabovi.getModelPredmeti().fireTableDataChanged();
+				
 				
 			}
 		});
