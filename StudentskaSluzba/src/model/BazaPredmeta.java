@@ -3,10 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Student.Status;
+
 /**
  * Klasa u kojoj cuvamo podatke o predmetima.
  * 
- * @author Vaxi
+ * @author Vaxi i Pufke
  *
  */
 public class BazaPredmeta {
@@ -37,6 +39,7 @@ public class BazaPredmeta {
 
 	private void initPredmeta() {
 		this.predmeti = new ArrayList<Predmet>();
+		
 		List<Profesor> listaProfesora = BazaProfesor.getInstance().getProfesori();
 		Profesor profa = listaProfesora.get(0);
 		Profesor profa1 = listaProfesora.get(1);
@@ -46,8 +49,15 @@ public class BazaPredmeta {
 		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa));
 		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1));
 		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2));
+		
+		for(Predmet predmet : predmeti) {
+			predmet.listaStudenata.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
+					"RA1-2017", "2017.02.07", "2", 9.50, Status.B, predmeti));
+			
+		}
 	}
-
+	
+	
 	public List<String> getKolone() {
 		return kolone;
 	}
@@ -147,5 +157,19 @@ public class BazaPredmeta {
 			}
 		}
 	}
+	
+	/**
+	 * Metoda koja prosledjenog studenta  dodaje na predmet, tj u listu studenata predmeta
+	 * 
+	 * @param entitet studenta
+
+	 */
+	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
+		predmet.getListaStudenata().add(student);
+	}
+	
+	
+	
+	
 
 }

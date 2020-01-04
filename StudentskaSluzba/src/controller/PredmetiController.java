@@ -2,6 +2,8 @@ package controller;
 
 import model.BazaPredmeta;
 import model.Predmet;
+import model.Student;
+
 
 /**
  * Klasa koja rukuje reakcijama na dogadjaje entiteta/modela: Predmet.
@@ -41,4 +43,16 @@ public class PredmetiController {
 	public Predmet getListaPredmeta(int selectedRowIndex) {
 		return BazaPredmeta.getInstance().getPredmeti().get(selectedRowIndex);
 	}
+	
+	//Metoda koja vraca studenta za prosledjeni index reda
+	public Predmet getPredmetByRowIndex(int rowIndex) {
+		return BazaPredmeta.getInstance().getPredmeti().get(rowIndex);
+	}
+	
+	//Metoda koja dodaje studenta na predmet
+	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
+		BazaPredmeta.getInstance().dodajStudentaNaPredmet(student,predmet);
+	}
+	
+	
 }

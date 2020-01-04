@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
@@ -17,6 +18,7 @@ import model.BazaProfesor;
 import model.BazaStudent;
 import view.Dialogs.DodajPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
+import view.Dialogs.DodajStudentaNaPredmetDialog;
 import view.Dialogs.DodavanjeProfesoraDIalog;
 import view.Dialogs.IzmenaPredmetaDialog;
 import view.Dialogs.IzmenaProfesoraDialog;
@@ -137,6 +139,7 @@ public class MojToolbar extends JToolBar {
 					// System.out.println(i);
 					BazaStudent.getInstance().getStudenti().remove(i);// TODO uraditi preko kontrolera
 					Tabovi.getModelStudenti().fireTableDataChanged();
+
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
 					int i = ATMProfesori.getSelectedRowIndex();
@@ -162,6 +165,27 @@ public class MojToolbar extends JToolBar {
 
 		dodajStudenta = new JButton();
 		dodajStudenta.setToolTipText("Dodaj studenta");
+		dodajStudenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Listener koji sluzi za priakzivanje dialoga za dodavanje studenta na predmet
+				
+				System.out.println(Tabovi.getInstance().getSelectedColTabelaPredmeta());
+				if((Tabovi.getInstance().getSelectedColTabelaPredmeta() == 0) && (Tabovi.getInstance().getSelectedRowTabelaPredmeta() == 0)) {
+					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli", "Greska",
+							JOptionPane.ERROR_MESSAGE);
+							return;
+				}else {
+					DodajStudentaNaPredmetDialog dialog = new DodajStudentaNaPredmetDialog(new StudentiJTable(), "Predmet - Dodavanje studenta",
+							true);
+					dialog.setVisible(true);
+				}
+					
+				
+			}
+		});
+
 		ImageIcon iconNew4 = new ImageIcon("./img/student.png");
 		dodajStudenta.setIcon(iconNew4);
 		add(dodajStudenta);

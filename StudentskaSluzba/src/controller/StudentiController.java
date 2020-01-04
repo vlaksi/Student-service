@@ -1,5 +1,9 @@
 package controller;
 
+
+
+import java.util.List;
+
 import model.BazaStudent;
 import model.Student;
 
@@ -26,5 +30,22 @@ public class StudentiController {
 	//Metoda koja vraca studenta za prosledjeni index reda
 	public Student getListaStudenata(int i) {
 		return BazaStudent.getInstance().getStudenti().get(i);
+	}
+	
+	//Metoda koja vraca sve studente
+	public List<Student> getListaSvihStudenata() {
+		return BazaStudent.getInstance().getStudenti();
+	}
+	
+	//Metoda koja vraca studenta za prosledjen index, u suprotnom vraca null
+	public Student getStudentByIndex(String index) {
+		List<Student> listaSvihStudenata = getListaSvihStudenata();
+		
+		for(Student student : listaSvihStudenata) {
+			if(student.getBrIndexa().equals(index)) {
+				return student;
+			}
+		}
+		return null;
 	}
 }

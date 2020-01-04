@@ -1,8 +1,7 @@
 ﻿# Taskovi koje treba resiti
 
 ## Prvi student treba da implementira stavke sa sledećim oznakama:
-###### 4. #pretraga_studenata   
-###### 9. #dodavanje_studenta_na_predmet 
+###### 4. #pretraga_studenata    
 ###### 10. #uklanjanje_studenta_sa_predmeta 
 
 ## Drugi student treba da implementira stavke sa sledećim oznakama: 
