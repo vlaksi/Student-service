@@ -55,8 +55,11 @@ public class PredmetiController {
 	}
 	
 	//Metoda koja brise studenta sa predmet
-	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
-		BazaPredmeta.getInstance().removeStudentaSaPredmet(student, predmet);
+//	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
+//		BazaPredmeta.getInstance().removeStudentaSaPredmet(student, predmet);
+//	}
+	public void izbrisiStudentaProsledjenomPredmetu(Student student, Predmet predmet) {
+		BazaPredmeta.getInstance().izbrisiStudentaProsledjenomPredmetu(student, predmet);
 	}
 	
 	

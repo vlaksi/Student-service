@@ -196,8 +196,9 @@ public class Tabovi {
 								Predmet PredmetSaKogBrisemo = PredmetiController.getInstance().getPredmetByRowIndex(i);
 								Student StudentKogBrisemo = StudentiController.getInstance().getStudentByIndex(dialog.getSelectedItem().toString());
 								
-								PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
-								StudentiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
+								//PredmetiController.getInstance().removeStudentaSaPredmet(StudentKogBrisemo, PredmetSaKogBrisemo);
+								PredmetiController.getInstance().izbrisiStudentaProsledjenomPredmetu(StudentKogBrisemo, PredmetSaKogBrisemo);
+								StudentiController.getInstance().izbrisiPredmetProsledjenomStudentu(StudentKogBrisemo, PredmetSaKogBrisemo);
 								modelPredmeti.fireTableDataChanged();
 
 							});

@@ -56,8 +56,8 @@ public class StudentiController {
 	 * @param entitet studenta i premdet
 
 	 */
-	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
-		BazaStudent.getInstance().removeStudentaSaPredmet(student, predmet);
+	public void izbrisiPredmetProsledjenomStudentu(Student student, Predmet predmet) {
+		BazaStudent.getInstance().izbrisiPredmetProsledjenomStudentu(student, predmet);
 	}
 	
 	/**

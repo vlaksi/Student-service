@@ -46,7 +46,6 @@ public class BazaPredmeta {
 		Profesor profa2 = listaProfesora.get(2);
 
 		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa));
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa));
 		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1));
 		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2));
 		
@@ -184,7 +183,8 @@ public class BazaPredmeta {
 	 * @param entitet studenta
 
 	 */
-	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
+	public void izbrisiStudentaProsledjenomPredmetu(Student student, Predmet predmet) {
+		//System.out.println();
 		predmet.getListaStudenata().remove(student);
 	}
 	
