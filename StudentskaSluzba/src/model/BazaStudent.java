@@ -39,12 +39,8 @@ public class BazaStudent {
 	}
 
 	private void initStudent() {
-		this.studenti = new ArrayList<Student>();
-
-		List<Student> studentii = SerijalizacijaStudenta.getInstance().deserijalizacijaObjekta();
-
-		
-		  for (Student student : studentii) { studenti.add(student); }
+	
+		this.studenti = SerijalizacijaStudenta.getInstance().deserijalizacijaObjekta();
 		 
 	}
 

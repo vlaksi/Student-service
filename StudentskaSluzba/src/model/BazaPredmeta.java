@@ -38,13 +38,8 @@ public class BazaPredmeta {
 	}
 
 	private void initPredmeta() {
-		this.predmeti = new ArrayList<Predmet>();
 
-		List<Predmet> predmetii = SerijalizacijaPredmeta.getInstance().deserijalizacijaObjekta();
-
-		 for(Predmet predmet : predmetii) {
-			 predmeti.add(predmet);
-		 } 
+		this.predmeti = SerijalizacijaPredmeta.getInstance().deserijalizacijaObjekta();
 
 	}
 

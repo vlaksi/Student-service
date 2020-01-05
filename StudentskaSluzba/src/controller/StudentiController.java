@@ -24,11 +24,12 @@ public class StudentiController {
 	}
 
 	private static StudentiController instance = null;
-	List<Student> listaStudenataZaSerijalizaciju = SerijalizacijaStudenta.getInstance().deserijalizacijaObjekta();// Lista
+	//List<Student> listaStudenataZaSerijalizaciju = SerijalizacijaStudenta.getInstance().deserijalizacijaObjekta();// Lista
 																													// studenata
 																													// za
 																													// serijalizaciju
-
+	List<Student> listaStudenataZaSerijalizaciju = BazaStudent.getInstance().getStudenti();
+	
 	private StudentiController() {
 
 	}
@@ -71,12 +72,11 @@ public class StudentiController {
 	 * @param entitet studenta i premdet
 	 * 
 	 */
-	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
-		BazaStudent.getInstance().addStudentNaPredmet(student, predmet);
+	public void dodajPredmetStudentu(Student student, Predmet predmet) {
+		
 			for(Student studentZaSerijalizaciju: listaStudenataZaSerijalizaciju) {
-				if(student.equals(student)) {
-					System.out.println("PREDMET dodaat U studenta");
-					studentZaSerijalizaciju.getPredmeti().add(predmet);
+				if(studentZaSerijalizaciju.getBrIndexa().equals(student.getBrIndexa())) {
+					BazaStudent.getInstance().addStudentNaPredmet(student, predmet);
 					return;
 				}
 			}
@@ -97,7 +97,7 @@ public class StudentiController {
 				student.getBrIndexa(), student.getDatumUpisa(), student.getGodinaStudija(), student.getProsecnaOcena(),
 				student.getStatusStudenta(), student.getPredmeti());
 		// Dodajemo studenta u listu za serijalizaciju
-		listaStudenataZaSerijalizaciju.add(student);
+		//listaStudenataZaSerijalizaciju.add(student);
 
 	}
 
@@ -138,7 +138,7 @@ public class StudentiController {
 		BazaStudent.getInstance().getStudenti().remove(rowIndex);
 		Tabovi.getModelStudenti().fireTableDataChanged();
 		// Brisemo studenta iz liste za serijalizaciju
-		listaStudenataZaSerijalizaciju.remove(rowIndex);
+	//	listaStudenataZaSerijalizaciju.remove(rowIndex);
 	}
 
 }

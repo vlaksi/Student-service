@@ -54,15 +54,9 @@ public class BazaProfesor {
 	 * Metoda za pocetni init prilikom kreiranja BazeProfesora
 	 */
 	private void initProfesore() {
-		this.profesori = new ArrayList<Profesor>();
 
-		
-		List<Profesor> profesorii = SerijalizacijaProfesora.getInstance().deserijalizacijaObjekta();
-		
-		
-		 for (Profesor profesor : profesorii) { profesori.add(profesor); } 
-		 
-		 
+		this.profesori = SerijalizacijaProfesora.getInstance().deserijalizacijaObjekta();
+		 	 
 
 	}
 
