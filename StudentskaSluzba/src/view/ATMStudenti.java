@@ -20,12 +20,6 @@ public class ATMStudenti extends AbstractTableModel {
 	
 	public static String kolonaListaStudenata = "Spisak predmeta";
 
-	@Override
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		// TODO izmeniti ovo false autogenerisano, i uvesti logiku za proveru da li je
-		// celiji dozvoljena izmena ili ne
-		return false;
-	}
 
 	@Override
 	public int getRowCount() {
@@ -34,8 +28,6 @@ public class ATMStudenti extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		// TODO proveriti da li je uredu + 1, mislim da jeste jer treba jos jedna kolona
-		// za listu predmeta koje slusa student
 		return BazaStudent.getInstance().getColumnCount() + 1;
 	}
 

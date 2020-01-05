@@ -48,7 +48,8 @@ public class IzmenaStudentaDialog  extends JDialog {
 		setSize(500, 500);
 		// setBackground();
 		setLocationRelativeTo(null);
-
+		this.setModal(true);
+		
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);
 		panCenter.setLayout(boxCenter);

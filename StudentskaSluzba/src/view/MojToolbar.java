@@ -17,6 +17,7 @@ import model.BazaPredmeta;
 import model.BazaProfesor;
 import model.BazaStudent;
 import view.Dialogs.DodajPredmetDialog;
+import view.Dialogs.DodajProfesoraNaPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.DodajStudentaNaPredmetDialog;
 import view.Dialogs.DodavanjeProfesoraDIalog;
@@ -187,6 +188,23 @@ public class MojToolbar extends JToolBar {
 
 		dodajProfesora = new JButton();
 		dodajProfesora.setToolTipText("Dodaj profesora");
+		dodajProfesora.addActionListener(new ActionListener() {
+			/* Lisener koji sluzi za prikazivanje dialoga za dodavanje profesora na predmet */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if ((Tabovi.getSelectedColTabelaPredmeta() == 0) && (Tabovi.getSelectedRowTabelaPredmeta() == 0)) {
+					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli",
+							"Greska", JOptionPane.ERROR_MESSAGE);
+					return;
+				} else {
+					DodajProfesoraNaPredmetDialog dialog = new DodajProfesoraNaPredmetDialog();
+					dialog.setVisible(true);
+				}
+
+				Tabovi.getModelPredmeti().fireTableDataChanged();
+				
+			}
+		});
 		ImageIcon iconNew5 = new ImageIcon("./img/profesor3.png");
 		dodajProfesora.setIcon(iconNew5);
 		add(dodajProfesora);

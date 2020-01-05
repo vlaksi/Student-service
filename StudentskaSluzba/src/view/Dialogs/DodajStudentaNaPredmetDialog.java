@@ -34,6 +34,7 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 		setSize(500, 500);
 		// setBackground();
 		setLocationRelativeTo(null);
+		this.setModal(true);
 
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);
@@ -79,8 +80,8 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 				dispose();
 			}
 		});
-int red = ATMPredmeti.getSelectedRowIndex();
-		
+		int red = ATMPredmeti.getSelectedRowIndex();
+
 		btnOk.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent ae) {
@@ -91,7 +92,6 @@ int red = ATMPredmeti.getSelectedRowIndex();
 				Predmet predmetNaKojiDodajemo = new Predmet();
 
 				if (indexFieldValue.isEmpty()) {
-					System.out.println(indexFieldValue);
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli index", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
@@ -101,16 +101,14 @@ int red = ATMPredmeti.getSelectedRowIndex();
 
 					if (indexFieldValue.equals(student.getBrIndexa())) {
 
-						
 						// Provera da li su student i selektovani predmet na istoj godini studija
-						if (!student.getGodinaStudija()
-								.equals(PredmetiController.getInstance().getPredmetByRowIndex(red).getGodinaStudija())) {
+						if (!student.getGodinaStudija().equals(
+								PredmetiController.getInstance().getPredmetByRowIndex(red).getGodinaStudija())) {
 							JOptionPane.showMessageDialog(null,
 									"ERROR: Predmet koji ste izabrali i student nisu na istoj godini studija", "Greska",
 									JOptionPane.ERROR_MESSAGE);
 							return;
 						} else {
-							System.out.println(	ATMPredmeti.getSelectedRowIndex());
 							studentKogDodajemo = student;
 							predmetNaKojiDodajemo = PredmetiController.getInstance().getPredmetByRowIndex(red);
 							isti = 1;

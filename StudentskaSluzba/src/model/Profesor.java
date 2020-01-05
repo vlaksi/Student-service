@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 
 /**
  * Model Predmeta
@@ -18,7 +19,7 @@ public class Profesor {
 	private String brojLicneKarte;
 	private String titula;
 	private String zvanje;
-	//TODO Dodati listuPredmeta ako bude trebalo ovde
+	private List<Predmet> predmeti;
 	public Profesor() {
 	}
 
@@ -44,6 +45,33 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
+	}
+	
+	
+
+	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
+			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje,
+			List<Predmet> predmeti) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.datumRodjenja = datumRodjenja;
+		this.adresaStanovanja = adresaStanovanja;
+		this.telefon = telefon;
+		this.email = email;
+		this.adresaKancelarije = adresaKancelarije;
+		this.brojLicneKarte = brojLicneKarte;
+		this.titula = titula;
+		this.zvanje = zvanje;
+		this.predmeti = predmeti;
+	}
+
+	public List<Predmet> getPredmeti() {
+		return predmeti;
+	}
+
+	public void setPredmeti(List<Predmet> predmeti) {
+		this.predmeti = predmeti;
 	}
 
 	public String getIme() {

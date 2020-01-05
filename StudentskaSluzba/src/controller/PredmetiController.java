@@ -5,6 +5,7 @@ import java.util.List;
 
 import model.BazaPredmeta;
 import model.Predmet;
+import model.Profesor;
 import model.Student;
 
 
@@ -74,6 +75,11 @@ public class PredmetiController {
 	//Metoda koja dodaje studenta na predmet
 	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
 		BazaPredmeta.getInstance().dodajStudentaNaPredmet(student,predmet);
+	}
+	
+	/* Metoda koja dodaje profesora na predmet */
+	public void dodajProfesoraNaPredmet(Profesor profesor, Predmet predmet) {
+		BazaPredmeta.getInstance().dodajProfesoraNaPredmet(profesor,predmet);
 	}
 	
 	//Metoda koja brise studenta sa predmet
