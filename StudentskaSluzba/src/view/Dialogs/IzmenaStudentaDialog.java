@@ -254,12 +254,26 @@ public class IzmenaStudentaDialog  extends JDialog {
 			      String datumUpisaValue = txtPanDatumUpiusa.getText();
 			      String emailValue = txtPanEmail.getText();
 			
-			      if(validate(emailValue)) {
-						System.out.println("Validan email");
-					}else {
+			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
+			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum upisa( Ispravan format datuma upisa je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
+			      
+			      if(!validate(emailValue)) {
 						JOptionPane.showMessageDialog(null,
 								"ERROR: Uneli ste pogresnu vrednost za e-mail(Ispravan primer maila je foobar@gmail.com)",
 								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
 					}
 				
 				  if(!txtProsecnaOcena.getText().equals("")) {

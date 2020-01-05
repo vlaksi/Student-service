@@ -95,16 +95,7 @@ public class DodajStudentaDialog extends JDialog {
 		JPanel panDatumRodj = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblDAtumRodj = new JLabel("Datum rodjenja*");
 		lblDAtumRodj.setPreferredSize(dim);
-		// JTextField txtDatumRodjenja = new JTextField();
-		MaskFormatter maskDatumRodj = null;
-		try {
-			maskDatumRodj = new MaskFormatter("####.##.##");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu rodjenja", "Greska", JOptionPane.ERROR_MESSAGE);
-		}
-		maskDatumRodj.setPlaceholderCharacter('_');
-		maskDatumRodj.setValidCharacters("0123456789");
-		JFormattedTextField txtDatumRodjenja = new JFormattedTextField(maskDatumRodj);
+		JTextField txtDatumRodjenja = new JTextField();
 		txtDatumRodjenja.setPreferredSize(dim);
 		panDatumRodj.add(lblDAtumRodj);
 		panDatumRodj.add(txtDatumRodjenja);
@@ -172,18 +163,7 @@ public class DodajStudentaDialog extends JDialog {
 		JPanel panDatumUpiusa = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblpanDatumUpiusa = new JLabel("Datum upisa* ");
 		lblpanDatumUpiusa.setPreferredSize(dim);
-		// JTextField txtPanDatumUpiusa = new JTextField();
-		MaskFormatter maskDatumUpisa = null;
-		try {
-			maskDatumUpisa = new MaskFormatter("####.##.##");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu upisa", "Greska", JOptionPane.ERROR_MESSAGE);
-		}
-		
-		maskDatumUpisa.setPlaceholderCharacter('_'); 
-		maskDatumUpisa.setValidCharacters("0123456789"); 
-
-		JFormattedTextField txtPanDatumUpiusa = new JFormattedTextField(maskDatumUpisa);
+		JTextField txtPanDatumUpiusa = new JTextField();
 		txtPanDatumUpiusa.setPreferredSize(dim);
 		panDatumUpiusa.add(lblpanDatumUpiusa);
 		panDatumUpiusa.add(txtPanDatumUpiusa);
@@ -272,7 +252,20 @@ public class DodajStudentaDialog extends JDialog {
 				String emailValue = txtPanEmail.getText();
 				
 				
-		
+				if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
+			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum upisa( Ispravan format datuma upisa je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
 				
 				
 				
