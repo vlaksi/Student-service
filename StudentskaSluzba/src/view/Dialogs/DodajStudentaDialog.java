@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -40,7 +42,17 @@ import view.Tabovi;
 public class DodajStudentaDialog extends JDialog {
 
 	private static final long serialVersionUID = -3924920391540440967L;
+	
+	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
+		    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+	public static boolean validate(String emailStr) {
+		        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+		        return matcher.find();
+		}
+		
+		
+		
 	public DodajStudentaDialog() {
 		super();
 
@@ -179,15 +191,7 @@ public class DodajStudentaDialog extends JDialog {
 		JPanel panEmail = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblpanEmail = new JLabel("Email* ");
 		lblpanEmail.setPreferredSize(dim);
-		// JTextField txtPanEmail = new JTextField();
-		MaskFormatter maskEmail = null;
-		try {
-			maskEmail = new MaskFormatter("*****@******");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u mailu", "Greska", JOptionPane.ERROR_MESSAGE);
-		}
-		maskEmail.setPlaceholderCharacter('_');
-		JFormattedTextField txtPanEmail = new JFormattedTextField(maskEmail);
+		JTextField txtPanEmail = new JTextField();
 		txtPanEmail.setPreferredSize(dim);
 		panEmail.add(lblpanEmail);
 		panEmail.add(txtPanEmail);
@@ -240,6 +244,8 @@ public class DodajStudentaDialog extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
+		
+	
 
 		btnCancel.addActionListener(new ActionListener() {
 
@@ -262,7 +268,22 @@ public class DodajStudentaDialog extends JDialog {
 				String brojtelefonaFieldValue = txtBrojTelefona.getText();
 				String godinaStudijaValue = godineComboBox.getSelectedItem().toString();
 				Double prosecnaOcenaValue = null;
-
+				String datumUpisaValue = txtPanDatumUpiusa.getText();
+				String emailValue = txtPanEmail.getText();
+				
+				
+		
+				
+				
+				
+				if(validate(emailValue)) {
+					System.out.println("Validan email");
+				}else {
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Uneli ste pogresnu vrednost za e-mail(Ispravan primer maila je foobar@gmail.com)",
+							"Greska", JOptionPane.ERROR_MESSAGE);
+				}
+				
 				if (!txtProsecnaOcena.getText().equals("")) {
 					try {
 						prosecnaOcenaValue = Double.parseDouble(txtProsecnaOcena.getText());
@@ -283,8 +304,6 @@ public class DodajStudentaDialog extends JDialog {
 					return;
 				}
 
-				String datumUpisaValue = txtPanDatumUpiusa.getText();
-				String emailValue = txtPanEmail.getText();
 
 				budzetButton.setActionCommand(budzetButton.getText());// Ove metode su nam potrebne da bi radio button
 																		// prikupio informacije
