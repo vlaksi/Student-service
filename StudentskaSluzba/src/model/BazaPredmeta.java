@@ -42,9 +42,9 @@ public class BazaPredmeta {
 
 		List<Predmet> predmetii = SerijalizacijaPredmeta.getInstance().deserijalizacijaObjekta();
 
-		
-		 for(Predmet predmet : predmetii) { predmeti.add(predmet); } 
-		 
+		 for(Predmet predmet : predmetii) {
+			 predmeti.add(predmet);
+		 } 
 
 	}
 

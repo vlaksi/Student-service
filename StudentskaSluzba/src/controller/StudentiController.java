@@ -73,6 +73,13 @@ public class StudentiController {
 	 */
 	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
 		BazaStudent.getInstance().addStudentNaPredmet(student, predmet);
+			for(Student studentZaSerijalizaciju: listaStudenataZaSerijalizaciju) {
+				if(student.equals(student)) {
+					System.out.println("PREDMET dodaat U studenta");
+					studentZaSerijalizaciju.getPredmeti().add(predmet);
+					return;
+				}
+			}
 	}
 
 	public List<Student> getStudenti() {
