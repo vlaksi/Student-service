@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.List;
+
 import model.BazaProfesor;
+import model.Predmet;
 import model.Profesor;
 
 /**
@@ -32,5 +35,19 @@ public class ProfesoriController {
 
 	public Profesor getListaProfesora(int selectedRowIndex) {
 		return BazaProfesor.getInstance().getProfesori().get(selectedRowIndex);
+	}
+	
+	public List<Profesor> getListaSvihProfesora(){
+		return BazaProfesor.getInstance().getProfesori();
+	}
+	
+	
+	public void dodajPredmetProfesoru(Profesor profesor,Predmet predmet) {
+		BazaProfesor.getInstance().dodajPredmetProfesoru(profesor,predmet);
+	}
+	
+	// metoda koja brise taj predmet iz liste predmeta tog profesora
+	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
+		BazaProfesor.getInstance().izbrisiPredmetProfesora(profesor,predmet);
 	}
 }

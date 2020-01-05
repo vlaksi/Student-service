@@ -193,19 +193,7 @@ public class BazaStudent {
 	 * 
 	 */
 	public void izbrisiPredmetProsledjenomStudentu(Student student, Predmet predmet) {
-		System.out.println("\t\tIZBRISI PREDMET PROSLEDJENOM STUDENTU");
-		System.out.println("Studentu: " + student.getBrIndexa());
-		System.out.println("Brisem predmet: " + predmet.getNazivPredmeta());
-		System.out.println("Student je imao predmete: ");
-		for (int i = 0; i < student.getPredmeti().size(); i++) {
-			System.out.println(student.getPredmeti().get(i).getNazivPredmeta());
-		}
 		student.getPredmeti().remove(predmet);
-		System.out.println("Student sada ima predmete: ");
-		for (int i = 0; i < student.getPredmeti().size(); i++) {
-			System.out.println(student.getPredmeti().get(i).getNazivPredmeta());
-		}
-		System.out.println("\n\n");
 	}
 
 	public void addStudentNaPredmet(Student student, Predmet predmet) {

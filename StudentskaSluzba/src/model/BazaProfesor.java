@@ -15,7 +15,7 @@ public class BazaProfesor {
 	private static BazaProfesor instance = null;
 	private List<Profesor> profesori;
 	private List<String> kolone;
-	
+
 	public static BazaProfesor getInstance() {
 		if (instance == null) {
 			instance = new BazaProfesor();
@@ -53,9 +53,17 @@ public class BazaProfesor {
 	 */
 	private void initProfesore() {
 		this.profesori = new ArrayList<Profesor>();
-		profesori.add(new Profesor("Valentin", "Djimic","1975.03.09","Pupinova 10","06625222","valedimi@gmail.com", "Gogoljeva 3", "395189","Dr.","Dipl.ing.el"));
-		profesori.add(new Profesor("Goja", "Malinovski","1970.12.09","Pupinova 13","06135222", "gojafudbal@gmail.com", "Pupinova 21", "042289","Dr.","Dipl.ing.el"));
-		profesori.add(new Profesor("Ivana", "Kolutoski","1990.11.04","Pupinova 1","06435200", "ikans@gmail.com", "Jovina 5", "015389","Dr.","Dipl.ing.el"));
+		
+		List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+		List<Predmet> listaPredmeta1 = new ArrayList<Predmet>();
+		List<Predmet> listaPredmeta2 = new ArrayList<Predmet>();
+		
+		profesori.add(new Profesor("Valentin", "Djimic", "1975.03.09", "Pupinova 10", "06625222", "valedimi@gmail.com",
+				"Gogoljeva 3", "395189", "Dr.", "Dipl.ing.el",listaPredmeta));
+		profesori.add(new Profesor("Goja", "Malinovski", "1970.12.09", "Pupinova 13", "06135222",
+				"gojafudbal@gmail.com", "Pupinova 21", "042289", "Dr.", "Dipl.ing.el",listaPredmeta1));
+		profesori.add(new Profesor("Ivana", "Kolutoski", "1990.11.04", "Pupinova 1", "06435200", "ikans@gmail.com",
+				"Jovina 5", "015389", "Dr.", "Dipl.ing.el",listaPredmeta2));
 
 	}
 
@@ -112,6 +120,15 @@ public class BazaProfesor {
 			return profesor.getTitula();
 		case 9:
 			return profesor.getZvanje();
+		case 10:
+			List<Predmet> listaPredmeta = profesor.getPredmeti();
+			String listaPredmetaString = "";
+			
+			for (Predmet predmet : listaPredmeta) {
+				listaPredmetaString += predmet.nazivPredmeta;
+				listaPredmetaString += "\n";
+			}
+			return listaPredmetaString;
 		default:
 			return null;
 
@@ -126,16 +143,17 @@ public class BazaProfesor {
 	 * @param email
 	 * @param adresaKancelarije
 	 * @param brojLicneKarte
-	 * @param zvanjeFiledValue 
-	 * @param titulaFieldValue 
-	 * @param brojLicneKarteFieldValue 
-	 * @param adresaKancelarijeFieldValue 
-	 * @param emailValue 
+	 * @param zvanjeFiledValue
+	 * @param titulaFieldValue
+	 * @param brojLicneKarteFieldValue
+	 * @param adresaKancelarijeFieldValue
+	 * @param emailValue
 	 */
 	public void dodajProfesora(String ime, String prezime, String email, String adresaKancelarije,
-			String brojLicneKarte, String emailValue, String adresaKancelarijeFieldValue, String brojLicneKarteFieldValue, String titulaFieldValue, String zvanjeFiledValue) {
-		this.profesori.add(new Profesor(ime, prezime, email, adresaKancelarije, brojLicneKarte, emailValue, 
-										adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue));
+			String brojLicneKarte, String emailValue, String adresaKancelarijeFieldValue,
+			String brojLicneKarteFieldValue, String titulaFieldValue, String zvanjeFiledValue) {
+		this.profesori.add(new Profesor(ime, prezime, email, adresaKancelarije, brojLicneKarte, emailValue,
+				adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue));
 	}
 
 	/**
@@ -173,6 +191,26 @@ public class BazaProfesor {
 				profesor.setBrojLicneKarte(brojLicneKarte);
 			}
 		}
+	}
+
+	/**
+	 * Metoda koja prosledjenom profesoru, dodaje prosledjeni predmet.
+	 * 
+	 * @param profesor
+	 * @param predmet
+	 */
+	public void dodajPredmetProfesoru(Profesor profesor, Predmet predmet) {
+		profesor.getPredmeti().add(predmet);
+	}
+
+	/**
+	 * Metoda koja brise predmet prosledjenom profesoru.
+	 * @param profesor
+	 * @param predmet
+	 */
+	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
+		profesor.getPredmeti().remove(predmet);
+		
 	}
 
 }

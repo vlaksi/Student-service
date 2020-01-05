@@ -37,7 +37,8 @@ public class IzmenaPredmetaDialog extends JDialog {
 		setTitle("Izmena predmeta");
 		setSize(500, 500);
 		setLocationRelativeTo(null);
-
+		this.setModal(true);
+		
 		/*
 		 * Koristimo centralni da bi isli od gore prema dole kad dodajemo neke
 		 * komponente.A na njega cemo posle lepiti male panele, gde svaki panel

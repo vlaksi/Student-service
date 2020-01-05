@@ -1,18 +1,26 @@
 package view.Dialogs;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 /**
- * Klasa koja sluzi za Prikaz dialoga koji iskace kada Brisemo studente na
- * predmetu
+ * Klasa koja sluzi za prikaz dijaloga koji iskace kada zelimi prikazati listu
+ * predmeta odredjenog profesora.
  * 
- * @author Pufke
+ * @author Vaxi
  *
  */
-public class ListDialog {
+public class ListDialog3 {
 	private JList<?> list;
 	private JLabel label;
 	private JOptionPane optionPane;
@@ -20,23 +28,23 @@ public class ListDialog {
 	private ActionListener okEvent, cancelEvent;
 	private JDialog dialog;
 
-	public ListDialog(String message, JList<?> listToDisplay) {
-		list = listToDisplay;
-		label = new JLabel(message);
-		createAndDisplayOptionPane();
-	}
+	public ListDialog3(String message, JList<?> listToDisplay){
+	        list = listToDisplay;
+	        label = new JLabel(message);
+	        createAndDisplayOptionPane();
+	    }
 
-	public ListDialog(String title, String message, JList<?> listToDisplay) {
-		this(message, listToDisplay);
-		dialog.setTitle(title);
-	}
+	public ListDialog3(String title, String message, JList<?> listToDisplay){
+	        this(message, listToDisplay);
+	        dialog.setTitle(title);
+	    }
 
 	private void createAndDisplayOptionPane() {
 		setupButtons();
 		JPanel pane = layoutComponents();
 		optionPane = new JOptionPane(pane);
 		optionPane.setOptions(new Object[] { okButton, cancelButton });
-		dialog = optionPane.createDialog("Spisak studenata");
+		dialog = optionPane.createDialog("Spisak predmeta");
 	}
 
 	private void setupButtons() {
