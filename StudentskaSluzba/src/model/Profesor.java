@@ -23,34 +23,9 @@ public class Profesor implements Serializable{
 	private String titula;
 	private String zvanje;
 	private List<Predmet> predmeti;
+
 	public Profesor() {
 	}
-
-	public Profesor(String ime, String prezime,String email, String adresaKancelarije, String brojLicneKarte) {
-		super();
-		this.ime = ime;
-		this.prezime = prezime;
-		this.email = email;
-		this.adresaKancelarije = adresaKancelarije;
-		this.brojLicneKarte = brojLicneKarte;
-	}
-	
-	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
-			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje) {
-		super();
-		this.ime = ime;
-		this.prezime = prezime;
-		this.datumRodjenja = datumRodjenja;
-		this.adresaStanovanja = adresaStanovanja;
-		this.telefon = telefon;
-		this.email = email;
-		this.adresaKancelarije = adresaKancelarije;
-		this.brojLicneKarte = brojLicneKarte;
-		this.titula = titula;
-		this.zvanje = zvanje;
-	}
-	
-	
 
 	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
 			String email, String adresaKancelarije, String brojLicneKarte, String titula, String zvanje,

@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -16,8 +18,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import model.BazaPredmeta;
+import controller.PredmetiController;
+import model.Predmet;
 import model.Profesor;
+import model.Student;
 import view.Tabovi;
 
 /**
@@ -154,10 +158,11 @@ public class DodajPredmetDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
+					List<Student> listaStudenata = new ArrayList<Student>();
 					Profesor profa = new Profesor();
 					profa.setPrezime("Nema");profa.setBrojLicneKarte(" profesora");
-					BazaPredmeta.getInstance().dodajPredmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
-							godinaStudijaFieldValue,profa);
+					PredmetiController.getInstance().dodavanjePredmeta(new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
+							godinaStudijaFieldValue,profa, listaStudenata));
 				}
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 				dispose();

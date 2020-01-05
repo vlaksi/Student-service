@@ -33,22 +33,6 @@ public class Student implements Serializable{
 	}
 
 	public Student(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
-			String email, String brIndexa, String datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta) {
-		super();
-		this.ime = ime;
-		this.prezime = prezime;
-		this.datumRodjenja = datumRodjenja;
-		this.adresaStanovanja = adresaStanovanja;
-		this.telefon = telefon;
-		this.email = email;
-		this.brIndexa = brIndexa;
-		this.datumUpisa = datumUpisa;
-		this.godinaStudija = godinaStudija;
-		this.prosecnaOcena = prosecnaOcena;
-		this.setStatusStudenta(statusStudenta);
-	}
-	
-	public Student(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String telefon,
 			String email, String brIndexa, String datumUpisa, String godinaStudija, Double prosecnaOcena, Status statusStudenta, List<Predmet> predmeti) {
 		super();
 		this.ime = ime;

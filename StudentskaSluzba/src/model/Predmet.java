@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,27 +39,6 @@ public class Predmet implements Serializable {
 		this.listaStudenata = listaStudenata;
 	}
 
-
-
-	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
-			Profesor predmetniProfesor) {
-		super();
-		this.listaStudenata = new ArrayList<Student>();
-		this.sifraPredmeta = sifraPredmeta;
-		this.nazivPredmeta = nazivPredmeta;
-		this.semestar = semestar;
-		this.godinaStudija = godinaStudija;
-		this.predmetniProfesor = predmetniProfesor;
-	}
-	
-
-	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija) {
-		super();
-		this.sifraPredmeta = sifraPredmeta;
-		this.nazivPredmeta = nazivPredmeta;
-		this.semestar = semestar;
-		this.godinaStudija = godinaStudija;
-	}
 
 	public String getSifraPredmeta() {
 		return sifraPredmeta;

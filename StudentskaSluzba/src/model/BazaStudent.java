@@ -43,10 +43,9 @@ public class BazaStudent {
 
 		List<Student> studentii = SerijalizacijaStudenta.getInstance().deserijalizacijaObjekta();
 
-		for (Student student : studentii) {
-			studenti.add(student);
-		}
-
+		
+		  for (Student student : studentii) { studenti.add(student); }
+		 
 	}
 
 	public List<Student> getStudenti() {

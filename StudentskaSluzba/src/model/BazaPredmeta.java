@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.SerijalizacijaPredmeta;
+
 /**
  * Klasa u kojoj cuvamo podatke o predmetima.
  * 
@@ -38,26 +40,11 @@ public class BazaPredmeta {
 	private void initPredmeta() {
 		this.predmeti = new ArrayList<Predmet>();
 
-		// List<Profesor> listaProfesora =
-		// BazaProfesor.getInstance().getProfesori();//TODO izmeniti kao i za bazu
-		// studenata da lepo uzmemo, a ne DIRKETNO OVE!
-		Profesor profa = new Profesor();
-		profa.setPrezime("nema");
-		profa.setBrojLicneKarte(" profesora");
-		Profesor profa1 = new Profesor();
-		profa1.setPrezime("nema");
-		profa1.setBrojLicneKarte(" profesora");
-		Profesor profa2 = new Profesor();
-		profa2.setPrezime("nema");
-		profa2.setBrojLicneKarte(" profesora");
+		List<Predmet> predmetii = SerijalizacijaPredmeta.getInstance().deserijalizacijaObjekta();
 
-		List<Student> listaStudenata1 = new ArrayList<Student>();
-		List<Student> listaStudenata2 = new ArrayList<Student>();
-		List<Student> listaStudenata3 = new ArrayList<Student>();
-
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa, listaStudenata1));
-		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1, listaStudenata2));
-		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2, listaStudenata3));
+		
+		 for(Predmet predmet : predmetii) { predmeti.add(predmet); } 
+		 
 
 	}
 
@@ -133,8 +120,8 @@ public class BazaPredmeta {
 	}
 
 	public void dodajPredmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
-			Profesor profa) {
-		this.predmeti.add(new Predmet(sifraPredmeta, nazivPredmeta, semestar, godinaStudija, profa));
+			Profesor profa, List<Student> listaStudenata) {
+		this.predmeti.add(new Predmet(sifraPredmeta, nazivPredmeta, semestar, godinaStudija, profa, listaStudenata));
 	}
 
 	/**
@@ -208,7 +195,9 @@ public class BazaPredmeta {
 	 * @param predmet
 	 */
 	public void izbrisiProfesoraSaPredmeta(Profesor profesor, Predmet predmet) {
-		Profesor profa = new Profesor();profa.setPrezime("nema");profa.setBrojLicneKarte(" profesora");
+		Profesor profa = new Profesor();
+		profa.setPrezime("nema");
+		profa.setBrojLicneKarte(" profesora");
 		predmet.setPredmetniProfesor(profa);
 	}
 
