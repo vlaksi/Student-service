@@ -90,6 +90,12 @@ public class PredmetiController {
 	//Metoda koja dodaje studenta na predmet
 	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
 		BazaPredmeta.getInstance().dodajStudentaNaPredmet(student,predmet);
+		for(Predmet predmetZaSerijalizaciju : listaPredmetaZaSerijalizaciju) {
+			if(predmetZaSerijalizaciju.equals(predmet)) {
+				System.out.println("doddddaaaaaaaaaat");
+				predmetZaSerijalizaciju.getListaStudenata().add(student);
+			}
+		}
 	}
 	
 	/* Metoda koja dodaje profesora na predmet */
