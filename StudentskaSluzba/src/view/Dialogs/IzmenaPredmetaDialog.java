@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.PredmetiController;
-import model.BazaPredmeta;
 import model.Predmet;
 import model.Student;
 import view.ATMPredmeti;

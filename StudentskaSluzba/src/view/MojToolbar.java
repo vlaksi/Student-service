@@ -24,6 +24,8 @@ import view.Dialogs.DodavanjeProfesoraDIalog;
 import view.Dialogs.IzmenaPredmetaDialog;
 import view.Dialogs.IzmenaProfesoraDialog;
 import view.Dialogs.IzmenaStudentaDialog;
+import view.Dialogs.PotvrdaBrisanjaDialog;
+
 
 /**
  * Klasa koja sluzi za implementaciju toolbara-a u glavnom prozoru.
@@ -116,7 +118,7 @@ public class MojToolbar extends JToolBar {
 						IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog();
 						dialog.setVisible(true);
 					}
-					
+
 				}
 
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
@@ -128,7 +130,7 @@ public class MojToolbar extends JToolBar {
 						IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog();
 						dialog.setVisible(true);
 					}
-					
+
 				}
 			}
 
@@ -150,43 +152,8 @@ public class MojToolbar extends JToolBar {
 				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrise
 				 * odredjeni red
 				 */
-				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
-					int i = ATMStudenti.getSelectedRowIndex();
-					if (StudentiController.getInstance().getListaSvihStudenata().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
-								"Greska", JOptionPane.ERROR_MESSAGE);
-						return;
-					} else {
-						StudentiController.getInstance().izbrisiStudenta(i);
-						Tabovi.getModelStudenti().fireTableDataChanged();
-					}
-
-				}
-				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
-					int i = ATMProfesori.getSelectedRowIndex();
-					if (ProfesoriController.getInstance().getListaSvihProfesora().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
-								"Greska", JOptionPane.ERROR_MESSAGE);
-						return;
-					} else {
-						ProfesoriController.getInstance().izbrisiProfesora(i);
-						Tabovi.getModelProfesori().fireTableDataChanged();
-					}
-
-				}
-				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
-					int i = ATMPredmeti.getSelectedRowIndex();
-
-					if (PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
-						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
-								"Greska", JOptionPane.ERROR_MESSAGE);
-						return;
-					} else {
-						PredmetiController.getInstance().izbrisiPredmet(i);
-						Tabovi.getModelPredmeti().fireTableDataChanged();
-					}
-
-				}
+				PotvrdaBrisanjaDialog dialog = new PotvrdaBrisanjaDialog();
+				dialog.setVisible(true);
 
 			}
 		});
