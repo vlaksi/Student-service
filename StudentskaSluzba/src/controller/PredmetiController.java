@@ -18,7 +18,9 @@ import model.Student;
 public class PredmetiController {
 
 	private static PredmetiController instance = null;
-
+	//List<Predmet> listaPredmetaZaSerijalizaciju = new ArrayList<Predmet>();
+	List<Predmet> listaPredmetaZaSerijalizaciju = SerijalizacijaPredmeta.getInstance().deserijalizacijaObjekta();
+	
 	public static PredmetiController getInstance() {
 		if (instance == null) {
 			instance = new PredmetiController();
@@ -36,7 +38,9 @@ public class PredmetiController {
 	 */
 	public void dodavanjePredmeta(Predmet predmet) {
 		BazaPredmeta.getInstance().dodajPredmet(predmet.getSifraPredmeta(), predmet.getNazivPredmeta(),
-				predmet.getSemestar(), predmet.getGodinaStudija(), predmet.getPredmetniProfesor());
+				predmet.getSemestar(), predmet.getGodinaStudija(), predmet.getPredmetniProfesor(), predmet.getListaStudenata());
+		//Dodajemo predmeta u listu za serijalizaciju
+		listaPredmetaZaSerijalizaciju.add(predmet);
 	}
 	
 	/**
@@ -104,12 +108,21 @@ public class PredmetiController {
 
 	public List<Predmet> getListaSvihPredmeta() {
 		return BazaPredmeta.getInstance().getPredmeti();
-		
+	}
+	
+	//Metoda koja brise predmet za prosledjeni index reda
+	public void izbrisiPredmet(int selectedRowIndex) {
+		BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
+		listaPredmetaZaSerijalizaciju.remove(selectedRowIndex);
 	}
 
-	public void izbrisiPredmet(int i) {
-		BazaPredmeta.getInstance().getPredmeti().remove(i);
-		
+	public List<Predmet> getListaPredmetaZaSerijalizaciju() {
+		return listaPredmetaZaSerijalizaciju;
+	}
+
+	public void setListaPredmetaZaSerijalizaciju(List<Predmet> listaPredmetaZaSerijalizaciju) {
+		this.listaPredmetaZaSerijalizaciju = listaPredmetaZaSerijalizaciju;
+
 	}
 	
 	

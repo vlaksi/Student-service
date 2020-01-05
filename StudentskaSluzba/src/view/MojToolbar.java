@@ -176,6 +176,7 @@ public class MojToolbar extends JToolBar {
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
 					int i = ATMPredmeti.getSelectedRowIndex();
+
 					if (PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
 								"Greska", JOptionPane.ERROR_MESSAGE);

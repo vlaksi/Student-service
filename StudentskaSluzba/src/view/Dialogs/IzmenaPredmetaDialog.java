@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,6 +21,7 @@ import javax.swing.JTextField;
 import controller.PredmetiController;
 import model.BazaPredmeta;
 import model.Predmet;
+import model.Student;
 import view.ATMPredmeti;
 import view.Tabovi;
 
@@ -160,15 +163,16 @@ public class IzmenaPredmetaDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {		
+					List<Student> listaStudenata = new ArrayList<Student>();
 					Predmet predmet = new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
 							godinaStudijaFieldValue, PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex())
-							.getPredmetniProfesor());
+							.getPredmetniProfesor(), listaStudenata);
 					PredmetiController.getInstance().dodavanjePredmeta(predmet);
 				}
 
 				// Ako su prosle sve izmene onda izbrisemo tu koju smo izmenili
-				int i = ATMPredmeti.getSelectedRowIndex();
-				BazaPredmeta.getInstance().getPredmeti().remove(i);// TODO prebaciti u kontroler
+				
+				PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 
 			}

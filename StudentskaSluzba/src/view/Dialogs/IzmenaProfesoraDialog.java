@@ -21,13 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import controller.ProfesoriController;
-import controller.StudentiController;
-import model.BazaProfesor;
 import model.Predmet;
 import model.Profesor;
 import view.ATMProfesori;
-import view.ATMStudenti;
-import view.GlavniProzor;
 import view.Tabovi;
 
 /**
