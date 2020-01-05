@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
+import controller.Serijalizacija;
+import controller.StudentiController;
+
 /**
  * Klasa koja implementira WindowListener.
  * 
@@ -23,6 +26,9 @@ public class MyWindowListener implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
+		//Upisivanje u fajl tj serijalizacija pri zatvaranju prozora
+		Serijalizacija.getInstance().serijalizacijaObjekta(StudentiController.getInstance().getListaStudenataZaSerijalizaciju());
+				
 		JFrame frame = (JFrame) e.getComponent();
 		int code = JOptionPane.showConfirmDialog(frame, "Da li ste sigurni da želite da zatvorite aplikaciju?",
 				"Zatvaranje aplikacije?", JOptionPane.YES_NO_OPTION);
@@ -31,6 +37,9 @@ public class MyWindowListener implements WindowListener {
 		} else {
 			frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		}
+		
+		
+		
 	}
 
 	@Override

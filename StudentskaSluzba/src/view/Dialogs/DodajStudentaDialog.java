@@ -24,8 +24,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import controller.Serijalizacija;
+import controller.StudentiController;
 import model.BazaStudent;
 import model.Predmet;
+import model.Student;
 import model.Student.Status;
 import view.Tabovi;
 
@@ -312,10 +315,12 @@ public class DodajStudentaDialog extends JDialog {
 					return;
 				} else {
 					List<Predmet> listaPredmeta = new ArrayList<Predmet>();
-					BazaStudent.getInstance().dodajStudentaString(imeFieldValue, prezimeFieldValue,
+					Student student = new Student(imeFieldValue, prezimeFieldValue,
 							datumRodjenjaFieldValue, adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
 							brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue,
 							budzetIliSamofinansiranje, listaPredmeta);
+					StudentiController.getInstance().dodajStudenta(student);
+					
 				}
 
 				Tabovi.getModelStudenti().fireTableDataChanged();

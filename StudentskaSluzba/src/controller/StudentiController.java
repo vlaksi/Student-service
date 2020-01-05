@@ -2,11 +2,13 @@ package controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.BazaStudent;
 import model.Predmet;
 import model.Student;
+
 
 /**
  * Klasa koja rukuje reakcijama na dogadjaje entiteta/modela: Student.
@@ -14,15 +16,19 @@ import model.Student;
  * @author Vaxi i Pufke
  *
  */
-public class StudentiController {
-	private static StudentiController instance = null;
 
+public class StudentiController {
 	public static StudentiController getInstance() {
 		if (instance == null) {
 			instance = new StudentiController();
 		}
 		return instance;
 	}
+	
+
+	private static StudentiController instance = null;
+	List<Student> listaStudenataZaSerijalizaciju = Serijalizacija.getInstance().deserijalizacijaObjekta();//Lista studenata za serijalizaciju
+	
 
 	private StudentiController() {
 			
@@ -73,4 +79,29 @@ public class StudentiController {
 	public List<Student> getStudenti() {
 		return BazaStudent.getInstance().getStudenti();
 	}
+	
+	/**
+	 * Metoda koja za prosledjenog studenta dodaje studenta
+	 * 
+	 * @param entitet studenta 
+	 */
+	public void dodajStudenta(Student student) {
+		BazaStudent.getInstance().dodajStudentaString(student.getIme(), student.getPrezime(), student.getDatumRodjenja(), student.getAdresaStanovanja(), student.getTelefon(), 
+				student.getEmail(), student.getBrIndexa(), student.getDatumUpisa(), student.getGodinaStudija(), student.getProsecnaOcena(),
+				student.getStatusStudenta(), student.getPredmeti());
+		//Dodajemo studenta u listu za serijalizaciju
+		listaStudenataZaSerijalizaciju.add(student);
+
+	}
+
+	public List<Student> getListaStudenataZaSerijalizaciju() {
+		return listaStudenataZaSerijalizaciju;
+	}
+
+	public void setListaStudenataZaSerijalizaciju(List<Student> listaStudenataZaSerijalizaciju) {
+		this.listaStudenataZaSerijalizaciju = listaStudenataZaSerijalizaciju;
+	}
+	
+	
+	
 }

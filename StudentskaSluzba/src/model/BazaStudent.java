@@ -1,8 +1,11 @@
 package model;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.Serijalizacija;
 import model.Student.Status;
 
 public class BazaStudent {
@@ -40,18 +43,28 @@ public class BazaStudent {
 	private void initStudent() {
 		this.studenti = new ArrayList<Student>();
 
-		//List<Predmet> listaPredmeta = BazaPredmeta.getInstance().getPredmeti();
+		// List<Predmet> listaPredmeta = BazaPredmeta.getInstance().getPredmeti();
 		List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 		List<Predmet> listaPredmeta1 = new ArrayList<Predmet>();
 		List<Predmet> listaPredmeta2 = new ArrayList<Predmet>();
-		//listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(0));listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(1));
-		
+		// listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(0));listaPredmeta.add(BazaPredmeta.getInstance().getPredmeti().get(1));
+
 		studenti.add(new Student("Marko", "Markovic", "1998.01.01", "Nikinacka 81", "06030012", "marem@gmail.com",
 				"RA1-2017", "2017.02.07", "2", 9.50, Status.B, listaPredmeta));
 		studenti.add(new Student("Nikola", "Nikolic", "1998.11.09", "Topolosk 18", "06130012", "dzonisetac@gmail.com",
 				"RA2-2017", "2017.02.07", "1", 9.61, Status.B, listaPredmeta1));
 		studenti.add(new Student("Pero", "Meric", "1998.08.01.", "Sremska 1", "06430012", "marope@gmail.com",
 				"RA3-2017", "2017.02.07", "3", 8.50, Status.B, listaPredmeta2));
+
+		
+		
+		  List<Student> studentii
+		  =Serijalizacija.getInstance().deserijalizacijaObjekta();
+		  
+		  
+		  for(Student student:studentii) { studenti.add(student); }
+		 
+		 
 
 	}
 
@@ -122,7 +135,7 @@ public class BazaStudent {
 		case 11:
 			List<Predmet> listaPredmeta = student.getPredmeti();
 			String listaPredmetaString = "";
-			
+
 			for (Predmet predmet : listaPredmeta) {
 				listaPredmetaString += predmet.nazivPredmeta;
 				listaPredmetaString += "\n";
@@ -139,11 +152,11 @@ public class BazaStudent {
 	 * 
 	 * @param ime
 	 * @param prezime
-	 * @param listaPredmeta 
+	 * @param listaPredmeta
 	 * @param brindexa
-	 * @param godina   studija
-	 * @param status   studenta
-	 * @param prosecna ocena
+	 * @param godina        studija
+	 * @param status        studenta
+	 * @param prosecna      ocena
 	 */
 	public void dodajStudentaString(String ime, String prezime, String datumRodjenja, String adresaStanovanja,
 			String telefon, String email, String brIndexa, String datumUpisa, String godinaStudija,
@@ -190,24 +203,25 @@ public class BazaStudent {
 			}
 		}
 	}
-	
+
 	/**
-	 * Metoda koja za prosledjeni predmet, taj predmet brise studentu iz liste studenata.
+	 * Metoda koja za prosledjeni predmet, taj predmet brise studentu iz liste
+	 * studenata.
 	 * 
 	 * @param entitet studenta i premdet
-
+	 * 
 	 */
 	public void izbrisiPredmetProsledjenomStudentu(Student student, Predmet predmet) {
 		System.out.println("\t\tIZBRISI PREDMET PROSLEDJENOM STUDENTU");
 		System.out.println("Studentu: " + student.getBrIndexa());
 		System.out.println("Brisem predmet: " + predmet.getNazivPredmeta());
 		System.out.println("Student je imao predmete: ");
-		for(int i=0;i<student.getPredmeti().size();i++) {
+		for (int i = 0; i < student.getPredmeti().size(); i++) {
 			System.out.println(student.getPredmeti().get(i).getNazivPredmeta());
 		}
 		student.getPredmeti().remove(predmet);
 		System.out.println("Student sada ima predmete: ");
-		for(int i=0;i<student.getPredmeti().size();i++) {
+		for (int i = 0; i < student.getPredmeti().size(); i++) {
 			System.out.println(student.getPredmeti().get(i).getNazivPredmeta());
 		}
 		System.out.println("\n\n");
@@ -215,7 +229,7 @@ public class BazaStudent {
 
 	public void addStudentNaPredmet(Student student, Predmet predmet) {
 		student.getPredmeti().add(predmet);
-		
+
 	}
 
 }

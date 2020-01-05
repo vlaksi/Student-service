@@ -1,11 +1,20 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Student {
-//TODO	proveriti enumeraciju imao sam problema oko toga
+public class Student implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4899548870833415227L;
+/**
+	 * 
+	 */
+
+	//TODO	proveriti enumeraciju imao sam problema oko toga
 	private String ime;
 	private String prezime;
 	private String datumRodjenja; //TODO prebaciti u date kasnije i to ishendlovati

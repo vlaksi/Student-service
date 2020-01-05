@@ -1,6 +1,7 @@
 package main;
 
 import controller.GlavniController;
+
 import model.BazaPredmeta;
 import model.BazaProfesor;
 import view.GlavniProzor;
@@ -14,13 +15,14 @@ import model.BazaStudent;
  */
 public class MainApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		BazaProfesor.getInstance();
 		BazaPredmeta.getInstance();
 		BazaStudent.getInstance();
 		GlavniController.getInstance();
 		GlavniProzor.getInstance();
 
+	
 	}
 
 }
