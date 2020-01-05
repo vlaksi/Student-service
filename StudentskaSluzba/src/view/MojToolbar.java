@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import controller.StudentiController;
 import model.BazaPredmeta;
 import model.BazaProfesor;
-import model.BazaStudent;
 import view.Dialogs.DodajPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.DodajStudentaNaPredmetDialog;
@@ -130,9 +130,7 @@ public class MojToolbar extends JToolBar {
 				 */
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 					int i = ATMStudenti.getSelectedRowIndex();
-					// System.out.println(i);
-					BazaStudent.getInstance().getStudenti().remove(i);// TODO uraditi preko kontrolera
-					Tabovi.getModelStudenti().fireTableDataChanged();
+					StudentiController.getInstance().izbrisiStudenta(i);
 
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {

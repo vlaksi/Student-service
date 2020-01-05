@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.ModuleLayer.Controller;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import javax.swing.text.MaskFormatter;
 import controller.StudentiController;
 import model.BazaStudent;
 import model.Predmet;
+import model.Student;
 import model.Student.Status;
 import view.ATMStudenti;
 import view.GlavniProzor;
@@ -308,20 +310,13 @@ public class IzmenaStudentaDialog  extends JDialog {
 			    	  JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja" , "Greska" , JOptionPane.ERROR_MESSAGE);
 			    	  return;
 			      }else {
-			    	  List<Predmet> listaPredmeta = new ArrayList<Predmet>();
-			    	  BazaStudent.getInstance().dodajStudentaString(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue, adresaStanovanjaFieldValue, 
-			    			  brojtelefonaFieldValue, emailValue, brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue, budzetIliSamofinansiranje, listaPredmeta);
+					  List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+			    	  StudentiController.getInstance().dodajStudenta(new Student(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue, adresaStanovanjaFieldValue, 
+			    			  brojtelefonaFieldValue, emailValue, brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue, budzetIliSamofinansiranje, listaPredmeta));
 			      }
-			      
-			      Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
-			      Integer height  = (int) GlavniProzor.getInstance().getSize().getHeight();
-			      
-			      GlavniProzor.getInstance().setSize(width,height+1);
 			
 			    //Ako su prosle sve izmene onda izbrisemo
-			      int i = ATMStudenti.getSelectedRowIndex();
-			      System.out.println(i);
-			      BazaStudent.getInstance().getStudenti().remove(i);
+			      StudentiController.getInstance().izbrisiStudenta(ATMStudenti.getSelectedRowIndex());
 			      Tabovi.getModelStudenti().fireTableDataChanged();
 			      
 			   

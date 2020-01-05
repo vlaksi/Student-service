@@ -8,6 +8,7 @@ import java.util.List;
 import model.BazaStudent;
 import model.Predmet;
 import model.Student;
+import view.Tabovi;
 
 
 /**
@@ -102,6 +103,17 @@ public class StudentiController {
 		this.listaStudenataZaSerijalizaciju = listaStudenataZaSerijalizaciju;
 	}
 	
+	/*
+	 * *Metoda koja u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrise odredjeni
+	 * red
+	 */
+	
+	public void izbrisiStudenta(int rowIndex) {
+		BazaStudent.getInstance().getStudenti().remove(rowIndex);
+		Tabovi.getModelStudenti().fireTableDataChanged();
+		//Brisemo studenta iz liste za serijalizaciju
+		listaStudenataZaSerijalizaciju.remove(rowIndex);
+	}
 	
 	
 }

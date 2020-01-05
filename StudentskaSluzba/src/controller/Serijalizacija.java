@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 import model.Student;
-import model.Student.Status;
 
 public class Serijalizacija {
 	private static Serijalizacija instance = null;
