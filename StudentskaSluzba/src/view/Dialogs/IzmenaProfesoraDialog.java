@@ -19,9 +19,11 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import controller.ProfesoriController;
+import controller.StudentiController;
 import model.BazaProfesor;
 import model.Profesor;
 import view.ATMProfesori;
+import view.ATMStudenti;
 import view.GlavniProzor;
 import view.Tabovi;
 
@@ -240,17 +242,11 @@ public class IzmenaProfesoraDialog  extends JDialog {
 									adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
 							ProfesoriController.getInstance().dodavanjeProfesora(profesor);
 						}
-
-						Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
-						Integer height = (int) GlavniProzor.getInstance().getSize().getHeight();
-
-						GlavniProzor.getInstance().setSize(width, height + 1);
 						 
 						//Ako su prosle sve izmene onda izbrisemo
-					      int i = ATMProfesori.getSelectedRowIndex();
-					      BazaProfesor.getInstance().getProfesori().remove(i);//TODO prebaciti u kontroler
+					      ProfesoriController.getInstance().izbrisiProfesora(ATMStudenti.getSelectedRowIndex());
 					      Tabovi.getModelProfesori().fireTableDataChanged();
-
+					      
 					}
 				});
 			}

@@ -7,6 +7,7 @@ import model.BazaProfesor;
 import model.Predmet;
 import model.Profesor;
 
+
 /**
  * Klasa koja rukuje reakcijama na dogadjaje entiteta/modela: Profesor.
  * 
@@ -17,7 +18,7 @@ public class ProfesoriController {
 	private static ProfesoriController instance = null;
 	
 	List<Profesor>  listaProfesoraZaSerijalizaciju = SerijalizacijaProfesora.getInstance().deserijalizacijaObjekta();
-	
+	//List<Profesor>  listaProfesoraZaSerijalizaciju = new ArrayList<Profesor>();
 	public static ProfesoriController getInstance() {
 		if (instance == null) {
 			instance = new ProfesoriController();
@@ -62,6 +63,12 @@ public class ProfesoriController {
 
 	public void setListaProfesoraZaSerijalizaciju(List<Profesor> listaProfesoraZaSerijalizaciju) {
 		this.listaProfesoraZaSerijalizaciju = listaProfesoraZaSerijalizaciju;
+	}
+
+	//Metoda koja brise profesora za proslednje index reda
+	public void izbrisiProfesora(int selectedRowIndex) {
+		 BazaProfesor.getInstance().getProfesori().remove(selectedRowIndex);
+		
 	}
 	
 	
