@@ -24,9 +24,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
-import controller.Serijalizacija;
 import controller.StudentiController;
-import model.BazaStudent;
 import model.Predmet;
 import model.Student;
 import model.Student.Status;

@@ -9,17 +9,17 @@ import java.util.List;
 
 import model.Student;
 
-public class Serijalizacija {
-	private static Serijalizacija instance = null;
+public class SerijalizacijaStudenta {
+	private static SerijalizacijaStudenta instance = null;
 
-	public static Serijalizacija getInstance() {
+	public static SerijalizacijaStudenta getInstance() {
 		if (instance == null) {
-			instance = new Serijalizacija();
+			instance = new SerijalizacijaStudenta();
 		}
 		return instance;
 	}
 
-	private Serijalizacija() {
+	private SerijalizacijaStudenta() {
 
 	}
 

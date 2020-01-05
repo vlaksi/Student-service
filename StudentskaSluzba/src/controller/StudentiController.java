@@ -1,8 +1,5 @@
 package controller;
 
-
-
-import java.util.ArrayList;
 import java.util.List;
 
 import model.BazaStudent;
@@ -28,7 +25,7 @@ public class StudentiController {
 	
 
 	private static StudentiController instance = null;
-	List<Student> listaStudenataZaSerijalizaciju = Serijalizacija.getInstance().deserijalizacijaObjekta();//Lista studenata za serijalizaciju
+	List<Student> listaStudenataZaSerijalizaciju = SerijalizacijaStudenta.getInstance().deserijalizacijaObjekta();//Lista studenata za serijalizaciju
 	
 
 	private StudentiController() {
@@ -114,6 +111,5 @@ public class StudentiController {
 		//Brisemo studenta iz liste za serijalizaciju
 		listaStudenataZaSerijalizaciju.remove(rowIndex);
 	}
-	
 	
 }

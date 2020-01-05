@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.Serijalizacija;
+import controller.SerijalizacijaStudenta;
 import model.Student.Status;
 
 public class BazaStudent {
-//TODO proveriti jos jednom sve metode umoran sam kucao...
+
 	private static BazaStudent instance = null;
 
 	public static BazaStudent getInstance() {
@@ -41,7 +41,7 @@ public class BazaStudent {
 	private void initStudent() {
 		this.studenti = new ArrayList<Student>();
 
-		List<Student> studentii = Serijalizacija.getInstance().deserijalizacijaObjekta();
+		List<Student> studentii = SerijalizacijaStudenta.getInstance().deserijalizacijaObjekta();
 
 		for (Student student : studentii) {
 			studenti.add(student);

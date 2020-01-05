@@ -25,12 +25,10 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import controller.StudentiController;
-import model.BazaStudent;
 import model.Predmet;
 import model.Student;
 import model.Student.Status;
 import view.ATMStudenti;
-import view.GlavniProzor;
 import view.Tabovi;
 
 /**
