@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,9 @@ import java.util.List;
  * @author Vaxi RA186/2017
  *
  */
-public class Profesor {
+public class Profesor implements Serializable{
+
+	private static final long serialVersionUID = 8379099572014163786L;
 	private String ime;
 	private String prezime;
 	private String datumRodjenja;//TODO Uraditi preko Date ako bude trebalo

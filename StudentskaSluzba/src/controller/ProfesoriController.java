@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.BazaProfesor;
@@ -14,7 +15,9 @@ import model.Profesor;
  */
 public class ProfesoriController {
 	private static ProfesoriController instance = null;
-
+	
+	List<Profesor>  listaProfesoraZaSerijalizaciju = SerijalizacijaProfesora.getInstance().deserijalizacijaObjekta();
+	
 	public static ProfesoriController getInstance() {
 		if (instance == null) {
 			instance = new ProfesoriController();
@@ -30,7 +33,9 @@ public class ProfesoriController {
 	public void dodavanjeProfesora(Profesor profesor) {
 		BazaProfesor.getInstance().dodajProfesora(profesor.getIme(), profesor.getPrezime(),
 				profesor.getDatumRodjenja(), profesor.getAdresaStanovanja(), profesor.getTelefon(), profesor.getEmail(),
-				profesor.getAdresaKancelarije(), profesor.getBrojLicneKarte(), profesor.getTitula(), profesor.getZvanje());
+				profesor.getAdresaKancelarije(), profesor.getBrojLicneKarte(), profesor.getTitula(), profesor.getZvanje(),profesor.getPredmeti());
+		//Dodajemo profesora u listu za serijalizaciju
+				listaProfesoraZaSerijalizaciju.add(profesor);
 	}
 
 	public Profesor getListaProfesora(int selectedRowIndex) {
@@ -50,4 +55,14 @@ public class ProfesoriController {
 	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
 		BazaProfesor.getInstance().izbrisiPredmetProfesora(profesor,predmet);
 	}
+
+	public List<Profesor> getListaProfesoraZaSerijalizaciju() {
+		return listaProfesoraZaSerijalizaciju;
+	}
+
+	public void setListaProfesoraZaSerijalizaciju(List<Profesor> listaProfesoraZaSerijalizaciju) {
+		this.listaProfesoraZaSerijalizaciju = listaProfesoraZaSerijalizaciju;
+	}
+	
+	
 }

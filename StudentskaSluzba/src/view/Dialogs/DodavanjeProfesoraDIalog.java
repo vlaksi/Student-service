@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,8 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import controller.ProfesoriController;
+import model.Predmet;
 import model.Profesor;
 import view.GlavniProzor;
+import view.Tabovi;
 
 /**
  * Klasa koja predstavlja dialog koji iskace kada pritisnemo dugme za izmenu
@@ -220,16 +224,14 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
+					List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 					Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
 							adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue, adresaKancelarijeFieldValue,
-							brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
+							brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue,listaPredmeta);
 					ProfesoriController.getInstance().dodavanjeProfesora(profesor);
 				}
 
-				Integer width = (int) GlavniProzor.getInstance().getSize().getWidth();
-				Integer height = (int) GlavniProzor.getInstance().getSize().getHeight();
-
-				GlavniProzor.getInstance().setSize(width, height + 1);
+				Tabovi.getModelProfesori().fireTableDataChanged();
 				dispose();
 
 			}

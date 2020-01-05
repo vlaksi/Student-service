@@ -6,26 +6,25 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
+import model.Profesor;
 
-import model.Student;
+public class SerijalizacijaProfesora {
+	private static SerijalizacijaProfesora instance = null;
 
-public class SerijalizacijaStudenta {
-	private static SerijalizacijaStudenta instance = null;
-
-	public static SerijalizacijaStudenta getInstance() {
+	public static SerijalizacijaProfesora getInstance() {
 		if (instance == null) {
-			instance = new SerijalizacijaStudenta();
+			instance = new SerijalizacijaProfesora();
 		}
 		return instance;
 	}
 
-	private SerijalizacijaStudenta() {
+	private SerijalizacijaProfesora() {
 
 	}
 
-	String filename = "objectstream.txt";
+	String filename = "objectstreamProfesori.txt";
 
-	public void serijalizacijaObjekta(List<Student> studenti) {
+	public void serijalizacijaObjekta(List<Profesor> profesori) {
 
 		// Serialization
 		try {
@@ -34,23 +33,23 @@ public class SerijalizacijaStudenta {
 			ObjectOutputStream out = new ObjectOutputStream(file);
 
 			// Method for serialization of object
-			out.writeObject(studenti);
+			out.writeObject(profesori);
 
 			out.close();
 			file.close();
 
-			System.out.println("StudentSerializable:Object has been serialized");
+			System.out.println("Object has been serialized");
 
 		}
 
 		catch (IOException ex) {
-			System.out.println("StudentSerializable:Greska pri upisu");
+			System.out.println("Greska pri upisu");
 		}
 	}
 
 	 
-	public List<Student> deserijalizacijaObjekta() {
-		List<Student> student1;
+	public List<Profesor> deserijalizacijaObjekta() {
+		List<Profesor> profesori;
 		// Deserialization
 		try {
 			// Reading the object from a file
@@ -58,18 +57,18 @@ public class SerijalizacijaStudenta {
 			ObjectInputStream in = new ObjectInputStream(file);
 
 			// Method for deserialization of object
-			student1 = (List<Student>)in.readObject();
+			profesori = (List<Profesor>)in.readObject();
 
 			in.close();
 			file.close();
 
-			System.out.println("StudentSerializable:Object has been deserialized ");
-			return student1;
+			System.out.println("Object has been deserialized ");
+			return profesori;
 			//System.out.println("Ime prvog studenta = " + .getIme());
 		}
 
 		catch (IOException ex) {
-			System.out.println("StudentSerializable:Greska pri ispisu");
+			System.out.println("Greska pri ispisu");
 		}
 
 		catch (ClassNotFoundException ex) {

@@ -179,7 +179,6 @@ public class BazaStudent {
 				student.setPrezime(prezime);
 				student.setGodinaStudija(godinaStudija);
 				student.setStatusStudenta(statusStudenta);
-				;
 				student.setProsecnaOcena(prosecnaOcena);
 			}
 		}
