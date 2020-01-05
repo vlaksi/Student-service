@@ -38,7 +38,7 @@ public class SerijalizacijaProfesora {
 			out.close();
 			file.close();
 
-			System.out.println("Object has been serialized");
+			//System.out.println("Object has been serialized");
 
 		}
 
@@ -62,7 +62,7 @@ public class SerijalizacijaProfesora {
 			in.close();
 			file.close();
 
-			System.out.println("Object has been deserialized ");
+			//System.out.println("Object has been deserialized ");
 			return profesori;
 			//System.out.println("Ime prvog studenta = " + .getIme());
 		}
