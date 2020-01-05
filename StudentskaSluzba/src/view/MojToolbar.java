@@ -99,17 +99,38 @@ public class MojToolbar extends JToolBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
-					IzmenaStudentaDialog dialog = new IzmenaStudentaDialog();
-					dialog.setVisible(true);
+					if (StudentiController.getInstance().getListaSvihStudenata().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema studenta za izmenu.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					} else {
+						IzmenaStudentaDialog dialog = new IzmenaStudentaDialog();
+						dialog.setVisible(true);
+					}
+
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
-					IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog();
-					dialog.setVisible(true);
+					if (ProfesoriController.getInstance().getListaSvihProfesora().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema profesora za izmenu.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					} else {
+						IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog();
+						dialog.setVisible(true);
+					}
+					
 				}
 
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
-					IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog();
-					dialog.setVisible(true);
+					if (PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema predmeta za izmenu.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					} else {
+						IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog();
+						dialog.setVisible(true);
+					}
+					
 				}
 			}
 
@@ -131,43 +152,41 @@ public class MojToolbar extends JToolBar {
 				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrise
 				 * odredjeni red
 				 */
-				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {					
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 					int i = ATMStudenti.getSelectedRowIndex();
-					if(StudentiController.getInstance().getListaSvihStudenata().isEmpty()) { 
+					if (StudentiController.getInstance().getListaSvihStudenata().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
 								"Greska", JOptionPane.ERROR_MESSAGE);
 						return;
-					}else {
+					} else {
 						StudentiController.getInstance().izbrisiStudenta(i);
 						Tabovi.getModelStudenti().fireTableDataChanged();
 					}
-					
 
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
 					int i = ATMProfesori.getSelectedRowIndex();
-					if(ProfesoriController.getInstance().getListaSvihProfesora().isEmpty()) {
+					if (ProfesoriController.getInstance().getListaSvihProfesora().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
 								"Greska", JOptionPane.ERROR_MESSAGE);
 						return;
-					}else {
+					} else {
 						ProfesoriController.getInstance().izbrisiProfesora(i);
 						Tabovi.getModelProfesori().fireTableDataChanged();
 					}
-					
 
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
 					int i = ATMPredmeti.getSelectedRowIndex();
-					if(PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
+					if (PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
 						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
 								"Greska", JOptionPane.ERROR_MESSAGE);
 						return;
-					}else {
+					} else {
 						PredmetiController.getInstance().izbrisiPredmet(i);
 						Tabovi.getModelPredmeti().fireTableDataChanged();
 					}
-					
+
 				}
 
 			}
@@ -187,7 +206,8 @@ public class MojToolbar extends JToolBar {
 				// Listener koji sluzi za priakzivanje dialoga za dodavanje studenta na predmet
 
 				if ((Tabovi.getSelectedColTabelaPredmeta() == 0) && (Tabovi.getSelectedRowTabelaPredmeta() == 0)) {
-					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli, u koloni naziv, selektujte zeljeni predmet",
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Morate prvo da selektujete neki predmet u tabeli, u koloni naziv, selektujte zeljeni predmet",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
@@ -209,11 +229,14 @@ public class MojToolbar extends JToolBar {
 		dodajProfesora = new JButton();
 		dodajProfesora.setToolTipText("Dodaj profesora");
 		dodajProfesora.addActionListener(new ActionListener() {
-			/* Lisener koji sluzi za prikazivanje dialoga za dodavanje profesora na predmet */
+			/*
+			 * Lisener koji sluzi za prikazivanje dialoga za dodavanje profesora na predmet
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if ((Tabovi.getSelectedColTabelaPredmeta() == 0) && (Tabovi.getSelectedRowTabelaPredmeta() == 0)) {
-					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli, u koloni naziv, selektujte zeljeni predmet",
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Morate prvo da selektujete neki predmet u tabeli, u koloni naziv, selektujte zeljeni predmet",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
@@ -222,7 +245,7 @@ public class MojToolbar extends JToolBar {
 				}
 
 				Tabovi.getModelPredmeti().fireTableDataChanged();
-				
+
 			}
 		});
 		ImageIcon iconNew5 = new ImageIcon("./img/profesor3.png");
@@ -309,9 +332,9 @@ public class MojToolbar extends JToolBar {
 									|| nizLevih[i].equals("Datum upisa") || nizLevih[i].equals("DATUM UPISA")) {
 								StudentiJTable.newFilter(nizDesnih[i], 7);
 							}
-							if (nizLevih[i].equals("Godina") || nizLevih[i].equals("Godina studija") || nizLevih[i].equals("godina")
-									|| nizLevih[i].equals("GODINA") || nizLevih[i].equals("godina studija")
-									|| nizLevih[i].equals("GODINA STUDIJA")) {
+							if (nizLevih[i].equals("Godina") || nizLevih[i].equals("Godina studija")
+									|| nizLevih[i].equals("godina") || nizLevih[i].equals("GODINA")
+									|| nizLevih[i].equals("godina studija") || nizLevih[i].equals("GODINA STUDIJA")) {
 								StudentiJTable.newFilter(nizDesnih[i], 8);
 							}
 							if (nizLevih[i].equals("Prosek") || nizLevih[i].equals("prosek")
