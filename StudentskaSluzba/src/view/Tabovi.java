@@ -208,6 +208,7 @@ public class Tabovi {
 								
 								ProfesoriController.getInstance().izbrisiPredmetProfesora(profesorKomeBrisemoPredmet, predmetKogBrisemo);
 								PredmetiController.getInstance().izbrisiProfesoraSaPredmeta(profesorKomeBrisemoPredmet, predmetKogBrisemo);
+								Tabovi.getModelProfesori().fireTableDataChanged();
 							}
 						});
 

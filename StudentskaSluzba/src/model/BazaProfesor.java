@@ -204,9 +204,47 @@ public class BazaProfesor {
 	 * @param profesor
 	 * @param predmet
 	 */
+//	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
+//		System.out.println("Predmeti profesora "+profesor.getIme() +" su: ");
+//		for(Predmet p : profesor.getPredmeti()) {
+//			System.out.println(p.getNazivPredmeta());
+//			if(p.equals(predmet)) {
+//				System.out.println("Objekti su isti");
+//				profesor.getPredmeti().remove(predmet);
+//			}else {
+//				System.out.println("Objekti nisu isti");
+//				// naci indeks
+//				int indeks=0;
+//				//for(Pred)
+//				
+//				profesor.getPredmeti().remove(indeks);
+//			}
+//		}
+//		System.out.println("A zelimo obrisati predmet: " + predmet.getNazivPredmeta());
+//		profesor.getPredmeti().remove(predmet);
+//
+//	}
+	
+	
+	/**
+	 * Metoda koja brise predmet prosledjenom profesoru.
+	 * 
+	 * @param profesor
+	 * @param predmet
+	 */
 	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
-		profesor.getPredmeti().remove(predmet);
-
+		int indeks=0;
+		for(Predmet p : profesor.getPredmeti()) {
+			if(p.getSifraPredmeta().equals(predmet.getSifraPredmeta())){
+				System.out.println("sifre su ime iste, a indeks na kom se nalazi je: "+indeks);
+				break;
+			}
+			
+			indeks++;
+		}
+		
+		
+		profesor.getPredmeti().remove(indeks);
 	}
 
 }
