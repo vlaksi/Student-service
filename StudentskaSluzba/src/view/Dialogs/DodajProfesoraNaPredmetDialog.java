@@ -107,7 +107,7 @@ public class DodajProfesoraNaPredmetDialog extends JDialog {
 				Predmet predmetNaKojiDodajemo = new Predmet();
 
 				if (brojLicneFieldValue.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli index", "Greska",
+					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli broj licne karte profesora", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}

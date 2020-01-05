@@ -101,6 +101,16 @@ public class PredmetiController {
 	public void izbrisiProfesoraSaPredmeta(Profesor profesor,Predmet predmet) {
 		BazaPredmeta.getInstance().izbrisiProfesoraSaPredmeta(profesor,predmet);
 	}
+
+	public List<Predmet> getListaSvihPredmeta() {
+		return BazaPredmeta.getInstance().getPredmeti();
+		
+	}
+
+	public void izbrisiPredmet(int i) {
+		BazaPredmeta.getInstance().getPredmeti().remove(i);
+		
+	}
 	
 	
 }

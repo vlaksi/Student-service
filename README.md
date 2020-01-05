@@ -1,7 +1,10 @@
-﻿# Taskovi koje treba resiti
+﻿# Bagovi koje treba resiti:
 
-## Prvi student treba da implementira stavke sa sledećim oznakama: 
-
-## Drugi student treba da implementira stavke sa sledećim oznakama: 
-
-
+###### Obicno brisanje profesora treba da aktivira i brisanje profesora na predmetu ako je on na nekom predmetu.
+###### Obicno brisanje studenta treba da aktivira i brisanje studenta sa tog predmeta ako je on na nekom predmetu.
+###### Obicno brisanje studenta,profesora,predmeta, treba da pozove dijalog koji proveri da li je korisnik siguran da zeli da obrise taj entitet iz baze/tabele.
+###### Obicno brisanje predmeta treba da aktivira i brisanje tog predmeta sa liste predmeta kod studenta,kao i sa liste predmeta kod profesora, ako student i profesor imaju taj predmet.
+###### Kada se udje u search i ukuca nesto bezveze, da mu ne dozvoli da klikne na search.
+###### Kada se udje u search i ukuca neka pretraga, da mu ne dozvoli da bilo sta cacka po programu dok ne klikne button cancel(cancel search)
+###### Sat u status baru treba da se update live, ne da prilikom inicijalnog pokretanja samo uzme koje je vreme.
+###### Napisati about,i u menu baru povezati precice sa dugmicima za dodavanje i slicno.

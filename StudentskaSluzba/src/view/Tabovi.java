@@ -195,7 +195,7 @@ public class Tabovi {
 						JList<Object> list = new JList<Object>(tokens);
 						ListDialog3 dialog3 = new ListDialog3("Spisak predmeta izabranog profesora", list);
 						dialog3.setOnOk(e -> {
-							if (dialog3.getSelectedItem() == null) {
+							if (dialog3.getSelectedItem() == null || dialog3.getSelectedItem().toString().length() == 0) {
 								JOptionPane.showMessageDialog(null,
 										"ERROR: Morate da selektujete predmet ako zelite da ga obriste.",
 										"Greska", JOptionPane.ERROR_MESSAGE);
@@ -246,13 +246,12 @@ public class Tabovi {
 
 							dialog.setOnOk(e -> {
 
-								if (dialog.getSelectedItem() == null) {
+								if (dialog.getSelectedItem() == null || dialog.getSelectedItem().toString().length() == 0) {
 									JOptionPane.showMessageDialog(null,
 											"ERROR: Morate da selektujete studenta, ako nema ni jednog prvo ga dodajte na predmet",
 											"Greska", JOptionPane.ERROR_MESSAGE);
 									return;
 								} else {
-
 									Predmet PredmetSaKogBrisemo = PredmetiController.getInstance()
 											.getListaPredmeta(row);
 									Student StudentKogBrisemo = StudentiController.getInstance()

@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import controller.PredmetiController;
 import controller.ProfesoriController;
 import controller.StudentiController;
 import model.BazaPredmeta;
@@ -130,23 +131,43 @@ public class MojToolbar extends JToolBar {
 				 * Lisener koji u zavisnosti u kom smo tabu a kliknemo na izbrisi, izbrise
 				 * odredjeni red
 				 */
-				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
+				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {					
 					int i = ATMStudenti.getSelectedRowIndex();
-					StudentiController.getInstance().izbrisiStudenta(i);
+					if(StudentiController.getInstance().getListaSvihStudenata().isEmpty()) { 
+						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					}else {
+						StudentiController.getInstance().izbrisiStudenta(i);
+						Tabovi.getModelStudenti().fireTableDataChanged();
+					}
+					
 
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
 					int i = ATMProfesori.getSelectedRowIndex();
-					// System.out.println(i);
-					ProfesoriController.getInstance().izbrisiProfesora(i);
-					Tabovi.getModelProfesori().fireTableDataChanged();
+					if(ProfesoriController.getInstance().getListaSvihProfesora().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					}else {
+						ProfesoriController.getInstance().izbrisiProfesora(i);
+						Tabovi.getModelProfesori().fireTableDataChanged();
+					}
+					
 
 				}
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
 					int i = ATMPredmeti.getSelectedRowIndex();
-					// System.out.println(i);
-					BazaPredmeta.getInstance().getPredmeti().remove(i);// TODO uraditi preko kontrolera
-					Tabovi.getModelPredmeti().fireTableDataChanged();
+					if(PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
+						JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nije moguce brisanje.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					}else {
+						PredmetiController.getInstance().izbrisiPredmet(i);
+						Tabovi.getModelPredmeti().fireTableDataChanged();
+					}
+					
 				}
 
 			}
@@ -166,7 +187,7 @@ public class MojToolbar extends JToolBar {
 				// Listener koji sluzi za priakzivanje dialoga za dodavanje studenta na predmet
 
 				if ((Tabovi.getSelectedColTabelaPredmeta() == 0) && (Tabovi.getSelectedRowTabelaPredmeta() == 0)) {
-					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli",
+					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli, u koloni naziv, selektujte zeljeni predmet",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
@@ -192,7 +213,7 @@ public class MojToolbar extends JToolBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if ((Tabovi.getSelectedColTabelaPredmeta() == 0) && (Tabovi.getSelectedRowTabelaPredmeta() == 0)) {
-					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli",
+					JOptionPane.showMessageDialog(null, "ERROR: Morate prvo da selektujete neki predmet u tabeli, u koloni naziv, selektujte zeljeni predmet",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
