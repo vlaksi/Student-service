@@ -121,8 +121,8 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 				} else { // U suprotnom zanci da smo pronasli odgovarajuceg studenta za predmet i treba
 							// ga dodati
-					PredmetiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
-					StudentiController.getInstance().dodajStudentaNaPredmet(studentKogDodajemo, predmetNaKojiDodajemo);
+					PredmetiController.getInstance().dodajStudentaPredmetu(studentKogDodajemo, predmetNaKojiDodajemo);
+					StudentiController.getInstance().dodajPredmetStudentu(studentKogDodajemo, predmetNaKojiDodajemo);
 
 				}
 				Tabovi.getModelPredmeti().fireTableDataChanged();

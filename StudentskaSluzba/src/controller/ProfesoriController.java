@@ -15,7 +15,7 @@ import model.Profesor;
 public class ProfesoriController {
 	private static ProfesoriController instance = null;
 
-	List<Profesor> listaProfesoraZaSerijalizaciju = SerijalizacijaProfesora.getInstance().deserijalizacijaObjekta();
+	List<Profesor> listaProfesoraZaSerijalizaciju = BazaProfesor.getInstance().getProfesori();
 
 	// List<Profesor> listaProfesoraZaSerijalizaciju = new ArrayList<Profesor>();
 	public static ProfesoriController getInstance() {
@@ -36,7 +36,7 @@ public class ProfesoriController {
 				profesor.getAdresaKancelarije(), profesor.getBrojLicneKarte(), profesor.getTitula(),
 				profesor.getZvanje(), profesor.getPredmeti());
 		// Dodajemo profesora u listu za serijalizaciju
-		listaProfesoraZaSerijalizaciju.add(profesor);
+	//	listaProfesoraZaSerijalizaciju.add(profesor);
 	}
 
 	public Profesor getListaProfesora(int selectedRowIndex) {
@@ -78,7 +78,7 @@ public class ProfesoriController {
 		}
 		
 		BazaProfesor.getInstance().getProfesori().remove(selectedRowIndex);
-		listaProfesoraZaSerijalizaciju.remove(selectedRowIndex);
+		//listaProfesoraZaSerijalizaciju.remove(selectedRowIndex);
 	}
 
 }
