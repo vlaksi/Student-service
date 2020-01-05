@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
+import controller.ProfesoriController;
 import controller.StudentiController;
 import model.BazaPredmeta;
 import model.BazaProfesor;
@@ -137,7 +138,7 @@ public class MojToolbar extends JToolBar {
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
 					int i = ATMProfesori.getSelectedRowIndex();
 					// System.out.println(i);
-					BazaProfesor.getInstance().getProfesori().remove(i);// TODO uraditi preko kontrolera
+					ProfesoriController.getInstance().izbrisiProfesora(i);
 					Tabovi.getModelProfesori().fireTableDataChanged();
 
 				}

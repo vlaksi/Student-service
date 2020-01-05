@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -21,6 +23,7 @@ import javax.swing.text.MaskFormatter;
 import controller.ProfesoriController;
 import controller.StudentiController;
 import model.BazaProfesor;
+import model.Predmet;
 import model.Profesor;
 import view.ATMProfesori;
 import view.ATMStudenti;
@@ -237,14 +240,15 @@ public class IzmenaProfesoraDialog  extends JDialog {
 								JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska", JOptionPane.ERROR_MESSAGE);
 							return;
 						} else {
+							List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 							Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue,
 									datumRodjenjaFieldValue, adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
-									adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue);
+									adresaKancelarijeFieldValue, brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue, listaPredmeta);
 							ProfesoriController.getInstance().dodavanjeProfesora(profesor);
 						}
 						 
 						//Ako su prosle sve izmene onda izbrisemo
-					      ProfesoriController.getInstance().izbrisiProfesora(ATMStudenti.getSelectedRowIndex());
+					      ProfesoriController.getInstance().izbrisiProfesora(ATMProfesori.getSelectedRowIndex());
 					      Tabovi.getModelProfesori().fireTableDataChanged();
 					      
 					}

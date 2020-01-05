@@ -68,7 +68,7 @@ public class ProfesoriController {
 	//Metoda koja brise profesora za proslednje index reda
 	public void izbrisiProfesora(int selectedRowIndex) {
 		 BazaProfesor.getInstance().getProfesori().remove(selectedRowIndex);
-		
+		 listaProfesoraZaSerijalizaciju.remove(selectedRowIndex);
 	}
 	
 	
