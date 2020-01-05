@@ -88,16 +88,7 @@ public class IzmenaStudentaDialog  extends JDialog {
 		JPanel panDatumRodj = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblDAtumRodj = new JLabel("Datum rodjenja*");
 		lblDAtumRodj.setPreferredSize(dim);
-		//JTextField txtDatumRodjenja = new JTextField();
-		MaskFormatter maskDatumRodj = null;
-		try {
-			maskDatumRodj = new MaskFormatter("##.##.####");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu rodjenja" , "Greska" , JOptionPane.ERROR_MESSAGE);
-		}
-		maskDatumRodj.setPlaceholderCharacter('_'); 
-		maskDatumRodj.setValidCharacters("0123456789"); 
-		JFormattedTextField txtDatumRodjenja = new JFormattedTextField(maskDatumRodj);
+		JTextField txtDatumRodjenja = new JTextField();
 		txtDatumRodjenja.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getDatumRodjenja());
 		txtDatumRodjenja.setPreferredSize(dim);
 		panDatumRodj.add(lblDAtumRodj);
@@ -174,16 +165,7 @@ public class IzmenaStudentaDialog  extends JDialog {
 		JPanel panDatumUpiusa = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblpanDatumUpiusa = new JLabel("Datum upisa* ");
 		lblpanDatumUpiusa.setPreferredSize(dim);
-		//JTextField txtPanDatumUpiusa = new JTextField();
-		MaskFormatter maskDatumUpisa = null;
-		try {
-			maskDatumUpisa = new MaskFormatter("##.##.####");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u datumu upisa" , "Greska" , JOptionPane.ERROR_MESSAGE);
-		}
-		maskDatumRodj.setPlaceholderCharacter('_'); 
-		maskDatumRodj.setValidCharacters("0123456789"); 
-		JFormattedTextField txtPanDatumUpiusa = new JFormattedTextField(maskDatumUpisa);
+		JTextField txtPanDatumUpiusa = new JTextField();
 		txtPanDatumUpiusa.setText((StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getDatumUpisa()));
 		txtPanDatumUpiusa.setPreferredSize(dim);
 		panDatumUpiusa.add(lblpanDatumUpiusa);
