@@ -16,8 +16,6 @@ import javax.swing.SwingConstants;
 import controller.PredmetiController;
 import controller.ProfesoriController;
 import controller.StudentiController;
-import model.BazaPredmeta;
-import model.BazaProfesor;
 import view.Dialogs.DodajPredmetDialog;
 import view.Dialogs.DodajProfesoraNaPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
