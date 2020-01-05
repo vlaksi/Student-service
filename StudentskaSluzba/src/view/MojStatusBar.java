@@ -1,12 +1,19 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 /**
  * Klasa koja implementira status bar.
@@ -42,15 +49,32 @@ public class MojStatusBar {
 		statusPanel.setLayout(new BorderLayout());
 		
 		JLabel statusLabel = new JLabel("Studentska slu\u017Eba");
-		String timeStamp = new SimpleDateFormat("HH:mm     dd.MM.yyyy").format(Calendar.getInstance().getTime());
-		JLabel vreme = new JLabel(timeStamp);
+	//	String timeStamp = new SimpleDateFormat("HH:mm     dd.MM.yyyy").format(Calendar.getInstance().getTime());
+		//JLabel vreme = new JLabel(timeStamp);
 
-		// PADING
-		statusLabel.setBorder(BorderFactory.createEmptyBorder(6, 30, 6, 10)); // kako bi napravili border malo,da ne bi bilo skroz uz ivice
-		statusPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 30)); // kako bi napravili border malo,da ne bi bilo skroz uz ivice
-		
-		statusPanel.add(statusLabel, BorderLayout.WEST);
-		statusPanel.add(vreme, BorderLayout.EAST);
+		 SwingUtilities.invokeLater(new Runnable(){
+	            public void run() {
+	                final Date date = new Date();
+	                final JLabel timeLabel = new JLabel(date.toString());
+	                Timer timer = new Timer(1000, new ActionListener(){
+	                    public void actionPerformed(ActionEvent e) {
+	                        date.setTime(System.currentTimeMillis());
+	                        timeLabel.setText(date.toString());
+	                    }
+	                });
+	                timer.start();
+	               // JOptionPane.showMessageDialog(null, timeLabel);
+	                
+	            	// PADING
+	        		statusLabel.setBorder(BorderFactory.createEmptyBorder(6, 30, 6, 10)); // kako bi napravili border malo,da ne bi bilo skroz uz ivice
+	        		statusPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 30)); // kako bi napravili border malo,da ne bi bilo skroz uz ivice
+	        		
+	        		statusPanel.add(statusLabel, BorderLayout.WEST);
+	        		statusPanel.add(timeLabel, BorderLayout.EAST);
+	            }
+	        });
+	    
+	
 
 	}
 
