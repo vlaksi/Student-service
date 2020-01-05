@@ -72,6 +72,17 @@ public class PredmetiController {
 		
 	}
 	
+	public Predmet getPredmetByNaziv(String naziv) {
+		List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+		listaPredmeta = BazaPredmeta.getInstance().getPredmeti();
+		for(Predmet predmet : listaPredmeta) {
+			if(predmet.getNazivPredmeta().equals(naziv)) {
+				return predmet;
+			}
+		}
+		return null;
+	}
+	
 	//Metoda koja dodaje studenta na predmet
 	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
 		BazaPredmeta.getInstance().dodajStudentaNaPredmet(student,predmet);
@@ -82,12 +93,13 @@ public class PredmetiController {
 		BazaPredmeta.getInstance().dodajProfesoraNaPredmet(profesor,predmet);
 	}
 	
-	//Metoda koja brise studenta sa predmet
-//	public void removeStudentaSaPredmet(Student student, Predmet predmet) {
-//		BazaPredmeta.getInstance().removeStudentaSaPredmet(student, predmet);
-//	}
 	public void izbrisiStudentaProsledjenomPredmetu(Student student, Predmet predmet) {
 		BazaPredmeta.getInstance().izbrisiStudentaProsledjenomPredmetu(student, predmet);
+	}
+	
+	/* Metoda koja brise tog profesora iz liste profesora u predmetu*/
+	public void izbrisiProfesoraSaPredmeta(Profesor profesor,Predmet predmet) {
+		BazaPredmeta.getInstance().izbrisiProfesoraSaPredmeta(profesor,predmet);
 	}
 	
 	

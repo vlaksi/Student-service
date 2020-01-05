@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Klasa u kojoj cuvamo podatke o predmetima.
  * 
@@ -38,23 +37,30 @@ public class BazaPredmeta {
 
 	private void initPredmeta() {
 		this.predmeti = new ArrayList<Predmet>();
-		
-		//List<Profesor> listaProfesora = BazaProfesor.getInstance().getProfesori();//TODO izmeniti kao i za bazu studenata da lepo uzmemo, a ne DIRKETNO OVE!
-		Profesor profa = new Profesor(); profa.setPrezime("nema"); profa.setBrojLicneKarte(" profesora");
-		Profesor profa1 = new Profesor();profa1.setPrezime("nema"); profa1.setBrojLicneKarte(" profesora");
-		Profesor profa2 = new Profesor();profa2.setPrezime("nema"); profa2.setBrojLicneKarte(" profesora");
+
+		// List<Profesor> listaProfesora =
+		// BazaProfesor.getInstance().getProfesori();//TODO izmeniti kao i za bazu
+		// studenata da lepo uzmemo, a ne DIRKETNO OVE!
+		Profesor profa = new Profesor();
+		profa.setPrezime("nema");
+		profa.setBrojLicneKarte(" profesora");
+		Profesor profa1 = new Profesor();
+		profa1.setPrezime("nema");
+		profa1.setBrojLicneKarte(" profesora");
+		Profesor profa2 = new Profesor();
+		profa2.setPrezime("nema");
+		profa2.setBrojLicneKarte(" profesora");
 
 		List<Student> listaStudenata1 = new ArrayList<Student>();
 		List<Student> listaStudenata2 = new ArrayList<Student>();
 		List<Student> listaStudenata3 = new ArrayList<Student>();
-	
-		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa,listaStudenata1));
-		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1,listaStudenata2));
-		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2,listaStudenata3));
-		
+
+		predmeti.add(new Predmet("ANZ1-17", "Analiza 1", "1", "1", profa, listaStudenata1));
+		predmeti.add(new Predmet("ANZ2-17", "Analiza 2", "3", "2", profa1, listaStudenata2));
+		predmeti.add(new Predmet("ALGB-17", "Algebra", "1", "1", profa2, listaStudenata3));
+
 	}
-	
-	
+
 	public List<String> getKolone() {
 		return kolone;
 	}
@@ -113,7 +119,7 @@ public class BazaPredmeta {
 			String stringCelije = predmet.getPredmetniProfesor().getPrezime() + " "
 					+ predmet.getPredmetniProfesor().getBrojLicneKarte();
 			return stringCelije;
-		case 5: 
+		case 5:
 			List<Student> listaStudenataNaPredemtu = predmet.getListaStudenata();
 			String listaPredmetaString = "";
 			for (Student student : listaStudenataNaPredemtu) {
@@ -162,19 +168,21 @@ public class BazaPredmeta {
 			}
 		}
 	}
-	
+
 	/**
-	 * Metoda koja prosledjenog studenta  dodaje na predmet, tj u listu studenata predmeta
+	 * Metoda koja prosledjenog studenta dodaje na predmet, tj u listu studenata
+	 * predmeta
 	 * 
 	 * @param entitet studenta
-
+	 * 
 	 */
 	public void dodajStudentaNaPredmet(Student student, Predmet predmet) {
 		predmet.getListaStudenata().add(student);
 	}
-	
+
 	/**
 	 * Metoda koja prosledjenom predmetu, dodaje predmetnog profesora.
+	 * 
 	 * @param profesor
 	 * @param predmet
 	 */
@@ -183,15 +191,25 @@ public class BazaPredmeta {
 	}
 
 	/**
-	 * Metoda koja prosledjenog studenta brise sa predmeta, tj u listu studenata predmeta
+	 * Metoda koja prosledjenog studenta brise sa predmeta, tj u listu studenata
+	 * predmeta
 	 * 
 	 * @param entitet studenta
-
+	 * 
 	 */
 	public void izbrisiStudentaProsledjenomPredmetu(Student student, Predmet predmet) {
 		predmet.getListaStudenata().remove(student);
 	}
-	
-	
+
+	/**
+	 * Metoda koja na prosledjenom predmetu skida prosledjenog profesora.
+	 * 
+	 * @param profesor
+	 * @param predmet
+	 */
+	public void izbrisiProfesoraSaPredmeta(Profesor profesor, Predmet predmet) {
+		Profesor profa = new Profesor();profa.setPrezime("nema");profa.setBrojLicneKarte(" profesora");
+		predmet.setPredmetniProfesor(profa);
+	}
 
 }

@@ -15,8 +15,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import controller.PredmetiController;
+import controller.ProfesoriController;
 import controller.StudentiController;
 import model.Predmet;
+import model.Profesor;
 import model.Student;
 import view.Dialogs.ListDialog;
 import view.Dialogs.ListDialog2;
@@ -183,14 +185,31 @@ public class Tabovi {
 					int row = tabelaProfesora.rowAtPoint(evt.getPoint());
 					int col = tabelaProfesora.columnAtPoint(evt.getPoint());
 
-					if (row >= 0 && col == 10) {
-						ATMProfesori atmProfesor = modelProfesori;
+					setSelectedColTabelaProfesora(col);
+					setSelectedRowTabelaProfesor(row);
 
-						String predmeti = (String) atmProfesor.getValueAt(row, 10);
+					if (row >= 0 && col == 10) {
+						String predmeti = (String) Tabovi.modelProfesori.getValueAt(row, 10);
 						String[] tokens = predmeti.split("\n");
 
 						JList<Object> list = new JList<Object>(tokens);
 						ListDialog3 dialog3 = new ListDialog3("Spisak predmeta izabranog profesora", list);
+						dialog3.setOnOk(e -> {
+							if (dialog3.getSelectedItem() == null) {
+								JOptionPane.showMessageDialog(null,
+										"ERROR: Morate da selektujete predmet ako zelite da ga obriste.",
+										"Greska", JOptionPane.ERROR_MESSAGE);
+								return;
+							}else {
+								// TODO obrisati taj predmet iz liste predmeta tog profesora
+								// TODO obrisati tog profesora iz liste profesora u predmetu
+								Profesor profesorKomeBrisemoPredmet = ProfesoriController.getInstance().getListaProfesora(row);
+								Predmet predmetKogBrisemo = PredmetiController.getInstance().getPredmetByNaziv(dialog3.getSelectedItem().toString());
+								
+								ProfesoriController.getInstance().izbrisiPredmetProfesora(profesorKomeBrisemoPredmet, predmetKogBrisemo);
+								PredmetiController.getInstance().izbrisiProfesoraSaPredmeta(profesorKomeBrisemoPredmet, predmetKogBrisemo);
+							}
+						});
 
 						dialog3.show();
 					}
@@ -218,8 +237,6 @@ public class Tabovi {
 						setSelectedRowTabelaPredmeta(row);
 
 						if (row >= 0 && col == 5) {
-							// ATMPredmeti atmPredmeti = modelPredmeti;
-
 							String predmeti = (String) Tabovi.modelPredmeti.getValueAt(row, 5);
 							String[] tokens = predmeti.split("\n");
 

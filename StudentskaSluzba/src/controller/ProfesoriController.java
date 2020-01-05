@@ -45,4 +45,9 @@ public class ProfesoriController {
 	public void dodajPredmetProfesoru(Profesor profesor,Predmet predmet) {
 		BazaProfesor.getInstance().dodajPredmetProfesoru(profesor,predmet);
 	}
+	
+	// metoda koja brise taj predmet iz liste predmeta tog profesora
+	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
+		BazaProfesor.getInstance().izbrisiPredmetProfesora(profesor,predmet);
+	}
 }

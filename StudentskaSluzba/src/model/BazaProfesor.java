@@ -203,4 +203,14 @@ public class BazaProfesor {
 		profesor.getPredmeti().add(predmet);
 	}
 
+	/**
+	 * Metoda koja brise predmet prosledjenom profesoru.
+	 * @param profesor
+	 * @param predmet
+	 */
+	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
+		profesor.getPredmeti().remove(predmet);
+		
+	}
+
 }
