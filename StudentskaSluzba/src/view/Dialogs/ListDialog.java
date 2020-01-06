@@ -1,6 +1,9 @@
 package view.Dialogs;
 
 import javax.swing.*;
+
+import view.GlavniProzor;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +22,8 @@ public class ListDialog {
 	private JButton okButton, cancelButton;
 	private ActionListener okEvent, cancelEvent;
 	private JDialog dialog;
-
+	   
+	
 	public ListDialog(String message, JList<?> listToDisplay) {
 		list = listToDisplay;
 		label = new JLabel(message);
@@ -29,6 +33,7 @@ public class ListDialog {
 	public ListDialog(String title, String message, JList<?> listToDisplay) {
 		this(message, listToDisplay);
 		dialog.setTitle(title);
+		
 	}
 
 	private void createAndDisplayOptionPane() {
@@ -37,6 +42,7 @@ public class ListDialog {
 		optionPane = new JOptionPane(pane);
 		optionPane.setOptions(new Object[] { okButton, cancelButton });
 		dialog = optionPane.createDialog("Spisak studenata");
+
 	}
 
 	private void setupButtons() {
@@ -83,6 +89,7 @@ public class ListDialog {
 	}
 
 	public void show() {
+		dialog.setLocationRelativeTo(GlavniProzor.getInstance());
 		dialog.setVisible(true);
 	}
 

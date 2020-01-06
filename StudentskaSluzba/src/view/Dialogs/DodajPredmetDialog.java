@@ -22,6 +22,7 @@ import controller.PredmetiController;
 import model.Predmet;
 import model.Profesor;
 import model.Student;
+import view.GlavniProzor;
 import view.Tabovi;
 
 /**
@@ -38,7 +39,8 @@ public class DodajPredmetDialog extends JDialog {
 		super();
 		setTitle("Dodavanje predmeta");
 		setSize(500, 500);
-		setLocationRelativeTo(null);
+	   
+	
 		this.setModal(true);
 		
 		/*
@@ -130,6 +132,7 @@ public class DodajPredmetDialog extends JDialog {
 		 * male panele u JDialogu
 		 */
 		pack();
+		setLocationRelativeTo(GlavniProzor.getInstance());
 
 		/* Lisener da na klik Odustanka ugasimo dijalog */
 		btnCancel.addActionListener(new ActionListener() {

@@ -30,6 +30,7 @@ import model.Predmet;
 import model.Student;
 import model.Student.Status;
 import view.ATMStudenti;
+import view.GlavniProzor;
 import view.Tabovi;
 
 /**
@@ -57,7 +58,7 @@ public class IzmenaStudentaDialog  extends JDialog {
 		setTitle("Izmena studenta");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(null);
+		
 		this.setModal(true);
 		
 		JPanel panCenter = new JPanel();
@@ -228,6 +229,8 @@ public class IzmenaStudentaDialog  extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
+		
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		
 		btnCancel.addActionListener(new ActionListener(){
 

@@ -24,6 +24,7 @@ import controller.ProfesoriController;
 import model.Predmet;
 import model.Profesor;
 import view.ATMProfesori;
+import view.GlavniProzor;
 import view.Tabovi;
 
 /**
@@ -42,7 +43,7 @@ public class IzmenaProfesoraDialog  extends JDialog {
 		setTitle("Izmena profesora");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(null);
+		
 		this.setModal(true);
 		
 		JPanel panCenter = new JPanel();
@@ -200,6 +201,7 @@ public class IzmenaProfesoraDialog  extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		
 		btnCancel.addActionListener(new ActionListener(){
 

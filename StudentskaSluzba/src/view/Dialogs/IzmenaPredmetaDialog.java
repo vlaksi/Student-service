@@ -22,6 +22,7 @@ import controller.PredmetiController;
 import model.Predmet;
 import model.Student;
 import view.ATMPredmeti;
+import view.GlavniProzor;
 import view.Tabovi;
 
 /**
@@ -38,7 +39,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 		super();
 		setTitle("Izmena predmeta");
 		setSize(500, 500);
-		setLocationRelativeTo(null);
+	
 		this.setModal(true);
 		
 		/*
@@ -134,6 +135,8 @@ public class IzmenaPredmetaDialog extends JDialog {
 		 * male panele u JDialogu
 		 */
 		pack();
+		
+		setLocationRelativeTo(GlavniProzor.getInstance());
 
 		/* Lisener da na klik Odustanka ugasimo dijalog */
 		btnCancel.addActionListener(new ActionListener() {

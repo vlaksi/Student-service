@@ -21,6 +21,7 @@ import controller.StudentiController;
 import model.Predmet;
 import model.Student;
 import view.ATMPredmeti;
+import view.GlavniProzor;
 import view.Tabovi;
 
 public class DodajStudentaNaPredmetDialog extends JDialog {
@@ -33,7 +34,7 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 		setTitle("Predmet - Dodavanje studenta");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(null);
+	
 		this.setModal(true);
 
 		JPanel panCenter = new JPanel();
@@ -73,7 +74,8 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
-
+		setLocationRelativeTo(GlavniProzor.getInstance());
+		
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

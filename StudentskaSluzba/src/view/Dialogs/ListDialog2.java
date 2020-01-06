@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import view.GlavniProzor;
+
 public class ListDialog2 {
 	private JList<?> list;
 	private JLabel label;
@@ -71,6 +73,7 @@ public class ListDialog2 {
 	}
 
 	public void show() {
+		dialog.setLocationRelativeTo(GlavniProzor.getInstance());
 		dialog.setVisible(true);
 	}
 

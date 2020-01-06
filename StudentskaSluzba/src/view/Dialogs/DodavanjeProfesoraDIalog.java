@@ -43,7 +43,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		setTitle("Dodavanje profesora");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		this.setModal(true);
 		
 		JPanel panCenter = new JPanel();
@@ -191,7 +191,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
-
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		btnCancel.addActionListener(new ActionListener() {
 
 			@Override

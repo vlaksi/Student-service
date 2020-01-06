@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import view.GlavniProzor;
+
 /**
  * Klasa koja sluzi za prikaz dijaloga koji iskace kada zelimi prikazati listu
  * predmeta odredjenog profesora.
@@ -91,6 +93,7 @@ public class ListDialog3 {
 	}
 
 	public void show() {
+		dialog.setLocationRelativeTo(GlavniProzor.getInstance());
 		dialog.setVisible(true);
 	}
 

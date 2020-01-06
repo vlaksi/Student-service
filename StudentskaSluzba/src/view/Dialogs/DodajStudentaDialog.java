@@ -30,6 +30,7 @@ import controller.StudentiController;
 import model.Predmet;
 import model.Student;
 import model.Student.Status;
+import view.GlavniProzor;
 import view.Tabovi;
 
 /**
@@ -59,7 +60,6 @@ public class DodajStudentaDialog extends JDialog {
 		setTitle("Dodavanje studenta");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(null);
 		this.setModal(true);
 		
 		/*
@@ -224,6 +224,7 @@ public class DodajStudentaDialog extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
+		setLocationRelativeTo(GlavniProzor.getInstance());
 		
 	
 
@@ -265,10 +266,7 @@ public class DodajStudentaDialog extends JDialog {
 								"Greska", JOptionPane.ERROR_MESSAGE);
 			    	  return;
 			    	}
-			      
-				
-				
-				
+			
 				if(validate(emailValue)) {
 					System.out.println("Validan email");
 				}else {

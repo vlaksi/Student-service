@@ -80,6 +80,7 @@ public class PotvrdaBrisanjaDialog extends JDialog {
 		panBottom.add(Box.createVerticalStrut(25));
 
 		add(panBottom, BorderLayout.CENTER);
+		setLocationRelativeTo(GlavniProzor.getInstance());
 
 		/*
 		 * Omogucujemo da se dialog lepo resizuje tj da se uklopi u odnosu na sve nase

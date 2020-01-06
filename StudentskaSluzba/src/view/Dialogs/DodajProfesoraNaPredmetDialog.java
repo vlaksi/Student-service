@@ -21,6 +21,7 @@ import controller.ProfesoriController;
 import model.Predmet;
 import model.Profesor;
 import view.ATMPredmeti;
+import view.GlavniProzor;
 import view.Tabovi;
 
 /**
@@ -38,7 +39,7 @@ public class DodajProfesoraNaPredmetDialog extends JDialog {
 		setTitle("Predmet - Dodavanje profesora");
 		setSize(500, 500);
 		// setBackground();
-		setLocationRelativeTo(null);
+	
 		this.setModal(true);
 
 		/*
@@ -86,6 +87,7 @@ public class DodajProfesoraNaPredmetDialog extends JDialog {
 
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
+		setLocationRelativeTo(GlavniProzor.getInstance());
 
 		btnCancel.addActionListener(new ActionListener() {
 			@Override

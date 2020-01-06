@@ -87,6 +87,8 @@ public class PotvrdaBrisanjaStudentaDialog extends JDialog {
 		// pack();
 
 		/* Lisener da na klik Ne ugasili dijalog */
+		setLocationRelativeTo(GlavniProzor.getInstance());
+		
 		btnCancel.addActionListener(new ActionListener() {
 
 			@Override
