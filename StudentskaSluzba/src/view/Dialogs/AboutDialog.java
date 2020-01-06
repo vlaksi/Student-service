@@ -20,7 +20,7 @@ public class AboutDialog extends JDialog {
 	public AboutDialog() {
 			JDialog dialog = new JDialog();     
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setTitle("Image Loading Demo");
+			dialog.setTitle("About");
 
 			try {
 				dialog.add(new JLabel(new ImageIcon(ImageIO.read(getClass().getResourceAsStream(IMAGE_URL)))));

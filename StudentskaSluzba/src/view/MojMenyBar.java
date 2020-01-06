@@ -17,6 +17,7 @@ import view.Dialogs.AboutDialog;
 import view.Dialogs.DodajPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.DodavanjeProfesoraDIalog;
+import view.Dialogs.HelpDialog;
 import view.Dialogs.IzmenaPredmetaDialog;
 import view.Dialogs.IzmenaProfesoraDialog;
 import view.Dialogs.IzmenaStudentaDialog;
@@ -78,12 +79,13 @@ public class MojMenyBar extends JMenuBar {
 
 		JMenu help = new JMenu("Help");
 		help.setMnemonic(KeyEvent.VK_H);
-
+		
 		JMenuItem helpMenuItem = new JMenuItem("Help", new ImageIcon("./img/help.png"));
 		helpMenuItem.setMnemonic(KeyEvent.VK_H);
 		helpMenuItem.setToolTipText("Pomoc pri radu sa aplikacijom");
 		helpMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_DOWN_MASK));
-
+		helpMenuItem.addActionListener((event) -> helpp());
+		
 		JMenuItem aboutMenuItem = new JMenuItem("About", new ImageIcon("./img/about.png"));
 		aboutMenuItem.setMnemonic(KeyEvent.VK_I);
 		aboutMenuItem.setToolTipText("Informacije o autorima aplikacije");
@@ -161,5 +163,9 @@ public class MojMenyBar extends JMenuBar {
 	 
 	 private void about() {
 		 AboutDialog aboutDialog = new AboutDialog();
+	 }
+	 private void helpp() {
+		 HelpDialog helpDialog = new HelpDialog();
+		 helpDialog.setVisible(true);
 	 }
 }
