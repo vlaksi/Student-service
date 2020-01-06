@@ -41,7 +41,7 @@ public class PredmetiController {
 				predmet.getSemestar(), predmet.getGodinaStudija(), predmet.getPredmetniProfesor(),
 				predmet.getListaStudenata());
 		// Dodajemo predmeta u listu za serijalizaciju
-		//listaPredmetaZaSerijalizaciju.add(predmet);
+		// listaPredmetaZaSerijalizaciju.add(predmet);
 	}
 
 	/**
@@ -88,11 +88,11 @@ public class PredmetiController {
 
 	// Metoda koja dodaje studenta na predmet
 	public void dodajStudentaPredmetu(Student student, Predmet predmet) {
-	
+
 		for (Predmet predmetZaSerijalizaciju : listaPredmetaZaSerijalizaciju) {
 			if (predmetZaSerijalizaciju.getSifraPredmeta().equals(predmet.getSifraPredmeta())) {
-			   BazaPredmeta.getInstance().dodajStudentaNaPredmet(student, predmet);
-			   return;
+				BazaPredmeta.getInstance().dodajStudentaNaPredmet(student, predmet);
+				return;
 			}
 		}
 	}
@@ -117,8 +117,27 @@ public class PredmetiController {
 
 	// Metoda koja brise predmet za prosledjeni index reda
 	public void izbrisiPredmet(int selectedRowIndex) {
+		// ali pored toga mora i da se obrise taj predmet kod profesora koji imaju ovaj
+		// predmet ( tj sa njihove liste predmeta da ga skinemo )
+		// takodje svim studentima koji imaju ovaj predmet, moraju da ga izgube( tj sa
+		// njihove liste predmeta da ga skinemo)
+
+		/* Skidanje predmeta sa profesorove liste predmeta */
+		Predmet predmetKogBrisemo = BazaPredmeta.getInstance().getPredmeti().get(selectedRowIndex);
+		if (predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("nema")
+				|| predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("Nema")
+				|| predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("Nema")) {
+			//System.out.println("Nema profe, pa nema sta da obrise nekom profesoru");
+		}else {/* ali ako ima profesora, onda moramo da ga nadjemo*/
+			predmetKogBrisemo.getPredmetniProfesor().getPredmeti().remove(predmetKogBrisemo);
+		}
+
+		/* Skidanje predmeta sa studentove liste predmeta */
+		for(Student s:predmetKogBrisemo.getListaStudenata()) {
+			s.getPredmeti().remove(predmetKogBrisemo);
+		}
 		BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
-	//	listaPredmetaZaSerijalizaciju.remove(selectedRowIndex);
+
 	}
 
 	public List<Predmet> getListaPredmetaZaSerijalizaciju() {
