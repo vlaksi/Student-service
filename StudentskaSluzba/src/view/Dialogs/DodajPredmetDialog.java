@@ -39,10 +39,9 @@ public class DodajPredmetDialog extends JDialog {
 		super();
 		setTitle("Dodavanje predmeta");
 		setSize(500, 500);
-	   
-	
+
 		this.setModal(true);
-		
+
 		/*
 		 * Koristimo centralni da bi isli od gore prema dole kad dodajemo neke
 		 * komponente.A na njega cemo posle lepiti male panele, gde svaki panel
@@ -152,6 +151,16 @@ public class DodajPredmetDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String sifraFieldValue = txtSifra.getText();
+				/* Provera li mozda vec postoji predmet sa tom sifrom u bazi */
+
+				for (Predmet p : PredmetiController.getInstance().getListaSvihPredmeta()) {
+					if (p.getSifraPredmeta().equals(sifraFieldValue)) {
+						JOptionPane.showMessageDialog(null, "ERROR: Vec postoji predmet sa tom sifrom.", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				}
+
 				String nazivFieldValue = txtNaziv.getText();
 				String semestarFieldValue = semestarComboBox.getSelectedItem().toString();
 				String godinaStudijaFieldValue = godineComboBox.getSelectedItem().toString();
@@ -163,9 +172,10 @@ public class DodajPredmetDialog extends JDialog {
 				} else {
 					List<Student> listaStudenata = new ArrayList<Student>();
 					Profesor profa = new Profesor();
-					profa.setPrezime("Nema");profa.setBrojLicneKarte(" profesora");
-					PredmetiController.getInstance().dodavanjePredmeta(new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
-							godinaStudijaFieldValue,profa, listaStudenata));
+					profa.setPrezime("Nema");
+					profa.setBrojLicneKarte(" profesora");
+					PredmetiController.getInstance().dodavanjePredmeta(new Predmet(sifraFieldValue, nazivFieldValue,
+							semestarFieldValue, godinaStudijaFieldValue, profa, listaStudenata));
 				}
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 				dispose();

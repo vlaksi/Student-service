@@ -226,6 +226,15 @@ public class IzmenaProfesoraDialog  extends JDialog {
 						String emailValue = txtPanEmail.getText();
 						String adresaKancelarijeFieldValue = txtAdresaKancelarije.getText();
 						String brojLicneKarteFieldValue = txtBrojLicneKarte.getText();
+						Profesor kliknutProfesor = ProfesoriController.getInstance().getListaProfesora(ATMProfesori.getSelectedRowIndex());
+						for (Profesor p : ProfesoriController.getInstance().getListaSvihProfesora()) {
+							if (p.getBrojLicneKarte().equals(brojLicneKarteFieldValue) && !p.getBrojLicneKarte().equals(kliknutProfesor.getBrojLicneKarte())) {
+								JOptionPane.showMessageDialog(null, "ERROR: Vec postoji profesor sa tim brojem licne karte.",
+										"Greska", JOptionPane.ERROR_MESSAGE);
+								return;
+							}
+						}
+						
 						String titulaFieldValue = txtTitula.getText();
 						String zvanjeFiledValue = txtTitula.getText();
 

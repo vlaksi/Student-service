@@ -45,7 +45,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 		// setBackground();
 		setLocationRelativeTo(GlavniProzor.getInstance());
 		this.setModal(true);
-		
+
 		JPanel panCenter = new JPanel();
 		BoxLayout boxCenter = new BoxLayout(panCenter, BoxLayout.Y_AXIS);
 		panCenter.setLayout(boxCenter);
@@ -211,6 +211,13 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 				String emailValue = txtPanEmail.getText();
 				String adresaKancelarijeFieldValue = txtAdresaKancelarije.getText();
 				String brojLicneKarteFieldValue = txtBrojLicneKarte.getText();
+				for (Profesor p : ProfesoriController.getInstance().getListaSvihProfesora()) {
+					if (p.getBrojLicneKarte().equals(brojLicneKarteFieldValue)) {
+						JOptionPane.showMessageDialog(null, "ERROR: Vec postoji profesor sa tim brojem licne karte.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				}
 				String titulaFieldValue = txtTitula.getText();
 				String zvanjeFiledValue = txtTitula.getText();
 
@@ -227,7 +234,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 					List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 					Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
 							adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue, adresaKancelarijeFieldValue,
-							brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue,listaPredmeta);
+							brojLicneKarteFieldValue, titulaFieldValue, zvanjeFiledValue, listaPredmeta);
 					ProfesoriController.getInstance().dodavanjeProfesora(profesor);
 				}
 

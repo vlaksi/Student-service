@@ -156,6 +156,15 @@ public class IzmenaPredmetaDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String sifraFieldValue = txtSifra.getText();
+				Predmet kliknutPredmet = PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex());
+				
+				for(Predmet p : PredmetiController.getInstance().getListaSvihPredmeta()  ) {
+					if(p.getSifraPredmeta().equals(sifraFieldValue) && !p.getSifraPredmeta().equals(kliknutPredmet.getSifraPredmeta())) {
+						JOptionPane.showMessageDialog(null, "ERROR: Vec postoji predmet sa tom sifrom.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				}
 				String nazivFieldValue = txtNaziv.getText();
 				String semestarFieldValue = semestarComboBox.getSelectedItem().toString();
 				String godinaStudijaFieldValue = godineComboBox.getSelectedItem().toString();
@@ -165,6 +174,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {		
+					
 					List<Student> listaStudenata = new ArrayList<Student>();
 					Predmet predmet = new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
 							godinaStudijaFieldValue, PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex())
@@ -175,6 +185,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 				// Ako su prosle sve izmene onda izbrisemo tu koju smo izmenili
 				
 				PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
+				
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 
 			}

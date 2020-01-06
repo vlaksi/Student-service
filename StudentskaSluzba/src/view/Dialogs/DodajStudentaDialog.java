@@ -246,6 +246,14 @@ public class DodajStudentaDialog extends JDialog {
 				String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
 				String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
 				String brojIndexaFieldValue = txtBrojIndexa.getText();
+				/* Provera da li mozda vec postoji student s tim indeksom u bazi */
+				for(Student s : StudentiController.getInstance().getListaSvihStudenata()) {
+					if(s.getBrIndexa().equals(brojIndexaFieldValue)) {
+						JOptionPane.showMessageDialog(null, "ERROR: Vec postoji student sa tim brojem indeksa.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				}
 				String brojtelefonaFieldValue = txtBrojTelefona.getText();
 				String godinaStudijaValue = godineComboBox.getSelectedItem().toString();
 				Double prosecnaOcenaValue = null;
@@ -268,7 +276,7 @@ public class DodajStudentaDialog extends JDialog {
 			    	}
 			
 				if(validate(emailValue)) {
-					System.out.println("Validan email");
+					//System.out.println("Validan email");
 				}else {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za e-mail(Ispravan primer maila je foobar@gmail.com)",
