@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -17,13 +16,11 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
 
 import controller.StudentiController;
 import model.Predmet;
@@ -39,8 +36,9 @@ import view.Tabovi;
  * @author Pufke
  *
  */
+
 public class IzmenaStudentaDialog extends JDialog {
-//TODO Dodati masku tj neki vid provere za index studenta
+
 	private static final long serialVersionUID = -3924920391540440967L;
 	private static JTextField txtPrezime = null;
 
@@ -110,19 +108,8 @@ public class IzmenaStudentaDialog extends JDialog {
 		JPanel panBrojTelefona = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblBrojTelefona = new JLabel("Broj telefona*");
 		lblBrojTelefona.setPreferredSize(dim);
-		// JTextField txtBrojTelefona = new JTextField();
-		MaskFormatter maskBrojTelefona = null;
-		try {
-			maskBrojTelefona = new MaskFormatter("##########");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu broja telefona", "Greska",
-					JOptionPane.ERROR_MESSAGE);
-		}
-		maskBrojTelefona.setPlaceholderCharacter('_');
-		maskBrojTelefona.setValidCharacters("0123456789");
-		JFormattedTextField txtBrojTelefona = new JFormattedTextField(maskBrojTelefona);
-		txtBrojTelefona.setText(
-				StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getTelefon());
+		JTextField txtBrojTelefona = new JTextField();
+		txtBrojTelefona.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getTelefon());
 		txtBrojTelefona.setPreferredSize(dim);
 		panBrojTelefona.add(lblBrojTelefona);
 		panBrojTelefona.add(txtBrojTelefona);
@@ -131,21 +118,7 @@ public class IzmenaStudentaDialog extends JDialog {
 		JLabel lblBrojIndexa = new JLabel("Broj indexa* ");
 		lblBrojIndexa.setPreferredSize(dim);
 		JTextField txtBrojIndexa = new JTextField();
-		/*
-		 * MaskFormatter maskBrojIndexa = null; try { maskBrojIndexa = new
-		 * MaskFormatter("UU###-####"); } catch (ParseException e1) {
-		 * JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu Indexa" , "Greska"
-		 * , JOptionPane.ERROR_MESSAGE); }
-		 */
-		/*
-		 * maskBrojTelefona.setPlaceholderCharacter('_');
-		 * maskBrojTelefona.setValidCharacters("0123456789");
-		 */
-		/*
-		 * FormattedTextField txtBrojIndexa = new JFormattedTextField(maskBrojIndexa);
-		 */
-		txtBrojIndexa.setText(
-				StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getBrIndexa());
+		txtBrojIndexa.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getBrIndexa());
 		txtBrojIndexa.setPreferredSize(dim);
 		panBrojIndexa.add(lblBrojIndexa);
 		panBrojIndexa.add(txtBrojIndexa);
@@ -251,69 +224,90 @@ public class IzmenaStudentaDialog extends JDialog {
 
 		});
 
-		// Listeneri koji skupljaju text iz polja
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				String imeFieldValue = txtIme.getText();
-				String prezimeFieldValue = txtPrezime.getText();
-				String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
-				String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
-				String brojIndexaFieldValue = txtBrojIndexa.getText();
-				/*
-				 * Provera da li mozda vec postoji student s tim indeksom u bazi ako probamo da
-				 * menjamo nekoga i njemu stavimo indeks vec postojeceg
-				 */
-				Student kliknutStudent = StudentiController.getInstance()
-						.getListaStudenata(ATMStudenti.getSelectedRowIndex());
-				for (Student s : StudentiController.getInstance().getListaSvihStudenata()) {
-					if (s.getBrIndexa().equals(brojIndexaFieldValue)
-							&& !s.getBrIndexa().equals(kliknutStudent.getBrIndexa())) {
-						JOptionPane.showMessageDialog(null, "ERROR: Vec postoji student sa tim brojem indeksa.",
+		
+		//Listeneri koji skupljaju text iz polja
+		btnOk.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent ae){
+			      String imeFieldValue = txtIme.getText();
+			      String prezimeFieldValue = txtPrezime.getText();
+			      String datumRodjenjaFieldValue = txtDatumRodjenja.getText();
+			      String adresaStanovanjaFieldValue = txtAdresaStanovanja.getText();
+			      String brojIndexaFieldValue = txtBrojIndexa.getText();
+			      String brojtelefonaFieldValue = txtBrojTelefona.getText();
+			      String godinaStudijaValue = godineComboBox.getSelectedItem().toString();
+			      Double prosecnaOcenaValue = null;
+			      String datumUpisaValue = txtPanDatumUpiusa.getText();
+			      String emailValue = txtPanEmail.getText();
+			      
+			      if (!prezimeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Peric )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
+			      if (!imeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Nemanja )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+		
+			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
+			      if (!datumUpisaValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum upisa( Ispravan format datuma upisa je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      if (!brojtelefonaFieldValue.matches("[0-9]+")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za broj telefona( Ispravan format za broj telefona je 0655555555 )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
+			      
+			      if(!validate(emailValue)) {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za e-mail(Ispravan primer maila je foobar@gmail.com)",
 								"Greska", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-				}
-				String brojtelefonaFieldValue = txtBrojTelefona.getText();
-				String godinaStudijaValue = godineComboBox.getSelectedItem().toString();
-				Double prosecnaOcenaValue = null;
-				String datumUpisaValue = txtPanDatumUpiusa.getText();
-				String emailValue = txtPanEmail.getText();
-
-				if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
-					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
-							"Greska", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-
-				if (!datumUpisaValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
-					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za datum upisa( Ispravan format datuma upisa je YYYY-MM-DD )",
-							"Greska", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-
-				if (!validate(emailValue)) {
-					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za e-mail(Ispravan primer maila je foobar@gmail.com)",
-							"Greska", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-
-				if (!txtProsecnaOcena.getText().equals("")) {
-					try {
-						prosecnaOcenaValue = Double.parseDouble(txtProsecnaOcena.getText());
-
-						if (prosecnaOcenaValue < 6 || prosecnaOcenaValue > 10) {
-							JOptionPane.showMessageDialog(null,
-									"ERROR: Uneli ste pogresnu vrednost za prosecnu ocenu(prosecna ocena je u intervalu od 6 do 10)",
-									"Greska", JOptionPane.ERROR_MESSAGE);
+			      
+			      if (!brojIndexaFieldValue.matches("[A-Z]{1,2}[0-9]{1,3}-[12][0-9]{3}")) {
+	                    JOptionPane.showMessageDialog(null,
+	                            "ERROR: Uneli ste pogresnu vrednost za index studenta( Ispravan format indexa studenta je RA123-2017 )",
+	                            "Greska", JOptionPane.ERROR_MESSAGE);
+	                    return;
+	                }
+				
+				  if(!txtProsecnaOcena.getText().equals("")) {
+					  try {
+						  prosecnaOcenaValue = Double.parseDouble(txtProsecnaOcena.getText()); 
+						  
+						  if(prosecnaOcenaValue < 6 || prosecnaOcenaValue > 10) {
+							  JOptionPane.showMessageDialog(null, "ERROR: Uneli ste pogresnu vrednost za prosecnu ocenu(prosecna ocena je u intervalu od 6 do 10)" , "Greska" , JOptionPane.ERROR_MESSAGE); 
+							  return;
+						  }
 						}
-					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(null, "ERROR: Uneli ste slovo u polje za prosecnu ocenu",
-								"Greska", JOptionPane.ERROR_MESSAGE);
-						return;
-					}
+						catch (NumberFormatException e) {
+							JOptionPane.showMessageDialog(null, "ERROR: Uneli ste slovo u polje za prosecnu ocenu" , "Greska" , JOptionPane.ERROR_MESSAGE);
+							return;
+
+						}
 				} else {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -361,6 +355,7 @@ public class IzmenaStudentaDialog extends JDialog {
 
 			}
 		});
+
 	}
 
 	public static JTextField getTxtPrezime() {
