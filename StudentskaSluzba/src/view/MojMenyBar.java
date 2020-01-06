@@ -7,7 +7,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+
+import controller.PredmetiController;
+import controller.ProfesoriController;
+import controller.StudentiController;
+import view.Dialogs.DodajPredmetDialog;
+import view.Dialogs.DodajStudentaDialog;
+import view.Dialogs.DodavanjeProfesoraDIalog;
+import view.Dialogs.IzmenaPredmetaDialog;
+import view.Dialogs.IzmenaProfesoraDialog;
+import view.Dialogs.IzmenaStudentaDialog;
+import view.Dialogs.PotvrdaBrisanjaDialog;
 
 /*
  * klasa nasledjuje JMenuBar i predstavlja kontejner
@@ -38,7 +50,8 @@ public class MojMenyBar extends JMenuBar {
 		newMenuItem.setMnemonic(KeyEvent.VK_N);
 		newMenuItem.setToolTipText("Dodavanje novog entiteta u sistem");
 		newMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
-
+		newMenuItem.addActionListener((event) -> dodavanjeEntiteta());
+		
 		file.add(newMenuItem);
 		file.addSeparator();
 		file.add(closeMenuItem);
@@ -50,12 +63,14 @@ public class MojMenyBar extends JMenuBar {
 		miEdit.setMnemonic(KeyEvent.VK_E);
 		miEdit.setToolTipText("Editovanje entiteta u sistemu");
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
-
+		miEdit.addActionListener((event) -> izmenaEntiteta());
+		
 		JMenuItem miDelete = new JMenuItem("Delete", new ImageIcon("./img/delete.png"));
 		miDelete.setMnemonic(KeyEvent.VK_D);
 		miDelete.setToolTipText("Brisanje postojeceg entiteta u sistemu");
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK));
-
+		miDelete.addActionListener((event) -> brisanjeEntiteta());
+		
 		edit.add(miEdit);
 		edit.addSeparator();
 		edit.add(miDelete);
@@ -81,4 +96,64 @@ public class MojMenyBar extends JMenuBar {
 		add(edit);
 		add(help);
 	}
+
+	private Object dodavanjeEntiteta() {
+		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
+			DodajStudentaDialog dialog = new DodajStudentaDialog();
+			dialog.setVisible(true);
+		}
+		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
+			DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog();
+			dialog.setVisible(true);
+		}
+
+		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+			DodajPredmetDialog dialog = new DodajPredmetDialog();
+			dialog.setVisible(true);
+		}
+		return listenerList;
+	}
+	
+	 private void izmenaEntiteta() {
+		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
+			if (StudentiController.getInstance().getListaSvihStudenata().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema studenta za izmenu.",
+						"Greska", JOptionPane.ERROR_MESSAGE);
+				return;
+			} else {
+				IzmenaStudentaDialog dialog = new IzmenaStudentaDialog();
+				dialog.setVisible(true);
+			}
+
+		}
+		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
+			if (ProfesoriController.getInstance().getListaSvihProfesora().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema profesora za izmenu.",
+						"Greska", JOptionPane.ERROR_MESSAGE);
+				return;
+			} else {
+				IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog();
+				dialog.setVisible(true);
+			}
+
+		}
+
+		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
+			if (PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema predmeta za izmenu.",
+						"Greska", JOptionPane.ERROR_MESSAGE);
+				return;
+			} else {
+				IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog();
+				dialog.setVisible(true);
+			}
+
+		}
+	}
+	 
+	 private void brisanjeEntiteta() {
+		 PotvrdaBrisanjaDialog dialog = new PotvrdaBrisanjaDialog();
+			dialog.setVisible(true);
+	 
+	 }
 }
