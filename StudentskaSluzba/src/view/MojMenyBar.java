@@ -166,6 +166,5 @@ public class MojMenyBar extends JMenuBar {
 	 }
 	 private void helpp() {
 		 HelpDialog helpDialog = new HelpDialog();
-		 helpDialog.setVisible(true);
 	 }
 }
