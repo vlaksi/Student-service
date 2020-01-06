@@ -36,7 +36,6 @@ public class StudentiJTable extends JTable {
 		sortiranje.setSortable(11, false); // iskljucujem poslednju kolonu za mogucnost sortiranja
 		this.setRowSorter(sortiranje);
 		
-		
 	}
 
 	/**
@@ -68,6 +67,8 @@ public class StudentiJTable extends JTable {
 	public static TableRowSorter<ATMStudenti> getSortiranje() {
 		return sortiranje;
 	}
+	
+
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
 		/*
@@ -82,4 +83,5 @@ public class StudentiJTable extends JTable {
 		}
 		return c;
 	}
+	
 }

@@ -13,6 +13,7 @@ import javax.swing.KeyStroke;
 import controller.PredmetiController;
 import controller.ProfesoriController;
 import controller.StudentiController;
+import view.Dialogs.AboutDialog;
 import view.Dialogs.DodajPredmetDialog;
 import view.Dialogs.DodajStudentaDialog;
 import view.Dialogs.DodavanjeProfesoraDIalog;
@@ -40,9 +41,9 @@ public class MojMenyBar extends JMenuBar {
 		file.setMnemonic(KeyEvent.VK_F);
 
 		JMenuItem closeMenuItem = new JMenuItem("Close              ", new ImageIcon("./img/exit.png"));
-		closeMenuItem.setMnemonic(KeyEvent.VK_C);
+		closeMenuItem.setMnemonic(KeyEvent.VK_W);
 		closeMenuItem.setToolTipText("Zatvaranje aplikacije");
-		closeMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, // zatvaranje na ctrl c
+		closeMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, // zatvaranje na ctrl c
 				InputEvent.CTRL_DOWN_MASK));
 		closeMenuItem.addActionListener((event) -> System.exit(0));
 
@@ -84,9 +85,10 @@ public class MojMenyBar extends JMenuBar {
 		helpMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_DOWN_MASK));
 
 		JMenuItem aboutMenuItem = new JMenuItem("About", new ImageIcon("./img/about.png"));
-		aboutMenuItem.setMnemonic(KeyEvent.VK_A);
+		aboutMenuItem.setMnemonic(KeyEvent.VK_I);
 		aboutMenuItem.setToolTipText("Informacije o autorima aplikacije");
-		aboutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
+		aboutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
+		aboutMenuItem.addActionListener((event) -> about());
 
 		help.add(helpMenuItem);
 		help.addSeparator();
@@ -152,8 +154,12 @@ public class MojMenyBar extends JMenuBar {
 	}
 	 
 	 private void brisanjeEntiteta() {
+		 
 		 PotvrdaBrisanjaDialog dialog = new PotvrdaBrisanjaDialog();
 			dialog.setVisible(true);
+	 }
 	 
+	 private void about() {
+		 AboutDialog aboutDialog = new AboutDialog();
 	 }
 }
