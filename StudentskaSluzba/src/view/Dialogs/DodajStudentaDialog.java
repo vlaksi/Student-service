@@ -330,9 +330,9 @@ public class DodajStudentaDialog extends JDialog {
 
 				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
 						|| adresaStanovanjaFieldValue.isBlank() || brojIndexaFieldValue.isBlank()
-						|| brojIndexaFieldValue.trim().equals("-") || brojtelefonaFieldValue.isBlank()
+						|| brojIndexaFieldValue.isBlank()|| brojtelefonaFieldValue.isBlank()
 						|| godinaStudijaValue.isBlank() || prosecnaOcenaValue.isNaN()
-						|| datumUpisaValue.trim().equals(".  .") || emailValue.trim().equals("_____@______")) {
+						|| datumUpisaValue.isBlank() || emailValue.isBlank()) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
