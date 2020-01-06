@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.Dimension;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JComponent;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.KeyStroke;
 
 import controller.PredmetiController;
 import controller.ProfesoriController;
@@ -69,15 +71,16 @@ public class Tabovi {
 
 		panel1 = napraviTab("Panel 1", true, 0);
 		tabbedPane.addTab("Studenti", null, panel1, "Studenti");
-		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
-
+		tabbedPane.setMnemonicAt(0, KeyEvent.VK_S);
+		
+		
 		panel2 = napraviTab("Panel 2", false, 1);
 		tabbedPane.addTab("Profesori", null, panel2, "Profesori");
-		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_P);
 
 		panel3 = napraviTab("Panel 3", true, 2);
 		tabbedPane.addTab("Predmeti", null, panel3, "Predmeti");
-		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+		tabbedPane.setMnemonicAt(2, KeyEvent.VK_R);
 
 		this.scrollPane = new JScrollPane(tabbedPane);
 	}
