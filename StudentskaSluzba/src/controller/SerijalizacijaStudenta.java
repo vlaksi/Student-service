@@ -39,7 +39,7 @@ public class SerijalizacijaStudenta {
 			out.close();
 			file.close();
 
-			System.out.println("StudentSerializable:Object has been serialized");
+			//System.out.println("StudentSerializable:Object has been serialized");
 
 		}
 
@@ -63,7 +63,7 @@ public class SerijalizacijaStudenta {
 			in.close();
 			file.close();
 
-			System.out.println("StudentSerializable:Object has been deserialized ");
+			//System.out.println("StudentSerializable:Object has been deserialized ");
 			return student1;
 			//System.out.println("Ime prvog studenta = " + .getIme());
 		}

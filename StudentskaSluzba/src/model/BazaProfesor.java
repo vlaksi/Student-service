@@ -36,7 +36,7 @@ public class BazaProfesor {
 	private BazaProfesor() {
 		initProfesore();
 		this.kolone = new ArrayList<String>();
-		
+
 		this.kolone.add("Ime");
 		this.kolone.add("Prezime");
 		this.kolone.add("Datum rodjenja");
@@ -56,7 +56,6 @@ public class BazaProfesor {
 	private void initProfesore() {
 
 		this.profesori = SerijalizacijaProfesora.getInstance().deserijalizacijaObjekta();
-		 	 
 
 	}
 
@@ -205,8 +204,18 @@ public class BazaProfesor {
 	 * @param predmet
 	 */
 	public void izbrisiPredmetProfesora(Profesor profesor, Predmet predmet) {
-		profesor.getPredmeti().remove(predmet);
+		int indeks = 0;
+		for (Predmet p : profesor.getPredmeti()) {
+			if (p.getSifraPredmeta().equals(predmet.getSifraPredmeta())) {
+				// System.out.println("sifre su ime iste, a indeks na kom se nalazi je:
+				// "+indeks);
+				break;
+			}
 
+			indeks++;
+		}
+
+		profesor.getPredmeti().remove(indeks);
 	}
 
 }
