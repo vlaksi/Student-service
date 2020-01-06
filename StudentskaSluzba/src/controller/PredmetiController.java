@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.BazaPredmeta;
-import model.BazaStudent;
 import model.Predmet;
 import model.Profesor;
 import model.Student;
