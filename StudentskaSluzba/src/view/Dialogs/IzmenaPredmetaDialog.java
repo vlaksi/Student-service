@@ -39,9 +39,9 @@ public class IzmenaPredmetaDialog extends JDialog {
 		super();
 		setTitle("Izmena predmeta");
 		setSize(500, 500);
-	
+
 		this.setModal(true);
-		
+
 		/*
 		 * Koristimo centralni da bi isli od gore prema dole kad dodajemo neke
 		 * komponente.A na njega cemo posle lepiti male panele, gde svaki panel
@@ -135,7 +135,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 		 * male panele u JDialogu
 		 */
 		pack();
-		
+
 		setLocationRelativeTo(GlavniProzor.getInstance());
 
 		/* Lisener da na klik Odustanka ugasimo dijalog */
@@ -143,7 +143,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//dispose();
+				// dispose();
 				setVisible(false);
 			}
 
@@ -156,12 +156,14 @@ public class IzmenaPredmetaDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String sifraFieldValue = txtSifra.getText();
-				Predmet kliknutPredmet = PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex());
-				
-				for(Predmet p : PredmetiController.getInstance().getListaSvihPredmeta()  ) {
-					if(p.getSifraPredmeta().equals(sifraFieldValue) && !p.getSifraPredmeta().equals(kliknutPredmet.getSifraPredmeta())) {
-						JOptionPane.showMessageDialog(null, "ERROR: Vec postoji predmet sa tom sifrom.",
-								"Greska", JOptionPane.ERROR_MESSAGE);
+				Predmet kliknutPredmet = PredmetiController.getInstance()
+						.getListaPredmeta(ATMPredmeti.getSelectedRowIndex());
+
+				for (Predmet p : PredmetiController.getInstance().getListaSvihPredmeta()) {
+					if (p.getSifraPredmeta().equals(sifraFieldValue)
+							&& !p.getSifraPredmeta().equals(kliknutPredmet.getSifraPredmeta())) {
+						JOptionPane.showMessageDialog(null, "ERROR: Vec postoji predmet sa tom sifrom.", "Greska",
+								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				}
@@ -169,23 +171,38 @@ public class IzmenaPredmetaDialog extends JDialog {
 				String semestarFieldValue = semestarComboBox.getSelectedItem().toString();
 				String godinaStudijaFieldValue = godineComboBox.getSelectedItem().toString();
 
+				if (!nazivFieldValue.matches("([A-Z][a-z ]{1,24})+[0-9]?")) {
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Uneli ste pogresnu vrednost za naziv predmeta ( Ispravan format naziva je npr: Analiza 1 )",
+							"Greska", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
+				if (!sifraFieldValue.matches("[A-Z]{1,6}-[A-Z]{1,3}[0-9]?")) {
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Uneli ste pogresnu vrednost za sifru predmeta ( Ispravan format sifre je npr: WP-E2 )",
+							"Greska", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
 				if (sifraFieldValue.isBlank() || nazivFieldValue.isBlank()) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
-				} else {		
-					
+				} else {
+
 					List<Student> listaStudenata = new ArrayList<Student>();
 					Predmet predmet = new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
-							godinaStudijaFieldValue, PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex())
-							.getPredmetniProfesor(), listaStudenata);
+							godinaStudijaFieldValue, PredmetiController.getInstance()
+									.getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getPredmetniProfesor(),
+							listaStudenata);
 					PredmetiController.getInstance().dodavanjePredmeta(predmet);
 				}
 
 				// Ako su prosle sve izmene onda izbrisemo tu koju smo izmenili
-				
+
 				PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
-				
+
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 
 			}
