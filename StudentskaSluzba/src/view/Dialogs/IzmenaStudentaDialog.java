@@ -39,7 +39,6 @@ import view.Tabovi;
  *
  */
 public class IzmenaStudentaDialog  extends JDialog {
-//TODO Dodati masku tj neki vid provere za index studenta
 	private static final long serialVersionUID = -3924920391540440967L;
 	private static JTextField txtPrezime = null;
 	
@@ -109,16 +108,7 @@ public class IzmenaStudentaDialog  extends JDialog {
 		JPanel panBrojTelefona = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel lblBrojTelefona = new JLabel("Broj telefona*");
 		lblBrojTelefona.setPreferredSize(dim);
-		//JTextField txtBrojTelefona = new JTextField();
-		MaskFormatter maskBrojTelefona = null;
-		try {
-			maskBrojTelefona = new MaskFormatter("##########");
-		} catch (ParseException e1) {
-			JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu broja telefona" , "Greska" , JOptionPane.ERROR_MESSAGE);
-		}
-		maskBrojTelefona.setPlaceholderCharacter('_'); 
-		maskBrojTelefona.setValidCharacters("0123456789"); 
-		JFormattedTextField txtBrojTelefona = new JFormattedTextField(maskBrojTelefona);
+		JTextField txtBrojTelefona = new JTextField();
 		txtBrojTelefona.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getTelefon());
 		txtBrojTelefona.setPreferredSize(dim);
 		panBrojTelefona.add(lblBrojTelefona);
@@ -128,17 +118,6 @@ public class IzmenaStudentaDialog  extends JDialog {
 		JLabel lblBrojIndexa = new JLabel("Broj indexa* ");
 		lblBrojIndexa.setPreferredSize(dim);
 		JTextField txtBrojIndexa = new JTextField();
-		/*
-		 * MaskFormatter maskBrojIndexa = null; try { maskBrojIndexa = new
-		 * MaskFormatter("UU###-####"); } catch (ParseException e1) {
-		 * JOptionPane.showMessageDialog(null, "ERROR: Greska u unosu Indexa" , "Greska"
-		 * , JOptionPane.ERROR_MESSAGE); }
-		 */
-		/*
-		 * maskBrojTelefona.setPlaceholderCharacter('_');
-		 * maskBrojTelefona.setValidCharacters("0123456789");
-		 */
-		 /*FormattedTextField txtBrojIndexa = new JFormattedTextField(maskBrojIndexa);*/
 		txtBrojIndexa.setText(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getBrIndexa());
 		txtBrojIndexa.setPreferredSize(dim);
 		panBrojIndexa.add(lblBrojIndexa);
@@ -256,7 +235,27 @@ public class IzmenaStudentaDialog  extends JDialog {
 			      Double prosecnaOcenaValue = null;
 			      String datumUpisaValue = txtPanDatumUpiusa.getText();
 			      String emailValue = txtPanEmail.getText();
-			
+			      
+			      if (!prezimeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Peric )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+			      
+			      if (!imeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Nemanja )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
+		
+			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
 			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
 			    	  JOptionPane.showMessageDialog(null,
 								"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
@@ -270,6 +269,12 @@ public class IzmenaStudentaDialog  extends JDialog {
 								"Greska", JOptionPane.ERROR_MESSAGE);
 			    	  return;
 			    	}
+			      if (!brojtelefonaFieldValue.matches("[0-9]+")) {
+			    	  JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za broj telefona( Ispravan format za broj telefona je 0655555555 )",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+			    	  return;
+			    	}
 			      
 			      
 			      if(!validate(emailValue)) {
@@ -278,6 +283,13 @@ public class IzmenaStudentaDialog  extends JDialog {
 								"Greska", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
+			      
+			      if (!brojIndexaFieldValue.matches("[A-Z]{1,2}[0-9]{1,3}-[12][0-9]{3}")) {
+	                    JOptionPane.showMessageDialog(null,
+	                            "ERROR: Uneli ste pogresnu vrednost za index studenta( Ispravan format indexa studenta je RA123-2017 )",
+	                            "Greska", JOptionPane.ERROR_MESSAGE);
+	                    return;
+	                }
 				
 				  if(!txtProsecnaOcena.getText().equals("")) {
 					  try {
@@ -285,6 +297,7 @@ public class IzmenaStudentaDialog  extends JDialog {
 						  
 						  if(prosecnaOcenaValue < 6 || prosecnaOcenaValue > 10) {
 							  JOptionPane.showMessageDialog(null, "ERROR: Uneli ste pogresnu vrednost za prosecnu ocenu(prosecna ocena je u intervalu od 6 do 10)" , "Greska" , JOptionPane.ERROR_MESSAGE); 
+							  return;
 						  }
 						}
 						catch (NumberFormatException e) {
