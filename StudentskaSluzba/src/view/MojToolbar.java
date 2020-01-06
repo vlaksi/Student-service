@@ -247,12 +247,23 @@ public class MojToolbar extends JToolBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (searchable.getText().isBlank()) {
-					System.out.println("prazno");
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Morate da uneste neku pretragu, kako bi se ona izvrsila.",
+							"Greska", JOptionPane.ERROR_MESSAGE);
+					return;
 				} else {
 					searchB.setVisible(false);
 					cancelSearchB.setVisible(true);
 
 					String[] nizUnetihParova = searchable.getText().split(";");
+					for(int i=0;i<nizUnetihParova.length;i++) {
+						if(!nizUnetihParova[i].contains(":") || nizUnetihParova[i].equals(":")) {
+							JOptionPane.showMessageDialog(null,
+									"ERROR: Niste validno pokusali pretragu. Primer validnog nacina: nazivKolone:trazenaVrednost .",
+									"Greska", JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+					}
 
 					/* Search pretraga u tabu studenata */
 					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
