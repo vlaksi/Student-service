@@ -171,6 +171,45 @@ public class IzmenaPredmetaDialog extends JDialog {
 				String semestarFieldValue = semestarComboBox.getSelectedItem().toString();
 				String godinaStudijaFieldValue = godineComboBox.getSelectedItem().toString();
 
+				/* Provera da li su godina studija i semestar odgovarajuci */
+				if (godinaStudijaFieldValue.equals("1")) {
+					if (semestarFieldValue.equals("1") || semestarFieldValue.equals("2")) {
+
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Na prvoj godini je moguce biti samo na prvom ili drugom semestru.", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				} else if (godinaStudijaFieldValue.equals("2")) {
+					if (semestarFieldValue.equals("3") || semestarFieldValue.equals("4")) {
+
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Na drugoj godini je moguce biti samo na trecem ili cetvrtom semestru.",
+								"Greska", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				} else if (godinaStudijaFieldValue.equals("3")) {
+					if (semestarFieldValue.equals("5") || semestarFieldValue.equals("6")) {
+
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Na trecoj godini je moguce biti samo na petom ili sestom semestru.", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				} else if (godinaStudijaFieldValue.equals("4")) {
+					if (semestarFieldValue.equals("7") || semestarFieldValue.equals("8")) {
+
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Na cetvrtoj godini je moguce biti samo na sedmom ili osmom semestru.", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				}
+
 				if (!nazivFieldValue.matches("([A-Z][a-z ]{1,24})+[0-9]?")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za naziv predmeta ( Ispravan format naziva je npr: Analiza 1 )",

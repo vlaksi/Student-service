@@ -189,8 +189,8 @@ public class DodajPredmetDialog extends JDialog {
 
 					} else {
 						JOptionPane.showMessageDialog(null,
-								"ERROR: Na trecoj godini je moguce biti samo na petom ili sestom semestru.",
-								"Greska", JOptionPane.ERROR_MESSAGE);
+								"ERROR: Na trecoj godini je moguce biti samo na petom ili sestom semestru.", "Greska",
+								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				} else if (godinaStudijaFieldValue.equals("4")) {
@@ -198,8 +198,8 @@ public class DodajPredmetDialog extends JDialog {
 
 					} else {
 						JOptionPane.showMessageDialog(null,
-								"ERROR: Na cetvrtoj godini je moguce biti samo na sedmom ili osmom semestru.",
-								"Greska", JOptionPane.ERROR_MESSAGE);
+								"ERROR: Na cetvrtoj godini je moguce biti samo na sedmom ili osmom semestru.", "Greska",
+								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 				}

@@ -16,3 +16,4 @@
 ###### Broj telefona validirati
 ###### Uklanjanje studenta sa predmeta
 ###### Onemoguciti dodavanje istog studenta na predmet vise puta
+###### U help opisati za predmet validne formate.
