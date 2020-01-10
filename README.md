@@ -14,6 +14,5 @@
 ###### Ograniciti broj licne na 9 cifara
 ###### Balidacija za adresu ,sto mozemo uneti samo zvezdice,trebalo bi da mora neka rec
 ###### Broj telefona validirati
-###### Godina-semestar : izbaciti eror ako nisu odgovarajuci
 ###### Uklanjanje studenta sa predmeta
 ###### Onemoguciti dodavanje istog studenta na predmet vise puta
