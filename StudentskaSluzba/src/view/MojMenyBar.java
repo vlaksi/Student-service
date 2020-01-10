@@ -162,9 +162,11 @@ public class MojMenyBar extends JMenuBar {
 	 }
 	 
 	 private void about() {
-		 AboutDialog aboutDialog = new AboutDialog();
+		 @SuppressWarnings("unused")
+		AboutDialog aboutDialog = new AboutDialog();
 	 }
 	 private void helpp() {
-		 HelpDialog helpDialog = new HelpDialog();
+		 @SuppressWarnings("unused")
+		HelpDialog helpDialog = new HelpDialog();
 	 }
 }

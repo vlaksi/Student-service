@@ -1,18 +1,11 @@
 package view.Dialogs;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
 import view.GlavniProzor;
 
 public class HelpDialog extends JDialog {

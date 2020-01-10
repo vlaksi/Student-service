@@ -48,6 +48,7 @@ public class SerijalizacijaProfesora {
 	}
 
 	 
+	@SuppressWarnings("unchecked")
 	public List<Profesor> deserijalizacijaObjekta() {
 		List<Profesor> profesori;
 		// Deserialization

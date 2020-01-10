@@ -48,6 +48,7 @@ public class SerijalizacijaPredmeta {
 	}
 
 	 
+	@SuppressWarnings("unchecked")
 	public List<Predmet> deserijalizacijaObjekta() {
 		List<Predmet> predmeti;
 		// Deserialization

@@ -4,9 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.Dimension;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -14,8 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.KeyStroke;
-
 import controller.PredmetiController;
 import controller.ProfesoriController;
 import controller.StudentiController;
@@ -72,8 +68,7 @@ public class Tabovi {
 		panel1 = napraviTab("Panel 1", true, 0);
 		tabbedPane.addTab("Studenti", null, panel1, "Studenti");
 		tabbedPane.setMnemonicAt(0, KeyEvent.VK_S);
-		
-		
+
 		panel2 = napraviTab("Panel 2", false, 1);
 		tabbedPane.addTab("Profesori", null, panel2, "Profesori");
 		tabbedPane.setMnemonicAt(1, KeyEvent.VK_P);
@@ -198,19 +193,24 @@ public class Tabovi {
 						JList<Object> list = new JList<Object>(tokens);
 						ListDialog3 dialog3 = new ListDialog3("Spisak predmeta izabranog profesora", list);
 						dialog3.setOnOk(e -> {
-							if (dialog3.getSelectedItem() == null || dialog3.getSelectedItem().toString().length() == 0) {
+							if (dialog3.getSelectedItem() == null
+									|| dialog3.getSelectedItem().toString().length() == 0) {
 								JOptionPane.showMessageDialog(null,
-										"ERROR: Morate da selektujete predmet ako zelite da ga obriste.",
-										"Greska", JOptionPane.ERROR_MESSAGE);
+										"ERROR: Morate da selektujete predmet ako zelite da ga obriste.", "Greska",
+										JOptionPane.ERROR_MESSAGE);
 								return;
-							}else {
+							} else {
 								// TODO obrisati taj predmet iz liste predmeta tog profesora
 								// TODO obrisati tog profesora iz liste profesora u predmetu
-								Profesor profesorKomeBrisemoPredmet = ProfesoriController.getInstance().getListaProfesora(row);
-								Predmet predmetKogBrisemo = PredmetiController.getInstance().getPredmetByNaziv(dialog3.getSelectedItem().toString());
-								
-								ProfesoriController.getInstance().izbrisiPredmetProfesora(profesorKomeBrisemoPredmet, predmetKogBrisemo);
-								PredmetiController.getInstance().izbrisiProfesoraSaPredmeta(profesorKomeBrisemoPredmet, predmetKogBrisemo);
+								Profesor profesorKomeBrisemoPredmet = ProfesoriController.getInstance()
+										.getListaProfesora(row);
+								Predmet predmetKogBrisemo = PredmetiController.getInstance()
+										.getPredmetByNaziv(dialog3.getSelectedItem().toString());
+
+								ProfesoriController.getInstance().izbrisiPredmetProfesora(profesorKomeBrisemoPredmet,
+										predmetKogBrisemo);
+								PredmetiController.getInstance().izbrisiProfesoraSaPredmeta(profesorKomeBrisemoPredmet,
+										predmetKogBrisemo);
 								Tabovi.getModelProfesori().fireTableDataChanged();
 							}
 						});
@@ -250,7 +250,8 @@ public class Tabovi {
 
 							dialog.setOnOk(e -> {
 
-								if (dialog.getSelectedItem() == null || dialog.getSelectedItem().toString().length() == 0) {
+								if (dialog.getSelectedItem() == null
+										|| dialog.getSelectedItem().toString().length() == 0) {
 									JOptionPane.showMessageDialog(null,
 											"ERROR: Morate da selektujete studenta, ako nema ni jednog prvo ga dodajte na predmet",
 											"Greska", JOptionPane.ERROR_MESSAGE);
