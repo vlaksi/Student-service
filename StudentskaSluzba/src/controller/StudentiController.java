@@ -98,7 +98,6 @@ public class StudentiController {
 				student.getStatusStudenta(), student.getPredmeti());
 		// Dodajemo studenta u listu za serijalizaciju
 		//listaStudenataZaSerijalizaciju.add(student);
-
 	}
 
 	public List<Student> getListaStudenataZaSerijalizaciju() {
@@ -115,6 +114,7 @@ public class StudentiController {
 	 */
 
 	public void izbrisiStudenta(int rowIndex) {
+		int indikatorBreak=-1;
 		// proverimo da li ima predmet, ako imamo, nadjemo taj predmet, i tom predmetu
 		// skinemo ovog studenta
 		Student student = new Student();
@@ -129,18 +129,23 @@ public class StudentiController {
 			// postoji predmetStudenta,ako postoji,brisem tog studenta iz liste studenta tog
 			// predmeta
 			for (Predmet pStudenta : listaPredmetaStudenta) {
-//				if (p.equals(pStudenta)) {
-//					p.getListaStudenata().remove(student);
-//				}
+				indikatorBreak=-1;
 				if(p.getSifraPredmeta().equals(pStudenta.getSifraPredmeta())) {
-					if(p.getListaStudenata().remove(student)){
-						System.out.println("Uspesno uklunjen student:" + student.getBrIndexa()+" sa predmeta: "+ p.getNazivPredmeta());
-					}else {
-						System.out.println("Neuspelo uklanjanje");
+					for(Student s : p.getListaStudenata()) {
+						if(s.getBrIndexa().equals(student.getBrIndexa())) {
+							p.getListaStudenata().remove(s);
+							//BazaStudent.getInstance().getStudenti().remove(rowIndex);
+							indikatorBreak=1;
+							break;
+						}
 					}
-					break;
+					if(indikatorBreak==1) {
+						break;
+					}
+					
 				}
 			}
+			System.out.println("spoljasnji for");
 		}
 
 		BazaStudent.getInstance().getStudenti().remove(rowIndex);
