@@ -258,7 +258,7 @@ public class DodajStudentaDialog extends JDialog {
 					return;
 				}
 				
-				if (!adresaStanovanjaFieldValue.matches("[\\p{L}\\s]+[0-9]+,[\\p{L}\\s]+")) {
+				if (!adresaStanovanjaFieldValue.matches("[0-9]*{1,7}[\\p{L}\\s]+[0-9]*{1,7},[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za adresu stanovanja( Ispravan format datuma rodjenja je Karadjordjeva 83, Novi Sad )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
