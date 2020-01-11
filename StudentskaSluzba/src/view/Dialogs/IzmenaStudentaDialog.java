@@ -359,7 +359,7 @@ public class IzmenaStudentaDialog extends JDialog {
 						  prosecnaOcenaValue = Double.parseDouble(txtProsecnaOcena.getText()); 
 						  
 						  if(prosecnaOcenaValue < 6 || prosecnaOcenaValue > 10) {
-							  JOptionPane.showMessageDialog(null, "ERROR: Uneli ste pogresnu vrednost za prosecnu ocenu(prosecna ocena je u intervalu od 6 do 10)" , "Greska" , JOptionPane.ERROR_MESSAGE); 
+							  JOptionPane.showMessageDialog(null, "ERROR: Uneli ste pogresnu vrednost za prosecnu ocenu(prosecna ocena je u intervalu od 6 do 10 ili ostavite prazno polje ako je student prva godina i nema prosek)" , "Greska" , JOptionPane.ERROR_MESSAGE); 
 							  return;
 						  }
 						}

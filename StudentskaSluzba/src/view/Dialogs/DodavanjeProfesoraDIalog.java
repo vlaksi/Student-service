@@ -199,7 +199,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 					}
 				}
 				String titulaFieldValue = txtTitula.getText();
-				String zvanjeFiledValue = txtTitula.getText();
+				String zvanjeFiledValue = txtZvanje.getText();
 
 
 				
@@ -251,9 +251,9 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (!adresaKancelarijeFieldValue.matches("[\\p{L}\\s]+[0-9]+,[\\p{L}\\s]+")) {
+				if (!adresaKancelarijeFieldValue.matches("[\\p{L}\\s]+[0-9]+,[\\p{L}\\s]+,[\\p{L}\\s]+[0-9]+")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za adresu kancelarije( Ispravan format adrese je Karadjordjeva 83, Novi Sad )",
+							"ERROR: Uneli ste pogresnu vrednost za adresu kancelarije( Ispravan format adrese je Dositeja Obradovica 6, Novi Sad, MI 105 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -263,15 +263,15 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (!titulaFieldValue.matches("[\\p{L}\\s]+")) {
+				if (!titulaFieldValue.matches("[\\p{L}\\s]+.?[\\p{L}\\s]*")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost titulu( Ispravan format je profesor )", "Greska",
+							"ERROR: Uneli ste pogresnu vrednost titulu( Ispravan format je Prof. dr )", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				if (!zvanjeFiledValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za zvanje( Ispravan format je dekan )", "Greska",
+							"ERROR: Uneli ste pogresnu vrednost za zvanje( Ispravan format je Redovni profesor )", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
