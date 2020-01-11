@@ -58,7 +58,7 @@ public class DodajProfesoraNaPredmetDialog extends JDialog {
 
 		/* Dodavanje broj licne karte profesora */
 		JPanel panBrojLicne = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JLabel lblBrojLicne = new JLabel("Broj licne profesora*");
+		JLabel lblBrojLicne = new JLabel("Broj licne karte*");
 		lblBrojLicne.setPreferredSize(dim);
 		JTextField txtBrojLicne = new JTextField();
 		txtBrojLicne.setPreferredSize(dim);

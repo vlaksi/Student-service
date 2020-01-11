@@ -257,7 +257,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (!brojLicneKarteFieldValue.matches("[0-9]+")) {
+				if (!brojLicneKarteFieldValue.matches("[0-9]{9}")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za broj licne karte( Ispravan format je 555555 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
