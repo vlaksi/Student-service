@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.BazaPredmeta;
+import model.BazaStudent;
 import model.Predmet;
 import model.Profesor;
 import model.Student;
@@ -117,25 +118,37 @@ public class PredmetiController {
 
 	// Metoda koja brise predmet za prosledjeni index reda
 	public void izbrisiPredmet(int selectedRowIndex) {
-		// ali pored toga mora i da se obrise taj predmet kod profesora koji imaju ovaj
-		// predmet ( tj sa njihove liste predmeta da ga skinemo )
-		// takodje svim studentima koji imaju ovaj predmet, moraju da ga izgube( tj sa
-		// njihove liste predmeta da ga skinemo)
+		/*
+		 * ali pored toga mora i da se obrise taj predmet kod profesora koji imaju ovaj
+		 * predmet ( tj sa njihove liste predmeta da ga skinemo ) takodje svim
+		 * studentima koji imaju ovaj predmet, moraju da ga izgube( tj sa njihove liste
+		 * predmeta da ga skinemo)
+		 */
 
 		/* Skidanje predmeta sa profesorove liste predmeta */
 		Predmet predmetKogBrisemo = BazaPredmeta.getInstance().getPredmeti().get(selectedRowIndex);
 		if (predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("nema")
 				|| predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("Nema")
 				|| predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("Nema")) {
-			//System.out.println("Nema profe, pa nema sta da obrise nekom profesoru");
-		}else {/* ali ako ima profesora, onda moramo da ga nadjemo*/
+			// System.out.println("Nema profe, pa nema sta da obrise nekom profesoru");
+		} else {/* ali ako ima profesora, onda moramo da ga nadjemo */
 			predmetKogBrisemo.getPredmetniProfesor().getPredmeti().remove(predmetKogBrisemo);
 		}
 
 		/* Skidanje predmeta sa studentove liste predmeta */
-		for(Student s:predmetKogBrisemo.getListaStudenata()) {
-			s.getPredmeti().remove(predmetKogBrisemo);
+		for (Student s : BazaStudent.getInstance().getStudenti()) {
+			for (Predmet p : s.getPredmeti()) {
+				if (p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
+					if (s.getPredmeti().remove(p)) {
+						//System.out.println("Uspesno skidam tom studentu predmet");
+						BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
+						return;
+					}
+				}
+			}
+
 		}
+
 		BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
 
 	}

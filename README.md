@@ -8,10 +8,5 @@
 ###### Sortirati samo po cemu pise u specifikaciji
 ###### Broj licne karte profesora da ispisuje u dijalogu za dodavanje profe na pred.
 ###### Ograniciti broj licne na 9 cifara
-
-###### Uklanjanje studenta sa predmeta
 ###### U help opisati za predmet validne formate.
-###### Kada izmenim predmet, obrisati studentima koji ga slusaju taj predmet.
-###### Prilikom dodavanja u svakom tabu,resiti da se dobije pravi selektovan,ne iz podataka, nego iz view-a
-
 ###### Onemoguciti dodavanje istog studenta na predmet vise puta.
