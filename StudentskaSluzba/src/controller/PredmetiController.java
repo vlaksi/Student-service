@@ -127,7 +127,6 @@ public class PredmetiController {
 
 		/* Skidanje predmeta sa profesorove liste predmeta */
 
-
 		Predmet predmetKogBrisemo = BazaPredmeta.getInstance().getPredmeti().get(selectedRowIndex);
 		/* Obrisati profesora u tabeli predmeta, ako ga ima */
 		/*
@@ -136,37 +135,39 @@ public class PredmetiController {
 		 */
 		if (predmetKogBrisemo.getPredmetniProfesor().getBrojLicneKarte().equals("profesora")
 				|| predmetKogBrisemo.getPredmetniProfesor().getBrojLicneKarte().equals(" profesora")) {
-			System.out.println("Predmet: " + predmetKogBrisemo.getNazivPredmeta() + " nema profesora!");
+			// System.out.println("Predmet: " + predmetKogBrisemo.getNazivPredmeta() + "
+			// nema profesora!");
 			/* slucaj kada nemam profesora -> nema nikakvog brisanja tog profesora */
-		}else {
-			/* slucaj kada predmet ima profesora -> u tabeli profesori,za odredjenog profesora, obrisati iz njegove liste predmeta nas predmet */
+		} else {
+			/*
+			 * slucaj kada predmet ima profesora -> u tabeli profesori,za odredjenog
+			 * profesora, obrisati iz njegove liste predmeta nas predmet
+			 */
 			Profesor profesorKomUklanjamo = new Profesor();
 			profesorKomUklanjamo = predmetKogBrisemo.getPredmetniProfesor();
-			
-			for(Profesor prof : ProfesoriController.getInstance().getListaSvihProfesora()) {
-				if(profesorKomUklanjamo.getBrojLicneKarte().equals(prof.getBrojLicneKarte())) {
-					if(prof.getPredmeti().remove(predmetKogBrisemo)) {
-						//System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta());
+
+			for (Profesor prof : ProfesoriController.getInstance().getListaSvihProfesora()) {
+				if (profesorKomUklanjamo.getBrojLicneKarte().equals(prof.getBrojLicneKarte())) {
+					if (prof.getPredmeti().remove(predmetKogBrisemo)) {
+						// System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "uklonjen
+						// predmet: " + predmetKogBrisemo.getNazivPredmeta());
 					}
 				}
-				
+
 			}
 		}
 
-			/* Skidanje predmeta sa studentove liste predmeta */
-			for (Student s : BazaStudent.getInstance().getStudenti()) {
-				for (Predmet p : s.getPredmeti()) {
-					if (p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
-						if (s.getPredmeti().remove(p)) {
-							// System.out.println("Uspesno skidam tom studentu predmet");
-							// BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
-							// return;
-							break;
-						}
+		/* Skidanje predmeta sa studentove liste predmeta */
+		for (Student s : BazaStudent.getInstance().getStudenti()) {
+			for (Predmet p : s.getPredmeti()) {
+				if (p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
+					if (s.getPredmeti().remove(p)) {
+						break;
 					}
 				}
-
 			}
+
+		}
 
 		BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
 
