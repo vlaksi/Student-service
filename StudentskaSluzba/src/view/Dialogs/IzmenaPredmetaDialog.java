@@ -85,6 +85,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 		String[] semestar = { "1", "2", "3", "4", "5", "6", "7", "8" };
 		JComboBox<String> semestarComboBox = new JComboBox<String>(semestar);
 		semestarComboBox.setPreferredSize(dim);
+		semestarComboBox.setSelectedItem(PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getSemestar());
 		panSemestar.add(lblSemestar);
 		panSemestar.add(semestarComboBox);
 
@@ -95,6 +96,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 		String[] godineStudija = { "1", "2", "3", "4" };
 		JComboBox<String> godineComboBox = new JComboBox<String>(godineStudija);
 		godineComboBox.setPreferredSize(dim);
+		godineComboBox.setSelectedItem(PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getGodinaStudija());
 		panGodinaStudija.add(lblGodinaStudija);
 		panGodinaStudija.add(godineComboBox);
 

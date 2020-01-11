@@ -131,6 +131,7 @@ public class IzmenaStudentaDialog extends JDialog {
 		String[] godineStudija = { "1", "2", "3", "4" };
 		JComboBox<String> godineComboBox = new JComboBox<String>(godineStudija);
 		godineComboBox.setPreferredSize(dim);
+		godineComboBox.setSelectedItem(StudentiController.getInstance().getListaStudenata(ATMStudenti.getSelectedRowIndex()).getGodinaStudija());
 		panGodinaStudija.add(lblGodinaStudija);
 		panGodinaStudija.add(godineComboBox);
 
@@ -309,8 +310,10 @@ public class IzmenaStudentaDialog extends JDialog {
 						 int mesecUpisa = Integer.parseInt(tokensDatumUpisa[1]);
 						 int danUpisa = Integer.parseInt(tokensDatumUpisa[2]);
 						 int godinaRodjenja = Integer.parseInt(tokensDatumRodjenja[0]);
-						 int mesecRodjenja = Integer.parseInt(tokensDatumRodjenja[1]);
-						 int danRodjenja = Integer.parseInt(tokensDatumRodjenja[2]);
+						 @SuppressWarnings("unused")
+						int mesecRodjenja = Integer.parseInt(tokensDatumRodjenja[1]);
+						 @SuppressWarnings("unused")
+						int danRodjenja = Integer.parseInt(tokensDatumRodjenja[2]);
 						 int godinaTrenutna = Integer.parseInt(tokensDatumTrenutni[0]);
 						 int mesecTrenutni = Integer.parseInt(tokensDatumTrenutni[1]);
 						 int danTrenutni = Integer.parseInt(tokensDatumTrenutni[2]);
