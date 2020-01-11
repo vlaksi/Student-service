@@ -20,10 +20,10 @@ public class HelpDialog extends JDialog {
 		JDialog dialog = new JDialog();
 
 		dialog.setTitle("Help");
-		  JTextArea txtArea = new JTextArea(40,100);
+		  JTextArea txtArea = new JTextArea(20,80);
           txtArea.setAutoscrolls(true);
           txtArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-          txtArea.setFont(new Font("SansSerif", Font.BOLD, 15));
+          txtArea.setFont(new Font("SansSerif", Font.BOLD, 16));
           txtArea.setLineWrap(true);
           txtArea.setEditable(false);
           JScrollPane txtAreaScroll = new JScrollPane (txtArea, 
@@ -73,9 +73,10 @@ public class HelpDialog extends JDialog {
 				"ALT-R: Direktno nas navigira na tabelu sa predmetima\r\n" + 
 				"\r\n" + 
 				"FORMATI:\r\n" + 
-				"DATUM UPISA: Format datuma upisa je u sledecem obliku YYYY-MM-DD , sto znaci prvo navodimo godinu (YYYY) pa zatim mesec (MM) i na kraju dan, separatisani su crticom (\"-\").\r\n" + 
+				"DATUM UPISA: Format datuma upisa je u sledecem obliku YYYY-MM-DD , sto znaci prvo navodimo godinu (YYYY) pa zatim mesec (MM) i na kraju dan, separatisani su crticom (\"-\"). Datum upisa mora biti manji od trenutnog datuma, takodje student mora biti stariji od 18 godina u trenutku upisa na fakultet.\r\n" + 
 				"DATUM RODJENJA: Format datuma rodjenja je u sledecem obliku YYYY-MM-DD , sto znaci prvo navodimo godinu (YYYY) pa zatim mesec (MM) i na kraju dan, separatisani su crticom (\"-\").\r\n" + 
-				"INDEX STUDENTA: Podrzani format indexa studenta je sledeceg oblika: XXYYY-BBBB , sto znaci pocetak indexa je jedno ili dva velika slova, zatim slede cifre, jedna ili tri cifre, zatim crtica i na kraju godina upisa cetiri cifre, u rasponu od 1000-2999";
+				"INDEX STUDENTA: Podrzani format indexa studenta je sledeceg oblika: XXYYY-BBBB , sto znaci pocetak indexa je jedno ili dva velika slova, zatim slede cifre, jedna ili tri cifre, zatim crtica i na kraju godina upisa cetiri cifre, u rasponu od 1000-2999\r\n" + 
+				"";
 
 		txtArea.setText(text);
 
