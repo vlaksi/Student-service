@@ -310,9 +310,13 @@ public class IzmenaStudentaDialog extends JDialog {
 
 						}
 				} else {
-					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
+					if(godinaStudijaValue.equals("1")) {
+						prosecnaOcenaValue = 0.0;
+					}else {
+						JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
-					return;
+						return;
+					}
 				}
 
 				budzetButton.setActionCommand(budzetButton.getText());// Ove metode su nam potrebne da bi radio button
@@ -336,7 +340,7 @@ public class IzmenaStudentaDialog extends JDialog {
 				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
 						|| adresaStanovanjaFieldValue.isBlank() || brojIndexaFieldValue.isBlank()
 						|| brojIndexaFieldValue.isBlank() || brojtelefonaFieldValue.isBlank()
-						|| godinaStudijaValue.isBlank() || prosecnaOcenaValue.isNaN()
+						|| godinaStudijaValue.isBlank()
 						|| datumUpisaValue.isBlank() || emailValue.isBlank()) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);

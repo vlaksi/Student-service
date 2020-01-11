@@ -34,6 +34,10 @@ public class StudentiJTable extends JTable {
 		
 		sortiranje = new TableRowSorter<ATMStudenti>(model);
 		sortiranje.setSortable(11, false); // iskljucujem poslednju kolonu za mogucnost sortiranja
+		sortiranje.setSortable(3, false);
+		sortiranje.setSortable(4, false);
+		sortiranje.setSortable(5, false);
+		sortiranje.setSortable(8, false);
 		this.setRowSorter(sortiranje);
 		
 	}
