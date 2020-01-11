@@ -204,14 +204,14 @@ public class DodajPredmetDialog extends JDialog {
 					}
 				}
 
-				if (!nazivFieldValue.matches("([A-Z][a-z ]{1,24})+[0-9]?")) {
+				if (!nazivFieldValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za naziv predmeta ( Ispravan format naziva je npr: Analiza 1 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				if (!sifraFieldValue.matches("[A-Z]{1,6}-[A-Z]{1,3}[0-9]?")) {
+				if (!sifraFieldValue.matches("[A-Z]{1,3}[0-9]{1,3}")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za sifru predmeta ( Ispravan format sifre je npr: WP-E2 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
