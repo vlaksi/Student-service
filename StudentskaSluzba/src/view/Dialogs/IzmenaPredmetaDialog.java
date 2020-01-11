@@ -86,7 +86,8 @@ public class IzmenaPredmetaDialog extends JDialog {
 		String[] semestar = { "1", "2", "3", "4", "5", "6", "7", "8" };
 		JComboBox<String> semestarComboBox = new JComboBox<String>(semestar);
 		semestarComboBox.setPreferredSize(dim);
-		semestarComboBox.setSelectedItem(PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getSemestar());
+		semestarComboBox.setSelectedItem(
+				PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getSemestar());
 		panSemestar.add(lblSemestar);
 		panSemestar.add(semestarComboBox);
 
@@ -97,7 +98,8 @@ public class IzmenaPredmetaDialog extends JDialog {
 		String[] godineStudija = { "1", "2", "3", "4" };
 		JComboBox<String> godineComboBox = new JComboBox<String>(godineStudija);
 		godineComboBox.setPreferredSize(dim);
-		godineComboBox.setSelectedItem(PredmetiController.getInstance().getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getGodinaStudija());
+		godineComboBox.setSelectedItem(PredmetiController.getInstance()
+				.getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getGodinaStudija());
 		panGodinaStudija.add(lblGodinaStudija);
 		panGodinaStudija.add(godineComboBox);
 
@@ -234,20 +236,15 @@ public class IzmenaPredmetaDialog extends JDialog {
 				} else {
 
 					List<Student> listaStudenata = new ArrayList<Student>();
-//					Predmet predmet = new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
-//							godinaStudijaFieldValue, PredmetiController.getInstance()
-//									.getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getPredmetniProfesor(),
-//							listaStudenata);
-					Profesor profa = new Profesor();profa.setPrezime("Nema"); profa.setBrojLicneKarte(" profesora");
-					Predmet predmet = new Predmet(sifraFieldValue,nazivFieldValue,semestarFieldValue,godinaStudijaFieldValue,profa,listaStudenata);
+					Profesor profa = new Profesor();
+					profa.setPrezime("Nema");
+					profa.setBrojLicneKarte(" profesora");
+					Predmet predmet = new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
+							godinaStudijaFieldValue, profa, listaStudenata);
 					PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
 					PredmetiController.getInstance().dodavanjePredmeta(predmet);
-					
+
 				}
-
-				// Ako su prosle sve izmene onda izbrisemo tu koju smo izmenili
-
-				
 
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 

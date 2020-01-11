@@ -102,8 +102,6 @@ public class Tabovi {
 	 * @return
 	 */
 	private JComponent napraviTab(String text, boolean f, int indikatorTaba) {
-		// TODO Ako nadjemo pametniji nacin,implementirati da bolje pozicioniranje
-		// tabela, a ne ovako hc.
 		JPanel panel = new JPanel(false);
 		panel.setLayout(new BorderLayout());
 		panel.setPreferredSize(new Dimension(200, 100));
@@ -201,8 +199,7 @@ public class Tabovi {
 										JOptionPane.ERROR_MESSAGE);
 								return;
 							} else {
-								// TODO obrisati taj predmet iz liste predmeta tog profesora
-								// TODO obrisati tog profesora iz liste profesora u predmetu
+
 								Profesor profesorKomeBrisemoPredmet = ProfesoriController.getInstance()
 										.getListaProfesora(tabelaProfesora.convertRowIndexToModel(row));
 								Predmet predmetKogBrisemo = PredmetiController.getInstance()
@@ -228,7 +225,7 @@ public class Tabovi {
 		case 2:
 			this.tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
-			//tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
+			tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane2, BorderLayout.CENTER);
 
 			tabelaPredmeta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -242,8 +239,7 @@ public class Tabovi {
 						setSelectedRowTabelaPredmeta(row);
 
 						if (row >= 0 && col == 5) {
-							//String predmeti = (String) Tabovi.modelPredmeti.getValueAt(row, 5);
-							//TODO proveriti ovo za ostale entitete
+
 							String predmeti = (String) tabelaPredmeta.getValueAt(row, 5);
 							String[] tokens = predmeti.split("\n");
 
