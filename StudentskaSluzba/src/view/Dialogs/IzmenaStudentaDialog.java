@@ -405,17 +405,34 @@ public class IzmenaStudentaDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
-					List<Predmet> listaPredmeta = new ArrayList<Predmet>();
-					listaPredmeta = StudentiController.getInstance().getListaSvihStudenata().get(ATMStudenti.getSelectedRowIndex()).getPredmeti();
-					StudentiController.getInstance()
-							.dodajStudenta(new Student(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
-									adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
-									brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue,
-									budzetIliSamofinansiranje, listaPredmeta));
+					/* Ako je izmena godine studenta, da vrsi brisanje i u predmetima tog studenta */
+					if(!StudentiController.getInstance().getListaSvihStudenata().get(ATMStudenti.getSelectedRowIndex()).getGodinaStudija().equals(godinaStudijaValue)) {
+						System.out.println("menja se godina");
+						List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+						StudentiController.getInstance()
+								.dodajStudenta(new Student(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
+										adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
+										brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue,
+										budzetIliSamofinansiranje, listaPredmeta));
+						StudentiController.getInstance().izbrisiStudenta(ATMStudenti.getSelectedRowIndex());
+						
+					}else {/* Ako je izmena nekog drugog polja studenta, da ne vrsi brisanje u predmetima tog studenta*/
+						System.out.println("ne menja se godina");
+						List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+						listaPredmeta = StudentiController.getInstance().getListaSvihStudenata().get(ATMStudenti.getSelectedRowIndex()).getPredmeti();
+						StudentiController.getInstance()
+								.dodajStudenta(new Student(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
+										adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
+										brojIndexaFieldValue, datumUpisaValue, godinaStudijaValue, prosecnaOcenaValue,
+										budzetIliSamofinansiranje, listaPredmeta));
+						StudentiController.getInstance().izbrisiStudentaAliNeIPredmete(ATMStudenti.getSelectedRowIndex());
+					}
+					
+					
+					
+					
 				}
-
-				// Ako su prosle sve izmene onda izbrisemo
-				StudentiController.getInstance().izbrisiStudenta(ATMStudenti.getSelectedRowIndex());
+				
 				Tabovi.getModelStudenti().fireTableDataChanged();
 
 			}

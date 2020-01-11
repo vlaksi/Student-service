@@ -129,16 +129,31 @@ public class StudentiController {
 			// postoji predmetStudenta,ako postoji,brisem tog studenta iz liste studenta tog
 			// predmeta
 			for (Predmet pStudenta : listaPredmetaStudenta) {
-				if (p.equals(pStudenta)) {
-					p.getListaStudenata().remove(student);
+//				if (p.equals(pStudenta)) {
+//					p.getListaStudenata().remove(student);
+//				}
+				if(p.getSifraPredmeta().equals(pStudenta.getSifraPredmeta())) {
+					if(p.getListaStudenata().remove(student)){
+						System.out.println("Uspesno uklunjen student:" + student.getBrIndexa()+" sa predmeta: "+ p.getNazivPredmeta());
+					}else {
+						System.out.println("Neuspelo uklanjanje");
+					}
+					break;
 				}
 			}
 		}
 
 		BazaStudent.getInstance().getStudenti().remove(rowIndex);
 		Tabovi.getModelStudenti().fireTableDataChanged();
-		// Brisemo studenta iz liste za serijalizaciju
-	//	listaStudenataZaSerijalizaciju.remove(rowIndex);
+
+	}
+
+	
+	public void izbrisiStudentaAliNeIPredmete(int rowIndex) {
+
+		BazaStudent.getInstance().getStudenti().remove(rowIndex);
+		Tabovi.getModelStudenti().fireTableDataChanged();
+
 	}
 
 }
