@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 
 import controller.PredmetiController;
 import model.Predmet;
+import model.Profesor;
 import model.Student;
 import view.ATMPredmeti;
 import view.GlavniProzor;
@@ -233,12 +234,15 @@ public class IzmenaPredmetaDialog extends JDialog {
 				} else {
 
 					List<Student> listaStudenata = new ArrayList<Student>();
-					Predmet predmet = new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
-							godinaStudijaFieldValue, PredmetiController.getInstance()
-									.getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getPredmetniProfesor(),
-							listaStudenata);
-					PredmetiController.getInstance().dodavanjePredmeta(predmet);
+//					Predmet predmet = new Predmet(sifraFieldValue, nazivFieldValue, semestarFieldValue,
+//							godinaStudijaFieldValue, PredmetiController.getInstance()
+//									.getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getPredmetniProfesor(),
+//							listaStudenata);
+					Profesor profa = new Profesor();profa.setPrezime("Nema"); profa.setBrojLicneKarte(" aaprofesora");
+					Predmet predmet = new Predmet(sifraFieldValue,nazivFieldValue,semestarFieldValue,godinaStudijaFieldValue,profa,listaStudenata);
 					PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
+					PredmetiController.getInstance().dodavanjePredmeta(predmet);
+					
 				}
 
 				// Ako su prosle sve izmene onda izbrisemo tu koju smo izmenili
