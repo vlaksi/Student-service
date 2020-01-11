@@ -214,15 +214,15 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 
 				} 
 
-				if (!imeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+				if (!imeFieldValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Nemanja )",
+							"ERROR: Uneli ste pogresnu vrednost za ime profesora( Ispravan format imena je Nemanja )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (!prezimeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+				if (!prezimeFieldValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Nemanja )",
+							"ERROR: Uneli ste pogresnu vrednost za prezime profesora( Ispravan format prezimena je Peric )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -232,9 +232,16 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (!brojtelefonaFieldValue.matches("[0-9]+")) {
+
+				if (!adresaStanovanjaFieldValue.matches("[\\p{L}\\s]+[0-9]+,[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
+							"ERROR: Uneli ste pogresnu vrednost za adresu stanovanja( Ispravan format datuma rodjenja je Karadjordjeva 83, Novi Sad )",
+							"Greska", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				if (!brojtelefonaFieldValue.matches("[0-9]{3}/[0-9]{3,5}-[0-9]{3,5}")) {
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Uneli ste pogresnu vrednost za broj telefona( Ispravan format za broj telefona je 065/555-555 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -244,19 +251,25 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
+				if (!adresaKancelarijeFieldValue.matches("[\\p{L}\\s]+[0-9]+,[\\p{L}\\s]+")) {
+					JOptionPane.showMessageDialog(null,
+							"ERROR: Uneli ste pogresnu vrednost za adresu kancelarije( Ispravan format adrese je Karadjordjeva 83, Novi Sad )",
+							"Greska", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				if (!brojLicneKarteFieldValue.matches("[0-9]+")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za broj licne karte( Ispravan format je 555555 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (!titulaFieldValue.matches("[a-zA-Z]+")) {
+				if (!titulaFieldValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost titulu( Ispravan format je profesor )", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (!zvanjeFiledValue.matches("[a-zA-Z]+")) {
+				if (!zvanjeFiledValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za zvanje( Ispravan format je dekan )", "Greska",
 							JOptionPane.ERROR_MESSAGE);
