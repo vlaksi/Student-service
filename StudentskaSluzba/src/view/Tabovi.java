@@ -227,7 +227,7 @@ public class Tabovi {
 		case 2:
 			this.tabelaPredmeta = new PredmetiJTable();
 			JScrollPane scrollPane2 = new JScrollPane(this.tabelaPredmeta);
-			tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
+			//tabelaPredmeta.getColumn("Spisak studenata").setCellRenderer(new ButtonRenderer());
 			panel.add(scrollPane2, BorderLayout.CENTER);
 
 			tabelaPredmeta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -241,7 +241,9 @@ public class Tabovi {
 						setSelectedRowTabelaPredmeta(row);
 
 						if (row >= 0 && col == 5) {
-							String predmeti = (String) Tabovi.modelPredmeti.getValueAt(row, 5);
+							//String predmeti = (String) Tabovi.modelPredmeti.getValueAt(row, 5);
+							//TODO proveriti ovo za ostale entitete
+							String predmeti = (String) tabelaPredmeta.getValueAt(row, 5);
 							String[] tokens = predmeti.split("\n");
 
 							JList<Object> list = new JList<Object>(tokens);
@@ -257,6 +259,7 @@ public class Tabovi {
 											"Greska", JOptionPane.ERROR_MESSAGE);
 									return;
 								} else {
+									System.out.println(row);
 									Predmet PredmetSaKogBrisemo = PredmetiController.getInstance()
 											.getListaPredmeta(row);
 									Student StudentKogBrisemo = StudentiController.getInstance()
