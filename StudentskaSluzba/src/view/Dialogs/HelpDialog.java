@@ -23,8 +23,9 @@ public class HelpDialog extends JDialog {
 		  JTextArea txtArea = new JTextArea(40,100);
           txtArea.setAutoscrolls(true);
           txtArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-          txtArea.setFont(new Font("courier new", Font.PLAIN, 12));
+          txtArea.setFont(new Font("SansSerif", Font.BOLD, 15));
           txtArea.setLineWrap(true);
+          txtArea.setEditable(false);
           JScrollPane txtAreaScroll = new JScrollPane (txtArea, 
           JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
           txtAreaScroll.setViewportView(txtArea);
@@ -63,11 +64,18 @@ public class HelpDialog extends JDialog {
 				"CTRL-H: dobijanje informacija o precicama i nacinu koriscenja aplikacije.\r\n" + 
 				"CTRL-I: dobijanje informacija o kreatorima i glavnim izvrsiocima programa.\r\n" + 
 				"\r\n" + 
+				"MNEMONICI:\r\n" + 
+				"ALT-F: Otvara karticu File u meny bary, zatim na ALT-N otvaramo kreiranje novog entiteta, a na ALT-W zatvaramo prozor\r\n" + 
+				"ALT-E:  Otvara karticu Edit u meny bary , zatim na ALT-E otvaramo editovanje postojeceg entitera a na ALT-D brisemo selektovani entitet u tabeli\r\n" + 
+				"ALT-H:  Otvara karticu Help u meny bary , zatim na ALT-H otvaramo karticu sa informacijama o precicama i nacinu koriscenja aplikacije, ALT-I otvaramo karticu sa informacijama o kreatorima i glavnim izvrsiocima programa\r\n" + 
+				"ALT-S: Direktno nas navigira na tabelu sa studentima\r\n" + 
+				"ALT-P: Direktno nas navigira na tabelu sa profesorima\r\n" + 
+				"ALT-R: Direktno nas navigira na tabelu sa predmetima\r\n" + 
+				"\r\n" + 
 				"FORMATI:\r\n" + 
 				"DATUM UPISA: Format datuma upisa je u sledecem obliku YYYY-MM-DD , sto znaci prvo navodimo godinu (YYYY) pa zatim mesec (MM) i na kraju dan, separatisani su crticom (\"-\").\r\n" + 
 				"DATUM RODJENJA: Format datuma rodjenja je u sledecem obliku YYYY-MM-DD , sto znaci prvo navodimo godinu (YYYY) pa zatim mesec (MM) i na kraju dan, separatisani su crticom (\"-\").\r\n" + 
-				"INDEX STUDENTA: Podrzani format indexa studenta je sledeceg oblika: XXYYY-BBBB , sto znaci pocetak indexa je jedno ili dva velika slova, zatim slede cifre, jedna ili tri cifre, zatim crtica i na kraju godina upisa cetiri cifre, u rasponu od 1000-2999\r\n" + 
-				"";
+				"INDEX STUDENTA: Podrzani format indexa studenta je sledeceg oblika: XXYYY-BBBB , sto znaci pocetak indexa je jedno ili dva velika slova, zatim slede cifre, jedna ili tri cifre, zatim crtica i na kraju godina upisa cetiri cifre, u rasponu od 1000-2999";
 
 		txtArea.setText(text);
 
