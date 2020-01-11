@@ -193,21 +193,16 @@ public class BazaStudent {
 				if(p.getSifraPredmeta().equals(predmet.getSifraPredmeta())) {
 					System.out.println("Nasao poklapanje predmeta");
 					if(s.getPredmeti().remove(p)) {
-						System.out.println("Uspesno brisanje predmeta studentu");
+						//System.out.println("Uspesno brisanje predmeta studentu");
 					}else {
-						System.out.println("Neuspesno brisanje predmeta studentu");
+						//System.out.println("Neuspesno brisanje predmeta studentu");
 					}
 					
-					break;
+					return;
 				}
 			}
 		}
 		
-//		if(student.getPredmeti().remove(predmet)) {
-//			System.out.println("Uspesno brisanje predmeta studentu");
-//		}else {
-//			System.out.println("Neuspesno brisanje predmeta studentu");
-//		}
 	}
 
 	public void addStudentNaPredmet(Student student, Predmet predmet) {
