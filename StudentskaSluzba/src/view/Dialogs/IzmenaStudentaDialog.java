@@ -347,6 +347,7 @@ public class IzmenaStudentaDialog extends JDialog {
 					return;
 				} else {
 					List<Predmet> listaPredmeta = new ArrayList<Predmet>();
+					listaPredmeta = StudentiController.getInstance().getListaSvihStudenata().get(ATMStudenti.getSelectedRowIndex()).getPredmeti();
 					StudentiController.getInstance()
 							.dodajStudenta(new Student(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
 									adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue,
