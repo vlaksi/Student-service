@@ -239,14 +239,14 @@ public class IzmenaStudentaDialog extends JDialog {
 			      String datumUpisaValue = txtPanDatumUpiusa.getText();
 			      String emailValue = txtPanEmail.getText();
 			      
-			      if (!prezimeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+			      if (!prezimeFieldValue.matches("[\\p{L}\\s]+")) {
 			    	  JOptionPane.showMessageDialog(null,
-								"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Peric )",
+								"ERROR: Uneli ste pogresnu vrednost za prezime studenta( Ispravan format prezimena je Peric )",
 								"Greska", JOptionPane.ERROR_MESSAGE);
 			    	  return;
 			    	}
 			      
-			      if (!imeFieldValue.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$")) {
+			      if (!imeFieldValue.matches("[\\p{L}\\s]+")) {
 			    	  JOptionPane.showMessageDialog(null,
 								"ERROR: Uneli ste pogresnu vrednost za ime studenta( Ispravan format imena je Nemanja )",
 								"Greska", JOptionPane.ERROR_MESSAGE);
@@ -259,12 +259,13 @@ public class IzmenaStudentaDialog extends JDialog {
 								"Greska", JOptionPane.ERROR_MESSAGE);
 			    	  return;
 			    	}
-			      if (!datumRodjenjaFieldValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
-			    	  JOptionPane.showMessageDialog(null,
-								"ERROR: Uneli ste pogresnu vrednost za datum rodjenja( Ispravan format datuma rodjenja je YYYY-MM-DD )",
+
+					if (!adresaStanovanjaFieldValue.matches("[\\p{L}\\s]+[0-9]+,[\\p{L}\\s]+")) {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za adresu stanovanja( Ispravan format datuma rodjenja je Karadjordjeva 83, Novi Sad )",
 								"Greska", JOptionPane.ERROR_MESSAGE);
-			    	  return;
-			    	}
+						return;
+					}
 			      
 			      if (!datumUpisaValue.matches("\\d{4}-\\d{2}-\\d{2}")) {
 			    	  JOptionPane.showMessageDialog(null,
@@ -272,12 +273,12 @@ public class IzmenaStudentaDialog extends JDialog {
 								"Greska", JOptionPane.ERROR_MESSAGE);
 			    	  return;
 			    	}
-			      if (!brojtelefonaFieldValue.matches("[0-9]+")) {
-			    	  JOptionPane.showMessageDialog(null,
-								"ERROR: Uneli ste pogresnu vrednost za broj telefona( Ispravan format za broj telefona je 0655555555 )",
+					if (!brojtelefonaFieldValue.matches("[0-9]{3}/[0-9]{3,5}-[0-9]{3,5}")) {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Uneli ste pogresnu vrednost za broj telefona( Ispravan format za broj telefona je 065/555-555 )",
 								"Greska", JOptionPane.ERROR_MESSAGE);
-			    	  return;
-			    	}
+						return;
+					}
 			      
 			      
 			      if(!validate(emailValue)) {

@@ -61,7 +61,13 @@ public class HelpDialog extends JDialog {
 				"CTRL-E: u zavisnosti od taba imate mogucnost menjanja odabranog entiteta.\r\n" + 
 				"CTRL-D: u zavisnosti od taba imate mogucnost brisanja odabranog entiteta iz sistema.\r\n" + 
 				"CTRL-H: dobijanje informacija o precicama i nacinu koriscenja aplikacije.\r\n" + 
-				"CTRL-I: dobijanje informacija o kreatorima i glavnim izvrsiocima programa.";
+				"CTRL-I: dobijanje informacija o kreatorima i glavnim izvrsiocima programa.\r\n" + 
+				"\r\n" + 
+				"FORMATI:\r\n" + 
+				"DATUM UPISA: Format datuma upisa je u sledecem obliku YYYY-MM-DD , sto znaci prvo navodimo godinu (YYYY) pa zatim mesec (MM) i na kraju dan, separatisani su crticom (\"-\").\r\n" + 
+				"DATUM RODJENJA: Format datuma rodjenja je u sledecem obliku YYYY-MM-DD , sto znaci prvo navodimo godinu (YYYY) pa zatim mesec (MM) i na kraju dan, separatisani su crticom (\"-\").\r\n" + 
+				"INDEX STUDENTA: Podrzani format indexa studenta je sledeceg oblika: XXYYY-BBBB , sto znaci pocetak indexa je jedno ili dva velika slova, zatim slede cifre, jedna ili tri cifre, zatim crtica i na kraju godina upisa cetiri cifre, u rasponu od 1000-2999\r\n" + 
+				"";
 
 		txtArea.setText(text);
 
