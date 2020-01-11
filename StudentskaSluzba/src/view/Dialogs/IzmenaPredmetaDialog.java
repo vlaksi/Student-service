@@ -213,16 +213,16 @@ public class IzmenaPredmetaDialog extends JDialog {
 					}
 				}
 
-				if (!nazivFieldValue.matches("[\\p{L}\\s]+")) {
+				if (!nazivFieldValue.matches("[\\p{L}\\s]+[0-9]*")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za naziv predmeta ( Ispravan format naziva je npr: Analiza 1 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				if (!sifraFieldValue.matches("[A-Z]{1,3}[0-9]{1,3}")) {
+				if (!sifraFieldValue.matches("[A-Z]{2,3}[0-9]{2,3}")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za sifru predmeta ( Ispravan format sifre je npr: WP-E2 )",
+							"ERROR: Uneli ste pogresnu vrednost za sifru predmeta ( Ispravan format sifre je npr: DM881 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -238,7 +238,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 //							godinaStudijaFieldValue, PredmetiController.getInstance()
 //									.getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getPredmetniProfesor(),
 //							listaStudenata);
-					Profesor profa = new Profesor();profa.setPrezime("Nema"); profa.setBrojLicneKarte(" aaprofesora");
+					Profesor profa = new Profesor();profa.setPrezime("Nema"); profa.setBrojLicneKarte(" profesora");
 					Predmet predmet = new Predmet(sifraFieldValue,nazivFieldValue,semestarFieldValue,godinaStudijaFieldValue,profa,listaStudenata);
 					PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
 					PredmetiController.getInstance().dodavanjePredmeta(predmet);
