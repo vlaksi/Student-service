@@ -131,8 +131,13 @@ public class PredmetiController {
 				|| predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("Nema")
 				|| predmetKogBrisemo.getPredmetniProfesor().getPrezime().equals("Nema")) {
 			// System.out.println("Nema profe, pa nema sta da obrise nekom profesoru");
-		} else {/* ali ako ima profesora, onda moramo da ga nadjemo */
+		} else {/* ali ako ima profesora, onda moramo da ga nadjemo i obrisemo */
+			
+			/* Uklanjanje profesoru, taj predmet */
 			predmetKogBrisemo.getPredmetniProfesor().getPredmeti().remove(predmetKogBrisemo);
+			/* Uklanjanje predmetu tog profesora */
+			predmetKogBrisemo.getPredmetniProfesor().setPrezime("Nema");
+			predmetKogBrisemo.getPredmetniProfesor().setBrojLicneKarte(" profesora");
 		}
 
 		/* Skidanje predmeta sa studentove liste predmeta */
