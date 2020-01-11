@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -291,6 +293,66 @@ public class DodajStudentaDialog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
+				
+				//Datum upisa, da nije veci od trenutnog, a ne sme biti manji od njegovog datuma rodjena(ili rodjena +18)
+				String[] tokensDatumUpisa = datumUpisaValue.split("-");
+				String[] tokensDatumRodjenja = datumRodjenjaFieldValue.split("-");
+				
+				 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+				 LocalDateTime now = LocalDateTime.now();  
+				 String[] tokensDatumTrenutni = dtf.format(now).split("-");
+				 
+				 try {
+					 int godinaUpisa = Integer.parseInt(tokensDatumUpisa[0]);
+					 int mesecUpisa = Integer.parseInt(tokensDatumUpisa[1]);
+					 int danUpisa = Integer.parseInt(tokensDatumUpisa[2]);
+					 int godinaRodjenja = Integer.parseInt(tokensDatumRodjenja[0]);
+					 int mesecRodjenja = Integer.parseInt(tokensDatumRodjenja[1]);
+					 int danRodjenja = Integer.parseInt(tokensDatumRodjenja[2]);
+					 int godinaTrenutna = Integer.parseInt(tokensDatumTrenutni[0]);
+					 int mesecTrenutni = Integer.parseInt(tokensDatumTrenutni[1]);
+					 int danTrenutni = Integer.parseInt(tokensDatumTrenutni[2]);
+				
+				//datum upisa, da nije veci od trenutnog
+					 if(godinaUpisa > godinaTrenutna) {
+						 JOptionPane.showMessageDialog(null,
+									"ERROR: Datum upisa mora da bude manji od trenutnog datuma!",
+									"Greska", JOptionPane.ERROR_MESSAGE);
+							return;
+					 }
+					 if(godinaUpisa == godinaTrenutna) {
+						 if(mesecUpisa > mesecTrenutni) {
+							 JOptionPane.showMessageDialog(null,
+										"ERROR:Datum upisa mora da bude manji od trenutnog datuma!",
+										"Greska", JOptionPane.ERROR_MESSAGE);
+								return;
+						 }else if(mesecUpisa == mesecTrenutni) {
+							 if(danUpisa > danTrenutni) {
+								 JOptionPane.showMessageDialog(null,
+											"ERROR:Datum upisa mora da bude manji od trenutnog datuma!",
+											"Greska", JOptionPane.ERROR_MESSAGE);
+								 return;
+							 }
+						 }
+					 }
+					 
+				//datum upisa sme biti manji od njegovog datuma rodjena(ili rodjena +18)
+					 if(godinaUpisa-18 < godinaRodjenja) {
+						 JOptionPane.showMessageDialog(null,
+									"ERROR: Student mora da ima minimum 18 godina!",
+									"Greska", JOptionPane.ERROR_MESSAGE);
+							return;
+					 }
+					 
+					 
+				 
+				 
+				 }catch(Exception e) {
+					 System.out.println("Greska pri parsiranju datuma");
+				 }
+				 
+				 
+				
 
 				if (!txtProsecnaOcena.getText().equals("")) {
 					try {
