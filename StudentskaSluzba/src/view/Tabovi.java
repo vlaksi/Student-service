@@ -154,9 +154,9 @@ public class Tabovi {
 					 */
 
 					if (row >= 0 && col == 11) {
-						ATMStudenti atmStudent = modelStudenti;
-
-						String predmeti = (String) atmStudent.getValueAt(row, 11);
+						//ATMStudenti atmStudent = modelStudenti;
+						//String predmeti = (String) atmStudent.getValueAt(row, 11);
+						String predmeti = (String) tabelaStudenata.getValueAt(row, 11);
 						String[] tokens = predmeti.split("\n");
 
 						JList<Object> list = new JList<Object>(tokens);
@@ -187,7 +187,8 @@ public class Tabovi {
 					setSelectedRowTabelaProfesor(row);
 
 					if (row >= 0 && col == 10) {
-						String predmeti = (String) Tabovi.modelProfesori.getValueAt(row, 10);
+						//String predmeti = (String) Tabovi.modelProfesori.getValueAt(row, 10);
+						String predmeti = (String) tabelaProfesora.getValueAt(row, 10);
 						String[] tokens = predmeti.split("\n");
 
 						JList<Object> list = new JList<Object>(tokens);
@@ -203,7 +204,7 @@ public class Tabovi {
 								// TODO obrisati taj predmet iz liste predmeta tog profesora
 								// TODO obrisati tog profesora iz liste profesora u predmetu
 								Profesor profesorKomeBrisemoPredmet = ProfesoriController.getInstance()
-										.getListaProfesora(row);
+										.getListaProfesora(tabelaProfesora.convertRowIndexToModel(row));
 								Predmet predmetKogBrisemo = PredmetiController.getInstance()
 										.getPredmetByNaziv(dialog3.getSelectedItem().toString());
 
@@ -261,7 +262,7 @@ public class Tabovi {
 								} else {
 									System.out.println(row);
 									Predmet PredmetSaKogBrisemo = PredmetiController.getInstance()
-											.getListaPredmeta(row);
+											.getListaPredmeta(tabelaPredmeta.convertRowIndexToModel(row));
 									Student StudentKogBrisemo = StudentiController.getInstance()
 											.getStudentByIndex(dialog.getSelectedItem().toString());
 
