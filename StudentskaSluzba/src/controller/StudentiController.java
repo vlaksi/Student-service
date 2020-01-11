@@ -145,7 +145,7 @@ public class StudentiController {
 					
 				}
 			}
-			System.out.println("spoljasnji for");
+			//System.out.println("spoljasnji for");
 		}
 
 		BazaStudent.getInstance().getStudenti().remove(rowIndex);

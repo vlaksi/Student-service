@@ -146,8 +146,9 @@ public class PredmetiController {
 				if (p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
 					if (s.getPredmeti().remove(p)) {
 						//System.out.println("Uspesno skidam tom studentu predmet");
-						BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
-						return;
+						//BazaPredmeta.getInstance().getPredmeti().remove(selectedRowIndex);
+						//return;
+						break;
 					}
 				}
 			}
