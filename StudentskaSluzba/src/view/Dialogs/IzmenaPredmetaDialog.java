@@ -236,11 +236,12 @@ public class IzmenaPredmetaDialog extends JDialog {
 									.getListaPredmeta(ATMPredmeti.getSelectedRowIndex()).getPredmetniProfesor(),
 							listaStudenata);
 					PredmetiController.getInstance().dodavanjePredmeta(predmet);
+					PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
 				}
 
 				// Ako su prosle sve izmene onda izbrisemo tu koju smo izmenili
 
-				PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
+				
 
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 
