@@ -34,10 +34,10 @@ public class StudentiJTable extends JTable {
 		
 		sortiranje = new TableRowSorter<ATMStudenti>(model);
 		sortiranje.setSortable(11, false); // iskljucujem poslednju kolonu za mogucnost sortiranja
-		sortiranje.setSortable(3, false);
-		sortiranje.setSortable(4, false);
-		sortiranje.setSortable(5, false);
-		sortiranje.setSortable(8, false);
+		sortiranje.setSortable(3, false); // iskljucujem 3 kolonu za mogucnost sortiranja
+		sortiranje.setSortable(4, false); // iskljucujem 4 kolonu za mogucnost sortiranja
+		sortiranje.setSortable(5, false); // iskljucujem 5 kolonu za mogucnost sortiranja
+		sortiranje.setSortable(8, false); // iskljucujem 8 kolonu za mogucnost sortiranja
 		this.setRowSorter(sortiranje);
 		
 	}
@@ -52,7 +52,6 @@ public class StudentiJTable extends JTable {
 	 * @param brojKolone
 	 */
 	public static void newFilter(String trazeno, int brojKolone) {
-		//TODO mozda ovo prebaciti u kontroler kasnije
 		RowFilter<? super ATMStudenti, ? super Integer> rf = null;
 
 		try {
