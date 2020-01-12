@@ -16,9 +16,7 @@ import javax.swing.table.TableRowSorter;
  *
  */
 public class PredmetiJTable extends JTable {
-
 	private static final long serialVersionUID = -1404313258591137307L;
-
 	private ATMPredmeti model;
 	private static TableRowSorter<ATMPredmeti> sortiranje;
 
