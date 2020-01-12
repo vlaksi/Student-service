@@ -119,7 +119,7 @@ public class PredmetiController {
 	// Metoda koja brise predmet za prosledjeni index reda
 	public void izbrisiPredmet(int selectedRowIndex) {
 		/*
-		 * ali pored toga mora i da se obrise taj predmet kod profesora koji imaju ovaj
+		 * Ali pored toga mora i da se obrise taj predmet kod profesora koji imaju ovaj
 		 * predmet ( tj sa njihove liste predmeta da ga skinemo ) takodje svim
 		 * studentima koji imaju ovaj predmet, moraju da ga izgube( tj sa njihove liste
 		 * predmeta da ga skinemo)
@@ -128,7 +128,6 @@ public class PredmetiController {
 		/* Skidanje predmeta sa profesorove liste predmeta */
 
 		Predmet predmetKogBrisemo = BazaPredmeta.getInstance().getPredmeti().get(selectedRowIndex);
-		/* Obrisati profesora u tabeli predmeta, ako ga ima */
 		/*
 		 * Obrisati taj predmet u tabeli profesora za odredjenog profesora koji ima taj
 		 * predmet
@@ -143,28 +142,24 @@ public class PredmetiController {
 			 * slucaj kada predmet ima profesora -> u tabeli profesori,za odredjenog
 			 * profesora, obrisati iz njegove liste predmeta nas predmet
 			 */
-			int brojacBreak=-1;
+			int brojacBreak = -1;
 			Profesor profesorKomUklanjamo = predmetKogBrisemo.getPredmetniProfesor();
 			System.out.println("Profesora kog uklanjamo ima jmbg: " + profesorKomUklanjamo.getBrojLicneKarte());
 			for (Profesor prof : ProfesoriController.getInstance().getListaSvihProfesora()) {
 				if (profesorKomUklanjamo.getBrojLicneKarte().equals(prof.getBrojLicneKarte())) {
-					for(Predmet p: prof.getPredmeti()) {
-						if(p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
+					for (Predmet p : prof.getPredmeti()) {
+						if (p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
 							if (prof.getPredmeti().remove(p)) {
-								// System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta());
-							}else {
-								//System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "nije uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta() + " a trebao je !");
+							} else {
 							}
-							brojacBreak=1;
+							brojacBreak = 1;
 							break;
-							
+
 						}
 					}
-					
-					if(brojacBreak == 1) {
+					if (brojacBreak == 1) {
 						break;
 					}
-					
 				}
 
 			}
