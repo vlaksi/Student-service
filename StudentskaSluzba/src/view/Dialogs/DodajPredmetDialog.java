@@ -139,9 +139,7 @@ public class DodajPredmetDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-
 			}
-
 		});
 
 		/* Lisener da na klik Potvrda pokupi podatke iz dialoga i doda ih u tabelu */
@@ -160,7 +158,6 @@ public class DodajPredmetDialog extends JDialog {
 						return;
 					}
 				}
-
 				String nazivFieldValue = txtNaziv.getText();
 				String semestarFieldValue = semestarComboBox.getSelectedItem().toString();
 				String godinaStudijaFieldValue = godineComboBox.getSelectedItem().toString();
@@ -203,21 +200,18 @@ public class DodajPredmetDialog extends JDialog {
 						return;
 					}
 				}
-
 				if (!nazivFieldValue.matches("[\\p{L}\\s]+[0-9]*")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za naziv predmeta ( Ispravan format naziva je npr: Analiza 1 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-
 				if (!sifraFieldValue.matches("[A-Z]{2,3}[0-9]{2,3}")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za sifru predmeta ( Ispravan format sifre je npr: DM881 )",
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-
 				if (sifraFieldValue.isBlank() || nazivFieldValue.isBlank()) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
