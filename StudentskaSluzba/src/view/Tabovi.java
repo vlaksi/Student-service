@@ -141,19 +141,7 @@ public class Tabovi {
 				public void mouseClicked(java.awt.event.MouseEvent evt) {
 					int row = tabelaStudenata.rowAtPoint(evt.getPoint());
 					int col = tabelaStudenata.columnAtPoint(evt.getPoint());
-
-					// OVO JE RADILO !!
-					/*
-					 * if (row >= 0 && col == 11) { ATMStudenti atmStudent = new ATMStudenti();
-					 * 
-					 * System.out.println(atmStudent.getValueAt(row, 11));
-					 * JOptionPane.showMessageDialog(null, atmStudent.getValueAt(row, 11),
-					 * "Lista predmeta selektovanog studenta", JOptionPane.INFORMATION_MESSAGE); }
-					 */
-
 					if (row >= 0 && col == 11) {
-						//ATMStudenti atmStudent = modelStudenti;
-						//String predmeti = (String) atmStudent.getValueAt(row, 11);
 						String predmeti = (String) tabelaStudenata.getValueAt(row, 11);
 						String[] tokens = predmeti.split("\n");
 
@@ -185,7 +173,6 @@ public class Tabovi {
 					setSelectedRowTabelaProfesor(row);
 
 					if (row >= 0 && col == 10) {
-						//String predmeti = (String) Tabovi.modelProfesori.getValueAt(row, 10);
 						String predmeti = (String) tabelaProfesora.getValueAt(row, 10);
 						String[] tokens = predmeti.split("\n");
 
@@ -199,7 +186,6 @@ public class Tabovi {
 										JOptionPane.ERROR_MESSAGE);
 								return;
 							} else {
-
 								Profesor profesorKomeBrisemoPredmet = ProfesoriController.getInstance()
 										.getListaProfesora(tabelaProfesora.convertRowIndexToModel(row));
 								Predmet predmetKogBrisemo = PredmetiController.getInstance()

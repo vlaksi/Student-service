@@ -199,10 +199,12 @@ public class BazaPredmeta {
 	 * @param predmet
 	 */
 	public void izbrisiProfesoraSaPredmeta(Profesor profesor, Predmet predmet) {
+
 		Profesor profa = new Profesor();
 		profa.setPrezime("nema");
 		profa.setBrojLicneKarte(" profesora");
 		predmet.setPredmetniProfesor(profa);
+
 	}
 
 }

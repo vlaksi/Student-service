@@ -207,14 +207,10 @@ public class BazaProfesor {
 		int indeks = 0;
 		for (Predmet p : profesor.getPredmeti()) {
 			if (p.getSifraPredmeta().equals(predmet.getSifraPredmeta())) {
-				// System.out.println("sifre su ime iste, a indeks na kom se nalazi je:
-				// "+indeks);
 				break;
 			}
-
 			indeks++;
 		}
-
 		profesor.getPredmeti().remove(indeks);
 	}
 
