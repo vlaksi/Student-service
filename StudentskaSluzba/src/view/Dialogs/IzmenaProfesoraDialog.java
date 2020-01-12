@@ -49,8 +49,6 @@ public class IzmenaProfesoraDialog extends JDialog {
 
 		setTitle("Izmena profesora");
 		setSize(500, 500);
-		// setBackground();
-
 		this.setModal(true);
 
 		JPanel panCenter = new JPanel();
@@ -285,8 +283,8 @@ public class IzmenaProfesoraDialog extends JDialog {
 				}
 				if (!zvanjeFiledValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za zvanje( Ispravan format je Redovni profesor )", "Greska",
-							JOptionPane.ERROR_MESSAGE);
+							"ERROR: Uneli ste pogresnu vrednost za zvanje( Ispravan format je Redovni profesor )",
+							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
