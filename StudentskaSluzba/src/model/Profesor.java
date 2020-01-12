@@ -9,12 +9,12 @@ import java.util.List;
  * @author Vaxi RA186/2017
  *
  */
-public class Profesor implements Serializable{
+public class Profesor implements Serializable {
 
 	private static final long serialVersionUID = 8379099572014163786L;
 	private String ime;
 	private String prezime;
-	private String datumRodjenja;//TODO Uraditi preko Date ako bude trebalo
+	private String datumRodjenja;
 	private String adresaStanovanja;
 	private String telefon;
 	private String email;
