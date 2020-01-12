@@ -32,16 +32,12 @@ import view.Tabovi;
  *
  */
 public class DodajProfesoraNaPredmetDialog extends JDialog {
-
 	private static final long serialVersionUID = 8486429064630711627L;
 
 	public DodajProfesoraNaPredmetDialog() {
 		setTitle("Predmet - Dodavanje profesora");
 		setSize(500, 500);
-		// setBackground();
-	
 		this.setModal(true);
-
 		/*
 		 * Koristimo centralni da bi isli od gore prema dole kad dodajemo neke
 		 * komponente.A na njega cemo posle lepiti male panele, gde svaki panel
@@ -113,16 +109,13 @@ public class DodajProfesoraNaPredmetDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-
 				for (Profesor profesor : listaSvihProfesora) {
 					if (brojLicneFieldValue.equals(profesor.getBrojLicneKarte())) {
 						profesorKogDodajemo = profesor;
 						predmetNaKojiDodajemo = PredmetiController.getInstance().getPredmetByRowIndex(red);
 						vecPostoji = 1;
-
 					}
 				}
-
 				if (vecPostoji == 0) {
 					JOptionPane.showMessageDialog(null, "ERROR: Ne postoji profesor sa tim brojem licne karte",
 							"Greska", JOptionPane.ERROR_MESSAGE);

@@ -180,15 +180,14 @@ public class BazaPredmeta {
 	 * 
 	 */
 	public void izbrisiStudentaProsledjenomPredmetu(Student student, Predmet predmet) {
-		
-		for(Student s : predmet.getListaStudenata()) {
-			if(s.getBrIndexa().equals(student.getBrIndexa())){
+
+		for (Student s : predmet.getListaStudenata()) {
+			if (s.getBrIndexa().equals(student.getBrIndexa())) {
 				predmet.getListaStudenata().remove(s);
 				break;
 			}
 		}
-		
-		
+
 		System.out.println("POZVAOOOOOOOOOO");
 		predmet.getListaStudenata().remove(student);
 	}
