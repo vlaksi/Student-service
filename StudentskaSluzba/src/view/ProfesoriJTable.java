@@ -35,7 +35,7 @@ public class ProfesoriJTable extends JTable {
 		sortiranje = new TableRowSorter<ATMProfesori>(model);
 
 		for (int i = 3; i <= 10; i++) {
-			sortiranje.setSortable(i, false);
+			sortiranje.setSortable(i, false); // u ovoj for petlji smo iskljucili mogucnost sortiranja tabele profesora po specifikaciji projekta
 		}
 		this.setRowSorter(sortiranje);
 	}
