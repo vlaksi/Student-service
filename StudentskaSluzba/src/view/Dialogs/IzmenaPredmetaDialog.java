@@ -40,7 +40,6 @@ public class IzmenaPredmetaDialog extends JDialog {
 		super();
 		setTitle("Izmena predmeta");
 		setSize(500, 500);
-
 		this.setModal(true);
 
 		/*
@@ -140,7 +139,6 @@ public class IzmenaPredmetaDialog extends JDialog {
 		 * male panele u JDialogu
 		 */
 		pack();
-
 		setLocationRelativeTo(GlavniProzor.getInstance());
 
 		/* Lisener da na klik Odustanka ugasimo dijalog */
@@ -243,9 +241,7 @@ public class IzmenaPredmetaDialog extends JDialog {
 							godinaStudijaFieldValue, profa, listaStudenata);
 					PredmetiController.getInstance().izbrisiPredmet(ATMPredmeti.getSelectedRowIndex());
 					PredmetiController.getInstance().dodavanjePredmeta(predmet);
-
 				}
-
 				Tabovi.getModelPredmeti().fireTableDataChanged();
 
 			}
