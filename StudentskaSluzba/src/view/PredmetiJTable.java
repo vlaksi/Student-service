@@ -46,7 +46,6 @@ public class PredmetiJTable extends JTable {
 	 * @param brojKolone
 	 */
 	public static void newFilter(String trazeno, int brojKolone) {
-		//TODO mozda ovo prebaciti u kontroler kasnije
 		RowFilter<? super ATMPredmeti, ? super Integer> rf = null;
 
 		try {
@@ -58,8 +57,6 @@ public class PredmetiJTable extends JTable {
 		getSortiranje().setRowFilter(rf);
 	}
 
-	
-	
 	public static TableRowSorter<ATMPredmeti> getSortiranje() {
 		return sortiranje;
 	}

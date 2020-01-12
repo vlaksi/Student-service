@@ -160,7 +160,6 @@ public class MojToolbar extends JToolBar {
 		add(izbrisiDugme);
 		postaviVidljivost(true, izbrisiDugme);
 		addSeparator();
-
 		dodajStudenta = new JButton();
 		dodajStudenta.setToolTipText("Dodaj studenta");
 		dodajStudenta.addActionListener(new ActionListener() {
@@ -226,7 +225,6 @@ public class MojToolbar extends JToolBar {
 		JButton cancelSearchB = new JButton("Cancel", canselSearch);
 		cancelSearchB.setVisible(false);
 
-		
 		add(Box.createHorizontalGlue()); // Posle ovoga su svi elementi zalepljeni za desnu stranu
 		add(searchable);
 		add(searchB);
@@ -263,9 +261,7 @@ public class MojToolbar extends JToolBar {
 							return;
 						}
 					}
-
-					
-					 /* Search pretraga u tabu studenata */
+					/* Search pretraga u tabu studenata */
 					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 						String[] nizLevih = { " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " " };
 						String[] nizDesnih = new String[11];
@@ -385,10 +381,8 @@ public class MojToolbar extends JToolBar {
 
 						searchable.setText(null);
 					}
-
 					/* Search pretraga u tabu predmeta */
 					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
-
 						String[] nizLevih = { " ", " ", " ", " ", " " };
 						String[] nizDesnih = new String[5];
 						for (int i = 0; i < nizUnetihParova.length; i++) {
@@ -396,7 +390,6 @@ public class MojToolbar extends JToolBar {
 							pomocni = nizUnetihParova[i].split(":");
 							nizLevih[i] = pomocni[0];
 							nizDesnih[i] = pomocni[1];
-
 						}
 
 						for (int i = 0; i < nizLevih.length; i++) {
