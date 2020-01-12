@@ -12,8 +12,6 @@ import controller.SerijalizacijaPredmeta;
  *
  */
 public class BazaPredmeta {
-//TODO Ishendlovati kako cemo za predmet dodavati predmetnog profesora
-//TODO Ishendlovati kako cemo na predmet dodavati studente
 	private static BazaPredmeta instance = null;
 	private List<Predmet> predmeti;
 	private List<String> kolone;

@@ -3,7 +3,6 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * Model Predmeta
  * 
@@ -11,23 +10,17 @@ import java.util.List;
  *
  */
 public class Predmet implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 9188538181041414398L;
 	String sifraPredmeta;
 	String nazivPredmeta;
 	String semestar;
 	String godinaStudija;
 	Profesor predmetniProfesor;
-	List<Student> listaStudenata; //Lista studenata koji slusaju ovaj predmet
+	List<Student> listaStudenata; // Lista studenata koji slusaju ovaj predmet
 
 	public Predmet() {
 	}
 
-	
-	
 	public Predmet(String sifraPredmeta, String nazivPredmeta, String semestar, String godinaStudija,
 			Profesor predmetniProfesor, List<Student> listaStudenata) {
 		super();
@@ -38,7 +31,6 @@ public class Predmet implements Serializable {
 		this.predmetniProfesor = predmetniProfesor;
 		this.listaStudenata = listaStudenata;
 	}
-
 
 	public String getSifraPredmeta() {
 		return sifraPredmeta;
@@ -87,7 +79,5 @@ public class Predmet implements Serializable {
 	public void setListaStudenata(List<Student> listaStudenata) {
 		this.listaStudenata = listaStudenata;
 	}
-	
-	
 
 }
