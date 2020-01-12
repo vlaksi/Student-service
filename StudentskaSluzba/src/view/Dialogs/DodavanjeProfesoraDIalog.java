@@ -34,14 +34,14 @@ import view.Tabovi;
  */
 public class DodavanjeProfesoraDIalog extends JDialog {
 
-	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
-		    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+			Pattern.CASE_INSENSITIVE);
 
 	public static boolean validate(String emailStr) {
-		        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
-		        return matcher.find();
-		}
-	
+		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+		return matcher.find();
+	}
+
 	private static final long serialVersionUID = 1173816528517766648L;
 
 	public DodavanjeProfesoraDIalog() {
@@ -49,7 +49,6 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 
 		setTitle("Dodavanje profesora");
 		setSize(500, 500);
-		// setBackground();
 		setLocationRelativeTo(GlavniProzor.getInstance());
 		this.setModal(true);
 
@@ -201,8 +200,6 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 				String titulaFieldValue = txtTitula.getText();
 				String zvanjeFiledValue = txtZvanje.getText();
 
-
-				
 				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
 						|| adresaStanovanjaFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
 						|| emailValue.isBlank() || adresaKancelarijeFieldValue.isBlank()
@@ -212,7 +209,7 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 
-				} 
+				}
 
 				if (!imeFieldValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
@@ -271,12 +268,11 @@ public class DodavanjeProfesoraDIalog extends JDialog {
 				}
 				if (!zvanjeFiledValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Uneli ste pogresnu vrednost za zvanje( Ispravan format je Redovni profesor )", "Greska",
-							JOptionPane.ERROR_MESSAGE);
+							"ERROR: Uneli ste pogresnu vrednost za zvanje( Ispravan format je Redovni profesor )",
+							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				
-				
+
 				List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 				Profesor profesor = new Profesor(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
 						adresaStanovanjaFieldValue, brojtelefonaFieldValue, emailValue, adresaKancelarijeFieldValue,
