@@ -1,28 +1,26 @@
 package model;
 
-
 import java.io.Serializable;
 import java.util.List;
 
-
+/**
+ * Model Predmeta
+ * 
+ * @author Pufke
+ *
+ */
 public class Student implements Serializable{
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4899548870833415227L;
-/**
-	 * 
-	 */
 
-	//TODO	proveriti enumeraciju imao sam problema oko toga
+	private static final long serialVersionUID = -4899548870833415227L;
+
 	private String ime;
 	private String prezime;
-	private String datumRodjenja; //TODO prebaciti u date kasnije i to ishendlovati
+	private String datumRodjenja; 
 	private String adresaStanovanja;
 	private String telefon;
 	private String email;
 	private String brIndexa;
-	private String datumUpisa;//TODO prebaciti u date kasnije i to ishendlovati
+	private String datumUpisa;
 	private String godinaStudija;
 	private Double prosecnaOcena;
 	private Status statusStudenta;
@@ -134,5 +132,4 @@ public class Student implements Serializable{
 	}
 
 	
-
 }
