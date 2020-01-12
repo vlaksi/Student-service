@@ -24,7 +24,7 @@ import view.Dialogs.IzmenaStudentaDialog;
 import view.Dialogs.PotvrdaBrisanjaDialog;
 
 /*
- * klasa nasledjuje JMenuBar i predstavlja kontejner
+ * Klasa nasledjuje JMenuBar i predstavlja kontejner
  * za komponente JMenu. Instanca ove klase ce se 
  * smestati u glavni prozor aplikacije
  * 
@@ -32,8 +32,7 @@ import view.Dialogs.PotvrdaBrisanjaDialog;
  * 
  */
 public class MojMenyBar extends JMenuBar {
-//TODO proveriti metode setMnemonic gde se kasnije koriste, trebalo bi kod eventlistenera, PAZI na to neki se isto zovu kod 
-//TODO JMenu komponente i JMenuItem komponente, ako ih ne budemo nigde koristili treba ih obrisati !!! 
+
 	private static final long serialVersionUID = -8544372218994433942L;
 
 	public MojMenyBar() {
@@ -53,7 +52,7 @@ public class MojMenyBar extends JMenuBar {
 		newMenuItem.setToolTipText("Dodavanje novog entiteta u sistem");
 		newMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
 		newMenuItem.addActionListener((event) -> dodavanjeEntiteta());
-		
+
 		file.add(newMenuItem);
 		file.addSeparator();
 		file.add(closeMenuItem);
@@ -66,26 +65,26 @@ public class MojMenyBar extends JMenuBar {
 		miEdit.setToolTipText("Editovanje entiteta u sistemu");
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
 		miEdit.addActionListener((event) -> izmenaEntiteta());
-		
+
 		JMenuItem miDelete = new JMenuItem("Delete", new ImageIcon("./img/delete.png"));
 		miDelete.setMnemonic(KeyEvent.VK_D);
 		miDelete.setToolTipText("Brisanje postojeceg entiteta u sistemu");
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK));
 		miDelete.addActionListener((event) -> brisanjeEntiteta());
-		
+
 		edit.add(miEdit);
 		edit.addSeparator();
 		edit.add(miDelete);
 
 		JMenu help = new JMenu("Help");
 		help.setMnemonic(KeyEvent.VK_H);
-		
+
 		JMenuItem helpMenuItem = new JMenuItem("Help", new ImageIcon("./img/help.png"));
 		helpMenuItem.setMnemonic(KeyEvent.VK_H);
 		helpMenuItem.setToolTipText("Pomoc pri radu sa aplikacijom");
 		helpMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_DOWN_MASK));
 		helpMenuItem.addActionListener((event) -> helpp());
-		
+
 		JMenuItem aboutMenuItem = new JMenuItem("About", new ImageIcon("./img/about.png"));
 		aboutMenuItem.setMnemonic(KeyEvent.VK_I);
 		aboutMenuItem.setToolTipText("Informacije o autorima aplikacije");
@@ -117,12 +116,12 @@ public class MojMenyBar extends JMenuBar {
 		}
 		return listenerList;
 	}
-	
-	 private void izmenaEntiteta() {
+
+	private void izmenaEntiteta() {
 		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 			if (StudentiController.getInstance().getListaSvihStudenata().isEmpty()) {
-				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema studenta za izmenu.",
-						"Greska", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema studenta za izmenu.", "Greska",
+						JOptionPane.ERROR_MESSAGE);
 				return;
 			} else {
 				IzmenaStudentaDialog dialog = new IzmenaStudentaDialog();
@@ -132,8 +131,8 @@ public class MojMenyBar extends JMenuBar {
 		}
 		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
 			if (ProfesoriController.getInstance().getListaSvihProfesora().isEmpty()) {
-				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema profesora za izmenu.",
-						"Greska", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema profesora za izmenu.", "Greska",
+						JOptionPane.ERROR_MESSAGE);
 				return;
 			} else {
 				IzmenaProfesoraDialog dialog = new IzmenaProfesoraDialog();
@@ -144,8 +143,8 @@ public class MojMenyBar extends JMenuBar {
 
 		if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
 			if (PredmetiController.getInstance().getListaSvihPredmeta().isEmpty()) {
-				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema predmeta za izmenu.",
-						"Greska", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "ERROR: Tabela je prazna, i nema predmeta za izmenu.", "Greska",
+						JOptionPane.ERROR_MESSAGE);
 				return;
 			} else {
 				IzmenaPredmetaDialog dialog = new IzmenaPredmetaDialog();
@@ -154,19 +153,19 @@ public class MojMenyBar extends JMenuBar {
 
 		}
 	}
-	 
-	 private void brisanjeEntiteta() {
-		 
-		 PotvrdaBrisanjaDialog dialog = new PotvrdaBrisanjaDialog();
-			dialog.setVisible(true);
-	 }
-	 
-	 private void about() {
-		 @SuppressWarnings("unused")
+
+	private void brisanjeEntiteta() {
+		PotvrdaBrisanjaDialog dialog = new PotvrdaBrisanjaDialog();
+		dialog.setVisible(true);
+	}
+
+	private void about() {
+		@SuppressWarnings("unused")
 		AboutDialog aboutDialog = new AboutDialog();
-	 }
-	 private void helpp() {
-		 @SuppressWarnings("unused")
+	}
+
+	private void helpp() {
+		@SuppressWarnings("unused")
 		HelpDialog helpDialog = new HelpDialog();
-	 }
+	}
 }
