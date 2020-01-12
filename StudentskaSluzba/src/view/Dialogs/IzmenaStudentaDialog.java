@@ -411,7 +411,6 @@ public class IzmenaStudentaDialog extends JDialog {
 					 */
 					if (!StudentiController.getInstance().getListaSvihStudenata().get(ATMStudenti.getSelectedRowIndex())
 							.getGodinaStudija().equals(godinaStudijaValue)) {
-						//System.out.println("menja se godina");
 						List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 						StudentiController.getInstance()
 								.dodajStudenta(new Student(imeFieldValue, prezimeFieldValue, datumRodjenjaFieldValue,
@@ -424,7 +423,7 @@ public class IzmenaStudentaDialog extends JDialog {
 							 * Ako je izmena nekog drugog polja studenta, da ne vrsi brisanje u predmetima
 							 * tog studenta
 							 */
-						//System.out.println("ne menja se godina");
+
 						List<Predmet> listaPredmeta = new ArrayList<Predmet>();
 						listaPredmeta = StudentiController.getInstance().getListaSvihStudenata()
 								.get(ATMStudenti.getSelectedRowIndex()).getPredmeti();
