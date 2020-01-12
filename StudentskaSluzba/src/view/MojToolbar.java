@@ -226,6 +226,7 @@ public class MojToolbar extends JToolBar {
 		JButton cancelSearchB = new JButton("Cancel", canselSearch);
 		cancelSearchB.setVisible(false);
 
+		
 		add(Box.createHorizontalGlue()); // Posle ovoga su svi elementi zalepljeni za desnu stranu
 		add(searchable);
 		add(searchB);
@@ -263,6 +264,7 @@ public class MojToolbar extends JToolBar {
 						}
 					}
 
+					
 					 /* Search pretraga u tabu studenata */
 					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 0) {
 						String[] nizLevih = { " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " " };
