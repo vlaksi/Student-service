@@ -9,13 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Klasa koja sluzi za Prikaz dialoga koji iskace kada Brisemo studente na
+ * Klasa koja sluzi za prikaz dialoga koji iskace kada brisemo studente sa
  * predmetu
  * 
  * @author Pufke
  *
  */
 public class ListDialog {
+	
 	private JList<?> list;
 	private JLabel label;
 	private JOptionPane optionPane;
@@ -23,6 +24,7 @@ public class ListDialog {
 	private ActionListener okEvent, cancelEvent;
 	private JDialog dialog;
 	   
+	
 	
 	public ListDialog(String message, JList<?> listToDisplay) {
 		list = listToDisplay;
