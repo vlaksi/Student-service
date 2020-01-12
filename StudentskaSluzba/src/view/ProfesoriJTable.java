@@ -35,7 +35,8 @@ public class ProfesoriJTable extends JTable {
 		sortiranje = new TableRowSorter<ATMProfesori>(model);
 
 		for (int i = 3; i <= 10; i++) {
-			sortiranje.setSortable(i, false); // u ovoj for petlji smo iskljucili mogucnost sortiranja tabele profesora po specifikaciji projekta
+			sortiranje.setSortable(i, false); // u ovoj for petlji smo iskljucili mogucnost sortiranja tabele profesora
+												// po specifikaciji projekta
 		}
 		this.setRowSorter(sortiranje);
 	}
@@ -50,20 +51,15 @@ public class ProfesoriJTable extends JTable {
 	 * @param brojKolone
 	 */
 	public static void newFilter(String trazeno, int brojKolone) {
-		//TODO mozda ovo prebaciti u kontroler kasnije
 		RowFilter<? super ATMProfesori, ? super Integer> rf = null;
-
 		try {
 			rf = RowFilter.regexFilter("^" + trazeno, brojKolone);
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
-
 		getSortiranje().setRowFilter(rf);
 	}
-	
-	
-	
+
 	public ATMProfesori getModel() {
 		return model;
 	}

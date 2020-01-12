@@ -324,7 +324,6 @@ public class MojToolbar extends JToolBar {
 
 					/* Search pretraga u tabu profesora */
 					if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
-
 						String[] nizLevih = { " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " " };
 						String[] nizDesnih = new String[10];
 						for (int i = 0; i < nizUnetihParova.length; i++) {
@@ -332,7 +331,6 @@ public class MojToolbar extends JToolBar {
 							pomocni = nizUnetihParova[i].split(":");
 							nizLevih[i] = pomocni[0];
 							nizDesnih[i] = pomocni[1];
-
 						}
 						for (int i = 0; i < nizLevih.length; i++) {
 							if (nizLevih[i].equals("ime") || nizLevih[i].equals("Ime") || nizLevih[i].equals("IME")) {
