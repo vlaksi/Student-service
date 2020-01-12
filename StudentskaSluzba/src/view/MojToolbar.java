@@ -34,13 +34,11 @@ import view.Dialogs.PotvrdaBrisanjaDialog;
  */
 public class MojToolbar extends JToolBar {
 	private static final long serialVersionUID = 4684825905522190943L;
-
 	private JButton novoDugme;
 	private JButton izmeniDugme;
 	private JButton izbrisiDugme;
 	private JButton dodajStudenta;
 	private JButton dodajProfesora;
-
 	public static MojToolbar instance = null;
 
 	public static MojToolbar getInstance() {
@@ -68,12 +66,10 @@ public class MojToolbar extends JToolBar {
 					DodajStudentaDialog dialog = new DodajStudentaDialog();
 					dialog.setVisible(true);
 				}
-
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 1) {
 					DodavanjeProfesoraDIalog dialog = new DodavanjeProfesoraDIalog();
 					dialog.setVisible(true);
 				}
-
 				if (GlavniProzor.getInstance().getTabovi().getTabbedPane().getSelectedIndex() == 2) {
 					DodajPredmetDialog dialog = new DodajPredmetDialog();
 					dialog.setVisible(true);
