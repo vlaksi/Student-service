@@ -56,9 +56,8 @@ public class PotvrdaBrisanjaDialog extends JDialog {
 
 		panCenter.add(panPoruka);
 
-		/*
-		 * Na JDialog dodajemo panCentar i to u sredinu JDialog-a
-		 */
+		
+		// Na JDialog dodajemo panCentar i to u sredinu JDialog-a
 		panCenter.add(Box.createVerticalStrut(25));
 		add(panCenter, BorderLayout.NORTH);
 

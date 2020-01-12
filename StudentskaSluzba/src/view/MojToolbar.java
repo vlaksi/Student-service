@@ -26,7 +26,6 @@ import view.Dialogs.IzmenaProfesoraDialog;
 import view.Dialogs.IzmenaStudentaDialog;
 import view.Dialogs.PotvrdaBrisanjaDialog;
 
-
 /**
  * Klasa koja sluzi za implementaciju toolbara-a u glavnom prozoru.
  * 
@@ -135,13 +134,13 @@ public class MojToolbar extends JToolBar {
 			}
 
 		});
-
 		ImageIcon iconNew2 = new ImageIcon("./img/edit.png");
 		izmeniDugme.setIcon(iconNew2);
 		add(izmeniDugme);
 		postaviVidljivost(true, izmeniDugme);
 		addSeparator();
 
+		
 		izbrisiDugme = new JButton();
 		izbrisiDugme.setToolTipText("Izbrisi");
 		izbrisiDugme.addActionListener(new ActionListener() {
@@ -163,6 +162,7 @@ public class MojToolbar extends JToolBar {
 		postaviVidljivost(true, izbrisiDugme);
 		addSeparator();
 
+		
 		dodajStudenta = new JButton();
 		dodajStudenta.setToolTipText("Dodaj studenta");
 		dodajStudenta.addActionListener(new ActionListener() {
@@ -248,16 +248,16 @@ public class MojToolbar extends JToolBar {
 			public void actionPerformed(ActionEvent e) {
 				if (searchable.getText().isBlank()) {
 					JOptionPane.showMessageDialog(null,
-							"ERROR: Morate da uneste neku pretragu, kako bi se ona izvrsila.",
-							"Greska", JOptionPane.ERROR_MESSAGE);
+							"ERROR: Morate da uneste neku pretragu, kako bi se ona izvrsila.", "Greska",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
 					searchB.setVisible(false);
 					cancelSearchB.setVisible(true);
 
 					String[] nizUnetihParova = searchable.getText().split(";");
-					for(int i=0;i<nizUnetihParova.length;i++) {
-						if(!nizUnetihParova[i].contains(":") || nizUnetihParova[i].equals(":")) {
+					for (int i = 0; i < nizUnetihParova.length; i++) {
+						if (!nizUnetihParova[i].contains(":") || nizUnetihParova[i].equals(":")) {
 							JOptionPane.showMessageDialog(null,
 									"ERROR: Niste validno pokusali pretragu. Primer validnog nacina: nazivKolone:trazenaVrednost .",
 									"Greska", JOptionPane.ERROR_MESSAGE);
