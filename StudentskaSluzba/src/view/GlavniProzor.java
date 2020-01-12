@@ -19,7 +19,6 @@ public class GlavniProzor extends JFrame {
 
 	private static final long serialVersionUID = -4307414094787209222L;
 	private static GlavniProzor instance = null;
-
 	private Tabovi tabovi;
 
 	public static GlavniProzor getInstance() {
@@ -84,9 +83,7 @@ public class GlavniProzor extends JFrame {
 
 			}
 		});
-
 		validate();
-
 	}
 
 	public Tabovi getTabovi() {
