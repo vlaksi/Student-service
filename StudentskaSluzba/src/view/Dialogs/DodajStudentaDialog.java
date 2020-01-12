@@ -235,8 +235,6 @@ public class DodajStudentaDialog extends JDialog {
 				Double prosecnaOcenaValue = null;
 				String datumUpisaValue = txtPanDatumUpiusa.getText();
 				String emailValue = txtPanEmail.getText();
-				
-				
 
 				if (!prezimeFieldValue.matches("[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
@@ -257,7 +255,7 @@ public class DodajStudentaDialog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				
+
 				if (!adresaStanovanjaFieldValue.matches("[0-9]*{1,7}[\\p{L}\\s]+[0-9]*{1,7},[\\p{L}\\s]+")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Uneli ste pogresnu vrednost za adresu stanovanja( Ispravan format datuma rodjenja je Karadjordjeva 83, Novi Sad )",
@@ -293,68 +291,62 @@ public class DodajStudentaDialog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				
-				//Datum upisa, da nije veci od trenutnog, a ne sme biti manji od njegovog datuma rodjena(ili rodjena +18)
+
+				// Datum upisa, da nije veci od trenutnog, a ne sme biti manji od njegovog
+				// datuma rodjena(ili rodjena +18)
 				String[] tokensDatumUpisa = datumUpisaValue.split("-");
 				String[] tokensDatumRodjenja = datumRodjenjaFieldValue.split("-");
-				
-				 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
-				 LocalDateTime now = LocalDateTime.now();  
-				 String[] tokensDatumTrenutni = dtf.format(now).split("-");
-				 
-				 try {
-					 int godinaUpisa = Integer.parseInt(tokensDatumUpisa[0]);
-					 int mesecUpisa = Integer.parseInt(tokensDatumUpisa[1]);
-					 int danUpisa = Integer.parseInt(tokensDatumUpisa[2]);
-					 int godinaRodjenja = Integer.parseInt(tokensDatumRodjenja[0]);
-					 @SuppressWarnings("unused")
+
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				LocalDateTime now = LocalDateTime.now();
+				String[] tokensDatumTrenutni = dtf.format(now).split("-");
+
+				try {
+					int godinaUpisa = Integer.parseInt(tokensDatumUpisa[0]);
+					int mesecUpisa = Integer.parseInt(tokensDatumUpisa[1]);
+					int danUpisa = Integer.parseInt(tokensDatumUpisa[2]);
+					int godinaRodjenja = Integer.parseInt(tokensDatumRodjenja[0]);
+					@SuppressWarnings("unused")
 					int mesecRodjenja = Integer.parseInt(tokensDatumRodjenja[1]);
-					 @SuppressWarnings("unused")
+					@SuppressWarnings("unused")
 					int danRodjenja = Integer.parseInt(tokensDatumRodjenja[2]);
-					 int godinaTrenutna = Integer.parseInt(tokensDatumTrenutni[0]);
-					 int mesecTrenutni = Integer.parseInt(tokensDatumTrenutni[1]);
-					 int danTrenutni = Integer.parseInt(tokensDatumTrenutni[2]);
-				
-				//datum upisa, da nije veci od trenutnog
-					 if(godinaUpisa > godinaTrenutna) {
-						 JOptionPane.showMessageDialog(null,
-									"ERROR: Datum upisa mora da bude manji od trenutnog datuma!",
-									"Greska", JOptionPane.ERROR_MESSAGE);
+					int godinaTrenutna = Integer.parseInt(tokensDatumTrenutni[0]);
+					int mesecTrenutni = Integer.parseInt(tokensDatumTrenutni[1]);
+					int danTrenutni = Integer.parseInt(tokensDatumTrenutni[2]);
+
+					// datum upisa, da nije veci od trenutnog
+					if (godinaUpisa > godinaTrenutna) {
+						JOptionPane.showMessageDialog(null,
+								"ERROR: Datum upisa mora da bude manji od trenutnog datuma!", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					if (godinaUpisa == godinaTrenutna) {
+						if (mesecUpisa > mesecTrenutni) {
+							JOptionPane.showMessageDialog(null,
+									"ERROR:Datum upisa mora da bude manji od trenutnog datuma!", "Greska",
+									JOptionPane.ERROR_MESSAGE);
 							return;
-					 }
-					 if(godinaUpisa == godinaTrenutna) {
-						 if(mesecUpisa > mesecTrenutni) {
-							 JOptionPane.showMessageDialog(null,
-										"ERROR:Datum upisa mora da bude manji od trenutnog datuma!",
-										"Greska", JOptionPane.ERROR_MESSAGE);
+						} else if (mesecUpisa == mesecTrenutni) {
+							if (danUpisa > danTrenutni) {
+								JOptionPane.showMessageDialog(null,
+										"ERROR:Datum upisa mora da bude manji od trenutnog datuma!", "Greska",
+										JOptionPane.ERROR_MESSAGE);
 								return;
-						 }else if(mesecUpisa == mesecTrenutni) {
-							 if(danUpisa > danTrenutni) {
-								 JOptionPane.showMessageDialog(null,
-											"ERROR:Datum upisa mora da bude manji od trenutnog datuma!",
-											"Greska", JOptionPane.ERROR_MESSAGE);
-								 return;
-							 }
-						 }
-					 }
-					 
-				//datum upisa sme biti manji od njegovog datuma rodjena(ili rodjena +18)
-					 if(godinaUpisa-18 < godinaRodjenja) {
-						 JOptionPane.showMessageDialog(null,
-									"ERROR: Student mora da ima minimum 18 godina!",
-									"Greska", JOptionPane.ERROR_MESSAGE);
-							return;
-					 }
-					 
-					 
-				 
-				 
-				 }catch(Exception e) {
-					 System.out.println("Greska pri parsiranju datuma");
-				 }
-				 
-				 
-				
+							}
+						}
+					}
+
+					// datum upisa sme biti manji od njegovog datuma rodjena(ili rodjena +18)
+					if (godinaUpisa - 18 < godinaRodjenja) {
+						JOptionPane.showMessageDialog(null, "ERROR: Student mora da ima minimum 18 godina!", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+
+				} catch (Exception e) {
+					System.out.println("Greska pri parsiranju datuma");
+				}
 
 				if (!txtProsecnaOcena.getText().equals("")) {
 					try {
@@ -372,14 +364,14 @@ public class DodajStudentaDialog extends JDialog {
 						return;
 					}
 				} else {
-					if(godinaStudijaValue.equals("1")) {
+					if (godinaStudijaValue.equals("1")) {
 						prosecnaOcenaValue = 0.0;
-					}else {
+					} else {
 						JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
-							JOptionPane.ERROR_MESSAGE);
+								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-						
+
 				}
 
 				budzetButton.setActionCommand(budzetButton.getText());// Ove metode su nam potrebne da bi radio button
@@ -402,9 +394,8 @@ public class DodajStudentaDialog extends JDialog {
 
 				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
 						|| adresaStanovanjaFieldValue.isBlank() || brojIndexaFieldValue.isBlank()
-						|| brojIndexaFieldValue.isBlank()|| brojtelefonaFieldValue.isBlank()
-						|| godinaStudijaValue.isBlank()
-						|| datumUpisaValue.isBlank() || emailValue.isBlank()) {
+						|| brojIndexaFieldValue.isBlank() || brojtelefonaFieldValue.isBlank()
+						|| godinaStudijaValue.isBlank() || datumUpisaValue.isBlank() || emailValue.isBlank()) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
