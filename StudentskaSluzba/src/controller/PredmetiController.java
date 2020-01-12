@@ -151,9 +151,9 @@ public class PredmetiController {
 					for(Predmet p: prof.getPredmeti()) {
 						if(p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
 							if (prof.getPredmeti().remove(p)) {
-								 System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta());
+								// System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta());
 							}else {
-								System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "nije uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta() + " a trebao je !");
+								//System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "nije uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta() + " a trebao je !");
 							}
 							brojacBreak=1;
 							break;

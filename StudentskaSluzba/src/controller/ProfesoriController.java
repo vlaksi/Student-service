@@ -66,16 +66,17 @@ public class ProfesoriController {
 
 	// Metoda koja brise profesora za proslednje index reda
 	public void izbrisiProfesora(int selectedRowIndex) {
-		Profesor profesor = new Profesor();
-		profesor = BazaProfesor.getInstance().getProfesori().get(selectedRowIndex);
+		Profesor profesor =  BazaProfesor.getInstance().getProfesori().get(selectedRowIndex);
 
-		for (Predmet p : PredmetiController.getInstance().getListaSvihPredmeta()) {
-			// prodjem kroz sve predmete i ako imaju tog profesora,uklonimo ga
-			if(p.getPredmetniProfesor().equals(profesor)) {
-				Profesor profa = new Profesor(); profa.setPrezime("nema "); profa.setBrojLicneKarte("profesor");
+		
+		for(Predmet p : PredmetiController.getInstance().getListaSvihPredmeta()) {
+			/* Prodjem kroz sve predmete i ako ima tog profesora uklonim ga,tj setujem na novog profesora ! */
+			if(p.getPredmetniProfesor().getBrojLicneKarte().equals(profesor.getBrojLicneKarte())) {
+				Profesor profa = new Profesor(); profa.setPrezime("Nema"); profa.setBrojLicneKarte(" profesora");
 				p.setPredmetniProfesor(profa);
 			}
 		}
+		
 		
 		BazaProfesor.getInstance().getProfesori().remove(selectedRowIndex);
 		//listaProfesoraZaSerijalizaciju.remove(selectedRowIndex);
