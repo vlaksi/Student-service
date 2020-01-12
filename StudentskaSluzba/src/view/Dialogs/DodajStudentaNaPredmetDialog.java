@@ -33,8 +33,6 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 
 		setTitle("Predmet - Dodavanje studenta");
 		setSize(500, 500);
-		// setBackground();
-	
 		this.setModal(true);
 
 		JPanel panCenter = new JPanel();
@@ -75,7 +73,7 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 		add(panBottom, BorderLayout.SOUTH);
 		pack();
 		setLocationRelativeTo(GlavniProzor.getInstance());
-		
+
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -123,21 +121,20 @@ public class DodajStudentaNaPredmetDialog extends JDialog {
 							JOptionPane.ERROR_MESSAGE);
 				} else { // U suprotnom zanci da smo pronasli odgovarajuceg studenta za predmet i treba
 							// ga dodati
-					
-					//provera da li taj predmet vec postoji u listiPredmeta u studentu
+
+					// provera da li taj predmet vec postoji u listiPredmeta u studentu
 					List<Predmet> listaPredmetaa = studentKogDodajemo.getPredmeti();
-					for(Predmet predmett :listaPredmetaa) {
-						if(predmett.getSifraPredmeta().equals(predmetNaKojiDodajemo.getSifraPredmeta())) {
+					for (Predmet predmett : listaPredmetaa) {
+						if (predmett.getSifraPredmeta().equals(predmetNaKojiDodajemo.getSifraPredmeta())) {
 							JOptionPane.showMessageDialog(null,
 									"ERROR: Nije moguce dodeliti dva puta isti predmet studentu!", "Greska",
 									JOptionPane.ERROR_MESSAGE);
 							return;
 						}
 					}
-					
+
 					PredmetiController.getInstance().dodajStudentaPredmetu(studentKogDodajemo, predmetNaKojiDodajemo);
 					StudentiController.getInstance().dodajPredmetStudentu(studentKogDodajemo, predmetNaKojiDodajemo);
-					
 
 				}
 				Tabovi.getModelPredmeti().fireTableDataChanged();
