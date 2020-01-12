@@ -143,15 +143,28 @@ public class PredmetiController {
 			 * slucaj kada predmet ima profesora -> u tabeli profesori,za odredjenog
 			 * profesora, obrisati iz njegove liste predmeta nas predmet
 			 */
-			Profesor profesorKomUklanjamo = new Profesor();
-			profesorKomUklanjamo = predmetKogBrisemo.getPredmetniProfesor();
-
+			int brojacBreak=-1;
+			Profesor profesorKomUklanjamo = predmetKogBrisemo.getPredmetniProfesor();
+			System.out.println("Profesora kog uklanjamo ima jmbg: " + profesorKomUklanjamo.getBrojLicneKarte());
 			for (Profesor prof : ProfesoriController.getInstance().getListaSvihProfesora()) {
 				if (profesorKomUklanjamo.getBrojLicneKarte().equals(prof.getBrojLicneKarte())) {
-					if (prof.getPredmeti().remove(predmetKogBrisemo)) {
-						// System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "uklonjen
-						// predmet: " + predmetKogBrisemo.getNazivPredmeta());
+					for(Predmet p: prof.getPredmeti()) {
+						if(p.getSifraPredmeta().equals(predmetKogBrisemo.getSifraPredmeta())) {
+							if (prof.getPredmeti().remove(p)) {
+								 System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta());
+							}else {
+								System.out.println("Profesoru: " + prof.getBrojLicneKarte() + "nije uklonjen predmet: " + predmetKogBrisemo.getNazivPredmeta() + " a trebao je !");
+							}
+							brojacBreak=1;
+							break;
+							
+						}
 					}
+					
+					if(brojacBreak == 1) {
+						break;
+					}
+					
 				}
 
 			}
