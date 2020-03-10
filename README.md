@@ -103,14 +103,31 @@ Subject (# subject) <br>
 
 </p>
 
-<p align="center">
+### Adding a student
 
+Selecting the appropriate button (in this example, it is the first button from the toolbar) opens
+new dialog to add student
+
+  
   <img width="1111" height="600" src="https://user-images.githubusercontent.com/45834270/76364027-8b952000-6324-11ea-84ad-81a7e6ee970a.png">
+  
 
-</p>
+### Editing student
+
+Selecting the appropriate button (this is the second toolbar button in the example) opens
+a new dialog to change the selected student from the spreadsheet 
+
 
 <p align="center">
 
   <img width="1111" height="600" src="https://user-images.githubusercontent.com/45834270/76364032-8cc64d00-6324-11ea-8eed-8d7fcbffe68e.png">
 
 </p>
+
+### Deleting a student
+Selecting the appropriate button (in this example, it is the third button in the toolbar) opens
+a new dialog where the user needs to confirm whether they want to delete the selected student from
+tables
+
+# TO-DO 
+OVDE TREBA UBACITI SLIKU ZA BRISANJE STUDENTA
