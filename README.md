@@ -25,7 +25,7 @@ submenus :
   b) About - View the version of the application as well as a brief description of the application, followed by a biography of each author.
      
 <p align="center">
- <img width="500" height="130" src="https://user-images.githubusercontent.com/49925421/76365913-c9944300-6328-11ea-80da-48a592072f32.png">
+ <img width="500" height="110" src="https://user-images.githubusercontent.com/49925421/76365913-c9944300-6328-11ea-80da-48a592072f32.png">
 </p>
 
 #### 1.2 Toolbar Application (#toolbar)
@@ -34,7 +34,7 @@ The toolbar of the application contains 3 buttons and one text input field. Tool
 on the picture
 
 <p align="center">
- <img width="500" height="50" src="https://user-images.githubusercontent.com/49925421/76366820-5d670e80-632b-11ea-9147-2400a2bd5ea0.png">
+ <img width="800" height="100" src="https://user-images.githubusercontent.com/49925421/77118838-6a73b400-6a35-11ea-8cfd-19de5ba70a50.jpeg">
 </p>
 
 The first button is to open a dialog to create a new student/professor/subject. The second button is used to open a dialog to modify an existing student/professor/subject while the third button deletes the selected entity from the table. The user can enter the combined search and click on the button to search the table. The table will show satisfying entities.
