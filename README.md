@@ -149,3 +149,63 @@ g) average grade (rising / falling) <br>
 
 ### Deliting students from the course
 <img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77111163-24175880-6a27-11ea-965e-b9cefcd05b0a.jpeg">
+
+### Adding a course
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117505-727e2480-6a32-11ea-8e20-3aa47a7d9934.jpeg">
+
+### Editing an existing course
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77116877-34cccc00-6a31-11ea-8e02-c75aa944c297.jpeg">
+
+### Deleting an existing course
+Everything is synchronised, when you delete an existing course, that course will be deleted and from all students and professors
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117271-f552af80-6a31-11ea-96f0-4c726c995ce4.jpeg">
+
+### Sorting a course
+
+a. code (ascending / descending) <br>
+b. name (ascending / descending) <br>
+c. semester (ascending / descending) <br>
+d. year in which the subject is heard (rising / falling) <br>
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117328-161b0500-6a32-11ea-8b8f-1e1ad5dc8546.jpeg">
+
+### Adding a new professor
+
+Selecting the appropriate button (in this example, it is the first button from the toolbar) opens new dialog to add a new professor
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117786-f9330180-6a32-11ea-9970-58d987e7bd52.jpeg">
+
+### Editing an existing professor
+
+Selecting the appropriate button (in this example, it is the second button from the toolbar) opens new dialog to modify a existing professor
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117972-66469700-6a33-11ea-9ac2-4021135d149e.jpeg">
+
+### Deleting an existing professor
+
+Selecting the appropriate button (in this example, it is the third button from the toolbar) opens new dialog to delete a existing professor
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117990-75c5e000-6a33-11ea-8f68-ad64168adb7f.jpeg">
+
+### Sorting a professors <br>
+
+a. name (ascending / descending) <br>
+b. surname (ascending / descending) <br>
+c. date of birth (ascending / descending) <br>
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77118249-11efe700-6a34-11ea-8020-18bf512f9244.jpeg">
+
+### Adding professors on course
+
+Selecting the appropriate button (in this example, it is the fift button from the toolbar) opens new dialog to enter ID number of existing professor, after that you can confirm dialog.
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77118354-4ebbde00-6a34-11ea-93be-b673fdb9a93c.jpeg">
+
+### Deleting professors from course
+
+Selecting the appropriate button (in this example, it is the button "Prikazi" in the table) opens new dialog with list of existing courses for selected student, after that you can select course and confirm dialog ( button "Obrisi").
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77118541-b3773880-6a34-11ea-8a72-ac8c876c03b3.jpeg">
