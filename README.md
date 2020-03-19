@@ -101,8 +101,9 @@ Selecting the button "Prikazi" (View) we can see list of students who attending 
 
 ### Adding a student
 
-Selecting the appropriate button (in this example, it is the first button from the toolbar) opens
-new dialog to add student
+Selecting the appropriate button (in this example, it is the first button from the toolbar) open
+new dialog to add student. All fields must be valid entered
+otherwise, pressing the Confirm button is disabled.
 
   
   <img width="1111" height="560" src="https://user-images.githubusercontent.com/45834270/76364027-8b952000-6324-11ea-84ad-81a7e6ee970a.png">
@@ -111,7 +112,8 @@ new dialog to add student
 ### Editing student
 
 Selecting the appropriate button (this is the second toolbar button in the example) opens
-a new dialog to change the selected student from the spreadsheet 
+a new dialog to change the selected student from the spreadsheet. All fields must be valid modified
+otherwise, pressing the Confirm button is disabled. 
 
 
 <p align="center">
