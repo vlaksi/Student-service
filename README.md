@@ -87,17 +87,17 @@ Subject (# subject) <br>
 • List of students listening to the course <br>
 ## Functionality
 
-<p align="center">
+### View a list of course that student is attending
+Selecting the button "Prikazi" (View) we can see a list of courses that student is attending
 
-  <img width="1111" height="550" src="https://user-images.githubusercontent.com/45834270/76363827-1f1a2100-6324-11ea-82ea-a6b9448d18a0.png">
+  <img width="1111" height="560" src="https://user-images.githubusercontent.com/45834270/76363827-1f1a2100-6324-11ea-82ea-a6b9448d18a0.png">
 
-</p>
 
-<p align="center">
+### View a list of students who are attending that course
+Selecting the button "Prikazi" (View) we can see list of students who attending that course, also we can delete students from that course selecting button "Obrisi" (Delete).
 
-  <img width="1111" height="600" src="https://user-images.githubusercontent.com/45834270/76364025-89cb5c80-6324-11ea-8c03-a12335bf0043.png">
+  <img width="1111" height="560" src="https://user-images.githubusercontent.com/45834270/76364025-89cb5c80-6324-11ea-8c03-a12335bf0043.png">
 
-</p>
 
 ### Adding a student
 
@@ -105,7 +105,7 @@ Selecting the appropriate button (in this example, it is the first button from t
 new dialog to add student
 
   
-  <img width="1111" height="600" src="https://user-images.githubusercontent.com/45834270/76364027-8b952000-6324-11ea-84ad-81a7e6ee970a.png">
+  <img width="1111" height="560" src="https://user-images.githubusercontent.com/45834270/76364027-8b952000-6324-11ea-84ad-81a7e6ee970a.png">
   
 
 ### Editing student
@@ -116,7 +116,7 @@ a new dialog to change the selected student from the spreadsheet
 
 <p align="center">
 
-  <img width="1111" height="600" src="https://user-images.githubusercontent.com/45834270/76364032-8cc64d00-6324-11ea-8eed-8d7fcbffe68e.png">
+  <img width="1111" height="560" src="https://user-images.githubusercontent.com/45834270/76364032-8cc64d00-6324-11ea-8eed-8d7fcbffe68e.png">
 
 </p>
 
@@ -125,5 +125,5 @@ Selecting the appropriate button (in this example, it is the third button in the
 a new dialog where the user needs to confirm whether they want to delete the selected student from
 tables
 
-# TO-DO 
-OVDE TREBA UBACITI SLIKU ZA BRISANJE STUDENTA
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77107857-96853a00-6a21-11ea-9484-7bf22f90a68b.jpeg">
+
