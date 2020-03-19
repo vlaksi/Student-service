@@ -154,9 +154,17 @@ g) average grade (rising / falling) <br>
 
 ### Adding a course
 
+Selecting the appropriate button (that is the first toolbar button in this example) open
+a new dialog to add course. All fields must be valid entered
+otherwise, pressing the "Potvrdi"(Confirm) button is disabled. 
+
 <img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117505-727e2480-6a32-11ea-8e20-3aa47a7d9934.jpeg">
 
 ### Editing an existing course
+
+Selecting the appropriate button (that is the second toolbar button in this example) open
+a new dialog to change the selected course from the spreadsheet. All fields must be valid modified
+otherwise, pressing the "Potvrdi"(Confirm) button is disabled. 
 
 <img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77116877-34cccc00-6a31-11ea-8e02-c75aa944c297.jpeg">
 
@@ -176,13 +184,16 @@ d. year in which the subject is heard (rising / falling) <br>
 
 ### Adding a new professor
 
-Selecting the appropriate button (in this example, it is the first button from the toolbar) opens new dialog to add a new professor
+Selecting the appropriate button (in this example, it is the first button from the toolbar) opens new dialog to add a new professor. 
+All fields must be valid entered
+otherwise, pressing the Confirm button is disabled.
 
 <img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117786-f9330180-6a32-11ea-9970-58d987e7bd52.jpeg">
 
 ### Editing an existing professor
 
-Selecting the appropriate button (in this example, it is the second button from the toolbar) opens new dialog to modify a existing professor
+Selecting the appropriate button (in this example, it is the second button from the toolbar) opens new dialog to modify a existing professor. All fields must be valid edited
+otherwise, pressing the Confirm button is disabled.
 
 <img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77117972-66469700-6a33-11ea-9ac2-4021135d149e.jpeg">
 
