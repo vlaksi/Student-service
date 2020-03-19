@@ -239,7 +239,7 @@ public class MojToolbar extends JToolBar {
 			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (searchable.getText().isBlank()) {
+				if (searchable.getText().equals("")) {
 					JOptionPane.showMessageDialog(null,
 							"ERROR: Morate da uneste neku pretragu, kako bi se ona izvrsila.", "Greska",
 							JOptionPane.ERROR_MESSAGE);

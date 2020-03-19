@@ -215,11 +215,11 @@ public class IzmenaProfesoraDialog extends JDialog {
 				String titulaFieldValue = txtTitula.getText();
 				String zvanjeFiledValue = txtZvanje.getText();
 
-				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
-						|| adresaStanovanjaFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
-						|| emailValue.isBlank() || adresaKancelarijeFieldValue.isBlank()
-						|| brojLicneKarteFieldValue.isBlank() || titulaFieldValue.isBlank()
-						|| zvanjeFiledValue.isBlank()) {
+				if (imeFieldValue.equals("") || prezimeFieldValue.equals("") || datumRodjenjaFieldValue.equals("")
+						|| adresaStanovanjaFieldValue.equals("") || datumRodjenjaFieldValue.equals("")
+						|| emailValue.equals("") || adresaKancelarijeFieldValue.equals("")
+						|| brojLicneKarteFieldValue.equals("") || titulaFieldValue.equals("")
+						|| zvanjeFiledValue.equals("")) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;

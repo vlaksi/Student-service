@@ -392,10 +392,10 @@ public class DodajStudentaDialog extends JDialog {
 					budzetIliSamofinansiranje = Status.S;
 				}
 
-				if (imeFieldValue.isBlank() || prezimeFieldValue.isBlank() || datumRodjenjaFieldValue.isBlank()
-						|| adresaStanovanjaFieldValue.isBlank() || brojIndexaFieldValue.isBlank()
-						|| brojIndexaFieldValue.isBlank() || brojtelefonaFieldValue.isBlank()
-						|| godinaStudijaValue.isBlank() || datumUpisaValue.isBlank() || emailValue.isBlank()) {
+				if (imeFieldValue.equals("") || prezimeFieldValue.equals("") || datumRodjenjaFieldValue.equals("")
+						|| adresaStanovanjaFieldValue.equals("") || brojIndexaFieldValue.equals("")
+						|| brojIndexaFieldValue.equals("") || brojtelefonaFieldValue.equals("")
+						|| godinaStudijaValue.equals("") || datumUpisaValue.equals("") || emailValue.equals("")) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;

@@ -212,7 +212,7 @@ public class DodajPredmetDialog extends JDialog {
 							"Greska", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (sifraFieldValue.isBlank() || nazivFieldValue.isBlank()) {
+				if (sifraFieldValue.equals("") || nazivFieldValue.equals("")) {
 					JOptionPane.showMessageDialog(null, "ERROR: Niste uneli sva polja", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 					return;
