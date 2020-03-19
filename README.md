@@ -46,7 +46,7 @@ The status of the application bar contains:
 2) the current time
 3) the name of the application
 <p align="center">
- <img width="500" height="50" src="https://user-images.githubusercontent.com/49925421/76367441-56d99680-632d-11ea-83a5-d7d7512cbc00.png">
+ <img width="1111" height="50" src="https://user-images.githubusercontent.com/49925421/77109701-b702c380-6a24-11ea-9248-193e6058fd7a.png">
 </p>
 
 ### 2. System model
