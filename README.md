@@ -46,7 +46,7 @@ The status of the application bar contains:
 2) the current time
 3) the name of the application
 <p align="center">
- <img width="1111" height="50" src="https://user-images.githubusercontent.com/49925421/77109701-b702c380-6a24-11ea-9248-193e6058fd7a.png">
+ <img width="1111" height="35" src="https://user-images.githubusercontent.com/49925421/77109701-b702c380-6a24-11ea-9248-193e6058fd7a.png">
 </p>
 
 ### 2. System model
@@ -140,4 +140,12 @@ g) average grade (rising / falling) <br>
 
 <img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77109019-84a49680-6a23-11ea-9d66-a159337c8a49.jpeg">
 
+### Student search
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77111526-cc2d2180-6a27-11ea-9fae-5017d65b1b33.jpeg">
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77111634-f67edf00-6a27-11ea-8be3-55679552fc7a.jpeg">
 
+### Adding students to the course (It is only possible to add students who matches the year of corresponding course)
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77110891-9cc9e500-6a26-11ea-9398-cf5470c3afff.jpeg">
+
+### Deliting students from the course
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77111163-24175880-6a27-11ea-965e-b9cefcd05b0a.jpeg">
