@@ -127,3 +127,17 @@ tables
 
 <img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77107857-96853a00-6a21-11ea-9484-7bf22f90a68b.jpeg">
 
+### Sorting a students
+
+Sorting all students in the table by: <br>
+a) index (ascending / descending) <br>
+b) name (ascending / descending) <br>
+c) surname (ascending / descending) <br>
+d) date of birth (ascending / descending) <br>
+e) year of enrollment (ascending / descending) <br>
+f) status (ascending / descending) <br>
+g) average grade (rising / falling) <br>
+
+<img width="1111" height="560" src="https://user-images.githubusercontent.com/49925421/77109019-84a49680-6a23-11ea-9d66-a159337c8a49.jpeg">
+
+
